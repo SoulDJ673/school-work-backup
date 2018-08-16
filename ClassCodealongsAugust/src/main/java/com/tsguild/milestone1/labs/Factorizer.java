@@ -83,7 +83,13 @@ public class Factorizer {
                 }
             }
             System.out.println("");
-            System.out.println(number + " has " + totalFactors + " factors.");
+
+            //Grammar Fix
+            if (totalFactors == 1) {
+                System.out.println(number + " has " + totalFactors + " factor.");
+            } else {
+                System.out.println(number + " has " + totalFactors + " factors.");
+            }
 
             //Prime Determination
             if (factorSum == 1) {
