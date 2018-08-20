@@ -23,6 +23,15 @@ public class Dog {
         this.tricksKnown = new Trick[0];
     }
 
+    //This is defining a more flexible contructor for the Dog Class
+    public Dog(String name, double weight, int age, Color furColor, Trick[] tricksKnown) {
+        this.name = name;
+        this.weight = weight;
+        this.age = age;
+        this.furColor = furColor;
+        this.tricksKnown = tricksKnown;
+    }
+
     /*
     These are getters for all Dog properties
     //Every getter has the following pattern
@@ -38,10 +47,14 @@ public class Dog {
     public String getName() {
         return this.name;
     }
-    
+
     public int getAge() {
         return this.age;
     }
-
-    //This is defining a more flexible contructor for the Dog Class
+    public Color getFurColor() {
+        return this.furColor;
+    }
+    public Trick[] getTricksKnown() {
+        return this.tricksKnown;
+    }
 }
