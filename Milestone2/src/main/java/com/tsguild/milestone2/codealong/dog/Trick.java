@@ -1,4 +1,4 @@
-package com.tsguild.milestone2;
+package com.tsguild.milestone2.codealong.dog;
 
 /**
  *
