@@ -11,14 +11,14 @@ public class RockPaperScissors {
 
     public static void main(String[] args) {
         //Variable & Etc Declaration and Initialization
-        int rounds = 0;
+        int rounds;
         boolean repeat = true;
         String userResponse;
-        int userChoice = 10;
-        int roboChoice = 10;
+        int userChoice = 0;
+        int roboChoice = 0;
         Scanner userInput = new Scanner(System.in);
         Random entropy = new Random(2);
-        boolean userValid = false;
+        boolean userValid;
         String[] weapons = {"Rock", "Paper", "Scissors"};
 
         //Stats Array [0,1,2] [Ties, RoboWins, UserWins]
@@ -29,8 +29,14 @@ public class RockPaperScissors {
 
         //Actual game starts
         do {
+            //Stats Array Reset
+            stats[0] = 0;
+            stats[1] = 0;
+            stats[2] = 0;
+
             System.out.println("How many rounds would you like to play?");
             rounds = userInput.nextInt();
+
             //Invalid round range ends program
             if (rounds > 10) {
                 System.out.println("Even I don't have enough time for that, and you shouldn't either if you have a life.");
@@ -42,11 +48,13 @@ public class RockPaperScissors {
                 System.out.println("Stop wasting my time, go away.");
                 return;
             }
+
             //Round Range Valid
             if (rounds >= 1 && rounds <= 10) {
                 System.out.print("Awesome, let's start!  ");
                 for (int i = 0; i < rounds; i++) {
-                    //Validity Reinit
+
+                    //Validity Reset
                     userValid = false;
 
                     while (userValid == false) {
@@ -154,6 +162,7 @@ public class RockPaperScissors {
             //False exits loop
 
         } while (repeat == true);
+
         //Exit Prompts
         if (stats[1] < stats[2]) {
             System.out.println("AAAAGGGGHHH FINE! YOU MUST NEVER SPEAK OF THIS, CHEATER!!!");
