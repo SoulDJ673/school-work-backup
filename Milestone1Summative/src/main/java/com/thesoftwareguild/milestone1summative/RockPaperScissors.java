@@ -46,6 +46,9 @@ public class RockPaperScissors {
             if (rounds >= 1 && rounds <= 10) {
                 System.out.print("Awesome, let's start!  ");
                 for (int i = 0; i < rounds; i++) {
+                    //Validity Reinit
+                    userValid = false;
+
                     while (userValid == false) {
                         System.out.println("Rock, paper, or scissors?");
                         userResponse = userInput.next();
@@ -82,7 +85,7 @@ public class RockPaperScissors {
                         }
                     }
                     //Robot Chooses Weapon
-                    roboChoice = entropy.nextInt(2);
+                    roboChoice = entropy.nextInt(3);
                     System.out.println("I chose: " + weapons[roboChoice]);
 
                     //Data Analysis
@@ -98,7 +101,7 @@ public class RockPaperScissors {
                     }
                     if (roboChoice == 2 && userChoice == 1) {
                         stats[1]++;
-                        System.out.println("Ha! I wint this round!");
+                        System.out.println("Ha! I win this round!");
                     }
                     if (roboChoice == 1 && userChoice == 0) {
                         stats[1]++;
