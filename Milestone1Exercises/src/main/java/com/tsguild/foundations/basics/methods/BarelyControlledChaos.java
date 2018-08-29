@@ -8,10 +8,10 @@ import java.util.Random;
  */
 public class BarelyControlledChaos {
 
+    private static Random entropy = new Random();
+
     public static void main(String[] args) {
         //Variable and Misc Initalization
-        Random entropy = new Random();
-        int entropyVar;
         String color;
         String colorAgain;
         String animal;
@@ -20,17 +20,14 @@ public class BarelyControlledChaos {
         int number;
         int time;
 
+        //Storyteller
         color = colors(entropy.nextInt(101));
-        animal =;
-        colorAgain =;
-        weight =;
-        // with a range between 5 - 200 
-        distance =;
-        // with a range between 10 - 20 
-        number =;
-        // with a range between 10000 - 20000 
-        time =;
-        // with a range between 2 - 6            
+        animal = animals(entropy.nextInt(5));
+        colorAgain = colors(entropy.nextInt(101));
+        weight = weight(entropy.nextInt(200)); // with a range between 5 - 200 
+        distance = distance(entropy.nextInt(20)); // with a range between 10 - 20 
+        number = number(entropy.nextInt(20000)); // with a range between 10000 - 20000 
+        time = time(entropy.nextInt(6)); // with a range between 2 - 6            
 
         System.out.println("Once, when I was very small...");
 
@@ -47,12 +44,55 @@ public class BarelyControlledChaos {
 
     }
 
+    //Picker Classes
     public static String colors(int entropyVar) {
         if (entropyVar <= 20) {
             return "blue";
-        } if (entropyVar <= 40 && entropyVar > 20) {
-            
         }
+        if (entropyVar <= 40 && entropyVar > 20) {
+            return "green";
+        }
+        if (entropyVar <= 60 && entropyVar > 40) {
+            return "red";
+        }
+        if (entropyVar <= 80 && entropyVar > 60) {
+            return "yellow";
+        } else {
+            return "white";
+        }
+    }
+
+    public static String animals(int entropyVar) {
+        String[] animals = {"dog", "cat", "sheep", "pig", "cow"};
+        return animals[entropyVar];
+    }
+
+    public static int weight(int entropyVar) {
+        while (entropyVar < 5) {
+            entropyVar = entropy.nextInt(200);
+        }
+        return entropyVar;
+    }
+
+    public static int distance(int entropyVar) {
+        while (entropyVar < 10) {
+            entropyVar = entropy.nextInt(20);
+        }
+        return entropyVar;
+    }
+
+    public static int number(int entropyVar) {
+        while (entropyVar < 10000) {
+            entropyVar = entropy.nextInt(20000);
+        }
+        return entropyVar;
+    }
+
+    public static int time(int entropyVar) {
+        while (entropyVar < 2) {
+            entropyVar = entropy.nextInt(6);
+        }
+        return entropyVar;
     }
 
 }
