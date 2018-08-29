@@ -1,5 +1,4 @@
 # Table of Contents
-### Lloyd, Devin J
 
 ## Milestone 1
 | Assignment | Directory |
