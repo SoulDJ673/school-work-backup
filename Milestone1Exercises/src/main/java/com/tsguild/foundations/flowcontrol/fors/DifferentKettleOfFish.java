@@ -1,0 +1,28 @@
+package com.tsguild.foundations.flowcontrol.fors;
+
+/**
+ *
+ * @author souldj673
+ */
+public class DifferentKettleOfFish {
+
+    public static void main(String[] args) {
+
+        for (int fish = 1; fish <= 10; fish++) {
+            if (fish == 3) {
+                System.out.println("RED fish!");
+            } else if (fish == 4) {
+                System.out.println("BLUE fish!");
+            } else {
+                System.out.println(fish + " fish!");
+            }
+            /*
+            While converting to a for loop the fish var init, stopping point, 
+            and incrementation are now all in one place.  Before, they were 
+            scattered around in very specific places.  Using a for loop here 
+            simplifies this
+             */
+        }
+
+    }
+}
