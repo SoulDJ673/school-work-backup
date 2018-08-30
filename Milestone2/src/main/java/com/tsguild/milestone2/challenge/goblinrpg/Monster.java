@@ -1,5 +1,6 @@
 package com.tsguild.milestone2.challenge.goblinrpg;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,6 +9,7 @@ import java.util.List;
  */
 public class Monster implements Armor, Weapon {
 
+    //Properties
     private int health;
     private int experience;
     private List loot;
@@ -15,6 +17,20 @@ public class Monster implements Armor, Weapon {
     private Weapon weapon;
     private String name;
     private String description;
+
+    //No Args Constructor
+    public Monster() {
+        this.name = "Big Bug";
+        this.description = "A giant black beetle.";
+
+        this.health = 10;
+        this.experience = 0;
+
+        this.loot = new ArrayList();
+
+        this.armor = null;
+        this.weapon = null;
+    }
 
     //Getters
     public int getHealth() {
@@ -45,7 +61,7 @@ public class Monster implements Armor, Weapon {
         return description;
     }
 
-    //Setter
+    //Setters
     public void setHealth(int health) {
         this.health = health;
     }

@@ -1,5 +1,6 @@
 package com.tsguild.milestone2.challenge.goblinrpg;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,10 +19,12 @@ public class Goblin implements Armor, Weapon {
 
     //Constructors
     public Goblin() {
-        this.name = "Jeff";
+        this.name = "Jeffuuu UwU";
         this.health = 100;
         this.experience = 0;
-        this.inventory.clear();
+        
+        this.inventory = new ArrayList();
+        
         this.armor = null;
         this.weapon = null;
     }
@@ -30,7 +33,9 @@ public class Goblin implements Armor, Weapon {
         this.name = name;
         this.health = 100;
         this.experience = 0;
-        this.inventory.clear();
+        
+        this.inventory = new ArrayList();
+        
         this.armor = null;
         this.weapon = null;
     }
