@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class TraditionalFizzBuzz {
 
     //Required accessible fizzbuzz tracker variable
-    public static int fizzbuzzes;
+    private static int fizzbuzzes;
 
     public static void main(String[] args) {
         //Variable and Scanner declare/init
