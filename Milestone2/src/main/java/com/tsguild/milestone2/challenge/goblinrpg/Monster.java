@@ -2,12 +2,13 @@ package com.tsguild.milestone2.challenge.goblinrpg;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
  * @author souldj673
  */
-public class Monster implements Armor, Weapon {
+public class Monster {
 
     //Properties
     private int health;
@@ -30,6 +31,44 @@ public class Monster implements Armor, Weapon {
 
         this.armor = null;
         this.weapon = null;
+    }
+
+    //Attacking?
+    public boolean attack(Goblin goblin) {
+        Random crits = new Random();
+        int damageToDo = crits.nextInt(2);
+        if (weapon == null) { //Attack if no weapon
+            damageToDo += 2;
+        } else { //Attack with weapon
+            damageToDo = this.weapon.strike() + damageToDo;
+        }
+
+        int damageDone = goblin.takeDamage(damageToDo);
+        return goblin.isDead();
+    }
+
+    //Damage Taken
+    public int takeDamage(int damage) {
+        int damageToTake = damage;
+        if (this.armor != null) { //Check for armor
+            damageToTake = this.armor.protect(damage);
+        }
+
+        this.health = this.health - damageToTake; //Take Damage Accordingly
+        if (this.health < 0) { //If health goes below 0, reset to 0
+            this.health = 0;
+        }
+        return damageToTake;
+    }
+
+    //Healing
+    public void heal(int health) {
+
+    }
+
+    //isDead
+    public boolean isDead() {
+        return this.health < 1;
     }
 
     //Getters

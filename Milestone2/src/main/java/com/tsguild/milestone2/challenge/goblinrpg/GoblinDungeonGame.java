@@ -37,15 +37,15 @@ public class GoblinDungeonGame {
             for (int i = 0; i < steps; i++) {
                 Monster foe = makeNewMonster();
                 System.out.println("Let's get out of here!!!");
-                System.out.println("AAAHHHH " + player.getName() + ", there's a " + foe.getName() + "!");
+                System.out.println("\nAAAHHHH " + player.getName() + ", there's a " + foe.getName() + "!");
                 System.out.println("KILL IT!!! >w<");
 
                 //Fight
-                boolean didIWin = fight(player, foe);
+                boolean didIWin = fightWithWeapons(player, foe);
                 if (didIWin) { //Win
                     System.out.println("Let's rest uwu");
                     int goblinHealth = player.getHealth();
-                    player.setHealth(goblinHealth++);
+                    player.setHealth(goblinHealth + 10);
                 } else { //Lost
                     break floorLoop;
                 }
@@ -62,11 +62,8 @@ public class GoblinDungeonGame {
                 System.out.println("YAAAYY ^w^ WE DID IT " + player.getName() + "UU!!!");
             }
 
-            //Win / Loss Message
-            if (!isDead(player)) {
-                System.out.println("YOU WINNN!!!!!");
-            } else {
-                System.out.println("YOU LOSE!!!!");
+            if (player.isDead()) {
+
             }
         }
     }
@@ -101,7 +98,7 @@ public class GoblinDungeonGame {
                 enemy.setName("Giant Bumblebee");
                 enemy.setDescription("An enormous buzzing bee");
                 enemy.setExperience(10);
-                enemy.setHealth(5);
+                enemy.setHealth(20);
                 break;
 
             case 2: //Evil Spider
@@ -119,10 +116,10 @@ public class GoblinDungeonGame {
         return enemy;
     }
 
-    //Damaging Maths
+    //Damaging Maths - No Weapons
     public static boolean fight(Goblin hero, Monster foe) {
         //Keep fighting while both are alive
-        while (!isDead(hero) && !isDead(foe)) {
+        while (!hero.isDead() && !foe.isDead()) {
             int heroDamage = entropy.nextInt(5) + 1;
             int foeDamage = entropy.nextInt(2) + 1;
 
@@ -146,7 +143,7 @@ public class GoblinDungeonGame {
             userInput.nextLine();
         }
         //Win Message
-        if (!isDead(hero) && isDead(foe)) {
+        if (!hero.isDead() && foe.isDead()) {
             System.out.println("WE DID IT!!!");
             return true;
         } else { //Loss message
@@ -156,6 +153,25 @@ public class GoblinDungeonGame {
         }
     }
 
+    public static boolean fightWithWeapons(Goblin hero, Monster foe) {
+        while (!hero.isDead() && !foe.isDead()) {
+            hero.attack(foe);
+            foe.attack(hero);
+
+            //Slow down the fight
+            System.out.println("");
+            System.out.println(">>> Pres Enter when you're ready to go ^w^ <<<");
+            userInput.nextLine();
+        }
+        if (!hero.isDead() && foe.isDead()) {
+            System.out.println("WE DID IT!!!");
+        } else { //Loss message
+            System.out.println("NUUUU!!!!! UwU");
+            System.out.println("I'll miss u " + hero.getName() + "uu... UwU");
+        }
+        return !hero.isDead();
+    }
+
     //Calls and Prints Health and Floor
     public static void floorInfo(Goblin hero, int floorsLeft) {
         System.out.println("We're on floor " + floorsLeft);
@@ -163,26 +179,4 @@ public class GoblinDungeonGame {
         System.out.println(">>> Pres Enter when you're ready to go ^w^ <<<");
         userInput.nextLine();
     }
-
-    //Grim Reaper Methods (Check if Dead)
-    public static boolean isDead(Goblin hero) {
-        //Store user health into variable for comparison
-        int health = hero.getHealth();
-        if (health < 1) {                    //Comparison
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean isDead(Monster foe) {
-        //Store monster health into variable for comparison
-        int health = foe.getHealth();
-        if (health < 1) {                    //Comparison
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 }
