@@ -1,5 +1,4 @@
 # Table of Contents
----
 
 ## Milestone 1
 | Assignment | Directory |
