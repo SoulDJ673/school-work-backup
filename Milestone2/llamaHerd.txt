@@ -1,0 +1,7 @@
+Jeff::Blue::Spiky::7::7.0::true
+Lobster::Red::Fluffy::5::3.0::false
+Shrek::Green::Fuzzy::13::5.0::true
+xXHaramboi69XD::Black::Fluffy::69::14.0::false
+Goat::White::Fuzzy::9::6.0::false
+Serrano::Dark Brown::Sorta Fluffy::12::33.0::true
+Dixie::Dark Brown::Fluffy::8::35.0::false

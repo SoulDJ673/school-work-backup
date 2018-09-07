@@ -42,9 +42,17 @@ public class StateCapitals2 {
         //Getting Lazy, Generate Random Pop/Area Values
         Random facts = new Random();
         stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Louisiana", new Capital("Baton Rouge", 215472, 83));
-        stateCapitalPairs.put("Louisiana", new Capital("Baton Rouge", 215472, 83));
-        stateCapitalPairs.put("Louisiana", new Capital("Baton Rouge", 215472, 83));
-        stateCapitalPairs.put("Louisiana", new Capital("Baton Rouge", 215472, 83));
+        stateCapitalPairs.put("Maryland", new Capital("Annapolis", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Massachusetts", new Capital("Boston", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
     }
 }
