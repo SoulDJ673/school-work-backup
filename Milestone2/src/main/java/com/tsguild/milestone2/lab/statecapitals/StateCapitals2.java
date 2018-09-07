@@ -1,5 +1,6 @@
 package com.tsguild.milestone2.lab.statecapitals;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -12,11 +13,18 @@ public class StateCapitals2 {
 
     //Create Class Accessible Map for States / Capitals
     public static Map<String, Capital> stateCapitalPairs = new HashMap<>();
-    
+
     public static void main(String[] args) {
+        //Separate States and Capitals
+        Collection<String> states = stateCapitalPairs.keySet();
+        Collection<Capital> capitals = stateCapitalPairs.values();
         
+        //Iterate through Collections and print info
+        for (String state : states) {
+            
+        }
     }
-    
+
     private static void mapBuilder() {
 
         //Constructs and puts Captial objects into map with their State as the key
@@ -44,15 +52,34 @@ public class StateCapitals2 {
         stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
         stateCapitalPairs.put("Maryland", new Capital("Annapolis", facts.nextInt(500000), facts.nextInt(500)));
         stateCapitalPairs.put("Massachusetts", new Capital("Boston", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
-        stateCapitalPairs.put("Maine", new Capital("Augusta", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Michigan", new Capital("Lansing", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Minnesota", new Capital("St. Paul", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Mississippi", new Capital("Jackson", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Missouri", new Capital("Jefferson City", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Montana", new Capital("Helena", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Nebraska", new Capital("Lincoln", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Nevada", new Capital("Carson City", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("New Hampshire", new Capital("Concord", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("New Jersey", new Capital("Trenton", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("New Mexico", new Capital("Santa Fe", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("New York", new Capital("Albany", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("North Carolina", new Capital("Raleigh", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("North Dakota", new Capital("Bismarck", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Ohio", new Capital("Columbus", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Oklahoma", new Capital("Oklahoma City", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Pennsylvania", new Capital("Harrisburg", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Rhode Island", new Capital("Providence", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("South Carolina", new Capital("Columbia", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("South Dakota", new Capital("Pierre", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Tennessee", new Capital("Nashville", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Texas", new Capital("Austin", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Utah", new Capital("Salt Lake City", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Vermont", new Capital("Montpelier", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Virginia", new Capital("Richmond", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Washington", new Capital("Olympia", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("West Virginia", new Capital("Charleston", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Wisconsin", new Capital("Madison", facts.nextInt(500000), facts.nextInt(500)));
+        stateCapitalPairs.put("Wyoming", new Capital("Cheyenne", facts.nextInt(500000), facts.nextInt(500)));
+
     }
 }
