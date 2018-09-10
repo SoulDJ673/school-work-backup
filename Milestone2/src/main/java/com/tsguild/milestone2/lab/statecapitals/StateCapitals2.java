@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -15,13 +16,37 @@ public class StateCapitals2 {
     public static Map<String, Capital> stateCapitalPairs = new HashMap<>();
 
     public static void main(String[] args) {
+
+        //Init/Declare Scanner
+        Scanner userInput = new Scanner(System.in);
+
+        //Populating the Map
+        mapBuilder();
+
         //Separate States and Capitals
         Collection<String> states = stateCapitalPairs.keySet();
-        Collection<Capital> capitals = stateCapitalPairs.values();
-        
+
         //Iterate through Collections and print info
+        System.out.println("STATE / CAPITAL PAIRS:");
+        System.out.println("======================");
+
         for (String state : states) {
-            
+            Capital capital = stateCapitalPairs.get(state);
+            System.out.println(state + " - " + capital.getName() + " | Pop: " + capital.getPopulation() + " | Area: " + capital.getSqrMiles() + " sq mi");
+        }
+
+        //Population Limits Prompt
+        System.out.print("\nEnter a lower limit for capital city populations: ");
+        long popLimit = userInput.nextLong();
+
+        System.out.println("\nListing Capitals with populations greater than " + popLimit + "...");
+
+        //Filtering...
+        for (String state : states) {
+            Capital capital = stateCapitalPairs.get(state);
+            if (capital.getPopulation() > popLimit) {
+                System.out.println(state + " - " + capital.getName() + " | Pop: " + capital.getPopulation() + " | Area: " + capital.getSqrMiles() + " sq mi");
+            }
         }
     }
 
