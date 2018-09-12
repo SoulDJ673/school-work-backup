@@ -19,5 +19,6 @@
 | 08/28/2018 | Painting Class Model Lab | ClassModeling/ |
 | 08/29/2018 | Goblin RPG | Milestone2/.../challenge/goblinrpg/ |
 | 09/04/2018 | Using Collections | Milestone2/.../codealong/collections/ |
-| 09/04/2018 | State Capitals Lab | Milestone2/../lab/statecapitals/ |
-| 09/11/2018 | Simple Calculator Lab | Milestone2/..lab/simplecalculator/ |
+| 09/04/2018 | State Capitals Lab | Milestone2/.../lab/statecapitals/ |
+| 09/11/2018 | Simple Calculator Lab | Milestone2/.../lab/simplecalculator/ |
+| 09/12/2018 | UserIO Lab | Milestone2/.../lab/userio/ && Milestone2/.../lab/useriocalc/ |
