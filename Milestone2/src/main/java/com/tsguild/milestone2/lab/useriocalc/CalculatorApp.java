@@ -19,7 +19,7 @@ public class CalculatorApp {
         SimpleCalculator calc = new SimpleCalculator();
 
         //Build User IO Implementation
-        UserIOCalcImpl userInOut = new UserIOCalcImpl();
+        UserIO userInOut = new UserIOCalcImpl();
 
         //Welcome Prompt
         userInOut.print("Welcome to the Calculator\n");
