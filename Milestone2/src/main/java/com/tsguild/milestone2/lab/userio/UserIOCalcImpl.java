@@ -197,7 +197,7 @@ public class UserIOCalcImpl implements UserIO {
                 userL = Long.parseLong(userLS);
                 break;
             } catch (Exception e) {
-                System.out.println("You must input an long.");
+                System.out.println("You must input a long.");
             }
         }
         return userL;
@@ -226,7 +226,7 @@ public class UserIOCalcImpl implements UserIO {
                 }
 
             } catch (Exception e) {
-                System.out.println("You must input an long.");
+                System.out.println("You must input a long.");
             }
         }
     }
