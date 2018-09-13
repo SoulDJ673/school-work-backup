@@ -8,13 +8,19 @@ import java.util.Scanner;
  */
 public class UserIOCalcImpl implements UserIO {
 
+    /*
+    In order to ensure that the user wouldn't break anything by giving values of the incorrect
+    data type, I used try-catches with the generic exception e.  I don't know how to specify specific
+    exceptions yet, so I probably shouldn't have used try-catches.  However, I couldn't think of any other
+    way to solve this issue.
+     */
     //Class accessible scanner for user input
     private Scanner userInput = new Scanner(System.in);
 
     //Method Implementations
     @Override
     public void print(String message) {
-        System.out.print(message);
+        System.out.println(message);
     }
 
     @Override
@@ -22,7 +28,7 @@ public class UserIOCalcImpl implements UserIO {
         //Declare Var for holding user input (string)
         String userS;
 
-        System.out.print(msgPrompt);
+        System.out.println(msgPrompt);
         userS = userInput.next();
 
         //Return user input back to caller
@@ -32,28 +38,48 @@ public class UserIOCalcImpl implements UserIO {
     @Override
     public int readInt(String msgPrompt) {
         //Declare Var for holding user input (integer)
+        String userIS;
         int userI;
 
-        System.out.print(msgPrompt);
-        userI = userInput.nextInt();
+        System.out.println(msgPrompt);
 
+        //Validate Input (Infinite loop is intentional)
+        while (true) {
+            userIS = userInput.next();
+            try {
+                userI = Integer.parseInt(userIS);
+                break;
+            } catch (Exception e) {
+                System.out.println("You must input an integer.");
+            }
+        }
         return userI;
     }
 
     @Override
     public int readInt(String msgPrompt, int min, int max) {
         //Declare Var for holding user input (integer)
+        String userIS;
         int userI;
 
-        System.out.print(msgPrompt);
+        System.out.println(msgPrompt);
 
-        //Repeat if user gives an integer that is out of bounds
+        //Validate Input (Infinite loop is intentional)
+        validate:
         while (true) {
-            userI = userInput.nextInt();
-            if (userI <= max && userI >= min) {
-                return userI;
-            } else {
-                System.out.print("You must input a value between " + min + " and " + max);
+            userIS = userInput.next();
+            try {
+                userI = Integer.parseInt(userIS);
+
+                //Repeat if user gives an integer that is out of bounds
+                if (userI <= max && userI >= min) {
+                    return userI;
+                } else {
+                    System.out.println("You must input a value between " + min + " and " + max);
+                }
+
+            } catch (Exception e) {
+                System.out.println("You must input an integer.");
             }
         }
     }
@@ -61,28 +87,48 @@ public class UserIOCalcImpl implements UserIO {
     @Override
     public double readDouble(String msgPrompt) {
         //Declare Var for holding user input (double)
+        String userDS;
         double userD;
 
-        System.out.print(msgPrompt);
-        userD = userInput.nextDouble();
+        System.out.println(msgPrompt);
 
+        //Validate Input (Infinite loop is intentional)
+        while (true) {
+            userDS = userInput.next();
+            try {
+                userD = Double.parseDouble(userDS);
+                break;
+            } catch (Exception e) {
+                System.out.println("You must input a double.");
+            }
+        }
         return userD;
     }
 
     @Override
     public double readDouble(String msgPrompt, double min, double max) {
         //Declare Var for holding user input (double)
+        String userDS;
         double userD;
 
-        System.out.print(msgPrompt);
+        System.out.println(msgPrompt);
 
-        //Repeat if user gives value that is out of bounds
+        //Validate Input (Infinite loop is intentional)
+        validate:
         while (true) {
-            userD = userInput.nextDouble();
-            if (userD >= min && userD <= max) {
-                return userD;
-            } else {
-                System.out.print("You must input a value between " + min + " and " + max);
+            userDS = userInput.next();
+            try {
+                userD = Double.parseDouble(userDS);
+
+                //Repeat if user gives a double that is out of bounds
+                if (userD <= max && userD >= min) {
+                    return userD;
+                } else {
+                    System.out.println("You must input a value between " + min + " and " + max);
+                }
+
+            } catch (Exception e) {
+                System.out.println("You must input a double.");
             }
         }
     }
@@ -90,57 +136,97 @@ public class UserIOCalcImpl implements UserIO {
     @Override
     public float readFloat(String msgPrompt) {
         //Declare Var for holding user input (float)
+        String userFS;
         float userF;
 
-        System.out.print(msgPrompt);
-        userF = userInput.nextFloat();
+        System.out.println(msgPrompt);
 
+        //Validate Input (Infinite loop is intentional)
+        while (true) {
+            userFS = userInput.next();
+            try {
+                userF = Float.parseFloat(userFS);
+                break;
+            } catch (Exception e) {
+                System.out.println("You must input a float.");
+            }
+        }
         return userF;
     }
 
     @Override
     public float readFloat(String msgPrompt, float min, float max) {
         //Declare Var for holding user input (float)
+        String userFS;
         float userF;
 
-        System.out.print(msgPrompt);
+        System.out.println(msgPrompt);
 
-        //Repeat if user gives value that is out of bounds
+        //Validate Input (Infinite loop is intentional)
+        validate:
         while (true) {
-            userF = userInput.nextFloat();
-            if (userF >= min && userF <= max) {
-                return userF;
-            } else {
-                System.out.print("You must input a value between " + min + " and " + max);
+            userFS = userInput.next();
+            try {
+                userF = Float.parseFloat(userFS);
+
+                //Repeat if user gives a float that is out of bounds
+                if (userF <= max && userF >= min) {
+                    return userF;
+                } else {
+                    System.out.println("You must input a value between " + min + " and " + max);
+                }
+
+            } catch (Exception e) {
+                System.out.println("You must input a float.");
             }
         }
     }
 
     @Override
     public long readLong(String msgPrompt) {
-        //Declare Var for holding user input (float)
+        //Declare Var for holding user input (long)
+        String userLS;
         long userL;
 
-        System.out.print(msgPrompt);
-        userL = userInput.nextLong();
+        System.out.println(msgPrompt);
 
+        //Validate Input (Infinite loop is intentional)
+        while (true) {
+            userLS = userInput.next();
+            try {
+                userL = Long.parseLong(userLS);
+                break;
+            } catch (Exception e) {
+                System.out.println("You must input an long.");
+            }
+        }
         return userL;
     }
 
     @Override
     public long readLong(String msgPrompt, long min, long max) {
         //Declare Var for holding user input (long)
+        String userLS;
         long userL;
 
-        System.out.print(msgPrompt);
+        System.out.println(msgPrompt);
 
-        //Repeat if user gives value that is out of bounds
+        //Validate Input (Infinite loop is intentional)
+        validate:
         while (true) {
-            userL = userInput.nextLong();
-            if (userL >= min && userL <= max) {
-                return userL;
-            } else {
-                System.out.print("You must input a value between " + min + " and " + max);
+            userLS = userInput.next();
+            try {
+                userL = Long.parseLong(userLS);
+
+                //Repeat if user gives an long that is out of bounds
+                if (userL <= max && userL >= min) {
+                    return userL;
+                } else {
+                    System.out.println("You must input a value between " + min + " and " + max);
+                }
+
+            } catch (Exception e) {
+                System.out.println("You must input an long.");
             }
         }
     }
