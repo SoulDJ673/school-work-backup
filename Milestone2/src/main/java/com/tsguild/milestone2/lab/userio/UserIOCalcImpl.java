@@ -29,7 +29,7 @@ public class UserIOCalcImpl implements UserIO {
         String userS;
 
         System.out.println(msgPrompt);
-        userS = userInput.next();
+        userS = userInput.nextLine(); //Change to nextLine to allow empty input (Press enter to continue)
 
         //Return user input back to caller
         return userS;
@@ -45,7 +45,8 @@ public class UserIOCalcImpl implements UserIO {
 
         //Validate Input (Infinite loop is intentional)
         while (true) {
-            userIS = userInput.next();
+
+            userIS = userInput.nextLine();
             try {
                 userI = Integer.parseInt(userIS);
                 break;
@@ -67,7 +68,7 @@ public class UserIOCalcImpl implements UserIO {
         //Validate Input (Infinite loop is intentional)
         validate:
         while (true) {
-            userIS = userInput.next();
+            userIS = userInput.nextLine();
             try {
                 userI = Integer.parseInt(userIS);
 
@@ -94,7 +95,7 @@ public class UserIOCalcImpl implements UserIO {
 
         //Validate Input (Infinite loop is intentional)
         while (true) {
-            userDS = userInput.next();
+            userDS = userInput.nextLine();
             try {
                 userD = Double.parseDouble(userDS);
                 break;
@@ -116,7 +117,7 @@ public class UserIOCalcImpl implements UserIO {
         //Validate Input (Infinite loop is intentional)
         validate:
         while (true) {
-            userDS = userInput.next();
+            userDS = userInput.nextLine();
             try {
                 userD = Double.parseDouble(userDS);
 
@@ -143,7 +144,7 @@ public class UserIOCalcImpl implements UserIO {
 
         //Validate Input (Infinite loop is intentional)
         while (true) {
-            userFS = userInput.next();
+            userFS = userInput.nextLine();
             try {
                 userF = Float.parseFloat(userFS);
                 break;
@@ -165,7 +166,7 @@ public class UserIOCalcImpl implements UserIO {
         //Validate Input (Infinite loop is intentional)
         validate:
         while (true) {
-            userFS = userInput.next();
+            userFS = userInput.nextLine();
             try {
                 userF = Float.parseFloat(userFS);
 
@@ -192,7 +193,7 @@ public class UserIOCalcImpl implements UserIO {
 
         //Validate Input (Infinite loop is intentional)
         while (true) {
-            userLS = userInput.next();
+            userLS = userInput.nextLine();
             try {
                 userL = Long.parseLong(userLS);
                 break;
@@ -214,7 +215,7 @@ public class UserIOCalcImpl implements UserIO {
         //Validate Input (Infinite loop is intentional)
         validate:
         while (true) {
-            userLS = userInput.next();
+            userLS = userInput.nextLine();
             try {
                 userL = Long.parseLong(userLS);
 
