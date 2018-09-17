@@ -81,4 +81,24 @@ public class ClassRosterView {
         }
         io.readString("Please hit enter to continue.");
     }
+
+    //Removal Banner
+    public void displayRemoveStudentBanner() {
+        io.print("=== Remove Student ===");
+    }
+
+    //Removal Success Banner
+    public void displayRemoveSuccessBanner() {
+        io.readString("Student successfully removed. Please hit enter to continue.");
+    }
+
+    //Exit Banner
+    public void displayExitBanner() {
+        io.print("Good Bye!");
+    }
+
+    //Unknown Command Banner
+    public void displayUnknownCommandBanner() {
+        io.print("Unknown Command.");
+    }
 }

@@ -14,8 +14,6 @@ public class ClassRosterController {
     ClassRosterView view = new ClassRosterView();
     ClassRosterDao dao = new ClassRosterDaoFileImpl();
 
-    private UserIO io = new UserIOConsoleImpl();
-
     public void run() {
         boolean keepGoing = true;
         int menuSelection = 0;
@@ -34,17 +32,17 @@ public class ClassRosterController {
                     viewStudent();
                     break;
                 case 4:
-                    io.print("REMOVE STUDENT");
+                    removeStudent();
                     break;
                 case 5:
                     keepGoing = false;
                     break;
                 default:
-                    io.print("UNKNOWN COMMAND");
+                    unknownCommand();
             }
 
         }
-        io.print("GOOD BYE");
+        exitMessage();
     }
 
     private int getMenuSelection() {
@@ -73,4 +71,21 @@ public class ClassRosterController {
         view.displayStudent(student);
     }
 
+    //Tell View to display Banner, ask DAO to remove Student, view Displays Success Banner
+    private void removeStudent() {
+        view.displayRemoveStudentBanner();
+        String studentId = view.getStudentIdChoice();
+        dao.removeStudent(studentId);
+        view.displayRemoveSuccessBanner();
+    }
+
+    //Tell View to display Unknown Banner
+    private void unknownCommand() {
+        view.displayUnknownCommandBanner();
+    }
+
+    //Tell View to display Exit Banner
+    private void exitMessage() {
+        view.displayExitBanner();
+    }
 }
