@@ -1,3 +1,5 @@
 #!/bin/bash
 git push origin master &
-git push github-backup master &
+git push github-backup master
+
+echo ""

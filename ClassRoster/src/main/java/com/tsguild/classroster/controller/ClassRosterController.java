@@ -11,8 +11,15 @@ import java.util.List;
  */
 public class ClassRosterController {
 
-    ClassRosterView view = new ClassRosterView();
-    ClassRosterDao dao = new ClassRosterDaoFileImpl();
+    //Removed Hard Coded Dependencies in Step 5
+    ClassRosterView view;
+    ClassRosterDao dao;
+    
+    //Loose Coupling
+    public ClassRosterController(ClassRosterDao dao, ClassRosterView view) {
+        this.dao = dao;
+        this.view = view;
+    }
 
     public void run() {
         boolean keepGoing = true;

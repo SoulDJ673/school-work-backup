@@ -9,7 +9,13 @@ import java.util.List;
  */
 public class ClassRosterView {
 
-    UserIO io = new UserIOConsoleImpl();
+    //Removed Hardcoded Dependency 
+    private UserIO io;
+
+    //Loose Coupling
+    public ClassRosterView(UserIO io) {
+        this.io = io;
+    }
 
     //Menu
     public int printMenuAndGetSelection() {
