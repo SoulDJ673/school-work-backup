@@ -3,6 +3,7 @@ package com.tsguild.classroster.controller;
 import com.tsguild.classroster.dao.*;
 import com.tsguild.classroster.dto.*;
 import com.tsguild.classroster.ui.*;
+import java.util.List;
 
 /**
  *
@@ -24,10 +25,10 @@ public class ClassRosterController {
 
             switch (menuSelection) {
                 case 1:
-                    io.print("LIST STUDENTS");
+                    listStudents();
                     break;
                 case 2:
-                    io.print("CREATE STUDENT");
+                    createStudent();
                     break;
                 case 3:
                     io.print("VIEW STUDENT");
@@ -50,12 +51,18 @@ public class ClassRosterController {
         return view.printMenuAndGetSelection();
     }
 
-    //Tell 
+    //Tell ClassRosterDaoImpl to do heavy lifting
     private void createStudent() {
         view.displayCreateStudentBanner();
         Student newStudent = view.getNewStudentInfo();
         dao.addStudent(newStudent.getStudentId(), newStudent);
         view.displayCreateSuccessBanner();
+    }
+    
+    //Tell Dao to get Student List, View to display it
+    private void listStudents() {
+        List<Student> studentList = dao.getAllStudents();
+        view.displayStudentList(studentList);
     }
 
 }

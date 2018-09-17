@@ -1,6 +1,7 @@
 package com.tsguild.classroster.ui;
 
 import com.tsguild.classroster.dto.Student;
+import java.util.List;
 
 /**
  *
@@ -44,5 +45,18 @@ public class ClassRosterView {
     public void displayCreateSuccessBanner() {
         io.readString(
                 "Student successfully created.  Please hit enter to continue");
+    }
+
+    //Displays Student List
+    public void displayStudentList(List<Student> studentList) {
+        for (Student currentStudent : studentList) {
+            io.print(currentStudent.getStudentId() + ": " + currentStudent.getFirstName() + " " + currentStudent.getLastName());
+        }
+        io.readString("Please hit enter to continue.");
+    }
+    
+    //All Students Banner
+    public void displayAllBanner() {
+        io.print("=== Display All Students ===");
     }
 }
