@@ -22,3 +22,4 @@
 | 09/04/2018 | State Capitals Lab | Milestone2/.../lab/statecapitals/ |
 | 09/11/2018 | Simple Calculator Lab | Milestone2/.../lab/simplecalculator/ |
 | 09/12/2018 | UserIO Lab | Milestone2/.../lab/userio/ && Milestone2/.../lab/useriocalc/ |
+| 09/16/2018 | ClassRoster Lab | ClassRoster/ |
