@@ -54,9 +54,31 @@ public class ClassRosterView {
         }
         io.readString("Please hit enter to continue.");
     }
-    
+
     //All Students Banner
     public void displayAllBanner() {
         io.print("=== Display All Students ===");
+    }
+
+    //Display Student Banner
+    public void displayDisplayStudentBanner() {
+        io.print("=== Display Student ===");
+    }
+
+    //Input Student ID Prompt
+    public String getStudentIdChoice() {
+        return io.readString("Please enter the Student ID.");
+    }
+
+    //Display Student
+    public void displayStudent(Student student) {
+        if (student != null) {
+            io.print(student.getStudentId());
+            io.print(student.getFirstName() + " " + student.getLastName());
+            io.print(student.getCohort());
+        } else {
+            io.print("No such student.");
+        }
+        io.readString("Please hit enter to continue.");
     }
 }
