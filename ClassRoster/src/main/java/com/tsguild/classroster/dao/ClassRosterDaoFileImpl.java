@@ -54,91 +54,139 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
     //Map for storing/sorting student data
     private Map<String, Student> students = new HashMap<>();
 
-    //Load from file
+    private Student unmarshallStudent(String studentAsText) {
+        // studentAsText is expecting a line read in from our file.
+        // For example, it might look like this:
+        // 1234::Ada::Lovelace::Java-September1842
+        //
+        // We then split that line on our DELIMITER - which we are using as ::
+        // Leaving us with an array of Strings, stored in studentTokens.
+        // Which should look like this:
+        // ______________________________________
+        // |    |   |        |                  |
+        // |1234|Ada|Lovelace|Java-September1842|
+        // |    |   |        |                  |
+        // --------------------------------------
+        //  [0]  [1]    [2]         [3]
+        String[] studentTokens = studentAsText.split(DELIMITER);
+
+        // Given the pattern above, the student Id is in index 0 of the array.
+        String studentId = studentTokens[0];
+
+        // Which we can then use to create a new Student object to satisfy
+        // the requirements of the Student constructor.
+        Student studentFromFile = new Student(studentId);
+
+        // However, there are 3 remaining tokens that need to be set into the
+        // new student object. Do this manually by using the appropriate setters.
+        // Index 1 - FirstName
+        studentFromFile.setFirstName(studentTokens[1]);
+
+        // Index 2 - LastName
+        studentFromFile.setLastName(studentTokens[2]);
+
+        // Index 3 - Cohort
+        studentFromFile.setCohort(studentTokens[3]);
+
+        // We have now created a student! Return it!
+        return studentFromFile;
+    }
+
     private void loadRoster() throws ClassRosterDaoException {
         Scanner scanner;
 
         try {
-            //Create Scanner for reading the file
-            scanner = new Scanner(new BufferedReader(new FileReader(ROSTER_FILE)));
+            // Create Scanner for reading the file
+            scanner = new Scanner(
+                    new BufferedReader(
+                            new FileReader(ROSTER_FILE)));
         } catch (FileNotFoundException e) {
-            throw new ClassRosterDaoException("-_- Could not load roster data into memory. :(", e);
+            throw new ClassRosterDaoException(
+                    "-_- Could not load roster data into memory.", e);
         }
-        //Read most recent line from file and hold it in currentLine
+        // currentLine holds the most recent line read from the file
         String currentLine;
-        //currentTokens holds each of the parts of the currentLine after it has
-        //been split on our DELIMITER
-        //NOTE FOR APPRENTICES: In our case we use :: as our delimiter.  If
-        //currentLine looks like this:
-        //1234::Joe::Smith::Java-September2013
-        //then currentTokens will be a string array that looks like this:
-        //
-        // ___________________________________
-        // |    |   |     |                  |
-        // |1234|Joe|Smith|Java-September2013|
-        // |    |   |     |                  |
-        // -----------------------------------
-        //  [0]  [1]  [2]         [3]
-        String[] currentTokens;
-        //Go through ROSTER_FILE line by line, decoding each line into a 
-        //Student object.
-        //Process while we have more lines in the file
+        // currentStudent holds the most recent student unmarshalled
+        Student currentStudent;
+        // Go through ROSTER_FILE line by line, decoding each line into a 
+        // Student object by calling the unmarshallStudent method.
+        // Process while we have more lines in the file
         while (scanner.hasNextLine()) {
-            //get the next line
+            // get the next line in the file
             currentLine = scanner.nextLine();
-            //break up line
-            currentTokens = currentLine.split(DELIMITER);
-            //Create a new Student object and put it into the map of students
-            //NOTE FOR APPRENTICES: We are going to use the student id
-            //which is currentTokens[0] as the map key for our student object.
-            //We also have to pass the student id into the Student constructor
-            Student currentStudent = new Student(currentTokens[0]);
-            //Set remaining values manually
-            currentStudent.setFirstName(currentTokens[1]);
-            currentStudent.setLastName(currentTokens[2]);
-            currentStudent.setCohort(currentTokens[3]);
+            // unmarshall the line into a Student
+            currentStudent = unmarshallStudent(currentLine);
 
-            //Put currentStudent into map
+            // We are going to use the student id as the map key for our student object.
+            // Put currentStudent into the map using student id as the key
             students.put(currentStudent.getStudentId(), currentStudent);
         }
-        //Close scanner
+        // close scanner
         scanner.close();
     }
 
-    /**
-     * Writes all students in the roster out to a ROSTER_FILE. See loadRoster
-     * for file format.
-     *
-     * @throws ClassRosterDaoException if an error occurs writing to the file
-     */
-    private void writeRoster() throws ClassRosterDaoException {
-        // NOTE FOR APPRENTICES: We are not handling the IOException - but
-        // we are translating it to an application specific exception and 
-        // then simple throwing it (i.e. 'reporting' it) to the code that
-        // called us.  It is the responsibility of the calling code to 
-        // handle any errors that occur.
-        PrintWriter out;
+    	private String marshallStudent(Student aStudent){
+	    // We need to turn a Student object into a line of text for our file.
+	    // For example, we need an in memory object to end up like this:
+	    // 4321::Charles::Babbage::Java-September1842
 
-        try {
-            out = new PrintWriter(new FileWriter(ROSTER_FILE));
-        } catch (IOException e) {
-            throw new ClassRosterDaoException("Could not save student data.", e);
-        }
+	    // It's not a complicated process. Just get out each property,
+	    // and concatenate with our DELIMITER as a kind of spacer. 
+	    
+	    // Start with the student id, since that's supposed to be first.
+	    String studentAsText = aStudent.getStudentId() + DELIMITER;
+	    
+	    // add the rest of the properties in the correct order:
 
-        //Write out the Student objects to the roster file.
-        //NOTE TO THE APPRENTICES: We could just grab the student map,
-        //get the Collection of Students and iterate over them but we've
-        //already created a method that gets a List of Students so
-        //we'll reuse it.
-        List<Student> studentList = this.getAllStudents();
-        for (Student currentStudent : studentList) {
-            //Write the student object to file
-            out.println(currentStudent.getStudentId() + DELIMITER + currentStudent.getFirstName() + DELIMITER + currentStudent.getCohort());
-
-            //Force PrintWriter to write line to the file
-            out.flush();
-        }
-        //Clean up
-        out.close();
-    }
+	    // FirstName
+	    studentAsText += aStudent.getFirstName() + DELIMITER;
+		
+	    // LastName
+	    studentAsText += aStudent.getLastName() + DELIMITER;
+				
+	    // Cohort - don't forget to skip the DELIMITER here.
+	    studentAsText += aStudent.getCohort();
+		
+	    // We have now turned a student to text! Return it!
+	    return studentAsText;
+	}
+	/**
+	 * Writes all students in the roster out to a ROSTER_FILE.  See loadRoster
+	 * for file format.
+	 * 
+	 * @throws ClassRosterDaoException if an error occurs writing to the file
+	 */
+	private void writeRoster() throws ClassRosterDaoException {
+	    // NOTE FOR APPRENTICES: We are not handling the IOException - but
+	    // we are translating it to an application specific exception and 
+	    // then simple throwing it (i.e. 'reporting' it) to the code that
+	    // called us.  It is the responsibility of the calling code to 
+	    // handle any errors that occur.
+	    PrintWriter out;
+	    
+	    try {
+	        out = new PrintWriter(new FileWriter(ROSTER_FILE));
+	    } catch (IOException e) {
+	        throw new ClassRosterDaoException(
+	                "Could not save student data.", e);
+	    }
+	    
+	    // Write out the Student objects to the roster file.
+	    // NOTE TO THE APPRENTICES: We could just grab the student map,
+	    // get the Collection of Students and iterate over them but we've
+	    // already created a method that gets a List of Students so
+	    // we'll reuse it.
+	    String studentAsText;
+	    List<Student> studentList = this.getAllStudents();
+	    for (Student currentStudent : studentList) {
+	    	// turn a Student into a String
+	    	studentAsText = marshallStudent(currentStudent);
+	        // write the Student object to the file
+	        out.println(studentAsText);
+	        // force PrintWriter to write line to the file
+	        out.flush();
+	    }
+	    // Clean up
+	    out.close();
+	}
 }
