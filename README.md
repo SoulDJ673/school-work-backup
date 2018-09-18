@@ -23,3 +23,7 @@
 | 09/11/2018 | Simple Calculator Lab | Milestone2/.../lab/simplecalculator/ |
 | 09/12/2018 | UserIO Lab | Milestone2/.../lab/userio/ && Milestone2/.../lab/useriocalc/ |
 | 09/16/2018 | ClassRoster CodeAlong | ClassRoster/ |
+| 09/18/2018 | Address Book MVC Exercise | AddressBook/ |
+
+
+##### Devin Lloyd
