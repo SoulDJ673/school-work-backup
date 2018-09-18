@@ -24,24 +24,30 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
     public static final String DELIMITER = "::";
 
     @Override
-    public Student addStudent(String studentId, Student student) {
+    public Student addStudent(String studentId, Student student) throws ClassRosterDaoException {
+        loadRoster();
         Student newStudent = students.put(studentId, student);
+        writeRoster();
         return newStudent;
     }
 
     @Override
-    public List<Student> getAllStudents() {
+    public List<Student> getAllStudents() throws ClassRosterDaoException {
+        loadRoster();
         return new ArrayList<Student>(students.values());
     }
 
     @Override
-    public Student getStudent(String studentId) {
+    public Student getStudent(String studentId) throws ClassRosterDaoException {
+        loadRoster();
         return students.get(studentId);
     }
 
     @Override
-    public Student removeStudent(String studentId) {
+    public Student removeStudent(String studentId) throws ClassRosterDaoException {
+        loadRoster();
         Student removedStudent = students.remove(studentId);
+        writeRoster();
         return removedStudent;
     }
 
@@ -128,7 +134,7 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
         for (Student currentStudent : studentList) {
             //Write the student object to file
             out.println(currentStudent.getStudentId() + DELIMITER + currentStudent.getFirstName() + DELIMITER + currentStudent.getCohort());
-            
+
             //Force PrintWriter to write line to the file
             out.flush();
         }

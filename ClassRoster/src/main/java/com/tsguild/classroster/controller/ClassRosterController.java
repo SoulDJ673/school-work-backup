@@ -14,50 +14,54 @@ public class ClassRosterController {
     //Removed Hard Coded Dependencies in Step 5
     ClassRosterView view;
     ClassRosterDao dao;
-    
+
     //Loose Coupling
     public ClassRosterController(ClassRosterDao dao, ClassRosterView view) {
         this.dao = dao;
         this.view = view;
     }
-
+    
     public void run() {
         boolean keepGoing = true;
         int menuSelection = 0;
-        while (keepGoing) {
-
-            menuSelection = getMenuSelection();
-
-            switch (menuSelection) {
-                case 1:
-                    listStudents();
-                    break;
-                case 2:
-                    createStudent();
-                    break;
-                case 3:
-                    viewStudent();
-                    break;
-                case 4:
-                    removeStudent();
-                    break;
-                case 5:
-                    keepGoing = false;
-                    break;
-                default:
-                    unknownCommand();
+        try {
+            while (keepGoing) {
+                
+                menuSelection = getMenuSelection();
+                
+                switch (menuSelection) {
+                    case 1:
+                        listStudents();
+                        break;
+                    case 2:
+                        createStudent();
+                        break;
+                    case 3:
+                        viewStudent();
+                        break;
+                    case 4:
+                        removeStudent();
+                        break;
+                    case 5:
+                        keepGoing = false;
+                        break;
+                    default:
+                        unknownCommand();
+                }
+                
             }
-
+            exitMessage();
+        } catch (ClassRosterDaoException e) {
+            view.displayErrorMessage(e.getMessage());
         }
-        exitMessage();
     }
-
+    
     private int getMenuSelection() {
         return view.printMenuAndGetSelection();
     }
 
     //Tell ClassRosterDaoImpl to do heavy lifting
-    private void createStudent() {
+    private void createStudent() throws ClassRosterDaoException {
         view.displayCreateStudentBanner();
         Student newStudent = view.getNewStudentInfo();
         dao.addStudent(newStudent.getStudentId(), newStudent);
@@ -65,13 +69,13 @@ public class ClassRosterController {
     }
 
     //Tell Dao to get Student List, View to display it
-    private void listStudents() {
+    private void listStudents() throws ClassRosterDaoException {
         List<Student> studentList = dao.getAllStudents();
         view.displayStudentList(studentList);
     }
 
     //Tell View to display Banner, Ask DAO for ID, View Displays Info
-    private void viewStudent() {
+    private void viewStudent() throws ClassRosterDaoException {
         view.displayDisplayStudentBanner();
         String studentID = view.getStudentIdChoice();
         Student student = dao.getStudent(studentID);
@@ -79,7 +83,7 @@ public class ClassRosterController {
     }
 
     //Tell View to display Banner, ask DAO to remove Student, view Displays Success Banner
-    private void removeStudent() {
+    private void removeStudent() throws ClassRosterDaoException {
         view.displayRemoveStudentBanner();
         String studentId = view.getStudentIdChoice();
         dao.removeStudent(studentId);
