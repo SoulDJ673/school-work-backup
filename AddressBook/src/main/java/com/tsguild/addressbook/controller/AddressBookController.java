@@ -63,6 +63,8 @@ public class AddressBookController {
     //Display Banner & Edit Address
     private void editAddress() throws AddressBookDaoException {
         myView.menuBanner("Edit Address");
+        Address wipAddress = myView.editAddress();
+        
     }
 
 }
