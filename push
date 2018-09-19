@@ -1,5 +1,11 @@
 #!/bin/bash
+echo ""
+echo "=== Begin Pushing ==="
+echo ""
+
 git push origin master &
 git push github-backup master
 
+echo ""
+echo "=== Pushes Complete ==="
 echo ""
