@@ -11,7 +11,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
 
     @Override
     public Address addAddress(String addressId, Address address) throws AddressBookDaoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

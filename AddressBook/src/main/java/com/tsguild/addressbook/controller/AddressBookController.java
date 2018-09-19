@@ -21,12 +21,48 @@ public class AddressBookController {
 
     //"Main" method
     public void run() {
+        int menuSelect = 0;
+        boolean repeat = true;
+        try {
+            while (repeat) {
+                menuSelect = getMenuAndSelection();
 
+                //Determine Next Option
+                switch (menuSelect) {
+                    case 1:
+                        addAddress();
+                        break;
+                    case 2:
+                        editAddress();
+                        break;
+                    case 3:
+                        removeAddress();
+                        break;
+                    case 4:
+                        findAddress();
+                        break;
+                }
+            }
+        } catch (Exception e) {
+
+        }
     }
 
-    public int getMenuAndSelection() {
-        myView.menuBanner();
+    private int getMenuAndSelection() {
+        myView.menuBanner("Main Menu");
         return myView.mainMenu();
+    }
+    
+    //Display Banner & Add Address
+    private void addAddress() throws AddressBookDaoException {
+        myView.menuBanner("Add Address");
+        Address newAddress = myView.addAddress();
+        myDao.addAddress(newAddress.getId(), newAddress);
+    }
+    
+    //Display Banner & Edit Address
+    private void editAddress() throws AddressBookDaoException {
+        myView.menuBanner("Edit Address");
     }
 
 }
