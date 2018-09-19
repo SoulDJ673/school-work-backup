@@ -2,7 +2,7 @@
 
 ## Milestone 1
 | Assignment | Directory |
-|:----------:|:---------:|
+|:---------------:|:------------:|
 | All Practice Programs | Milestone1Exercises/ |
 | All Code Alongs done during class | ClassCodealongsMilestone1/ |
 | Llama Window Shop example Variable Exercise - Code Along (Incomplete) | Llama_Windows_Example |
