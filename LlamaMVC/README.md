@@ -1,7 +1,7 @@
 # Llama MVC
 This is a codealong exercise where we practiced creating our own DAO.  After successfully creating our DAO, we created a test file.  Testing will be covered next unit.
 
-###Our DAO could do the following:
+#### Our DAO could do the following:
 
  * Add a llama to llamaHerd
  
