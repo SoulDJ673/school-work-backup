@@ -80,23 +80,23 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         // However, there are 3 remaining tokens that need to be set into the
         // new address object. Do this manually by using the appropriate setters.
         // Index 1 - OwnerFirstName
-        addressFromFile.setOwnerOwnerFirstName(addressTokens[1]);
+        addressFromFile.setOwnerFirstName(addressTokens[1]);
 
         // Index 2 - OwnerLastName
-        addressFromFile.setOwnerOwnerLastName(addressTokens[2]);
+        addressFromFile.setOwnerLastName(addressTokens[2]);
 
         // Index 3 - StreetAddress
         addressFromFile.setStreetAddress(addressTokens[3]);
-        
+
         //Index 4 - City
         addressFromFile.setCity(addressTokens[4]);
-        
+
         //Index 5 - State/Providence
         addressFromFile.setState(addressTokens[5]);
-        
+
         //Index 6 - Country
         addressFromFile.setCountry(addressTokens[6]);
-        
+
         //Index 7 - Zip
         addressFromFile.setZipCode(addressTokens[7]);
 
@@ -137,68 +137,79 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         scanner.close();
     }
 
-    	private String marshallAddress(Address anAddress){
-	    // We need to turn an Address object into a line of text for our file.
-	    // For example, we need an in memory object to end up like this:
-	    // 4321::Charles::Babbage::Java-September1842
+    private String marshallAddress(Address anAddress) {
+        // We need to turn an Address object into a line of text for our file.
+        // For example, we need an in memory object to end up like this:
+        // 4321::Charles::Babbage::321 Sesame Street::Somewhere::New York::USA::69420
 
-	    // It's not a complicated process. Just get out each property,
-	    // and concatenate with our DELIMITER as a kind of spacer. 
-	    
-	    // Start with the address id, since that's supposed to be first.
-	    String addressAsText = anAddress.getId() + DELIMITER;
-	    
-	    // add the rest of the properties in the correct order:
+        // It's not a complicated process. Just get out each property,
+        // and concatenate with our DELIMITER as a kind of spacer. 
+        // Start with the address id, since that's supposed to be first.
+        String addressAsText = anAddress.getId() + DELIMITER;
 
-	    // OwnerFirstName
-	    addressAsText += anAddress.getOwnerFirstName() + DELIMITER;
-		
-	    // OwnerLastName
-	    addressAsText += anAddress.getOwnerLastName() + DELIMITER;
-				
-	    // StreetAddress - don't forget to skip the DELIMITER here.
-	    addressAsText += anAddress.getStreetAddress();
-		
-	    // We have now turned an address to text! Return it!
-	    return addressAsText;
-	}
-	/**
-	 * Writes all addresses in the book out to a BOOK_FILE.  See loadBook
-	 * for file format.
-	 * 
-	 * @throws AddressBookDaoException if an error occurs writing to the file
-	 */
-	private void writeBook() throws AddressBookDaoException {
-	    // NOTE FOR APPRENTICES: We are not handling the IOException - but
-	    // we are translating it to an application specific exception and 
-	    // then simple throwing it (i.e. 'reporting' it) to the code that
-	    // called us.  It is the responsibility of the calling code to 
-	    // handle any errors that occur.
-	    PrintWriter out;
-	    
-	    try {
-	        out = new PrintWriter(new FileWriter(BOOK_FILE));
-	    } catch (IOException e) {
-	        throw new AddressBookDaoException(
-	                "Could not save address data.", e);
-	    }
-	    
-	    // Write out the Address objects to the book file.
-	    // NOTE TO THE APPRENTICES: We could just grab the address map,
-	    // get the Collection of Addresss and iterate over them but we've
-	    // already created a method that gets a List of Addresss so
-	    // we'll reuse it.
-	    String addressAsText;
-	    List<Address> addressList = this.getAllAddresss();
-	    for (Address currentAddress : addressList) {
-	    	// turn an Address into a String
-	    	addressAsText = marshallAddress(currentAddress);
-	        // write the Address object to the file
-	        out.println(addressAsText);
-	        // force PrintWriter to write line to the file
-	        out.flush();
-	    }
-	    // Clean up
-	    out.close();
-	}
+        // add the rest of the properties in the correct order:
+        // OwnerFirstName
+        addressAsText += anAddress.getOwnerFirstName() + DELIMITER;
+
+        // OwnerLastName
+        addressAsText += anAddress.getOwnerLastName() + DELIMITER;
+
+        // StreetAddress
+        addressAsText += anAddress.getStreetAddress() + DELIMITER;
+
+        // City
+        addressAsText += anAddress.getCity() + DELIMITER;
+
+        //State/Providence
+        addressAsText += anAddress.getState() + DELIMITER;
+
+        //Country
+        addressAsText += anAddress.getCountry() + DELIMITER;
+
+        //Zip Code - don't forget to skip the DELIMITER here.
+        addressAsText += anAddress.getZipCode();
+
+        // We have now turned an address to text! Return it!
+        return addressAsText;
+    }
+
+    /**
+     * Writes all addresses in the book out to a BOOK_FILE. See loadBook for
+     * file format.
+     *
+     * @throws AddressBookDaoException if an error occurs writing to the file
+     */
+    private void writeBook() throws AddressBookDaoException {
+        // NOTE FOR APPRENTICES: We are not handling the IOException - but
+        // we are translating it to an application specific exception and 
+        // then simple throwing it (i.e. 'reporting' it) to the code that
+        // called us.  It is the responsibility of the calling code to 
+        // handle any errors that occur.
+        PrintWriter out;
+
+        try {
+            out = new PrintWriter(new FileWriter(BOOK_FILE));
+        } catch (IOException e) {
+            throw new AddressBookDaoException(
+                    "Could not save address data.", e);
+        }
+
+        // Write out the Address objects to the book file.
+        // NOTE TO THE APPRENTICES: We could just grab the address map,
+        // get the Collection of Addresss and iterate over them but we've
+        // already created a method that gets a List of Addresss so
+        // we'll reuse it.
+        String addressAsText;
+        List<Address> addressList = this.getAllAddresss();
+        for (Address currentAddress : addressList) {
+            // turn an Address into a String
+            addressAsText = marshallAddress(currentAddress);
+            // write the Address object to the file
+            out.println(addressAsText);
+            // force PrintWriter to write line to the file
+            out.flush();
+        }
+        // Clean up
+        out.close();
+    }
 }

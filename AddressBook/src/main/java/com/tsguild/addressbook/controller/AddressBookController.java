@@ -66,5 +66,10 @@ public class AddressBookController {
         Address wipAddress = myView.editAddress();
         
     }
+    
+    //Display Banner & Remove Address
+    private void removeAddress() throws AddressBookDaoException {
+        myView.menuBanner("Remove Address");
+    }
 
 }
