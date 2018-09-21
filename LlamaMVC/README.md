@@ -13,4 +13,6 @@ This is a codealong exercise where we practiced creating our own DAO.  After suc
  
  * Remove a llama from llamaHerd
  
+ * Read/Write to a file for llamaHerd persistence
+ 
  (Our DAO can CRUD!!)
