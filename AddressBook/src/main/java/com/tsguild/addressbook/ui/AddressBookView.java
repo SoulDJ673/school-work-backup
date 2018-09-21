@@ -1,6 +1,7 @@
 package com.tsguild.addressbook.ui;
 
 import com.tsguild.addressbook.dto.Address;
+import java.util.List;
 
 /**
  *
@@ -114,6 +115,7 @@ public class AddressBookView {
         return io.readString("\nEnter the ID you'd like to search for: ");
     }
 
+    //Print Results of Search
     public void printSearchResults(Address address) {
         menuBanner("Search complete. Displaying information for " + address.getStreetAddress());
         io.print("\nOwner: " + address.getOwnerFirstName() + " " + address.getOwnerLastName());
@@ -122,19 +124,29 @@ public class AddressBookView {
         io.print("Zip Code: " + address.getZipCode() + "\n");
     }
 
+    //No Results
+    public void noResults() {
+        io.print("   There are no entries containing that query.\n");
+    }
+
     //Remove Address
     public String deleteAddress() {
         String deleteID;
         int verify;
-        
+
         deleteID = io.readString("Enter the ID of the entry you'd like to delete: ");
         verify = io.readInt("Are you sure that you want to delete entry " + deleteID + "? (Yes[1] / No[0]) ", 0, 1);
-        
-        if(verify == 0) {
+
+        if (verify == 0) {
             return null;
         } else {
             return deleteID;
         }
+    }
+
+    //List All Addresses
+    public void displayAddressList(List<Address> addresses) {
+
     }
 
     //Banner Template

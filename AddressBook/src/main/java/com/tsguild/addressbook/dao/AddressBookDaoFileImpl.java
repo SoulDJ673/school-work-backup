@@ -42,15 +42,15 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         loadBook();
         return addresses.get(addressId);
     }
-    
+
     @Override
     public Address getAddressByName(String lastName, int nothing) throws FileNotFoundException {
         loadBook();
-        
+
         //Dump All Addresses into an ArrayList, iterate through all last names, return matches
         ArrayList<Address> addressesTemp = new ArrayList<>(addresses.values());
-        for(Address address : addressesTemp) {
-            if(lastName.equalsIgnoreCase(address.getOwnerLastName())) {
+        for (Address address : addressesTemp) {
+            if (lastName.equalsIgnoreCase(address.getOwnerLastName())) {
                 return address;
             }
         }
