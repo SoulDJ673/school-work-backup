@@ -34,7 +34,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
     @Override
     public List<Address> getAllAddresss() throws FileNotFoundException {
         loadBook();
-        return new ArrayList<Address>(addresses.values());
+        return new ArrayList<>(addresses.values());
     }
 
     @Override
@@ -43,7 +43,8 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         return addresses.get(addressId);
     }
     
-    public Address getAddress(String lastName, int nothing) throws FileNotFoundException {
+    @Override
+    public Address getAddressByName(String lastName, int nothing) throws FileNotFoundException {
         loadBook();
         
         //Dump All Addresses into an ArrayList, iterate through all last names, return matches

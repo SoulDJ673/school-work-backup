@@ -109,14 +109,33 @@ public class AddressBookController {
     }
 
     //Display Banner & Find Address
-    private void findAddress() {
+    private void findAddress() throws FileNotFoundException {
         myView.menuBanner("Find Address");
-
+        int menuSelect = myView.searchMenu();
+        
+        switch (menuSelect) {
+            case 1:
+                myView.printSearchResults(myDao.getAddressByName(myView.searchName(), 0));
+                break;
+            case 2:
+                myView.printSearchResults(myDao.getAddress(myView.searchId()));
+                break;
+        }
     }
 
     //Display Banner & Remove Address
     private void removeAddress() {
         myView.menuBanner("Remove Address");
+    }
+
+    //Display Banner & List All Addresses
+    private void listAllAddreses() {
+
+    }
+
+    //Display Banner & List Address Count
+    private void listAddressCount() {
+
     }
 
 }
