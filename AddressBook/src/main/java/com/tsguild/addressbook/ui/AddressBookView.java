@@ -117,7 +117,7 @@ public class AddressBookView {
 
     //Print Results of Search
     public void printSearchResults(Address address) {
-        menuBanner("Search complete. Displaying information for " + address.getStreetAddress());
+        menuBanner("Displaying information for " + address.getStreetAddress());
         io.print("\nOwner: " + address.getOwnerFirstName() + " " + address.getOwnerLastName());
         io.print(address.getStreetAddress());
         io.print(address.getCity() + ", " + address.getState() + ", " + address.getCountry());
@@ -146,7 +146,13 @@ public class AddressBookView {
 
     //List All Addresses
     public void displayAddressList(List<Address> addresses) {
-
+        for (Address address : addresses) {
+            io.print("\nEntry ID: " + address.getId());
+            io.print("Owner: " + address.getOwnerFirstName() + " " + address.getOwnerLastName());
+            io.print(address.getStreetAddress());
+            io.print(address.getCity() + ", " + address.getState() + ", " + address.getCountry());
+            io.print("Zip Code: " + address.getZipCode() + "\n");
+        }
     }
 
     //Banner Template

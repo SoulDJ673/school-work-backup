@@ -43,10 +43,10 @@ public class AddressBookController {
                         findAddress();
                         break;
                     case 5:
-                        listAllAddreses();
+                        listAddressCount();
                         break;
                     case 6:
-                        listAddressCount();
+                        listAllAddreses();
                         break;
                     case 7:
                         repeat = false;
@@ -133,10 +133,17 @@ public class AddressBookController {
                     myView.menuBanner("Search Complete");
                     myView.noResults();
                 }
-
                 break;
             case 2:
-                myView.printSearchResults(myDao.getAddress(myView.searchId()));
+                query = myView.searchName();
+                if (!myDao.checkQueryNull(query)) {
+                    myView.menuBanner("Search Complete");
+                    myView.printSearchResults(myDao.getAddress(myView.searchId()));
+
+                } else {
+                    myView.menuBanner("Search Complete");
+                    myView.noResults();
+                }
                 break;
         }
     }
