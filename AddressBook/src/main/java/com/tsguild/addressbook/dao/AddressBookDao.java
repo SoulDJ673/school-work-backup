@@ -56,23 +56,40 @@ public interface AddressBookDao {
      * @throws java.io.FileNotFoundException
      */
     Address removeAddress(String addressId) throws FileNotFoundException;
-    
+
     /**
      * Edits an existing entry with the provided id.
+     *
      * @param oldId id of original entry
-     * @param changedAddress Address object that is similar to the original, but with changed parts
+     * @param changedAddress Address object that is similar to the original, but
+     * with changed parts
      * @throws java.io.FileNotFoundException
-    */
+     */
     void editAddress(String oldId, Address changedAddress) throws FileNotFoundException;
 
     /**
-     * Only added this to the interface because Netbeans threw a fit.  This method
-     * iterates through all of the existing addresses and searches for a user provided
-     * last name.
+     * Only added this to the interface because Netbeans threw a fit. This
+     * method iterates through all of the existing addresses and searches for a
+     * user provided last name.
+     *
      * @param searchName
      * @param i
-     * @return 
+     * @return
      * @throws java.io.FileNotFoundException
-    */
+     */
     Address getAddressByName(String searchName, int i) throws FileNotFoundException;
+
+    /**
+     * This is to be ran before the search methods. It is used to ensure that
+     * there are matching entries so there won't be a NullPointerException
+     * thrown by the search methods.
+     *
+     * @param lastName
+     * @param nothing
+     * @return
+     * @throws java.io.FileNotFoundException
+     */
+    boolean checkQueryNull(String lastName, int nothing) throws FileNotFoundException;
+
+    boolean checkQueryNull(String id) throws FileNotFoundException;
 }

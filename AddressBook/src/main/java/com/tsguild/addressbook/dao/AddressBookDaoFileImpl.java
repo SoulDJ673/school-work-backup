@@ -54,7 +54,35 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
                 return address;
             }
         }
-        return null;
+        return null; //Place Holder, never reached because of checker method
+    }
+
+    @Override
+    public boolean checkQueryNull(String lastName, int nothing) throws FileNotFoundException {
+        loadBook();
+
+        //Dump All Addresses into an ArrayList, iterate through all last names, return matches
+        ArrayList<Address> addressesTemp = new ArrayList<>(addresses.values());
+        for (Address address : addressesTemp) {
+            if (lastName.equalsIgnoreCase(address.getOwnerLastName())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean checkQueryNull(String id) throws FileNotFoundException {
+        loadBook();
+
+        //Dump All Addresses into an ArrayList, iterate through all last names, return matches
+        ArrayList<Address> addressesTemp = new ArrayList<>(addresses.values());
+        for (Address address : addressesTemp) {
+            if (id.equalsIgnoreCase(address.getId())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

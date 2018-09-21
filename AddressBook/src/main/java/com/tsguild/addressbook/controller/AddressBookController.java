@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
  * @author souldj673
  */
 public class AddressBookController {
-    
+
     AddressBookView myView;
     AddressBookDao myDao;
 
@@ -42,16 +42,22 @@ public class AddressBookController {
                     case 4:
                         findAddress();
                         break;
+                    case 5:
+                        listAllAddreses();
+                        break;
+                    case 6:
+                        listAddressCount();
+                        break;
                     case 7:
                         repeat = false;
-                    
+
                 }
             }
         } catch (Exception FileNotFoundException) {
             myView.menuBanner("ERROR");
         }
     }
-    
+
     private int getMenuAndSelection() {
         myView.menuBanner("Main Menu");
         return myView.mainMenu();
@@ -68,12 +74,12 @@ public class AddressBookController {
     private void editAddress() throws FileNotFoundException {
         int menuSelect = 0;
         boolean repeat = true;
-        
+
         String addressId = myView.editAddressSelect();
-        
+
         Address changingAddress = myDao.getAddress(addressId);
         String oldId = changingAddress.getId();
-        
+
         menuLoop:
         while (repeat) {
             myView.menuBanner("Edit Address");
@@ -103,9 +109,9 @@ public class AddressBookController {
                 case 8:
                     repeat = false;
             }
-            
+
         }
-        
+
         myDao.editAddress(oldId, changingAddress);
     }
 
@@ -113,19 +119,25 @@ public class AddressBookController {
     private void findAddress() throws FileNotFoundException {
         myView.menuBanner("Find Address");
         int menuSelect = myView.searchMenu();
-        
-        try {
-            switch (menuSelect) {
-                case 1:
+
+        String query;
+
+        switch (menuSelect) {
+            case 1:
+                query = myView.searchName();
+                if (!myDao.checkQueryNull(query, 0)) {
+                    myView.menuBanner("Search Complete");
                     myView.printSearchResults(myDao.getAddressByName(myView.searchName(), 0));
-                    break;
-                case 2:
-                    myView.printSearchResults(myDao.getAddress(myView.searchId()));
-                    break;
-            }
-        } catch (Exception NullPointerException) {
-            myView.menuBanner("ERROR");
-            myView.noResults();
+
+                } else {
+                    myView.menuBanner("Search Complete");
+                    myView.noResults();
+                }
+
+                break;
+            case 2:
+                myView.printSearchResults(myDao.getAddress(myView.searchId()));
+                break;
         }
     }
 
@@ -133,7 +145,7 @@ public class AddressBookController {
     private void removeAddress() throws FileNotFoundException {
         myView.menuBanner("Remove Address");
         myDao.removeAddress(myView.deleteAddress());
-        
+
     }
 
     //Display Banner & List All Addresses
@@ -144,7 +156,7 @@ public class AddressBookController {
 
     //Display Banner & List Address Count
     private void listAddressCount() {
-        
+
     }
-    
+
 }
