@@ -1,2 +1,1 @@
-1::7::7::1::1::1::1::1
 0001::Devin::Lloyd::5115 Bell Avenue::Shelbyville::Kentucky::USA::40065

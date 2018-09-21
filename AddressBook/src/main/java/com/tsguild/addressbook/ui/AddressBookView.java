@@ -7,14 +7,14 @@ import com.tsguild.addressbook.dto.Address;
  * @author souldj673
  */
 public class AddressBookView {
-    
+
     UserIO io;
 
     //Dependency Injection
     public AddressBookView(UserIO myIo) {
         this.io = myIo;
     }
-    
+
     public int mainMenu() {
         io.print("   1. Add Address");
         io.print("   2. Edit Address Information");
@@ -39,7 +39,7 @@ public class AddressBookView {
         newAddress.setState(io.readString("  Enter the state/providence/whatever of residence: "));
         newAddress.setCountry(io.readString("   Enter the country of residence: "));
         newAddress.setZipCode(io.readString("   Enter the associated zip code: "));
-        
+
         return newAddress;
     }
 
@@ -49,7 +49,7 @@ public class AddressBookView {
         changingAddressId = io.readString("Please enter the ID of the entry you wish to edit: ");
         return changingAddressId;
     }
-    
+
     public int editAddressMenu() {
         io.print("   1. Change ID");
         io.print("   2. Change Owner Name");
@@ -61,38 +61,38 @@ public class AddressBookView {
         io.print("   8. Return to main menu\n");
         return io.readInt("Select the desired operation to perform: ", 1, 8);
     }
-    
+
     public Address editAddressId(Address wipAddress) {
         wipAddress.setId(io.readString("Enter the new ID: "));
         return wipAddress;
     }
-    
+
     public Address editAddressOwner(Address wipAddress) {
         wipAddress.setOwnerFirstName(io.readString("Enter a new first name for the owner: "));
         wipAddress.setOwnerLastName(io.readString("Enter a new last name for the owner: "));
         return wipAddress;
     }
-    
+
     public Address editAddressStreet(Address wipAddress) {
         wipAddress.setStreetAddress(io.readString("Enter the new street address: "));
         return wipAddress;
     }
-    
+
     public Address editAddressCity(Address wipAddress) {
         wipAddress.setCity(io.readString("Enter the new city name: "));
         return wipAddress;
     }
-    
+
     public Address editAddressState(Address wipAddress) {
         wipAddress.setState(io.readString("Enter the new state/providence name: "));
         return wipAddress;
     }
-    
+
     public Address editAddressCountry(Address wipAddress) {
         wipAddress.setCountry(io.readString("Enter the new country name: "));
         return wipAddress;
     }
-    
+
     public Address editAddressZip(Address wipAddress) {
         wipAddress.setZipCode(io.readString("Enter the new zip code: "));
         return wipAddress;
@@ -104,15 +104,16 @@ public class AddressBookView {
         io.print("   2. Search by Entry ID\n");
         return io.readInt("Select the way you'd like to search: ", 1, 2);
     }
-    
+
+    //Differing Search Types
     public String searchName() {
         return io.readString("\nEnter the name you'd like to search for: ");
     }
-    
+
     public String searchId() {
         return io.readString("\nEnter the ID you'd like to search for: ");
     }
-    
+
     public void printSearchResults(Address address) {
         menuBanner("Search complete. Displaying information for " + address.getStreetAddress());
         io.print("\nOwner: " + address.getOwnerFirstName() + " " + address.getOwnerLastName());
@@ -121,9 +122,24 @@ public class AddressBookView {
         io.print("Zip Code: " + address.getZipCode() + "\n");
     }
 
+    //Remove Address
+    public String deleteAddress() {
+        String deleteID;
+        int verify;
+        
+        deleteID = io.readString("Enter the ID of the entry you'd like to delete: ");
+        verify = io.readInt("Are you sure that you want to delete entry " + deleteID + "? (Yes[1] / No[0]) ", 0, 1);
+        
+        if(verify == 0) {
+            return null;
+        } else {
+            return deleteID;
+        }
+    }
+
     //Banner Template
     public void menuBanner(String text) {
         io.print("=== " + text + " ===");
     }
-    
+
 }
