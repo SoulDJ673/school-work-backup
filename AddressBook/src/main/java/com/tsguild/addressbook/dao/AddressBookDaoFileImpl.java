@@ -24,7 +24,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
     public static final String DELIMITER = "::";
 
     @Override
-    public Address addAddress(String addressId, Address address) throws AddressBookDaoException {
+    public Address addAddress(String addressId, Address address) throws FileNotFoundException {
         loadBook();
         Address newAddress = addresses.put(addressId, address);
         writeBook();
@@ -32,19 +32,19 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
     }
 
     @Override
-    public List<Address> getAllAddresss() throws AddressBookDaoException {
+    public List<Address> getAllAddresss() throws FileNotFoundException {
         loadBook();
         return new ArrayList<Address>(addresses.values());
     }
 
     @Override
-    public Address getAddress(String addressId) throws AddressBookDaoException {
+    public Address getAddress(String addressId) throws FileNotFoundException {
         loadBook();
         return addresses.get(addressId);
     }
 
     @Override
-    public Address removeAddress(String addressId) throws AddressBookDaoException {
+    public Address removeAddress(String addressId) throws FileNotFoundException {
         loadBook();
         Address removedAddress = addresses.remove(addressId);
         writeBook();
@@ -104,7 +104,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         return addressFromFile;
     }
 
-    private void loadBook() throws AddressBookDaoException {
+    private void loadBook() throws FileNotFoundException {
         Scanner scanner;
 
         try {
@@ -113,8 +113,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
                     new BufferedReader(
                             new FileReader(BOOK_FILE)));
         } catch (FileNotFoundException e) {
-            throw new AddressBookDaoException(
-                    "-_- Could not load address book data into memory.", e);
+            throw new FileNotFoundException("-_- Could not load address book data into memory.");
         }
         // currentLine holds the most recent line read from the file
         String currentLine;
@@ -179,7 +178,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
      *
      * @throws AddressBookDaoException if an error occurs writing to the file
      */
-    private void writeBook() throws AddressBookDaoException {
+    private void writeBook() throws FileNotFoundException {
         // NOTE FOR APPRENTICES: We are not handling the IOException - but
         // we are translating it to an application specific exception and 
         // then simple throwing it (i.e. 'reporting' it) to the code that
@@ -190,8 +189,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         try {
             out = new PrintWriter(new FileWriter(BOOK_FILE));
         } catch (IOException e) {
-            throw new AddressBookDaoException(
-                    "Could not save address data.", e);
+            throw new FileNotFoundException("Could not save address data.");
         }
 
         // Write out the Address objects to the book file.
@@ -211,5 +209,21 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         }
         // Clean up
         out.close();
+    }
+
+    @Override
+    public void editAddress(String oldId, Address changedAddress) throws FileNotFoundException {
+
+        loadBook();
+        //Only if oldId and currentId are the same
+        if (changedAddress.getId().equals(oldId)) {
+            addresses.replace(oldId, changedAddress);
+        } else {
+            //The Id has changed
+            addresses.remove(oldId);
+            addresses.put(changedAddress.getId(), changedAddress);
+        }
+
+        writeBook();
     }
 }

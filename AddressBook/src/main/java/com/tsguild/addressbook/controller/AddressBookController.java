@@ -3,6 +3,7 @@ package com.tsguild.addressbook.controller;
 import com.tsguild.addressbook.dao.*;
 import com.tsguild.addressbook.dto.*;
 import com.tsguild.addressbook.ui.*;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -41,6 +42,8 @@ public class AddressBookController {
                     case 4:
                         findAddress();
                         break;
+                    case 5:
+                        return;
                 }
             }
         } catch (Exception e) {
@@ -52,23 +55,67 @@ public class AddressBookController {
         myView.menuBanner("Main Menu");
         return myView.mainMenu();
     }
-    
+
     //Display Banner & Add Address
-    private void addAddress() throws AddressBookDaoException {
+    private void addAddress() throws FileNotFoundException {
         myView.menuBanner("Add Address");
         Address newAddress = myView.addAddress();
         myDao.addAddress(newAddress.getId(), newAddress);
     }
-    
+
     //Display Banner & Edit Address
-    private void editAddress() throws AddressBookDaoException {
-        myView.menuBanner("Edit Address");
-        Address wipAddress = myView.editAddress();
-        
+    private void editAddress() throws FileNotFoundException {
+        int menuSelect = 0;
+        boolean repeat = true;
+
+        String addressId = myView.editAddressSelect();
+
+        Address changingAddress = myDao.getAddress(addressId);
+        String oldId = changingAddress.getId();
+
+        menuLoop:
+        while (repeat) {
+            myView.menuBanner("Edit Address");
+            menuSelect = myView.editAddressMenu();
+            switch (menuSelect) {
+                case 1:
+                    changingAddress = myView.editAddressId(changingAddress);
+                    break;
+                case 2:
+                    changingAddress = myView.editAddressOwner(changingAddress);
+                    break;
+                case 3:
+                    changingAddress = myView.editAddressStreet(changingAddress);
+                    break;
+                case 4:
+                    changingAddress = myView.editAddressCity(changingAddress);
+                    break;
+                case 5:
+                    changingAddress = myView.editAddressState(changingAddress);
+                    break;
+                case 6:
+                    changingAddress = myView.editAddressCountry(changingAddress);
+                    break;
+                case 7:
+                    changingAddress = myView.editAddressZip(changingAddress);
+                    break;
+                case 8:
+                    return;
+            }
+
+        }
+
+        myDao.editAddress(oldId, changingAddress);
     }
-    
+
+    //Display Banner & Find Address
+    private void findAddress() {
+        myView.menuBanner("Find Address");
+
+    }
+
     //Display Banner & Remove Address
-    private void removeAddress() throws AddressBookDaoException {
+    private void removeAddress() {
         myView.menuBanner("Remove Address");
     }
 
