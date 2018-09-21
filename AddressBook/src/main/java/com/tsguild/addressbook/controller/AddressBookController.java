@@ -42,12 +42,12 @@ public class AddressBookController {
                     case 4:
                         findAddress();
                         break;
-                    case 5:
-                        return;
+                    case 7:
+                        repeat = false;
                 }
             }
         } catch (Exception e) {
-
+            System.out.println("Error");
         }
     }
 
@@ -100,7 +100,7 @@ public class AddressBookController {
                     changingAddress = myView.editAddressZip(changingAddress);
                     break;
                 case 8:
-                    return;
+                    repeat = false;
             }
 
         }

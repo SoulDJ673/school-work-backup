@@ -58,36 +58,44 @@ public class AddressBookView {
         io.print("   5. Change State/Providence");
         io.print("   6. Change Country");
         io.print("   7. Change Zip Code");
-        io.print("   8. Return to main menu");
+        io.print("   8. Return to main menu\n");
         return io.readInt("Select the desired operation to perform: ", 1, 8);
     }
 
     public Address editAddressId(Address wipAddress) {
-
+        wipAddress.setId(io.readString("Enter the new ID: "));
+        return wipAddress;
     }
 
     public Address editAddressOwner(Address wipAddress) {
-
+        wipAddress.setOwnerFirstName(io.readString("Enter a new first name for the owner: "));
+        wipAddress.setOwnerLastName(io.readString("Enter a new last name for the owner: "));
+        return wipAddress;
     }
 
     public Address editAddressStreet(Address wipAddress) {
-
+        wipAddress.setStreetAddress(io.readString("Enter the new street address: "));
+        return wipAddress;
     }
 
     public Address editAddressCity(Address wipAddress) {
-
+        wipAddress.setCity(io.readString("Enter the new city name: "));
+        return wipAddress;
     }
 
     public Address editAddressState(Address wipAddress) {
-
+        wipAddress.setState(io.readString("Enter the new state/providence name: "));
+        return wipAddress;
     }
 
     public Address editAddressCountry(Address wipAddress) {
-
+        wipAddress.setCountry(io.readString("Enter the new country name: "));
+        return wipAddress;
     }
 
     public Address editAddressZip(Address wipAddress) {
-
+        wipAddress.setZipCode(io.readString("Enter the new zip code: "));
+        return wipAddress;
     }
 
     //Banner Template

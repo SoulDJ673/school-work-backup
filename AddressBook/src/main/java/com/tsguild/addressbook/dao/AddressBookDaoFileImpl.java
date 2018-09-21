@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class AddressBookDaoFileImpl implements AddressBookDao {
 
     //File Persistence
-    public static final String BOOK_FILE = "book.txt";
+    public static final String BOOK_FILE = "AddressBook.txt";
     public static final String DELIMITER = "::";
 
     @Override
@@ -41,6 +41,19 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
     public Address getAddress(String addressId) throws FileNotFoundException {
         loadBook();
         return addresses.get(addressId);
+    }
+    
+    public Address getAddress(String lastName, int nothing) throws FileNotFoundException {
+        loadBook();
+        
+        //Dump All Addresses into an ArrayList, iterate through all last names, return matches
+        ArrayList<Address> addressesTemp = new ArrayList<>(addresses.values());
+        for(Address address : addressesTemp) {
+            if(lastName.equalsIgnoreCase(address.getOwnerLastName())) {
+                return address;
+            }
+        }
+        return null;
     }
 
     @Override
