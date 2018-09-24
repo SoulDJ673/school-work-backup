@@ -13,5 +13,11 @@ public interface LibraryUI {
      */
     void menus(String[] options);
 
-    
+    /**
+     * This method simply displays a banner to let the user know where they're
+     * at, and to make the program look nicer.
+     *
+     * @param title Let the user know where they're at
+     */
+    void displayBanners(String title);
 }
