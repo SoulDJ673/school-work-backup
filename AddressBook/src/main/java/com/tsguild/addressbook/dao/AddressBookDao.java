@@ -32,7 +32,7 @@ public interface AddressBookDao {
      * @return String array containing the ids of all the addresses in the book
      * @throws java.io.FileNotFoundException
      */
-    List<Address> getAllAddresss() throws FileNotFoundException;
+    List<Address> getAllAddresses() throws FileNotFoundException;
 
     /**
      * Returns the address object associated with the given address id. Returns
@@ -92,4 +92,6 @@ public interface AddressBookDao {
     boolean checkQueryNull(String lastName, int nothing) throws FileNotFoundException;
 
     boolean checkQueryNull(String id) throws FileNotFoundException;
+    
+    int entryCount() throws FileNotFoundException;
 }

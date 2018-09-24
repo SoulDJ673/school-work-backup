@@ -30,9 +30,16 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         writeBook();
         return newAddress;
     }
+    
+    @Override
+    public int entryCount() throws FileNotFoundException {
+        loadBook();
+        List<Address> addresses = this.getAllAddresses();
+        return addresses.size();
+    }
 
     @Override
-    public List<Address> getAllAddresss() throws FileNotFoundException {
+    public List<Address> getAllAddresses() throws FileNotFoundException {
         loadBook();
         return new ArrayList<>(addresses.values());
     }
@@ -240,7 +247,7 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         // already created a method that gets a List of Addresss so
         // we'll reuse it.
         String addressAsText;
-        List<Address> addressList = this.getAllAddresss();
+        List<Address> addressList = this.getAllAddresses();
         for (Address currentAddress : addressList) {
             // turn an Address into a String
             addressAsText = marshallAddress(currentAddress);
