@@ -1,6 +1,7 @@
 package com.tsguild.dvdlibrary.ui;
 
 import com.tsguild.dvdlibrary.dto.*;
+import java.util.List;
 
 /**
  *
@@ -32,4 +33,19 @@ public interface LibraryUI {
      * @return DVD to be added
      */
     DVD addDVD();
+
+    /**
+     * This is used to print out an error message if there is a problem with the
+     * library file.
+     */
+    void fileError();
+
+    /**
+     * This method is used to print out all of the DVDs in the collection.  It 
+     * does this in pages of 10. THIS ONLY PRINTS THE TITLES AND IDs, NOTHING
+     * ELSE!!!
+     * 
+     * @param allDVDs 
+     */
+    void displayAllDVDs(List<DVD> allDVDs);
 }

@@ -156,6 +156,7 @@ public class LibraryDaoImpl implements LibraryDao {
 
     @Override
     public List<DVD> getAllDVDs() throws FileNotFoundException {
+        loadLibrary();
         return new ArrayList<>(dvdLibrary.values());
     }
 
