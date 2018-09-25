@@ -4,6 +4,10 @@ import com.tsguild.dvdlibrary.dto.DVD;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,8 +81,23 @@ public class LibraryDaoImpl implements LibraryDao {
     }
 
     @Override
-    public void writeLibrary() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void writeLibrary() throws FileNotFoundException {
+        PrintWriter dump;
+        try {
+            dump = new PrintWriter(new FileWriter(LIBRARY_FILE));
+        } catch (IOException e) {
+            throw new FileNotFoundException("Failed to write library to file.");
+        }
+
+        String textDVD;
+        List<DVD> library = this.getAllDVDs();
+        for (DVD dvd : library) {
+            textDVD = marshallDVD(dvd);
+            dump.println(textDVD);
+            dump.flush();
+        }
+        dump.close();
+
     }
 
     private String marshallDVD(DVD dvd) {
@@ -137,7 +156,7 @@ public class LibraryDaoImpl implements LibraryDao {
 
     @Override
     public List<DVD> getAllDVDs() throws FileNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ArrayList<>(dvdLibrary.values());
     }
 
     @Override

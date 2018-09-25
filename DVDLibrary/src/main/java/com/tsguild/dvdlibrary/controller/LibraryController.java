@@ -50,8 +50,8 @@ public class LibraryController {
     private void addDVD() {
         myView.displayBanners("Add DVD");
         
-        myDao.getLatestID();
         DVD newDVD = myView.addDVD();
+        
     }
 
     private void removeDVD() {
