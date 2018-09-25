@@ -68,8 +68,27 @@ public class LibraryController {
         myDao.addDVD(newDVD);
     }
 
-    private void removeDVD() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void removeDVD() throws FileNotFoundException {
+        myView.displayBanners("Remove DVD");
+
+        String[] options = {"1. I know the ID of the DVD I'd like to remove",
+            "2. I don't know the ID of the DVD I want to remove", "3. Never "
+            + "mind, I don't want to remove anything"};
+        int selection = myView.menus(options);
+
+        switch (selection) {
+            case 1:
+                break;
+            case 2:
+                searchDVD();
+                break;
+            default:
+                return;
+        }
+        //For Recovery
+        DVD tmpDVD = myDao.removeDVD(myView.removeDVD());
+        myView.removalVerify(tmpDVD);
+        
     }
 
     private void editDVD() {

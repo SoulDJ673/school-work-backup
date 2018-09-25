@@ -179,12 +179,12 @@ public class LibraryDaoImpl implements LibraryDao {
     }
 
     @Override
-    public DVD removeDVD(String dvdId) throws FileNotFoundException {
+    public DVD removeDVD(int dvdId) throws FileNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void editDVD(String oldId, DVD changedDVD) throws FileNotFoundException {
+    public void editDVD(DVD changedDVD) throws FileNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

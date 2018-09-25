@@ -52,17 +52,16 @@ public interface LibraryDao {
      * the given dvd id
      * @throws java.io.FileNotFoundException If loadLibrary fails
      */
-    DVD removeDVD(String dvdId) throws FileNotFoundException;
+    DVD removeDVD(int dvdId) throws FileNotFoundException;
 
     /**
-     * Edits an existing entry with the provided id.
+     * Edits an existing entry.
      *
-     * @param oldId id of original entry
      * @param changedDVD DVD object that is similar to the original, but with
      * changed parts
      * @throws java.io.FileNotFoundException If loadLibrary fails
      */
-    void editDVD(String oldId, DVD changedDVD) throws FileNotFoundException;
+    void editDVD(DVD changedDVD) throws FileNotFoundException;
 
     /**
      * This method uses an incoming string and the .contains operator method to

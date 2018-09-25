@@ -95,4 +95,29 @@ public class LibraryView implements LibraryUI {
         return query;
     }
 
+    @Override
+    public int removeDVD() {
+        return io.readInt("Enter the ID of the DVD you would like to remove: ");
+    }
+
+    @Override
+    public boolean removalVerify(DVD tmpDVD) {
+        String choice = io.readString("Are you sure you want to permanently "
+                + "remove " + tmpDVD.getTitle() + "(ID " + tmpDVD.getId() + ")? "
+                + "[y/n] ");
+
+        switch (choice.toLowerCase()) {
+            case "y":
+            case "yes":
+                return true;
+            case "n":
+            case "no":
+                return false;
+            default:
+                io.print("Invalid input. Defaulting to no...");
+                return false;
+        }
+
+    }
+
 }

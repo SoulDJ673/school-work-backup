@@ -61,4 +61,20 @@ public interface LibraryUI {
      * @return Query
      */
     String searchDVD(String queryType);
+    
+    /**
+     * This is used to collect the ID of the DVD the user would like to remove.
+     * 
+     * @return 
+     */
+    int removeDVD();
+    
+    /**
+     * This is simply a method that prompts the user to verify their decision 
+     * before a DVD is permanently removed
+     * 
+     * @param tmpDVD - The deleted DVD.  Passed in for title and ID use in prompt
+     * @return 
+     */
+    boolean removalVerify(DVD tmpDVD);
 }
