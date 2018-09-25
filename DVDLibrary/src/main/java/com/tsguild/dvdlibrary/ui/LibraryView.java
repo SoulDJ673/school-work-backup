@@ -19,7 +19,7 @@ public class LibraryView implements LibraryUI {
         for (String option : options) {
             io.print(option);
         }
-        
+
         return io.readInt("Please select what you'd like to do: ");
     }
 
@@ -29,9 +29,36 @@ public class LibraryView implements LibraryUI {
     }
 
     @Override
-    public DVD addDVD() {
-        io.readString("What is the name of the movie? ");
+    public DVD addDVD(int latestID) {
+        //Blank DVD
+        DVD newDVD = new DVD(latestID);
         
+        //Var Declare
+        String dvdName;
+        String dvdDate;
+        String rating;
+        String director;
+        String studio;
+        String notes;
+        
+        //DVD Info
+        dvdName = io.readString("What is the name of the movie? ");
+        dvdDate = io.readString("What is the release date of the movie? ");
+        rating = io.readString("What is the movie's MPAA Rating? ");
+        director = io.readString("Who directed the movie? ");
+        studio = io.readString("Which studio produced the movie? ");
+        notes = io.readString("What else would you like to say about the movie? ");
+
+        //Write Info to DVD
+        newDVD.setTitle(dvdName);
+        newDVD.setReleaseDate(dvdDate);
+        newDVD.setRating(rating);
+        newDVD.setDirector(director);
+        newDVD.setStudio(studio);
+        newDVD.setNotes(notes);
+        
+        //Return new DVD
+        return newDVD;
     }
 
 }

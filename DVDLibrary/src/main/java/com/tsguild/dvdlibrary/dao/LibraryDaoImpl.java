@@ -4,7 +4,9 @@ import com.tsguild.dvdlibrary.dto.DVD;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -16,6 +18,8 @@ public class LibraryDaoImpl implements LibraryDao {
     private String LIBRARY_FILE;
     private String DELIMITER = " :: ";
 
+    private Map<Integer, DVD> dvdLibrary = new HashMap<>();
+
     //Loose Coupling
     public LibraryDaoImpl(String LibFile) {
         this.LIBRARY_FILE = LibFile;
@@ -26,16 +30,50 @@ public class LibraryDaoImpl implements LibraryDao {
         //Scanner Init
         Scanner scanner;
         try {
-            new Scanner(
+            scanner = new Scanner(
                     new BufferedReader(new FileReader(LIBRARY_FILE)));
 
-        } catch (Exception FileNotFoundException) {
+        } catch (FileNotFoundException e) {
             throw new FileNotFoundException("The library could not be found!");
         }
 
         String currentLine;
+        DVD currentDVD;
 
-        scanner.nextLine()
+        while (scanner.hasNextLine()) {
+
+            currentLine = scanner.nextLine();
+            currentDVD = unmarshallDVD(currentLine);
+
+            dvdLibrary.put(currentDVD.getId(), currentDVD);
+        }
+        scanner.close();
+    }
+
+    /**
+     * This method creates a DVD from a line in the library file or from a
+     * provided line passed to the method from some other source.
+     *
+     * @param dvdLine
+     * @return
+     */
+    private DVD unmarshallDVD(String dvdLine) {
+        /**
+         * id :: title :: releaseDate :: rating :: director :: studio :: notes
+         * [0] [1] [2] [3] [4] [5] [6]
+         */
+        String[] dvdInfo = dvdLine.split(DELIMITER);
+
+        DVD tempDVD = new DVD(Integer.parseInt(dvdInfo[0]));
+
+        tempDVD.setTitle(dvdInfo[1]);
+        tempDVD.setReleaseDate(dvdInfo[2]);
+        tempDVD.setRating(dvdInfo[3]);
+        tempDVD.setDirector(dvdInfo[4]);
+        tempDVD.setStudio(dvdInfo[5]);
+        tempDVD.setNotes(dvdInfo[6]);
+
+        return tempDVD;
     }
 
     @Override
@@ -44,8 +82,29 @@ public class LibraryDaoImpl implements LibraryDao {
     }
 
     @Override
-    public DVD addDVD(String dvdId, DVD dvd) throws FileNotFoundException {
+    public DVD addDVD(DVD dvd) throws FileNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * This method runs through all of the DVDs and returns the next available
+     * id
+     *
+     * @return Next Available ID
+     * @throws FileNotFoundException
+     */
+    private int getLatestID() throws FileNotFoundException {
+        loadLibrary();
+
+        for (int i = 0; i < dvdLibrary.size(); i++) {
+            if (dvdLibrary.isEmpty()) {
+                return i;
+            }
+        }
+        
+        //No empty spaces between ids
+        return (dvdLibrary.size() + 1);
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.tsguild.dvdlibrary.controller;
 
 import com.tsguild.dvdlibrary.dao.*;
+import com.tsguild.dvdlibrary.dto.*;
 import com.tsguild.dvdlibrary.ui.*;
 
 /**
@@ -47,7 +48,9 @@ public class LibraryController {
     }
 
     private void addDVD() {
+        myView.displayBanners("Add DVD");
         
+        DVD newDVD = myView.addDVD();
     }
 
     private void removeDVD() {
