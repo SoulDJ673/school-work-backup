@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -121,40 +120,19 @@ public class LibraryDaoImpl implements LibraryDao {
     }
 
     @Override
-    public DVD addDVD(DVD dvd) throws FileNotFoundException {
+    public DVD addDVD(DVD dvd, int latestID) throws FileNotFoundException {
         //Always make sure map is up to date
         loadLibrary();
 
         //Change default id to next available id
         if (dvd.getId() == -1) {
-            dvd.setId(getLatestID());
+            dvd.setId(latestID);
         }
 
         //Add to library
         dvdLibrary.put(dvd.getId(), dvd);
         writeLibrary();
         return dvd;
-    }
-
-    /**
-     * This method runs through all of the DVDs and returns the next available
-     * id
-     *
-     * @return Next Available ID
-     * @throws FileNotFoundException
-     */
-    private int getLatestID() throws FileNotFoundException {
-        loadLibrary();
-
-        for (int i = 0; i < dvdLibrary.size(); i++) {
-            if (dvdLibrary.isEmpty()) {
-                return i;
-            }
-        }
-
-        //No empty spaces between ids
-        return (dvdLibrary.size() + 1);
-
     }
 
     @Override

@@ -5,7 +5,6 @@ import com.tsguild.dvdlibrary.dto.*;
 import com.tsguild.dvdlibrary.ui.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -66,7 +65,7 @@ public class LibraryController {
         myView.displayBanners("Add DVD");
 
         DVD newDVD = myView.addDVD();
-        myDao.addDVD(newDVD);
+        myDao.addDVD(newDVD, getLatestID());
     }
 
     private void removeDVD() throws FileNotFoundException {
@@ -91,7 +90,7 @@ public class LibraryController {
         boolean verify = myView.removalVerify(tmpDVD);
 
         if (!verify) {
-            myDao.addDVD(tmpDVD);
+            myDao.addDVD(tmpDVD, getLatestID());
             return;
         }
 
@@ -99,11 +98,38 @@ public class LibraryController {
 
     }
 
+    /**
+     * This method runs through all of the DVDs and returns the next available
+     * id
+     *
+     * @return Next Available ID
+     * @throws FileNotFoundException
+     */
+    private int getLatestID() throws FileNotFoundException {
+        List<DVD> dvdLibrary = myDao.getAllDVDs();
+
+        for (int i = 0; i < dvdLibrary.size(); i++) {
+            if (dvdLibrary.isEmpty()) {
+                return i;
+            }
+        }
+
+        //No empty spaces between ids
+        return (dvdLibrary.size() + 1);
+
+    }
+
     private void editDVD() {
         myView.displayBanners("Edit DVD");
+        
+        
 
-        String[] selection = {"1. Change Title", "2. Ch"
-        };
+        String[] selection = {"1. Change Title", "2. Change Release Date", "3. "
+            + "Change Rating", "4. Change Director", "5. Change Studio", "6."
+            + " Change Notes", "7. Return to Main"};
+        
+        
+
     }
 
     private void listDVDs() throws FileNotFoundException {
