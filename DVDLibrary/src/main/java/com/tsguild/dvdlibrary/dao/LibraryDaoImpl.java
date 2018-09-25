@@ -195,25 +195,4 @@ public class LibraryDaoImpl implements LibraryDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public List<DVD> searchDVD(String titleQuery) throws FileNotFoundException {
-        loadLibrary();
-
-        Collection<DVD> library = dvdLibrary.values();
-        List<DVD> results = new ArrayList<>();
-
-        titleQuery = titleQuery.toLowerCase();
-
-        for (DVD dvd : library) {
-            String title = dvd.getTitle();
-            title = title.toLowerCase();
-            if (title.contains(titleQuery)) {
-                results.add(dvd);
-            } else {
-                title = null;
-            }
-        }
-        return results;
-    }
-
 }

@@ -64,16 +64,6 @@ public interface LibraryDao {
     void editDVD(DVD changedDVD) throws FileNotFoundException;
 
     /**
-     * This method uses an incoming string and the .contains operator method to
-     * return any titles that contain the aforementioned string.
-     *
-     * @param titleQuery - The incoming string
-     * @return DVD List - matching DVDs
-     * @throws FileNotFoundException If loadLibrary fails
-     */
-    List<DVD> searchDVD(String titleQuery) throws FileNotFoundException;
-
-    /**
      * This method is used to load all information from the library file into
      * memory. This allows for library persistence.
      *
