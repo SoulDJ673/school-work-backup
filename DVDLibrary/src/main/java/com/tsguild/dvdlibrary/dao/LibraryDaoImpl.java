@@ -126,7 +126,9 @@ public class LibraryDaoImpl implements LibraryDao {
         loadLibrary();
 
         //Change default id to next available id
-        dvd.setId(getLatestID());
+        if (dvd.getId() == -1) {
+            dvd.setId(getLatestID());
+        }
 
         //Add to library
         dvdLibrary.put(dvd.getId(), dvd);
@@ -180,7 +182,12 @@ public class LibraryDaoImpl implements LibraryDao {
 
     @Override
     public DVD removeDVD(int dvdId) throws FileNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        loadLibrary();
+        DVD tmpDVD = dvdLibrary.remove(dvdId);
+        writeLibrary();
+
+        return tmpDVD;
     }
 
     @Override

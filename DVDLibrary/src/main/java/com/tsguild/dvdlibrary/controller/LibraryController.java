@@ -12,7 +12,7 @@ import java.util.List;
  * @author souldj673
  */
 public class LibraryController {
-
+    
     LibraryDao myDao;
     LibraryUI myView;
 
@@ -21,12 +21,12 @@ public class LibraryController {
         this.myDao = myDao;
         this.myView = myView;
     }
-
+    
     public void run() {
         try {
             while (true) {
                 int selection = mainMenuSelect();
-
+                
                 switch (selection) {
                     case 1:
                         addDVD();
@@ -51,31 +51,31 @@ public class LibraryController {
             error();
         }
     }
-
+    
     private int mainMenuSelect() {
         myView.displayBanners("Main Menu");
         //Create Array to set choices into in ViewImpl
         String[] selections = {"1. Add DVD", "2. Remove DVD", "3. Edit DVD",
             "4. List all DVDs", "5. Search DVD", "6. Exit"};
-
+        
         return myView.menus(selections);
     }
-
+    
     private void addDVD() throws FileNotFoundException {
         myView.displayBanners("Add DVD");
-
+        
         DVD newDVD = myView.addDVD();
         myDao.addDVD(newDVD);
     }
-
+    
     private void removeDVD() throws FileNotFoundException {
         myView.displayBanners("Remove DVD");
-
+        
         String[] options = {"1. I know the ID of the DVD I'd like to remove",
             "2. I don't know the ID of the DVD I want to remove", "3. Never "
             + "mind, I don't want to remove anything"};
         int selection = myView.menus(options);
-
+        
         switch (selection) {
             case 1:
                 break;
@@ -87,27 +87,34 @@ public class LibraryController {
         }
         //For Recovery
         DVD tmpDVD = myDao.removeDVD(myView.removeDVD());
-        myView.removalVerify(tmpDVD);
+        boolean verify = myView.removalVerify(tmpDVD);
+        
+        if (!verify) {
+            myDao.addDVD(tmpDVD);
+            return;
+        }
+        
+        myView.displayBanners("Successful Removal");
         
     }
-
+    
     private void editDVD() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     private void listDVDs() throws FileNotFoundException {
         myView.displayAllDVDs(myDao.getAllDVDs());
     }
-
+    
     private void searchDVD() throws FileNotFoundException {
-
+        
         myView.displayBanners("Search for DVD");
-
+        
         String[] selections = {"1. By ID", "2. By Title", "3. Return to Main"};
         int selection = myView.menus(selections);
-
+        
         List<DVD> results = new ArrayList<>();
-
+        
         repeatIfError:
         while (true) {
             try {
@@ -140,7 +147,7 @@ public class LibraryController {
             }
         }
     }
-
+    
     private void error() {
         myView.displayBanners("ERROR");
         myView.errors(1);
