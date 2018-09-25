@@ -101,7 +101,7 @@ public class LibraryController {
                         results = myDao.searchDVD(myView.searchDVD("title"));
                         break repeatIfError;
                     case 3:
-                        break repeatIfError;
+                        return;
                 }
             } catch (Exception e) {
                 myView.displayBanners("Error - Wrong Input Type");
@@ -109,11 +109,11 @@ public class LibraryController {
         }
         //Validity Check
         if (results.isEmpty()) {
-            myView.displayBanners("Error - No results were found");
+            myView.errors(2);
         } else {
             DVD check = results.get(0);
             if (check.getId() == -2) {
-                myView.displayBanners("Error - No results were found");
+                myView.errors(2);
             } else {
                 myView.displayBanners("Search Complete: " + results.size()
                         + " matching results.");
@@ -124,6 +124,6 @@ public class LibraryController {
 
     private void error() {
         myView.displayBanners("ERROR");
-        myView.fileError();
+        myView.errors(1);
     }
 }

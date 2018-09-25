@@ -26,7 +26,7 @@ public class LibraryView implements LibraryUI {
 
     @Override
     public void displayBanners(String title) {
-        io.print("=== DVD Library - " + title + " ===");
+        io.print("\n=== DVD Library - " + title + " ===");
     }
 
     @Override
@@ -63,10 +63,14 @@ public class LibraryView implements LibraryUI {
     }
 
     @Override
-    public void fileError() {
-        io.print("There was an error reading or writing to the library file. "
-                + "Please check to ensure the file is in the correct location "
-                + "and isn't corrupt.  Exiting now...");
+    public void errors(int type) {
+        if (type == 1) {
+            io.print("There was an error reading or writing to the library file. "
+                    + "Please check to ensure the file is in the correct location "
+                    + "and isn't corrupt.  Exiting now...");
+        } else if (type == 2) {
+            io.print("No DVDs in your library matched your search.\n");
+        }
     }
 
     @Override

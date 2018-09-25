@@ -35,10 +35,14 @@ public interface LibraryUI {
     DVD addDVD();
 
     /**
-     * This is used to print out an error message if there is a problem with the
-     * library file.
+     * This is used to print out error messages.
+     * 
+     * 1. Library File error
+     * 2. Null search results
+     * 
+     * @param type - Used to specify type of error to print
      */
-    void fileError();
+    void errors(int type);
 
     /**
      * This method is used to print out all of the DVDs in the collection or any
