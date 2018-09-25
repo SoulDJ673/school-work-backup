@@ -40,7 +40,7 @@ public interface LibraryDao {
      * dvd exists
      * @throws java.io.FileNotFoundException
      */
-    DVD getDVD(String dvdId) throws FileNotFoundException;
+    DVD getDVD(int dvdId) throws FileNotFoundException;
 
     /**
      * Removes from the library the dvd associated with the given id. Returns

@@ -4,6 +4,8 @@ import com.tsguild.dvdlibrary.dao.*;
 import com.tsguild.dvdlibrary.dto.*;
 import com.tsguild.dvdlibrary.ui.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -78,8 +80,46 @@ public class LibraryController {
         myView.displayAllDVDs(myDao.getAllDVDs());
     }
 
-    private void searchDVD() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void searchDVD() throws FileNotFoundException {
+
+        myView.displayBanners("Search for DVD");
+
+        String[] selections = {"1. By ID", "2. By Title", "3. Return to Main"};
+        int selection = myView.menus(selections);
+
+        List<DVD> results = new ArrayList<>();
+
+        repeatIfError:
+        while (true) {
+            try {
+                switch (selection) {
+                    case 1:
+                        results.add(myDao.getDVD(Integer.parseInt(myView.searchDVD("ID"))));
+                        break repeatIfError;
+                    case 2:
+                        results.clear();
+                        results = myDao.searchDVD(myView.searchDVD("title"));
+                        break repeatIfError;
+                    case 3:
+                        break repeatIfError;
+                }
+            } catch (Exception e) {
+                myView.displayBanners("Error - Wrong Input Type");
+            }
+        }
+        //Validity Check
+        if (results.isEmpty()) {
+            myView.displayBanners("Error - No results were found");
+        } else {
+            DVD check = results.get(0);
+            if (check.getId() == -2) {
+                myView.displayBanners("Error - No results were found");
+            } else {
+                myView.displayBanners("Search Complete: " + results.size()
+                        + " matching results.");
+                myView.displayAllDVDs(results);
+            }
+        }
     }
 
     private void error() {

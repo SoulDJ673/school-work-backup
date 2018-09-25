@@ -41,11 +41,20 @@ public interface LibraryUI {
     void fileError();
 
     /**
-     * This method is used to print out all of the DVDs in the collection.  It 
-     * does this in pages of 10. THIS ONLY PRINTS THE TITLES AND IDs, NOTHING
-     * ELSE!!!
+     * This method is used to print out all of the DVDs in the collection or any
+     * other given List of DVDs.  It does this in pages of 10. THIS ONLY PRINTS 
+     * THE TITLES AND IDs, NOTHING ELSE!!!
      * 
      * @param allDVDs 
      */
     void displayAllDVDs(List<DVD> allDVDs);
+    
+    /**
+     * This is used to collect the user's search query and send it back through
+     * the controller to the dao.
+     * 
+     * @param queryType -  Used for the user input prompt
+     * @return Query
+     */
+    String searchDVD(String queryType);
 }

@@ -83,4 +83,12 @@ public class LibraryView implements LibraryUI {
         }
     }
 
+    @Override
+    public String searchDVD(String queryType) {
+        String query = io.readString("Please input the " + queryType + " you'd "
+                + "like to search by: ");
+
+        return query;
+    }
+
 }

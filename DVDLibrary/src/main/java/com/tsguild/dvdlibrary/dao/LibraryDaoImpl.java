@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -161,8 +162,20 @@ public class LibraryDaoImpl implements LibraryDao {
     }
 
     @Override
-    public DVD getDVD(String dvdId) throws FileNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public DVD getDVD(int dvdId) throws FileNotFoundException {
+        boolean valid = dvdLibrary.containsKey(dvdId);
+
+        if (valid) {
+            return dvdLibrary.get(dvdId);
+        } else {
+            return new DVD(-2);
+            /**
+             * Can't return null without breaking stuff. Negative IDs are
+             * reserved for special cases, such as this. -2 will be used here to
+             * represent a null DVD (nothing matched the search) because a null
+             * ID can not be used.
+             */
+        }
     }
 
     @Override
@@ -177,7 +190,15 @@ public class LibraryDaoImpl implements LibraryDao {
 
     @Override
     public List<DVD> searchDVD(String titleQuery) throws FileNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Collection<DVD> library = dvdLibrary.values();
+        List<DVD> results = new ArrayList<>();
+
+        for (DVD dvd : library) {
+            if (dvd.getTitle().toLowerCase().contains(titleQuery)) {
+                results.add(dvd);
+            }
+        }
+        return results;
     }
 
 }
