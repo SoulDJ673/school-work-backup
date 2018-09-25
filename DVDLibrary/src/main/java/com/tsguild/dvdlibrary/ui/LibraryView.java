@@ -29,9 +29,9 @@ public class LibraryView implements LibraryUI {
     }
 
     @Override
-    public DVD addDVD(int latestID) {
+    public DVD addDVD() {
         //Blank DVD
-        DVD newDVD = new DVD(latestID);
+        DVD newDVD = new DVD(-1); //-1 used for unlabelled dvds
         
         //Var Declare
         String dvdName;

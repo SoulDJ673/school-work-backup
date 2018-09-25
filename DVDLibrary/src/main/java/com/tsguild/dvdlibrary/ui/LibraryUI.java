@@ -29,8 +29,7 @@ public interface LibraryUI {
      * that's being added to the library. This returns a DVD to the controller,
      * which then sends it to the dao to be added to the library.
      *
-     * @param latestID Next available id returned by dao
      * @return DVD to be added
      */
-    DVD addDVD(int latestID);
+    DVD addDVD();
 }

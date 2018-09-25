@@ -81,9 +81,37 @@ public class LibraryDaoImpl implements LibraryDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private String marshallDVD(DVD dvd) {
+        /**
+         * id :: title :: releaseDate :: rating :: director :: studio :: notes
+         * [0] [1] [2] [3] [4] [5] [6]
+         */
+
+        String dvdText;
+
+        dvdText = dvd.getId() + DELIMITER
+                + dvd.getTitle() + DELIMITER
+                + dvd.getReleaseDate() + DELIMITER
+                + dvd.getRating() + DELIMITER
+                + dvd.getDirector() + DELIMITER
+                + dvd.getStudio() + DELIMITER
+                + dvd.getNotes();
+
+        return dvdText;
+    }
+
     @Override
     public DVD addDVD(DVD dvd) throws FileNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Always make sure map is up to date
+        loadLibrary();
+
+        //Change default id to next available id
+        dvd.setId(getLatestID());
+
+        //Add to library
+        dvdLibrary.put(dvd.getId(), dvd);
+        writeLibrary();
+        return dvd;
     }
 
     /**
@@ -101,7 +129,7 @@ public class LibraryDaoImpl implements LibraryDao {
                 return i;
             }
         }
-        
+
         //No empty spaces between ids
         return (dvdLibrary.size() + 1);
 

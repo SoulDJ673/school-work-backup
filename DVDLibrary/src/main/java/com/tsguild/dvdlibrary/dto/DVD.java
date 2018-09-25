@@ -69,9 +69,13 @@ public class DVD {
         this.notes = notes;
     }
 
-    //ID Getter
+    //ID Getter & Setter - Not user editable
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
