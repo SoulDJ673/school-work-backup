@@ -119,14 +119,23 @@ public class LibraryController {
 
     }
 
-    private void editDVD() {
+    private void editDVD() throws FileNotFoundException {
         myView.displayBanners("Edit DVD");
-        
-        
 
-        String[] selection = {"1. Change Title", "2. Change Release Date", "3. "
-            + "Change Rating", "4. Change Director", "5. Change Studio", "6."
-            + " Change Notes", "7. Return to Main"};
+        //Prompt user to enter DVD ID or search for DVD
+        int entrySelect = myView.editDVD(0).getId();
+        switch (entrySelect) {
+            case 1:
+                break;
+            case 2:
+                searchDVD();
+                break;
+            case 3:
+                return;
+        }
+        
+        //Prompt user to enter DVD ID and Select Property to edit
+        entrySelect = myView.editDVD(1).getId();
         
         
 

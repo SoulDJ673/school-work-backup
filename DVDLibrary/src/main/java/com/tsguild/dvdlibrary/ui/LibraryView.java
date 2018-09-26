@@ -21,7 +21,7 @@ public class LibraryView implements LibraryUI {
             io.print(option);
         }
 
-        return io.readInt("Please select what you'd like to do: ");
+        return io.readInt("Please select what you'd like to do: ", 1, options.length);
     }
 
     @Override
@@ -120,4 +120,49 @@ public class LibraryView implements LibraryUI {
 
     }
 
+    @Override
+    public DVD editDVD(int step) {
+        switch (step) {
+            //Method to select DVD to edit
+            case 0:
+                String[] options = {"1. I know the ID of the DVD I want to "
+                    + "edit", "2. I don't know the ID of the DVD I want to "
+                    + "edit", "3. Return to Main"};
+
+                int selection = menus(options);
+                DVD selectDVD = new DVD(selection);
+                //Method must return a DVD.  Return DVD with menu selection as DVD ID
+                return selectDVD;
+
+            //DVD to edit and property to change
+            case 1:
+                int dvdID = io.readInt("Enter the ID of the DVD you'd like to edit: ");
+                displayBanners("Editing DVD " + dvdID);
+
+                String[] options2 = {"1. Change Title",
+                    "2. Change Release Date", "3. Change Rating",
+                    "4. Change Director", "5. Change Studio", "6. Change Notes",
+                    "7. Return to Main"};
+
+                int selection2 = menus(options2);
+
+                DVD operation = new DVD(dvdID);
+                operation.setTitle(selection2 + "");
+                /**
+                 * Next Verse, same as the first but a little bit worse Menu
+                 * Select is stored in Title, dvdID is stored in DVD ID
+                 */
+                return operation;
+
+            //Change properties that are Strings
+            case 2:
+
+            //Change properties that are Ints
+            case 3:
+
+            //Return to Main
+            case 4:
+        }
+        return null;
+    }
 }

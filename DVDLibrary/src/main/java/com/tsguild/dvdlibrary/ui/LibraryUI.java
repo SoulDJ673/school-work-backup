@@ -36,45 +36,53 @@ public interface LibraryUI {
 
     /**
      * This is used to print out error messages.
-     * 
-     * 1. Library File error
-     * 2. Null search results
-     * 
+     *
+     * 1. Library File error 2. Null search results
+     *
      * @param type - Used to specify type of error to print
      */
     void errors(int type);
 
     /**
      * This method is used to print out all of the DVDs in the collection or any
-     * other given List of DVDs.  It does this in pages of 10. THIS ONLY PRINTS 
+     * other given List of DVDs. It does this in pages of 10. THIS ONLY PRINTS
      * THE TITLES AND IDs, NOTHING ELSE!!!
-     * 
-     * @param allDVDs 
+     *
+     * @param allDVDs
      */
     void displayAllDVDs(List<DVD> allDVDs);
-    
+
     /**
      * This is used to collect the user's search query and send it back through
      * the controller to the dao.
-     * 
-     * @param queryType -  Used for the user input prompt
+     *
+     * @param queryType - Used for the user input prompt
      * @return Query
      */
     String searchDVD(String queryType);
-    
+
     /**
      * This is used to collect the ID of the DVD the user would like to remove.
-     * 
-     * @return 
+     *
+     * @return
      */
     int removeDVD();
-    
+
     /**
-     * This is simply a method that prompts the user to verify their decision 
+     * This is simply a method that prompts the user to verify their decision
      * before a DVD is permanently removed
-     * 
-     * @param tmpDVD - The deleted DVD.  Passed in for title and ID use in prompt
-     * @return 
+     *
+     * @param tmpDVD - The deleted DVD. Passed in for title and ID use in prompt
+     * @return
      */
     boolean removalVerify(DVD tmpDVD);
+
+    /**
+     * This method presents a menu and acts depending on the choice made to
+     * change a DVD's properties
+     *
+     * @param step - Step of the editDVD process to execute
+     * @return - The changed DVD
+     */
+    DVD editDVD(int step);
 }
