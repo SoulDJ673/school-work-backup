@@ -123,7 +123,7 @@ public class LibraryController {
         myView.displayBanners("Edit DVD");
 
         //Prompt user to enter DVD ID or search for DVD
-        int entrySelect = myView.editDVD(0).getId();
+        int entrySelect = Integer.parseInt(myView.editDVD(0));
         switch (entrySelect) {
             case 1:
                 break;
@@ -133,11 +133,40 @@ public class LibraryController {
             case 3:
                 return;
         }
-        
-        //Prompt user to enter DVD ID and Select Property to edit
-        entrySelect = myView.editDVD(1).getId();
-        
-        
+
+        //Prompt user to enter DVD ID
+        DVD tmpDVD = new DVD(Integer.parseInt(myView.editDVD(1)));
+        tmpDVD = myDao.getDVD(tmpDVD.getId());
+
+        menuRepeat:
+        while (true) {
+            //Prompt user to Select Property to edit
+            entrySelect = Integer.parseInt(myView.editDVD(2));
+
+            switch (entrySelect) {
+                case 1:
+                    tmpDVD.setTitle(myView.editDVD(3));
+                    break;
+                case 2:
+                    tmpDVD.setReleaseDate(myView.editDVD(3));
+                    break;
+                case 3:
+                    tmpDVD.setRating(myView.editDVD(3));
+                    break;
+                case 4:
+                    tmpDVD.setDirector(myView.editDVD(3));
+                    break;
+                case 5:
+                    tmpDVD.setStudio(myView.editDVD(3));
+                    break;
+                case 6:
+                    tmpDVD.setNotes(myView.editDVD(3));
+                    break;
+                case 7:
+                    break menuRepeat;
+            }
+        }
+        myDao.editDVD(tmpDVD);
 
     }
 

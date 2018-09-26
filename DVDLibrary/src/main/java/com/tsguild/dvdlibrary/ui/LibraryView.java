@@ -121,7 +121,7 @@ public class LibraryView implements LibraryUI {
     }
 
     @Override
-    public DVD editDVD(int step) {
+    public String editDVD(int step) {
         switch (step) {
             //Method to select DVD to edit
             case 0:
@@ -130,14 +130,18 @@ public class LibraryView implements LibraryUI {
                     + "edit", "3. Return to Main"};
 
                 int selection = menus(options);
-                DVD selectDVD = new DVD(selection);
-                //Method must return a DVD.  Return DVD with menu selection as DVD ID
-                return selectDVD;
+                String selectionS = selection + "";
+                return selectionS;
 
-            //DVD to edit and property to change
+            //Get ID of changing DVD
             case 1:
                 int dvdID = io.readInt("Enter the ID of the DVD you'd like to edit: ");
-                displayBanners("Editing DVD " + dvdID);
+                String dvdIDS = dvdID + "";
+                return dvdIDS;
+
+            //DVD property to change
+            case 2:
+                displayBanners("Editing DVD");
 
                 String[] options2 = {"1. Change Title",
                     "2. Change Release Date", "3. Change Rating",
@@ -146,22 +150,15 @@ public class LibraryView implements LibraryUI {
 
                 int selection2 = menus(options2);
 
-                DVD operation = new DVD(dvdID);
-                operation.setTitle(selection2 + "");
-                /**
-                 * Next Verse, same as the first but a little bit worse Menu
-                 * Select is stored in Title, dvdID is stored in DVD ID
-                 */
+                String operation = selection2 + "";
                 return operation;
 
             //Change properties that are Strings
-            case 2:
-
-            //Change properties that are Ints
             case 3:
+                return io.readString("Enter new value: ");
 
-            //Return to Main
-            case 4:
+            //ID cannot be changed
+
         }
         return null;
     }

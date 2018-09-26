@@ -82,7 +82,7 @@ public interface LibraryUI {
      * change a DVD's properties
      *
      * @param step - Step of the editDVD process to execute
-     * @return - The changed DVD
+     * @return
      */
-    DVD editDVD(int step);
+    String editDVD(int step);
 }

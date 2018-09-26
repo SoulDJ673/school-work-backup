@@ -17,7 +17,7 @@ public interface LibraryDao {
      * return that dvd object, otherwise it will return null.
      *
      * @param dvd dvd to be added to the library
-     * @param latestID - For giving new DVDs an ID
+     * @param latestID - For giving new DVDss an ID
      * @return the DVD object previously associated with the given dvd id if it
      * exists, null otherwise
      * @throws java.io.FileNotFoundException If loadLibrary fails
