@@ -20,7 +20,16 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
     public void createStudent(Student student) throws
             ClassRosterDuplicateIdException, ClassRosterDataValidationException,
             ClassRosterPersistenceException {
+        /**
+         * Check if there's already a student with the given ID Throw a
+         * ClassRosterDuplicateIdException if true
+         */
 
+        if (dao.getStudent(student.getStudentId()) != null) {
+            throw new ClassRosterDuplicateIdException("ERROR: Could not create "
+                    + "student. Student ID " + student.getStudentId()
+                    + " already exists");
+        }
     }
 
     @Override
