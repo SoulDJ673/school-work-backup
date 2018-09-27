@@ -143,6 +143,8 @@ public class LibraryDaoImpl implements LibraryDao {
 
     @Override
     public DVD getDVD(int dvdId) throws FileNotFoundException {
+        loadLibrary();
+        
         boolean valid = dvdLibrary.containsKey(dvdId);
 
         if (valid) {
