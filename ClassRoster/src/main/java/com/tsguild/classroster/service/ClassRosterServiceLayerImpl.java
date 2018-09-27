@@ -21,17 +21,6 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
             ClassRosterDuplicateIdException, ClassRosterDataValidationException,
             ClassRosterPersistenceException {
 
-        if (student.getFirstName() == null //Check if value is null
-                || student.getFirstName().trim().length() == 0 //Check if value is empty or whitespace
-                || student.getLastName() == null
-                || student.getLastName().trim().length() == 0
-                || student.getCohort() == null
-                || student.getCohort().trim().length() == 0) {
-
-            throw new ClassRosterDataValidationException("ERROR: All fields "
-                    + "[FirstName, LastName, Cohort] are required.");
-
-        }
     }
 
     @Override
@@ -54,4 +43,18 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private void validateStudentData(Student student) throws
+            ClassRosterDataValidationException {
+
+        if (student.getFirstName() == null //Check if value is null
+                || student.getFirstName().trim().length() == 0 //Check if value is empty or whitespace
+                || student.getLastName() == null
+                || student.getLastName().trim().length() == 0
+                || student.getCohort() == null
+                || student.getCohort().trim().length() == 0) {
+
+            throw new ClassRosterDataValidationException("ERROR: All fields "
+                    + "[FirstName, LastName, Cohort] are required.");
+        }
+    }
 }
