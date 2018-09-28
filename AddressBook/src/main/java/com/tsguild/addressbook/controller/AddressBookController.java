@@ -11,8 +11,8 @@ import java.io.FileNotFoundException;
  */
 public class AddressBookController {
 
-    AddressBookView myView;
-    AddressBookDao myDao;
+    private AddressBookView myView;
+    private AddressBookDao myDao;
 
     //Dependency Injection
     public AddressBookController(AddressBookDao myDao, AddressBookView myView) {
@@ -71,6 +71,10 @@ public class AddressBookController {
         myDao.addAddress(newAddress.getId(), newAddress);
     }
 
+    /**
+     * Holy fuck this is a mess. Complete rewrite required 
+     * @throws FileNotFoundException 
+     */
     //Display Banner & Edit Address
     private void editAddress() throws FileNotFoundException {
         int menuSelect = 0;
