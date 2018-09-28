@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class LibraryController {
 
-    LibraryDao myDao;
-    LibraryUI myView;
+    private LibraryDao myDao;
+    private LibraryUI myView;
 
     //Loose Coupling
     public LibraryController(LibraryDao myDao, LibraryUI myView) {

@@ -62,13 +62,32 @@ public class LibraryView implements LibraryUI {
         return newDVD;
     }
 
+    /**
+     * See LibraryUI for full documentation
+     *
+     * Possible values of "type" as used in my implementation 
+     * 1. Library File error 
+     * 2. Null search results
+     * 
+     * If the values here are changed, the values that are being sent here must 
+     * also be changed accordingly.
+     */
     @Override
     public void errors(int type) {
         if (type == 1) {
+            /**
+             * This is called when there's a FileNotFoundException.
+             * You can find it in the catch of the controller's run method.
+             */
             io.print("There was an error reading or writing to the library file. "
                     + "Please check to ensure the file is in the correct location "
                     + "and isn't corrupt.  Exiting now...");
         } else if (type == 2) {
+            /**
+             * This is called when a search query wields no results.
+             * You can find it in the validity check of the controller's 
+             * searchDVD method.
+             */
             io.print("No DVDs in your library matched your search.\n");
         }
     }
@@ -158,7 +177,6 @@ public class LibraryView implements LibraryUI {
                 return io.readString("Enter new value: ");
 
             //ID cannot be changed
-
         }
         return null;
     }
