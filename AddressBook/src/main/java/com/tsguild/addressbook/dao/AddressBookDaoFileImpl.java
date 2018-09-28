@@ -30,12 +30,12 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
         writeBook();
         return newAddress;
     }
-    
+
     @Override
     public int entryCount() throws FileNotFoundException {
         loadBook();
-        List<Address> addresses = this.getAllAddresses();
-        return addresses.size();
+        List<Address> addresseses = this.getAllAddresses();
+        return addresseses.size();
     }
 
     @Override
@@ -45,9 +45,13 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
     }
 
     @Override
-    public Address getAddress(String addressId) throws FileNotFoundException {
+    public Address getAddress(String addressId) throws FileNotFoundException, NullPointerException {
         loadBook();
-        return addresses.get(addressId);
+        try {
+            return addresses.get(addressId);
+        } catch (NullPointerException nullPoint) {
+            throw new NullPointerException("Invalid ID");
+        }
     }
 
     @Override

@@ -160,4 +160,14 @@ public class AddressBookView {
         io.print("=== " + text + " ===");
     }
 
+    //Errors
+    public void errors(int error) {
+        switch (error) {
+            case 1:
+                io.print("Unable to locate the Address Book file.  Make sure "
+                        + "the file exists and isn't corrupt.\n");
+            case 2:
+                io.print("Please enter a valid ID");
+        }
+    }
 }

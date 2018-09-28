@@ -109,13 +109,22 @@ public class LibraryController {
         List<DVD> dvdLibrary = myDao.getAllDVDs();
 
         for (int i = 0; i < dvdLibrary.size(); i++) {
-            if (dvdLibrary.isEmpty()) {
-                return i;
+
+            if (i == 0 && (dvdLibrary.get(i).getId()) != (dvdLibrary.get(i + 1).getId() - 1)) {
+                return i + 2;
+            }
+            if (i == 0 && (dvdLibrary.get(i).getId()) != 1) {
+                return 1;
+            } else if ((i == dvdLibrary.size() - 1) && dvdLibrary.get(i).getId() != (dvdLibrary.get(i - 1).getId() + 1)) {
+                return i + 2;
+            } else if (i != 0 && i != dvdLibrary.size() - 1 && (dvdLibrary.get(i).getId()) != (dvdLibrary.get(i + 1).getId() - 1) && (dvdLibrary.get(i).getId()) != (dvdLibrary.get(i - 1).getId() + 1)) {
+                return i + 2;
             }
         }
 
         //No empty spaces between ids
-        return (dvdLibrary.size() + 1);
+        return (dvdLibrary.size()
+                + 1);
 
     }
 
