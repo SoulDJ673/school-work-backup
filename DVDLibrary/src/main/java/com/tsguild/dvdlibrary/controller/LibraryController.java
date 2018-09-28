@@ -230,6 +230,9 @@ public class LibraryController {
             }
         }
         //Validity Check
+        /**
+         * Magic numbers to be replaced with null
+         */
         if (results.isEmpty()) {
             myView.errors(2);
         } else {
