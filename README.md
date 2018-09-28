@@ -26,6 +26,7 @@
 | 09/18/2018 | Address Book MVC Exercise | AddressBook/ |
 | 09/20/2018 | LlamaMVC CodeAlong | LlamaMVC/ |
 | 09/24/2018 | DVD Library Summative Assessment | DVDLibrary/ |
+| 09/27/2018 | ClassRoster Service Layer CodeAlong | ClassRoster/ |
 
 
 ##### Devin Lloyd
