@@ -10,10 +10,12 @@ import java.util.List;
  */
 public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
 
+    private CRAuditDao auditDao;
     private ClassRosterDao dao;
 
-    public ClassRosterServiceLayerImpl(ClassRosterDao dao) {
+    public ClassRosterServiceLayerImpl(ClassRosterDao dao, CRAuditDao auditDao) {
         this.dao = dao;
+        this.auditDao = auditDao;
     }
 
     @Override
@@ -38,9 +40,17 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
         validateStudentData(student);
 
         /**
-         * All rules have been checked, persist the object
+         * All rules have been checked by this point and all fields must also be
+         * valid to reach here. Now, persist the object
          */
         dao.addStudent(student.getStudentId(), student);
+
+        /**
+         * The object (student) was successfully created. Now write to the audit
+         * log by calling the relevant method in auditDao
+         */
+        auditDao.writeAuditEntry("Student " + student.getStudentId() + " CREATE"
+                + "D.");
     }
 
     @Override
@@ -57,6 +67,11 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
     @Override
     public Student removeStudent(String studentId) throws
             ClassRosterPersistenceException {
+        //Call dao to remove student
+        Student removedStudent = dao.removeStudent(studentId);
+
+        //Write to audit log, then return the removed student
+        auditDao.writeAuditEntry("Student " + studentId + " REMOVED.");
         return dao.removeStudent(studentId);
     }
 

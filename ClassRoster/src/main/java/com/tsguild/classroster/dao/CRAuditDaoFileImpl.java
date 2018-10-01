@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  *
  * @author souldj673
  */
-public class ClassRosterAuditDaoFileImpl implements ClassRosterAuditDao {
+public class CRAuditDaoFileImpl implements CRAuditDao {
 
     public static final String AUDIT_FILE = "audit.txt";
 
