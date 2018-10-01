@@ -30,26 +30,34 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
                     + "student. Student ID " + student.getStudentId()
                     + " already exists");
         }
+
+        /**
+         * Validate all fields in object Will throw an exception if any rules
+         * are validated
+         */
+        validateStudentData(student);
+
+        /**
+         * All rules have been checked, persist the object
+         */
+        dao.addStudent(student.getStudentId(), student);
     }
 
     @Override
     public List<Student> getAllStudents() throws ClassRosterPersistenceException {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getAllStudents();
     }
 
     @Override
     public Student getStudent(String studentId) throws
             ClassRosterPersistenceException {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getStudent(studentId);
     }
 
     @Override
     public Student removeStudent(String studentId) throws
             ClassRosterPersistenceException {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.removeStudent(studentId);
     }
 
     private void validateStudentData(Student student) throws
