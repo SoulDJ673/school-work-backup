@@ -12,13 +12,20 @@ public interface LibraryDao {
 
     //Java Docs !!!!
     /**
-     * Adds the given dvd to the library and associates it with the given dvd
-     * id. If there is already a dvd associated with the given dvd id it will
-     * return that dvd object, otherwise it will return null.
+     * Adds the given DVD to the library and associates it with the given DVD
+     * id. If there is already a DVD associated with the given DVD id it will
+     * return that DVD object, otherwise it will return null.
+     * 
+     * An incoming DVD with an ID of -1 is a new DVD.  No IDs can be negative, 
+     * and thus anything with such an ID is changed to something else throughout
+     * the program. -1 is the default. Any other incoming negative IDs will not 
+     * be changed here, as they aren't set by default anywhere in the program 
+     * and are only used to skip ID changes. If a DVD that is written to the 
+     * library has a negative ID, this is a bug and should be fixed immediately.
      *
-     * @param dvd dvd to be added to the library
-     * @param latestID - For giving new DVDss an ID
-     * @return the DVD object previously associated with the given dvd id if it
+     * @param dvd DVD to be added to the library
+     * @param latestID - For giving new DVDs an ID
+     * @return the DVD object previously associated with the given DVD id if it
      * exists, null otherwise
      * @throws java.io.FileNotFoundException If loadLibrary fails
      */
@@ -61,8 +68,9 @@ public interface LibraryDao {
      * @param changedDVD DVD object that is similar to the original, but with
      * changed parts
      * @throws java.io.FileNotFoundException If loadLibrary fails
+     * @throws java.io.NullPointerException If given oldID doesn't exist
      */
-    void editDVD(DVD changedDVD) throws FileNotFoundException;
+    void editDVD(DVD changedDVD) throws FileNotFoundException, NullPointerException;
 
     /**
      * This method is used to load all information from the library file into

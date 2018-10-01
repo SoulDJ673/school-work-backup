@@ -65,7 +65,7 @@ public interface AddressBookDao {
      * with changed parts
      * @throws java.io.FileNotFoundException
      */
-    void editAddress(String oldId, Address changedAddress) throws FileNotFoundException;
+    void editAddress(String oldId, Address changedAddress) throws NullPointerException, FileNotFoundException;
 
     /**
      * Only added this to the interface because Netbeans threw a fit. This

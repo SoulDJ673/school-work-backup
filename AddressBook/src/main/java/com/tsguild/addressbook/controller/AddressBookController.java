@@ -71,23 +71,20 @@ public class AddressBookController {
         myDao.addAddress(newAddress.getId(), newAddress);
     }
 
-    /**
-     * Holy fuck this is a mess. Complete rewrite required 
-     * @throws FileNotFoundException  
-     */
     //Display Banner & Edit Address
     private void editAddress() throws FileNotFoundException {
         int menuSelect = 0;
         boolean repeat = true;
 
         String addressId = myView.editAddressSelect();
-        Address changingAddress;
+        Address changingAddress = null;
 
-        while (true) {
+        while (repeat) {
             try {
                 changingAddress = myDao.getAddress(addressId);
-                break;
-            } catch (NullPointerException nullPoint) {
+                repeat = false;
+            } catch (NullPointerException invalidAddress) {
+                repeat = true;
                 myView.menuBanner("ERROR");
                 myView.errors(2);
             }

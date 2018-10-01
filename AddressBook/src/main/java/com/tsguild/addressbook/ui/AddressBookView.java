@@ -166,8 +166,10 @@ public class AddressBookView {
             case 1:
                 io.print("Unable to locate the Address Book file.  Make sure "
                         + "the file exists and isn't corrupt.\n");
+                break;
             case 2:
                 io.print("Please enter a valid ID");
+                break;
         }
     }
 }

@@ -265,18 +265,22 @@ public class AddressBookDaoFileImpl implements AddressBookDao {
     }
 
     @Override
-    public void editAddress(String oldId, Address changedAddress) throws FileNotFoundException {
+    public void editAddress(String oldId, Address changedAddress) throws FileNotFoundException, NullPointerException {
 
         loadBook();
-        //Only if oldId and currentId are the same
-        if (changedAddress.getId().equals(oldId)) {
-            addresses.replace(oldId, changedAddress);
-        } else {
-            //The Id has changed
-            addresses.remove(oldId);
-            addresses.put(changedAddress.getId(), changedAddress);
-        }
 
+        try {
+            //Only if oldId and currentId are the same
+            if (changedAddress.getId().equals(oldId)) {
+                addresses.replace(oldId, changedAddress);
+            } else {
+                //The Id has changed
+                addresses.remove(oldId);
+                addresses.put(changedAddress.getId(), changedAddress);
+            }
+        } catch (NullPointerException e) {
+            throw new NullPointerException("The given ID was not found in the library.");
+        }
         writeBook();
     }
 }
