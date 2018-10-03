@@ -1,6 +1,8 @@
 package com.tsguild.dvdlibrary.ui;
 
 import com.tsguild.dvdlibrary.dto.DVD;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -10,6 +12,7 @@ import java.util.List;
 public class LibraryView implements LibraryUI {
 
     private UserIO io;
+    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     public LibraryView(UserIO myIo) {
         this.io = myIo;
@@ -36,7 +39,8 @@ public class LibraryView implements LibraryUI {
 
         //Var Declare
         String dvdName;
-        String dvdDate;
+        LocalDate dvdDate;
+        String dvdDateS;
         String rating;
         String director;
         String studio;
@@ -52,7 +56,7 @@ public class LibraryView implements LibraryUI {
 
         //Write Info to DVD
         newDVD.setTitle(dvdName);
-        newDVD.setReleaseDate(dvdDate);
+        newDVD.setReleaseDate(dvdDateS);
         newDVD.setRating(rating);
         newDVD.setDirector(director);
         newDVD.setStudio(studio);
