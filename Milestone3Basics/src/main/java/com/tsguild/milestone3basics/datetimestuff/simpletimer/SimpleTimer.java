@@ -66,6 +66,5 @@ public class SimpleTimer {
         }
 
         System.out.println("Time is up!!!");
-
     }
 }
