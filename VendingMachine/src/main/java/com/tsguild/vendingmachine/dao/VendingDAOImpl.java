@@ -5,9 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.TreeMap;
 
 /**
  *
@@ -22,15 +22,16 @@ public class VendingDAOImpl implements VendingDAO {
         this.VENDING_INVENTORY = InvFile;
     }
 
+    //Item Inventory
+    Map<String, Item> inventory = new TreeMap<>();
+
     @Override
     public void loadAllItems() throws VendingPersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    private Item unmarshallItem() throws VendingPersistenceException {
+        Scanner scanner;
 
         try {
-            Scanner scanner = new Scanner(
+            scanner = new Scanner(
                     new BufferedReader(
                             new FileReader(VENDING_INVENTORY)));
 
@@ -38,6 +39,26 @@ public class VendingDAOImpl implements VendingDAO {
             throw new VendingPersistenceException("Couldn't find the inventory "
                     + "of the machine!");
         }
+
+        String currentLine;
+        Item currentItem = new Item(null);
+
+        while (scanner.hasNextLine()) {
+            currentLine = scanner.nextLine();
+            currentItem = unmarshallItem(currentLine);
+            inventory.put(currentItem.getId(), currentItem);
+        }
+        scanner.close();
+    }
+
+    private Item unmarshallItem(String marshalledItem) {
+        
+        String[] itemTokens = marshalledItem.split(DELIMITER);
+        
+        String id = itemTokens[0];
+        Item newItem = new Item(id);
+        
+        return newItem;
     }
 
     @Override
