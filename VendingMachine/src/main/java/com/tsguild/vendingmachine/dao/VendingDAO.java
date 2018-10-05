@@ -15,9 +15,9 @@ public interface VendingDAO {
     public void saveAllChanges()
             throws VendingPersistenceException;
 
-    public void addItem(Item anItem);
+    public Item addItem(Item anItem);
 
-    public List getAllItems();
+    public List<Item> getAllItems();
 
     public Item getAnItem(String slotId);
 
