@@ -53,10 +53,19 @@ public class VendingDAOImpl implements VendingDAO {
 
     private Item unmarshallItem(String marshalledItem) {
         
+        /**
+         * slotId | itemName | itemCost | itemCount
+         *   [0]      [1]        [2]         [3]
+         */
+        
         String[] itemTokens = marshalledItem.split(DELIMITER);
         
         String id = itemTokens[0];
         Item newItem = new Item(id);
+        
+        newItem.setItemName(itemTokens[1]);
+        newItem.setItemCost(Double.parseDouble(itemTokens[2]));
+        newItem.setItemCount(Integer.parseInt(itemTokens[3]));
         
         return newItem;
     }
