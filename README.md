@@ -27,9 +27,15 @@
 | 09/20/2018 | LlamaMVC CodeAlong | LlamaMVC/ |
 | 09/24/2018 | DVD Library Summative Assessment | DVDLibrary/ |
 | 09/27/2018 | ClassRoster Service Layer CodeAlong | ClassRoster/ |
+
+## Milestone 3
+| Date | Assignment | Directory |
+|:----:|:----------:|:---------:|
 | 10/02/2018 | BigDecimal Class Practice | Milestone3Basics/.../bigdecimalwork |
 | 10/03/2018 | LocalDateTime Codealong | Milestone3Basics/.../datetimestuff |
 | 10/03/2018 | SimpleTimer Codealong | Milestone3Basics/.../datetimestuff/simpletimer/ |
+| 10/05/2018 | VendingMachine Exercise | VendingMachine/ |
+| 10/08/2018 | LlamaMVC Service Layer Codealong | LlamaMVC/ |
 
 
 ##### Devin Lloyd
