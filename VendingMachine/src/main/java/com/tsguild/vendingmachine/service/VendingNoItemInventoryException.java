@@ -21,5 +21,13 @@ package com.tsguild.vendingmachine.service;
  * @author souldj673
  */
 class VendingNoItemInventoryException extends Exception {
+
+    public VendingNoItemInventoryException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public VendingNoItemInventoryException(Throwable cause) {
+        super(cause);
+    }
     
 }

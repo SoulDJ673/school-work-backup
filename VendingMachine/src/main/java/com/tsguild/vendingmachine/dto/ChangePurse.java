@@ -16,10 +16,18 @@
  */
 package com.tsguild.vendingmachine.dto;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author souldj673
  */
 public class ChangePurse {
+    
+    private BigDecimal moneySum;
+
+    public ChangePurse() {
+        this.moneySum = moneySum.ZERO;
+    }
     
 }

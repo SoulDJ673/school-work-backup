@@ -1,7 +1,7 @@
 package com.tsguild.vendingmachine.service;
 
 import com.tsguild.vendingmachine.dao.VendingPersistenceException;
-import com.tsguild.vendingmachine.dto.Item;
+import com.tsguild.vendingmachine.dto.*;
 import java.math.BigDecimal;
 import java.util.List;
 
