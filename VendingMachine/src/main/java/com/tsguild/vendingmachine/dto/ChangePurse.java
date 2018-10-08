@@ -24,6 +24,7 @@ import java.math.BigDecimal;
  */
 public class ChangePurse {
     
+    //Maybe implement different coins in the future
     private BigDecimal moneySum;
 
     public ChangePurse() {
