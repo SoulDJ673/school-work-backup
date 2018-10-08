@@ -1,5 +1,7 @@
 package com.tsguild.llamamvc;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author souldj673
@@ -24,6 +26,15 @@ public class Llama {
     private boolean likesToKickJames;
 
     private double tongueLength;
+    private BigDecimal woolLength;
+
+    public BigDecimal getWoolLength() {
+        return woolLength;
+    }
+
+    public void setWoolLength(BigDecimal woolLength) {
+        this.woolLength = woolLength;
+    }
     private double gpa;
     private double omegaSpit;
 

@@ -19,4 +19,8 @@ public interface LlamaDao {
     
     //D
     public Llama removeLlama(int id);
+
+    public void loadHerd();
+
+    public void saveHerd();
 }
