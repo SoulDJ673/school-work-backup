@@ -36,6 +36,7 @@
 | 10/03/2018 | SimpleTimer Codealong | Milestone3Basics/.../datetimestuff/simpletimer/ |
 | 10/05/2018 | VendingMachine Exercise | VendingMachine/ |
 | 10/08/2018 | LlamaMVC Service Layer Codealong | LlamaMVC/ |
+| 10/09/2018 | Car Lot Service Layer Exercise | Milestone3Basics/.../carlotservicelayer/ |
 
 
 ##### Devin Lloyd
