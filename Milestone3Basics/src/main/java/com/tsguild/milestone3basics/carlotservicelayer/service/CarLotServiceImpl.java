@@ -19,6 +19,7 @@ package com.tsguild.milestone3basics.carlotservicelayer.service;
 import com.tsguild.milestone3basics.carlotservicelayer.dao.*;
 import com.tsguild.milestone3basics.carlotservicelayer.dto.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,7 +42,17 @@ public class CarLotServiceImpl implements CarLotService {
 
     @Override
     public List<Car> getCarsByColor(String color) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Car> allCars = dao.getCars();
+        List<Car> colorCars = new ArrayList<>();
+
+        for (Car currentCar : allCars) {
+            if (currentCar.getColor().equalsIgnoreCase(color)) {
+                colorCars.add(currentCar);
+            }
+        }
+
+        return colorCars;
     }
 
     @Override
@@ -57,6 +68,10 @@ public class CarLotServiceImpl implements CarLotService {
     @Override
     public CarKey sellCar(String VIN, BigDecimal cashPaid) throws NoSuchCarException, OverpaidPriceException, UnderpaidPriceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void validateInput(String input) {
+
     }
 
 }
