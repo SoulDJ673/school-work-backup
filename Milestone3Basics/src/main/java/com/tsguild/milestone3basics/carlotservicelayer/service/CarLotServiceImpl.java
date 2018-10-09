@@ -70,19 +70,36 @@ public class CarLotServiceImpl implements CarLotService {
     }
 
     @Override
-    public BigDecimal discountCar(String VIN, BigDecimal discount) throws NoSuchCarException {
+    public BigDecimal discountCar(String VIN, BigDecimal discount) throws
+            NoSuchCarException {
+
         Car car = dao.getCar(VIN);
 
         BigDecimal originalPrice = car.getPrice();
-        BigDecimal discountedPrice = originalPrice.subtract(discount);
+        BigDecimal discountedPrice = originalPrice.subtract(originalPrice.multiply(discount));
 
         return discountedPrice;
 
     }
 
     @Override
-    public CarKey sellCar(String VIN, BigDecimal cashPaid) throws NoSuchCarException, OverpaidPriceException, UnderpaidPriceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CarKey sellCar(String VIN, BigDecimal cashPaid) throws
+            NoSuchCarException, OverpaidPriceException, UnderpaidPriceException {
+
+        Car car = dao.getCar(VIN);
+
+        BigDecimal price = car.getPrice();
+        if (cashPaid.compareTo(price) == 0) {
+            dao.removeCar(VIN);
+        } else if (cashPaid.compareTo(price) < 0) {
+            throw new UnderpaidPriceException("The money provided won't pay "
+                    + "off the price of the car!");
+        } else if (cashPaid.compareTo(price) > 0) {
+            throw new OverpaidPriceException("Stop tryna flex, you're paying "
+                    + "too much for the car!");
+        }
+
+        return car.getKey();
     }
 
     private void validateInput(String input) {
