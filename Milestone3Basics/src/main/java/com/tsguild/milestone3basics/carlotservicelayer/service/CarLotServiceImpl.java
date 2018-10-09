@@ -57,12 +57,27 @@ public class CarLotServiceImpl implements CarLotService {
 
     @Override
     public List<Car> getCarsByPrice(BigDecimal maxPrice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Car> allCars = dao.getCars();
+        List<Car> affordableCars = new ArrayList<>();
+
+        for (Car currentCar : allCars) {
+            if (currentCar.getPrice().compareTo(maxPrice) <= 0) {
+                affordableCars.add(currentCar);
+            }
+        }
+
+        return affordableCars;
     }
 
     @Override
     public BigDecimal discountCar(String VIN, BigDecimal discount) throws NoSuchCarException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Car car = dao.getCar(VIN);
+
+        BigDecimal originalPrice = car.getPrice();
+        BigDecimal discountedPrice = originalPrice.subtract(discount);
+
+        return discountedPrice;
+
     }
 
     @Override
