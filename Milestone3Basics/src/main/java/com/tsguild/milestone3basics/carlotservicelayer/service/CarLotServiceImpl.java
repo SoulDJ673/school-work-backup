@@ -78,6 +78,8 @@ public class CarLotServiceImpl implements CarLotService {
         BigDecimal originalPrice = car.getPrice();
         BigDecimal discountedPrice = originalPrice.subtract(originalPrice.multiply(discount));
 
+        car.setPrice(discount);
+
         return discountedPrice;
 
     }
@@ -102,8 +104,11 @@ public class CarLotServiceImpl implements CarLotService {
         return car.getKey();
     }
 
-    private void validateInput(String input) {
-
+    private void carExistanceValidation(Car car) throws NoSuchCarException {
+        if (car == null) {
+            throw new NoSuchCarException("LMAO WHO DID THIS?!?!?! "
+                    + "Car doesn't exist.");
+        }
     }
 
 }
