@@ -52,21 +52,19 @@ public class VendingDAOImpl implements VendingDAO {
     }
 
     private Item unmarshallItem(String marshalledItem) {
-        
+
         /**
-         * slotId | itemName | itemCost | itemCount
-         *   [0]      [1]        [2]         [3]
+         * slotId | itemName | itemCost | itemCount [0] [1] [2] [3]
          */
-        
         String[] itemTokens = marshalledItem.split(DELIMITER);
-        
+
         String id = itemTokens[0];
         Item newItem = new Item(id);
-        
+
         newItem.setItemName(itemTokens[1]);
         newItem.setItemCost(Double.parseDouble(itemTokens[2]));
         newItem.setItemCount(Integer.parseInt(itemTokens[3]));
-        
+
         return newItem;
     }
 
@@ -75,8 +73,18 @@ public class VendingDAOImpl implements VendingDAO {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private Item marshallItem() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private String marshallItem(Item unmarshalledItem) {
+
+        /**
+         * slotId | itemName | itemCost | itemCount [0] [1] [2] [3]
+         */
+        String marshalledItem
+                = unmarshalledItem.getId() + DELIMITER
+                + unmarshalledItem.getItemName() + DELIMITER
+                + unmarshalledItem.getItemCost() + DELIMITER
+                + unmarshalledItem.getItemCount();
+
+        return marshalledItem;
     }
 
     @Override
@@ -101,7 +109,8 @@ public class VendingDAOImpl implements VendingDAO {
 
     @Override
     public Item addItem(Item anItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        inventory.put(anItem.getId(), anItem);
+        return anItem;
     }
 
 }
