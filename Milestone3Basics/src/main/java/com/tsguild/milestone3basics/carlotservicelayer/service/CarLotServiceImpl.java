@@ -14,10 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.tsguild.vendingmachine.service;
+package com.tsguild.milestone3basics.carlotservicelayer.service;
 
-import com.tsguild.vendingmachine.dao.*;
-import com.tsguild.vendingmachine.dto.*;
+import com.tsguild.milestone3basics.carlotservicelayer.dao.*;
+import com.tsguild.milestone3basics.carlotservicelayer.dto.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -25,28 +25,38 @@ import java.util.List;
  *
  * @author souldj673
  */
-public class VendingServiceImpl implements VendingService {
-    
-    VendingDAO dao = new VendingDAOImpl("inventory.txt");
+public class CarLotServiceImpl implements CarLotService {
+
+    CarLotDAO dao = new CarLotDAO();
 
     @Override
-    public void loadMachine() throws VendingPersistenceException {
+    public Car getACar(String VIN) {
+        return dao.getCar(VIN);
+    }
+
+    @Override
+    public List<Car> getAllCars() {
+        return dao.getCars();
+    }
+
+    @Override
+    public List<Car> getCarsByColor(String color) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Item> getAllItemsInMachine() {
+    public List<Car> getCarsByPrice(BigDecimal maxPrice) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Item getOneItem(String itemCode) {
+    public BigDecimal discountCar(String VIN, BigDecimal discount) throws NoSuchCarException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ChangePurse purchaseItem(String itemCode, BigDecimal money) throws VendingInsufficientFundsException, VendingNoItemInventoryException, VendingPersistenceException {
+    public CarKey sellCar(String VIN, BigDecimal cashPaid) throws NoSuchCarException, OverpaidPriceException, UnderpaidPriceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
