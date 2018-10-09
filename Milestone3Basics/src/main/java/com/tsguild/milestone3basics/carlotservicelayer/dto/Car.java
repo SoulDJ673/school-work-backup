@@ -27,6 +27,7 @@ public class Car {
     private String VIN;
     private String make;
     private String model;
+    private String color;
 
     private BigDecimal price;
     private long odometerMiles;
