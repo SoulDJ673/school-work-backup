@@ -74,6 +74,7 @@ public class CarLotServiceImpl implements CarLotService {
             NoSuchCarException {
 
         Car car = dao.getCar(VIN);
+        carExistanceValidation(car);
 
         BigDecimal originalPrice = car.getPrice();
         BigDecimal discountedPrice = originalPrice.subtract(originalPrice.multiply(discount));
@@ -89,6 +90,7 @@ public class CarLotServiceImpl implements CarLotService {
             NoSuchCarException, OverpaidPriceException, UnderpaidPriceException {
 
         Car car = dao.getCar(VIN);
+        carExistanceValidation(car);
 
         BigDecimal price = car.getPrice();
         if (cashPaid.compareTo(price) == 0) {
