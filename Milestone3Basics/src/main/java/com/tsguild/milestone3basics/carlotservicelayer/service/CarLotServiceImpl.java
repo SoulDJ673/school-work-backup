@@ -79,7 +79,8 @@ public class CarLotServiceImpl implements CarLotService {
         BigDecimal originalPrice = car.getPrice();
         BigDecimal discountedPrice = originalPrice.subtract(originalPrice.multiply(discount));
 
-        car.setPrice(discount);
+        car.setPrice(discountedPrice);
+        dao.editCar(VIN, car);
 
         return discountedPrice;
 
