@@ -58,7 +58,8 @@ public class VendingServiceImpl implements VendingService {
                     selectedItem.getItemCost());
             updatedChangePurse = calculateCoinsBack(moneyDifference);
             
-            
+            selectedItem.setItemCount(selectedItem.getItemCount() - 1);
+            dao.updateAnItem(itemCode, selectedItem);
         }
         return updatedChangePurse;
     }
