@@ -46,7 +46,19 @@ public class VendingServiceImpl implements VendingService {
 
     @Override
     public ChangePurse purchaseItem(String itemCode, BigDecimal money) throws VendingInsufficientFundsException, VendingNoItemInventoryException, VendingPersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Item selectedItem = dao.getAnItem(itemCode);
+        validateItem(selectedItem);
+        
+        if(money < selectedItem.getItemCost())
+        
+        ChangePurse updatedChangePurse = new ChangePurse();
+        return updatedChangePurse;
+    }
+
+    private void validateItem(Item item) throws VendingNoItemInventoryException {
+        if (item == null) {
+            throw new VendingNoItemInventoryException("That item doesn't exist!");
+        }
     }
 
 }

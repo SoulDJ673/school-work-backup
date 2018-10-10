@@ -16,15 +16,11 @@
  */
 package com.tsguild.vendingmachine.dto;
 
-import java.math.BigDecimal;
-
 /**
  *
  * @author souldj673
  */
 public class ChangePurse {
-
-    private BigDecimal moneySum;
 
     //Coin Types    
     private int pennies;
@@ -33,7 +29,6 @@ public class ChangePurse {
     private int quarters;
 
     public ChangePurse() {
-        this.moneySum = BigDecimal.ZERO;
         this.pennies = 0;
         this.nickles = 0;
         this.dimes = 0;

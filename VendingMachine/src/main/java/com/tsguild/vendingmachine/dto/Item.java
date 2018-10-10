@@ -1,5 +1,7 @@
 package com.tsguild.vendingmachine.dto;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author souldj673
@@ -8,7 +10,7 @@ public class Item {
 
     private String slotId;
     private String itemName;
-    private double itemCost;
+    private BigDecimal itemCost;
     private int itemCount;
 
     //Constructor
@@ -25,11 +27,11 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public double getItemCost() {
+    public BigDecimal getItemCost() {
         return itemCost;
     }
 
-    public void setItemCost(double itemCost) {
+    public void setItemCost(BigDecimal itemCost) {
         this.itemCost = itemCost;
     }
 

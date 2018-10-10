@@ -26,8 +26,8 @@ class VendingNoItemInventoryException extends Exception {
         super(message, cause);
     }
 
-    public VendingNoItemInventoryException(Throwable cause) {
-        super(cause);
+    public VendingNoItemInventoryException(String message) {
+        super(message);
     }
     
 }

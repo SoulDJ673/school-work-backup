@@ -45,7 +45,7 @@ public class VendingDAOImpl implements VendingDAO {
         }
 
         String currentLine;
-        Item currentItem = new Item(null);
+        Item currentItem;
 
         while (scanner.hasNextLine()) {
             currentLine = scanner.nextLine();
