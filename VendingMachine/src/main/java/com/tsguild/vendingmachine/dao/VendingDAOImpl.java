@@ -121,7 +121,7 @@ public class VendingDAOImpl implements VendingDAO {
 
     @Override
     public void updateAnItem(String slotId, Item changedItem) {
-        inventory.replace(slotId, changedItem);
+        inventory.put(slotId, changedItem);
     }
 
     @Override

@@ -23,12 +23,53 @@ import java.math.BigDecimal;
  * @author souldj673
  */
 public class ChangePurse {
-    
-    //Maybe implement different coins in the future
+
     private BigDecimal moneySum;
 
+    //Coin Types    
+    private int pennies;
+    private int nickles;
+    private int dimes;
+    private int quarters;
+
     public ChangePurse() {
-        this.moneySum = moneySum.ZERO;
+        this.moneySum = BigDecimal.ZERO;
+        this.pennies = 0;
+        this.nickles = 0;
+        this.dimes = 0;
+        this.quarters = 0;
     }
-    
+
+    public int getPennies() {
+        return pennies;
+    }
+
+    public void setPennies(int pennies) {
+        this.pennies = pennies;
+    }
+
+    public int getNickles() {
+        return nickles;
+    }
+
+    public void setNickles(int nickles) {
+        this.nickles = nickles;
+    }
+
+    public int getDimes() {
+        return dimes;
+    }
+
+    public void setDimes(int dimes) {
+        this.dimes = dimes;
+    }
+
+    public int getQuarters() {
+        return quarters;
+    }
+
+    public void setQuarters(int quarters) {
+        this.quarters = quarters;
+    }
+
 }
