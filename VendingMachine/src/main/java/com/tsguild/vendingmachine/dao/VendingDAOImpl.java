@@ -4,6 +4,9 @@ import com.tsguild.vendingmachine.dto.Item;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +74,24 @@ public class VendingDAOImpl implements VendingDAO {
 
     @Override
     public void saveAllChanges() throws VendingPersistenceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        PrintWriter save;
+        try {
+            save = new PrintWriter(new FileWriter(VENDING_INVENTORY));
+        } catch (IOException e) {
+            throw new VendingPersistenceException("Uh oh! The inventory is "
+                    + "nowhere to be found! Unable to write to inventory.");
+        }
+
+        String textItem;
+        List<Item> allItems = getAllItems();
+
+        for (Item currentItem : allItems) {
+            textItem = marshallItem(currentItem);
+            save.println(textItem);
+            save.flush();
+        }
+
+        save.close();
     }
 
     private String marshallItem(Item unmarshalledItem) {
@@ -101,7 +121,7 @@ public class VendingDAOImpl implements VendingDAO {
 
     @Override
     public void updateAnItem(String slotId, Item changedItem) {
-        inventory.put(slotId, changedItem);
+        inventory.replace(slotId, changedItem);
     }
 
     @Override
