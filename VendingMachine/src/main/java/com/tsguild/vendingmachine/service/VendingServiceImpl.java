@@ -26,27 +26,27 @@ import java.util.List;
  * @author souldj673
  */
 public class VendingServiceImpl implements VendingService {
-    
+
     VendingDAO dao = new VendingDAOImpl("inventory.txt");
 
     @Override
     public void loadMachine() throws VendingPersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.loadAllItems();
     }
 
     @Override
     public List<Item> getAllItemsInMachine() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getAllItems();
     }
 
     @Override
     public Item getOneItem(String itemCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getAnItem(itemCode);
     }
 
     @Override
     public ChangePurse purchaseItem(String itemCode, BigDecimal money) throws VendingInsufficientFundsException, VendingNoItemInventoryException, VendingPersistenceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
