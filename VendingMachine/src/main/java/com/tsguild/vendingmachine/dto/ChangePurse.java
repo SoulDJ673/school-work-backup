@@ -35,6 +35,13 @@ public class ChangePurse {
         this.quarters = 0;
     }
 
+    public ChangePurse(int pennies, int nickles, int dimes, int quarters) {
+        this.pennies = pennies;
+        this.nickles = nickles;
+        this.dimes = dimes;
+        this.quarters = quarters;
+    }
+
     public int getPennies() {
         return pennies;
     }

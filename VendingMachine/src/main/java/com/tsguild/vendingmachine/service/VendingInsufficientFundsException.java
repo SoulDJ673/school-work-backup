@@ -26,8 +26,8 @@ class VendingInsufficientFundsException extends Exception {
         super(message, cause);
     }
 
-    public VendingInsufficientFundsException(Throwable cause) {
-        super(cause);
+    public VendingInsufficientFundsException(String message) {
+        super(message);
     }
 
 }

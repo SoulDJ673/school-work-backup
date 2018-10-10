@@ -48,17 +48,48 @@ public class VendingServiceImpl implements VendingService {
     public ChangePurse purchaseItem(String itemCode, BigDecimal money) throws VendingInsufficientFundsException, VendingNoItemInventoryException, VendingPersistenceException {
         Item selectedItem = dao.getAnItem(itemCode);
         validateItem(selectedItem);
-        
-        if(money < selectedItem.getItemCost())
-        
         ChangePurse updatedChangePurse = new ChangePurse();
+
+        if (money.compareTo(selectedItem.getItemCost()) < 0) {
+            throw new VendingInsufficientFundsException("You don't have enough "
+                    + "money for that item!");
+        } else {
+            BigDecimal moneyDifference = money.subtract(
+                    selectedItem.getItemCost());
+            updatedChangePurse = calculateCoinsBack(moneyDifference);
+        }
         return updatedChangePurse;
     }
 
     private void validateItem(Item item) throws VendingNoItemInventoryException {
         if (item == null) {
             throw new VendingNoItemInventoryException("That item doesn't exist!");
+        } else if (item.getItemCount() == 0) {
+            throw new VendingNoItemInventoryException("There is no more of that"
+                    + " item left in the machine.  Sorry for the inconvienince!");
         }
+    }
+
+    private ChangePurse calculateCoinsBack(BigDecimal difference) {
+        //Values in BigDecimal
+        BigDecimal penny = new BigDecimal(.01);
+        BigDecimal nickel = new BigDecimal(.05);
+        BigDecimal dime = new BigDecimal(.1);
+        BigDecimal quarter = new BigDecimal(.25);
+
+        //Get Coin Counts
+        BigDecimal[] quarters = difference.divideAndRemainder(quarter);
+        BigDecimal[] dimes = quarters[1].divideAndRemainder(dime);
+        BigDecimal[] nickels = dimes[1].divideAndRemainder(nickel);
+        BigDecimal pennies = nickels[1].divide(penny);
+
+        //Convert to Integers for updated purse creation
+        int quarterCount = quarters[0].intValue();
+        int dimeCount = dimes[0].intValue();
+        int nickelCount = nickels[0].intValue();
+        int pennyCount = pennies.intValue();
+
+        
     }
 
 }
