@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -64,9 +65,10 @@ public class VendingDAOImpl implements VendingDAO {
 
         String id = itemTokens[0];
         Item newItem = new Item(id);
+        BigDecimal itemCost = new BigDecimal(itemTokens[2]);
 
         newItem.setItemName(itemTokens[1]);
-        newItem.setItemCost(Double.parseDouble(itemTokens[2]));
+        newItem.setItemCost(itemCost);
         newItem.setItemCount(Integer.parseInt(itemTokens[3]));
 
         return newItem;
@@ -102,7 +104,7 @@ public class VendingDAOImpl implements VendingDAO {
         String marshalledItem
                 = unmarshalledItem.getId() + DELIMITER
                 + unmarshalledItem.getItemName() + DELIMITER
-                + unmarshalledItem.getItemCost() + DELIMITER
+                + unmarshalledItem.getItemCost().toString() + DELIMITER
                 + unmarshalledItem.getItemCount();
 
         return marshalledItem;

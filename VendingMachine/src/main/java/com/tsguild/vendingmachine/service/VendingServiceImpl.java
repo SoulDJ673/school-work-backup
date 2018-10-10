@@ -57,6 +57,8 @@ public class VendingServiceImpl implements VendingService {
             BigDecimal moneyDifference = money.subtract(
                     selectedItem.getItemCost());
             updatedChangePurse = calculateCoinsBack(moneyDifference);
+            
+            
         }
         return updatedChangePurse;
     }
@@ -89,7 +91,8 @@ public class VendingServiceImpl implements VendingService {
         int nickelCount = nickels[0].intValue();
         int pennyCount = pennies.intValue();
 
-        
+        ChangePurse updatedPurse = new ChangePurse(pennyCount, nickelCount, dimeCount, quarterCount);
+        return updatedPurse;
     }
 
 }
