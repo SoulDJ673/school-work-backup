@@ -4,6 +4,7 @@ import com.tsguild.vendingmachine.dto.Item;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -89,22 +90,23 @@ public class VendingDAOImpl implements VendingDAO {
 
     @Override
     public List getAllItems() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Item> allItems = new ArrayList<>(inventory.values());
+        return allItems;
     }
 
     @Override
     public Item getAnItem(String slotId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return inventory.get(slotId);
     }
 
     @Override
     public void updateAnItem(String slotId, Item changedItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        inventory.put(slotId, changedItem);
     }
 
     @Override
     public Item removeAnItem(String slotId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return inventory.remove(slotId);
     }
 
     @Override
