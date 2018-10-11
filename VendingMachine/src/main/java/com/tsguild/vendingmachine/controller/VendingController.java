@@ -42,7 +42,6 @@ public class VendingController {
 
     public void run() {
         populateChangePurse();
-        System.out.println("Lol");
     }
 
     private void maintainenceMode() {

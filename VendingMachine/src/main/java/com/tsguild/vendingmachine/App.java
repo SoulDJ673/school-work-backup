@@ -21,6 +21,8 @@ import com.tsguild.vendingmachine.dao.VendingDAO;
 import com.tsguild.vendingmachine.dao.VendingDAOImpl;
 import com.tsguild.vendingmachine.service.VendingService;
 import com.tsguild.vendingmachine.service.VendingServiceImpl;
+import com.tsguild.vendingmachine.view.UserIO;
+import com.tsguild.vendingmachine.view.UserIOConsoleImpl;
 import com.tsguild.vendingmachine.view.VendingView;
 
 /**
@@ -29,9 +31,14 @@ import com.tsguild.vendingmachine.view.VendingView;
  */
 public class App {
 
-    private VendingDAO dao = new VendingDAOImpl("inventory.txt");
-    private VendingService service = new VendingServiceImpl(dao);
-    private VendingView view = new VendingView();
-    private VendingController controller = new VendingController(service, view);
+    private static VendingDAO myDao = new VendingDAOImpl("inventory.txt");
+    private static VendingService myService = new VendingServiceImpl(myDao);
+    private static UserIO userIO = new UserIOConsoleImpl();
+    private static VendingView myView = new VendingView(userIO);
+    private static VendingController myController = new VendingController(myService, myView);
+    
+    public static void main(String[] args) {
+        myController.run();
+    }
 
 }

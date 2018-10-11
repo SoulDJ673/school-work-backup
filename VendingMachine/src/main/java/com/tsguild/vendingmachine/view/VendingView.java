@@ -21,8 +21,11 @@ package com.tsguild.vendingmachine.view;
  * @author souldj673
  */
 public class VendingView {
+    
+    private UserIO userIO;
 
-    public VendingView() {
+    public VendingView(UserIO userIO) {
+        this.userIO = userIO;
     }
 
 }
