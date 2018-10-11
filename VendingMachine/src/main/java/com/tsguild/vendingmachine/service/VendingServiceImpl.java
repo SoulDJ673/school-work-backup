@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class VendingServiceImpl implements VendingService {
     
-    VendingDAO dao = new VendingDAOImpl("inventory.txt");
+    public VendingDAO dao = new VendingDAOImpl("inventory.txt");
     
     @Override
     public void loadMachine() throws VendingPersistenceException {
