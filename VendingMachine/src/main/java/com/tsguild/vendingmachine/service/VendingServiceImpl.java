@@ -26,34 +26,34 @@ import java.util.List;
  * @author souldj673
  */
 public class VendingServiceImpl implements VendingService {
-    
+
     public VendingDAO dao;
 
     public VendingServiceImpl(VendingDAO myDao) {
         this.dao = myDao;
     }
-    
+
     @Override
     public void loadMachine() throws VendingPersistenceException {
         dao.loadAllItems();
     }
-    
+
     @Override
     public List<Item> getAllItemsInMachine() {
         return dao.getAllItems();
     }
-    
+
     @Override
     public Item getOneItem(String itemCode) {
         return dao.getAnItem(itemCode);
     }
-    
+
     @Override
     public ChangePurse purchaseItem(String itemCode, BigDecimal money) throws VendingInsufficientFundsException, VendingNoItemInventoryException, VendingPersistenceException {
         Item selectedItem = dao.getAnItem(itemCode);
         validateItem(selectedItem);
         ChangePurse updatedChangePurse = new ChangePurse();
-        
+
         if (money.compareTo(selectedItem.getItemCost()) < 0) {
             throw new VendingInsufficientFundsException("You don't have enough "
                     + "money for that item!");
@@ -61,13 +61,13 @@ public class VendingServiceImpl implements VendingService {
             BigDecimal moneyDifference = money.subtract(
                     selectedItem.getItemCost());
             updatedChangePurse = calculateCoinsBack(moneyDifference);
-            
+
             selectedItem.setItemCount(selectedItem.getItemCount() - 1);
             dao.updateAnItem(itemCode, selectedItem);
         }
         return updatedChangePurse;
     }
-    
+
     private void validateItem(Item item) throws VendingNoItemInventoryException {
         if (item == null) {
             throw new VendingNoItemInventoryException("That item doesn't exist!");
@@ -76,7 +76,7 @@ public class VendingServiceImpl implements VendingService {
                     + " item left in the machine.  Sorry for the inconvienince!");
         }
     }
-    
+
     private ChangePurse calculateCoinsBack(BigDecimal difference) {
         //Values in BigDecimal
         BigDecimal penny = new BigDecimal(.01);
@@ -95,9 +95,9 @@ public class VendingServiceImpl implements VendingService {
         int dimeCount = dimes[0].intValue();
         int nickelCount = nickels[0].intValue();
         int pennyCount = pennies.intValue();
-        
+
         ChangePurse updatedPurse = new ChangePurse(pennyCount, nickelCount, dimeCount, quarterCount);
         return updatedPurse;
     }
-    
+
 }

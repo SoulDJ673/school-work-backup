@@ -42,15 +42,19 @@ public class VendingController {
 
     public void run() {
         populateChangePurse();
+        
+        service.loadMachine();
 
         String selection = view.mainMenu();
         selection = selection.toLowerCase();
+        
+        view.displayAvailableItems(service.getAllItemsInMachine());
 
         switch (selection) {
             case "lmao who did this":
                 maintainenceMode();
             default:
-                
+
         }
     }
 
