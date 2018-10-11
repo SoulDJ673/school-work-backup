@@ -21,11 +21,27 @@ package com.tsguild.vendingmachine.view;
  * @author souldj673
  */
 public class VendingView {
-    
-    private UserIO userIO;
+
+    private UserIO io;
 
     public VendingView(UserIO userIO) {
-        this.userIO = userIO;
+        this.io = userIO;
+    }
+
+    public String menus(String[] options) {
+        int i = 1;
+        for (String option : options) {
+            io.print(i + ".) " + option);
+            i++;
+        }
+
+        return io.readString("Please select the item you wish to purchase: ");
+    }
+
+    public String mainMenu() {
+
+        String[] options = {"Test", "Test", "Test"};
+        return this.menus(options);
     }
 
 }

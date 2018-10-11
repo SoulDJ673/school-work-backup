@@ -42,6 +42,16 @@ public class VendingController {
 
     public void run() {
         populateChangePurse();
+
+        String selection = view.mainMenu();
+        selection = selection.toLowerCase();
+
+        switch (selection) {
+            case "lmao who did this":
+                maintainenceMode();
+            default:
+                
+        }
     }
 
     private void maintainenceMode() {
