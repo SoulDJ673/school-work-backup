@@ -14,39 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.tsguild.vendingmachine.controller;
-
-import com.tsguild.vendingmachine.dto.ChangePurse;
-import com.tsguild.vendingmachine.service.VendingService;
-import com.tsguild.vendingmachine.view.VendingView;
+package com.tsguild.vendingmachine.view;
 
 /**
  *
  * @author souldj673
  */
-public class VendingController {
+public class VendingView {
 
-    private VendingService service;
-    private VendingView view;
-    private ChangePurse userPurse;
-
-    public VendingController(VendingService myService, VendingView myView) {
-        this.service = myService;
-        this.view = myView;
-    }
-
-    //This must run first, but only run once
-    private void populateChangePurse() {
-
-    }
-
-    public void run() {
-        populateChangePurse();
-        System.out.println("Lol");
-    }
-
-    private void maintainenceMode() {
-
+    public VendingView() {
     }
 
 }

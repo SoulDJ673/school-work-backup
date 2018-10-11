@@ -16,10 +16,22 @@
  */
 package com.tsguild.vendingmachine;
 
+import com.tsguild.vendingmachine.controller.VendingController;
+import com.tsguild.vendingmachine.dao.VendingDAO;
+import com.tsguild.vendingmachine.dao.VendingDAOImpl;
+import com.tsguild.vendingmachine.service.VendingService;
+import com.tsguild.vendingmachine.service.VendingServiceImpl;
+import com.tsguild.vendingmachine.view.VendingView;
+
 /**
  *
  * @author souldj673
  */
 public class App {
-    
+
+    private VendingDAO dao = new VendingDAOImpl("inventory.txt");
+    private VendingService service = new VendingServiceImpl(dao);
+    private VendingView view = new VendingView();
+    private VendingController controller = new VendingController(service, view);
+
 }
