@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -28,7 +29,7 @@ public class VendingDAOImpl implements VendingDAO {
     }
 
     //Item Inventory
-    Map<String, Item> inventory = new TreeMap<>();
+    private Map<String, Item> inventory = new TreeMap<>();
 
     @Override
     public void loadAllItems() throws VendingPersistenceException {
