@@ -16,11 +16,15 @@
  */
 package com.tsguild.vendingmachine.dto;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author souldj673
  */
 public class ChangePurse {
+
+    private BigDecimal total;
 
     //Coin Types    
     private int pennies;
@@ -33,6 +37,7 @@ public class ChangePurse {
         this.nickels = 0;
         this.dimes = 0;
         this.quarters = 0;
+        this.total = calculateTotal();
     }
 
     public ChangePurse(int pennies, int nickels, int dimes, int quarters) {
@@ -40,6 +45,7 @@ public class ChangePurse {
         this.nickels = nickels;
         this.dimes = dimes;
         this.quarters = quarters;
+        this.total = calculateTotal();
     }
 
     public int getPennies() {
@@ -48,6 +54,7 @@ public class ChangePurse {
 
     public void setPennies(int pennies) {
         this.pennies = pennies;
+        this.total = calculateTotal();
     }
 
     public int getNickels() {
@@ -56,6 +63,7 @@ public class ChangePurse {
 
     public void setNickels(int nickels) {
         this.nickels = nickels;
+        this.total = calculateTotal();
     }
 
     public int getDimes() {
@@ -64,6 +72,7 @@ public class ChangePurse {
 
     public void setDimes(int dimes) {
         this.dimes = dimes;
+        this.total = calculateTotal();
     }
 
     public int getQuarters() {
@@ -72,6 +81,16 @@ public class ChangePurse {
 
     public void setQuarters(int quarters) {
         this.quarters = quarters;
+        this.total = calculateTotal();
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    private BigDecimal calculateTotal() {
+        return new BigDecimal((quarters * 0.25) + (dimes * 0.1)
+                + (nickels * 0.05) + (pennies * 0.01));
     }
 
 }

@@ -20,7 +20,7 @@ package com.tsguild.vendingmachine.service;
  *
  * @author souldj673
  */
-class VendingInsufficientFundsException extends Exception {
+public class VendingInsufficientFundsException extends Exception {
 
     public VendingInsufficientFundsException(String message, Throwable cause) {
         super(message, cause);

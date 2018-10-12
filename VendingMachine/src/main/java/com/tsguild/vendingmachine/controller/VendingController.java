@@ -19,8 +19,13 @@ package com.tsguild.vendingmachine.controller;
 import com.tsguild.vendingmachine.dao.VendingPersistenceException;
 import com.tsguild.vendingmachine.dto.ChangePurse;
 import com.tsguild.vendingmachine.dto.Item;
+import com.tsguild.vendingmachine.service.VendingInsufficientFundsException;
+import com.tsguild.vendingmachine.service.VendingNoItemInventoryException;
 import com.tsguild.vendingmachine.service.VendingService;
 import com.tsguild.vendingmachine.view.VendingView;
+import java.math.BigDecimal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -62,7 +67,21 @@ public class VendingController {
             selection = selection.toLowerCase();
 
             //Retrieve item & Display information & Get User Purchase choice
-            displayItem(selection);
+            boolean purchaseChoice = displayItem(selection);
+
+            try {
+                if (purchaseChoice) {
+
+                    service.purchaseItem(selection, userPurse.getTotal());
+
+                }
+            } catch (VendingInsufficientFundsException e) {
+                view.errors(2);
+            } catch (VendingNoItemInventoryException ex) {
+                view.errors(3);
+            } catch (VendingPersistenceException ex) {
+                view.errors(1);
+            }
         }
     }
 
@@ -76,9 +95,6 @@ public class VendingController {
             case "yes":
             case "true":
                 purchase = true;
-            case "n":
-            case "no":
-            case "false":
             default:
                 purchase = false;
         }
