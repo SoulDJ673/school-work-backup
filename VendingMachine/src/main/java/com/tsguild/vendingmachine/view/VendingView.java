@@ -24,33 +24,41 @@ import java.util.List;
  * @author souldj673
  */
 public class VendingView {
-    
+
     private UserIO io;
-    
+
     public VendingView(UserIO userIO) {
         this.io = userIO;
     }
-    
+
     public String menus(String[] options) {
         int i = 1;
         for (String option : options) {
             io.print(i + ".) " + option);
             i++;
         }
-        
+
         return io.readString("Please select the item you wish to purchase: ");
     }
-    
+
     public String mainMenu() {
-        
-        String[] options = {"Test", "Test", "Test"};
+
+        String[] options = {};
         return this.menus(options);
     }
-    
+
     public void displayAvailableItems(List<Item> items) {
         for (Item currentItem : items) {
             io.print(currentItem.getId() + ": " + currentItem.getItemName());
         }
     }
-    
+
+    public void errors(int i) {
+        switch (i) {
+            case 1:
+                io.print("Please check to ensure that the inventory file "
+                        + "exists/isn't corrupt.");
+        }
+    }
+
 }

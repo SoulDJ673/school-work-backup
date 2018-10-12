@@ -71,7 +71,7 @@ public class VendingServiceImpl implements VendingService {
     private void validateItem(Item item) throws VendingNoItemInventoryException {
         if (item == null) {
             throw new VendingNoItemInventoryException("That item doesn't exist!");
-        } else if (item.getItemCount() == 0) {
+        } else if (item.getItemCount() <= 0) {
             throw new VendingNoItemInventoryException("There is no more of that"
                     + " item left in the machine.  Sorry for the inconvienince!");
         }
