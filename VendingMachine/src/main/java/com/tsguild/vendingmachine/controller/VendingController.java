@@ -23,9 +23,6 @@ import com.tsguild.vendingmachine.service.VendingInsufficientFundsException;
 import com.tsguild.vendingmachine.service.VendingNoItemInventoryException;
 import com.tsguild.vendingmachine.service.VendingService;
 import com.tsguild.vendingmachine.view.VendingView;
-import java.math.BigDecimal;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -45,6 +42,12 @@ public class VendingController {
     //This must run first, but only run once
     private void populateChangePurse() {
 
+        int[] coins = view.changePursePopulation();
+        userPurse = new ChangePurse(coins[0], coins[1], coins[2], coins[3]);
+
+        /*
+         * Array: Pennies, Nickels, Dimes, Quarters // 0, 1, 2, 3
+         */
     }
 
     public void run() {
@@ -71,9 +74,7 @@ public class VendingController {
 
             try {
                 if (purchaseChoice) {
-
                     service.purchaseItem(selection, userPurse.getTotal());
-
                 }
             } catch (VendingInsufficientFundsException e) {
                 view.errors(2);
@@ -95,8 +96,10 @@ public class VendingController {
             case "yes":
             case "true":
                 purchase = true;
+                break;
             default:
                 purchase = false;
+                break;
         }
 
         return purchase;

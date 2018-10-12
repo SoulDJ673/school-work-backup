@@ -75,6 +75,9 @@ public class VendingView {
             case 1:
                 io.print("Please check to ensure that the inventory file "
                         + "exists/isn't corrupt.");
+                break;
+            case 2:
+                break;
         }
     }
 
@@ -84,6 +87,19 @@ public class VendingView {
         io.print("Cost of item: " + userSelect.getItemCost().toString());
 
         return io.readString("Would you like to purchase this item? (y/N): ");
+    }
+
+    public int[] changePursePopulation() {
+        int[] coins = new int[4];
+
+        banners("Money in your change purse");
+        
+        coins[0] = io.readInt("How many pennies do you have in your change purse?");
+        coins[1] = io.readInt("How many nickels do you have in your change purse?");
+        coins[2] = io.readInt("How many dimes do you have in your change purse?");
+        coins[3] = io.readInt("How many quarters do you have in your change purse?");
+        
+        return coins;
     }
 
 }
