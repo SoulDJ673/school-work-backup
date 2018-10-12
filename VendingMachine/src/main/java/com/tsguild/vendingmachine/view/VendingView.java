@@ -77,6 +77,10 @@ public class VendingView {
                         + "exists/isn't corrupt.");
                 break;
             case 2:
+            case 3:
+                io.print("Please enter a valid item code.");
+                break;
+            case 4:
                 break;
         }
     }

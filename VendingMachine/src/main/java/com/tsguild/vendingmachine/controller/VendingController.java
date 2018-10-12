@@ -53,6 +53,7 @@ public class VendingController {
     public void run() {
         populateChangePurse();
 
+        menuRepeat:
         while (true) {
 
             //Load the inventory
@@ -69,14 +70,24 @@ public class VendingController {
             String selection = view.mainMenu();
             selection = selection.toLowerCase();
 
+            //Check selection for quit
+            switch (selection.toLowerCase()) {
+                case "q":
+                case "quit":
+                case "exit":
+                    return;
+                default:
+                    break;
+            }
+
             //Retrieve item & Display information & Get User Purchase choice
             boolean purchaseChoice = displayItem(selection);
 
             try {
                 if (purchaseChoice) {
-                    service.purchaseItem(selection, userPurse.getTotal());
+                    userPurse = service.purchaseItem(selection, userPurse.getTotal());
                 }
-            } catch (VendingInsufficientFundsException e) {
+            } catch (VendingInsufficientFundsException ex) {
                 view.errors(2);
             } catch (VendingNoItemInventoryException ex) {
                 view.errors(3);
@@ -87,22 +98,28 @@ public class VendingController {
     }
 
     private boolean displayItem(String slotId) {
-        Item userSelect = service.getOneItem(slotId);
-        String purchaseChoice = view.displayItem(userSelect);
+        try {
+            Item userSelect = service.getOneItem(slotId);
+            String purchaseChoice = view.displayItem(userSelect);
 
-        boolean purchase;
-        switch (purchaseChoice.toLowerCase()) {
-            case "y":
-            case "yes":
-            case "true":
-                purchase = true;
-                break;
-            default:
-                purchase = false;
-                break;
+            boolean purchase;
+            switch (purchaseChoice.toLowerCase()) {
+                case "y":
+                case "yes":
+                case "true":
+                    purchase = true;
+                    break;
+                default:
+                    purchase = false;
+                    break;
+            }
+
+            return purchase;
+
+        } catch (NullPointerException e) {
+            view.errors(3);
         }
-
-        return purchase;
+        
+        return false;
     }
-
 }

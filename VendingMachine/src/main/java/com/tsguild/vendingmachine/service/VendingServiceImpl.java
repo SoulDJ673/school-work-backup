@@ -19,6 +19,7 @@ package com.tsguild.vendingmachine.service;
 import com.tsguild.vendingmachine.dao.*;
 import com.tsguild.vendingmachine.dto.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 /**
@@ -50,6 +51,8 @@ public class VendingServiceImpl implements VendingService {
 
     @Override
     public ChangePurse purchaseItem(String itemCode, BigDecimal money) throws VendingInsufficientFundsException, VendingNoItemInventoryException, VendingPersistenceException {
+        dao.loadAllItems();
+
         Item selectedItem = dao.getAnItem(itemCode);
         validateItem(selectedItem);
         ChangePurse updatedChangePurse = new ChangePurse();
@@ -65,6 +68,7 @@ public class VendingServiceImpl implements VendingService {
             selectedItem.setItemCount(selectedItem.getItemCount() - 1);
             dao.updateAnItem(itemCode, selectedItem);
         }
+        dao.saveAllChanges();
         return updatedChangePurse;
     }
 
@@ -88,7 +92,7 @@ public class VendingServiceImpl implements VendingService {
         BigDecimal[] quarters = difference.divideAndRemainder(quarter);
         BigDecimal[] dimes = quarters[1].divideAndRemainder(dime);
         BigDecimal[] nickels = dimes[1].divideAndRemainder(nickel);
-        BigDecimal pennies = nickels[1].divide(penny);
+        BigDecimal pennies = nickels[1].divide(penny, 2, RoundingMode.HALF_DOWN);
 
         //Convert to Integers for updated purse creation
         int quarterCount = quarters[0].intValue();
