@@ -18,6 +18,7 @@ package com.tsguild.vendingmachine.controller;
 
 import com.tsguild.vendingmachine.dao.VendingPersistenceException;
 import com.tsguild.vendingmachine.dto.ChangePurse;
+import com.tsguild.vendingmachine.dto.Item;
 import com.tsguild.vendingmachine.service.VendingService;
 import com.tsguild.vendingmachine.view.VendingView;
 
@@ -44,17 +45,25 @@ public class VendingController {
     public void run() {
         populateChangePurse();
 
-        try {
-            service.loadMachine();
-        } catch (VendingPersistenceException e) {
-            view.errors(1);
+        while (true) {
+
+            try {
+                service.loadMachine();
+            } catch (VendingPersistenceException e) {
+                view.errors(1);
+            }
+            view.displayAvailableItems(service.getAllItemsInMachine());
+
+            String selection = view.mainMenu();
+            selection = selection.toLowerCase();
+
+            getItem(selection);
+
         }
+    }
 
-        String selection = view.mainMenu();
-        selection = selection.toLowerCase();
-
-        view.displayAvailableItems(service.getAllItemsInMachine());
-
+    private Item getItem(String slotId) {
+        return service.getOneItem(slotId);
     }
 
 }

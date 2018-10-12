@@ -31,14 +31,14 @@ import com.tsguild.vendingmachine.view.VendingView;
  */
 public class App {
 
-    private static VendingDAO myDao = new VendingDAOImpl("inventory.txt");
-    private static VendingService myService = new VendingServiceImpl(myDao);
-    private static UserIO userIO = new UserIOConsoleImpl();
-    private static VendingView myView = new VendingView(userIO);
-    private static VendingController myController = new VendingController(myService, myView);
+    private static final VendingDAO DAO = new VendingDAOImpl("inventory.txt");
+    private static final VendingService SERVICE = new VendingServiceImpl(DAO);
+    private static final UserIO IO = new UserIOConsoleImpl();
+    private static final VendingView VIEW = new VendingView(IO);
+    private static final VendingController CONTROLLER = new VendingController(SERVICE, VIEW);
     
     public static void main(String[] args) {
-        myController.run();
+        CONTROLLER.run();
     }
 
 }

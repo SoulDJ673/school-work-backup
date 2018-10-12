@@ -31,14 +31,29 @@ public class VendingView {
         this.io = userIO;
     }
 
-    public String menus(String[] options) {
+    private String menus(String[] options) {
         int i = 1;
         for (String option : options) {
             io.print(i + ".) " + option);
             i++;
         }
 
-        return io.readString("Please select the item you wish to purchase: ");
+        return io.readString("Please select the item you wish to purchase: (Ent"
+                + "er q to exit)");
+    }
+
+    private void banners(String titleText) {
+        String bannerCage = ("#################################################"
+                + "#################################");
+
+        //Trim Cage to word length
+        int titleLength = titleText.length();
+        String fittedCage = bannerCage.substring(0, titleLength);
+
+        //Print Title with banner
+        io.print(fittedCage);
+        io.print(titleText);
+        io.print(fittedCage);
     }
 
     public String mainMenu() {
@@ -48,6 +63,8 @@ public class VendingView {
     }
 
     public void displayAvailableItems(List<Item> items) {
+        banners("Items sold by the vending machine");
+        
         for (Item currentItem : items) {
             io.print(currentItem.getId() + ": " + currentItem.getItemName());
         }
@@ -59,6 +76,11 @@ public class VendingView {
                 io.print("Please check to ensure that the inventory file "
                         + "exists/isn't corrupt.");
         }
+    }
+
+    public void displayItem(Item userSelect) {
+        banners(userSelect.getItemName() + " - " + userSelect.getId());
+
     }
 
 }
