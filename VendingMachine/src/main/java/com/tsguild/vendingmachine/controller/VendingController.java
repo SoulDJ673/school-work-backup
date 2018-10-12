@@ -47,23 +47,43 @@ public class VendingController {
 
         while (true) {
 
+            //Load the inventory
             try {
                 service.loadMachine();
             } catch (VendingPersistenceException e) {
                 view.errors(1);
             }
+
+            //List all items in inventory
             view.displayAvailableItems(service.getAllItemsInMachine());
 
+            //Allow user to select an item
             String selection = view.mainMenu();
             selection = selection.toLowerCase();
 
-            getItem(selection);
-
+            //Retrieve item & Display information & Get User Purchase choice
+            displayItem(selection);
         }
     }
 
-    private Item getItem(String slotId) {
-        return service.getOneItem(slotId);
+    private boolean displayItem(String slotId) {
+        Item userSelect = service.getOneItem(slotId);
+        String purchaseChoice = view.displayItem(userSelect);
+
+        boolean purchase;
+        switch (purchaseChoice.toLowerCase()) {
+            case "y":
+            case "yes":
+            case "true":
+                purchase = true;
+            case "n":
+            case "no":
+            case "false":
+            default:
+                purchase = false;
+        }
+
+        return purchase;
     }
 
 }

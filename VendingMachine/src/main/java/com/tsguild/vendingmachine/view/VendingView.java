@@ -64,7 +64,7 @@ public class VendingView {
 
     public void displayAvailableItems(List<Item> items) {
         banners("Items sold by the vending machine");
-        
+
         for (Item currentItem : items) {
             io.print(currentItem.getId() + ": " + currentItem.getItemName());
         }
@@ -78,9 +78,12 @@ public class VendingView {
         }
     }
 
-    public void displayItem(Item userSelect) {
+    public String displayItem(Item userSelect) {
         banners(userSelect.getItemName() + " - " + userSelect.getId());
+        io.print("Amount of item remaining: " + userSelect.getItemCount());
+        io.print("Cost of item: " + userSelect.getItemCost().toString());
 
+        return io.readString("Would you like to purchase this item? (y/N): ");
     }
 
 }
