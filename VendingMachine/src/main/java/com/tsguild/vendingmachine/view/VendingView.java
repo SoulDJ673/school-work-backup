@@ -77,6 +77,8 @@ public class VendingView {
                         + "exists/isn't corrupt.");
                 break;
             case 2:
+                io.print("You don't have enough money to afford that item!");
+                break;
             case 3:
                 io.print("Please enter a valid item code.");
                 break;

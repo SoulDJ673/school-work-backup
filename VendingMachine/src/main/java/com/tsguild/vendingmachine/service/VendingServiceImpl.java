@@ -51,7 +51,6 @@ public class VendingServiceImpl implements VendingService {
 
     @Override
     public ChangePurse purchaseItem(String itemCode, BigDecimal money) throws VendingInsufficientFundsException, VendingNoItemInventoryException, VendingPersistenceException {
-        dao.loadAllItems();
 
         Item selectedItem = dao.getAnItem(itemCode);
         validateItem(selectedItem);
