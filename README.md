@@ -38,5 +38,10 @@
 | 10/08/2018 | LlamaMVC Service Layer Codealong | LlamaMVC/ |
 | 10/09/2018 | Car Lot Service Layer Exercise | Milestone3Basics/.../carlotservicelayer/ |
 
+## Milestone 4
+| Date | Assignment | Directory |
+|:------:|:----------------:|:------------:|
+| 10/29/2018 | FirstTest Exercise | FirstTests/ |
+
 
 ##### Devin Lloyd
