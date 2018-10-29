@@ -13,13 +13,21 @@ public class SomeMethods {
          * 
          * return a + a;
          */
-        
+
         //All tests pass with this code, the correct sum is returned
         return a + b;
     }
 
     public static int multiplyStuff(int a, int b) {
-        return a * a * b;
+        /*
+         * All three tests failed due to the accidental squaring of a
+         *
+         * return a * a * b;
+         */
+
+        //Correct product returned, removed a^2
+        return a * b;
+
     }
 
     public static int returnTheBigger(int a, int b) {
