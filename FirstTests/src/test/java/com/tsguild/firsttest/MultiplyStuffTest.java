@@ -13,9 +13,9 @@ import org.junit.Test;
  *
  * @author souldj673
  */
-public class multiplyStuffTest {
+public class MultiplyStuffTest {
 
-    public multiplyStuffTest() {
+    public MultiplyStuffTest() {
     }
 
     @Before

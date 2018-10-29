@@ -31,7 +31,14 @@ public class SomeMethods {
     }
 
     public static int returnTheBigger(int a, int b) {
-        return a < b ? a : b;
+        /*
+         * All three tests failed, returned the smaller number of the two 
+         * because the < should be >
+         *
+         * return a < b ? a : b;
+         */
+        
+        return a > b ? a : b;
     }
 
 }
