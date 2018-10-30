@@ -8,9 +8,10 @@ package com.tsguild.unittesting.sectionthree;
 /**
  *
  * @author ahill
+ * @author souldj673
  */
 public class ExampleWork {
-    
+
     // When llamas get together they like to bounce on trampolines.
     // However, llamas are very particular about the proper number of trampolines, 
     // and are usually only happy if there are between 24 to 42 (inclusive!).
@@ -39,7 +40,7 @@ public class ExampleWork {
             }
         }
     }
-    
+
     // Given a number of bones, return the number of barks your dog will make!
     // If there is an even number of bones, your dog will bark three times.
     // If there is an odd number, they'll bark twice!
@@ -53,7 +54,13 @@ public class ExampleWork {
     // howManyWoofs(5)  -> "Woof! Woof!"
     // howManyWoofs(0)  -> "..."
     public static String howManyWoofs(int numBones) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (numBones <= 0) {
+            return "...";
+        } else if (numBones % 2 == 0) {
+            return "Woof! Woof! Woof!";
+        } else {
+            return "Woof! Woof!";
+        }
     }
-    
+
 }
