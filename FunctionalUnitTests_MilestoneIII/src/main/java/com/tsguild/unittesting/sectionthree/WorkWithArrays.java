@@ -24,11 +24,11 @@ public class WorkWithArrays {
         int biggestNum = numbers[0];
 
         for (int num : numbers) {
-            if(num > biggestNum) {
+            if (num > biggestNum) {
                 biggestNum = num;
             }
         }
-        
+
         return biggestNum;
     }
 
@@ -41,7 +41,16 @@ public class WorkWithArrays {
     ** multiplyAll( -1 , [ -2 , 0 , 0 , 1 ] ) ->  [ 2 , 0 , 0 , -1 ]
      */
     public static int[] multiplyAll(int multiplier, int[] numbers) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+
+        int i = 0;
+
+        for (int num : numbers) {
+            num = num * multiplier;
+            numbers[i] = num;
+            i++;
+        }
+        
+        return numbers;
     }
 
     /* 
