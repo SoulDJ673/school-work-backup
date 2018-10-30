@@ -25,7 +25,19 @@ public class ExampleWork {
     // areTheLlamasHappy(false, 30) → true
     // areTheLlamasHappy(true, 100) → true
     public static boolean areTheLlamasHappy(boolean ultraBouncy, int trampolines) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (!ultraBouncy) {
+            if (trampolines >= 24 && trampolines <= 42) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (trampolines >= 24) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
     
     // Given a number of bones, return the number of barks your dog will make!
