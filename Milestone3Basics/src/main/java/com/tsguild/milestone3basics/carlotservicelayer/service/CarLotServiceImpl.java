@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class CarLotServiceImpl implements CarLotService {
 
-    CarLotDAO dao = new CarLotDAO();
+    CarLotDAO dao;
 
     @Override
     public Car getACar(String VIN) {

@@ -1,3 +1,5 @@
+/*
+
 package com.tsguild.milestone3basics.enums;
 
 import java.util.Scanner;
@@ -6,6 +8,8 @@ import java.util.Scanner;
  *
  * @author souldj673
  */
+
+/*
 public class DaysTilFriday {
 
     Scanner userInput = new Scanner(System.in);
@@ -21,3 +25,4 @@ public class DaysTilFriday {
         }
     }
 }
+*/
