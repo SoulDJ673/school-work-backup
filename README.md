@@ -37,11 +37,13 @@
 | 10/05/2018 | VendingMachine Exercise | VendingMachine/ |
 | 10/08/2018 | LlamaMVC Service Layer Codealong | LlamaMVC/ |
 | 10/09/2018 | Car Lot Service Layer Exercise | Milestone3Basics/.../carlotservicelayer/ |
+| 10/29/2018 | FirstTest Exercise | FirstTests/ |
+| 10/30/2018 | Stateless Unit Testing - JUnit Exercises | Milestone3Basics/.../testing/ |
+| 10/30/2018 | Functional Unit Tests Exercise |  FunctionalUnitTests_MilestoneIII |
 
 ## Milestone 4
 | Date | Assignment | Directory |
 |:------:|:----------------:|:------------:|
-| 10/29/2018 | FirstTest Exercise | FirstTests/ |
 
 
 ##### Devin Lloyd
