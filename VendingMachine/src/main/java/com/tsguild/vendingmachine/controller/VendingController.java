@@ -101,6 +101,16 @@ public class VendingController {
 
         boolean purchase = false; //Avoid purchasing null items
 
+        //Display Balance
+        switch (slotId.toLowerCase()) {
+            case "bal":
+            case "balance":
+            case "money":
+            case "$":
+                view.displayChangePurseAmount(userPurse);
+                return false;
+        }
+
         try {
             Item userSelect = service.getOneItem(slotId);
             String purchaseChoice = view.displayItem(userSelect);

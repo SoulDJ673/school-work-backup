@@ -16,7 +16,8 @@
  */
 package com.tsguild.vendingmachine.view;
 
-import com.tsguild.vendingmachine.dto.Item;
+import com.tsguild.vendingmachine.dto.*;
+import java.math.RoundingMode;
 import java.util.List;
 
 /**
@@ -39,10 +40,11 @@ public class VendingView {
         }
 
         String itemCode = io.readString("Please select the item you wish to "
-                + "purchase: (Enter q to exit)");
-        
+                + "purchase: (Enter q to exit, or $ to view your change purse "
+                + "balance)");
+
         spacer();
-        
+
         return itemCode;
     }
 
@@ -108,9 +110,9 @@ public class VendingView {
 
         String choiceString = io.readString("Would you like to purchase this it"
                 + "em? (y/N): ");
-        
+
         spacer();
-        
+
         return choiceString;
     }
 
@@ -118,19 +120,27 @@ public class VendingView {
         int[] coins = new int[4];
 
         banners("Money in your change purse");
-        
+
         coins[0] = io.readInt("How many pennies do you have in your change purse?");
         coins[1] = io.readInt("How many nickels do you have in your change purse?");
         coins[2] = io.readInt("How many dimes do you have in your change purse?");
         coins[3] = io.readInt("How many quarters do you have in your change purse?");
-        
+
         spacer();
-        
+
         return coins;
     }
-    
+
     private void spacer() {
         io.print("\n\n\n");
+    }
+
+    public void displayChangePurseAmount(ChangePurse userPurse) {
+        banners("Change Purse Balance");
+
+        io.print("$" + userPurse.getTotal().setScale(2, RoundingMode.HALF_DOWN).toString());
+
+        spacer();
     }
 
 }

@@ -3,8 +3,8 @@
 1c::Chex Mix::2.0::15
 2a::Skittles::1.0::30
 2b::Sour Skittles::1.0::0
-2c::Twix::1.0::15
-3a::Spooky Skeletons::20::4
+2c::Twix::1.0::14
+3a::Spooky Skeletons::20::3
 4a::Pep-See::1.5::7
 4b::Spwright::1.5::5
 4c::Generic Carbonated Beverage::1.5::10
