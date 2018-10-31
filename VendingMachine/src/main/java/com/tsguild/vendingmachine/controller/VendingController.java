@@ -90,7 +90,7 @@ public class VendingController {
             } catch (VendingInsufficientFundsException ex) {
                 view.errors(2);
             } catch (VendingNoItemInventoryException ex) {
-                view.errors(3);
+                view.errors(4);
             } catch (VendingPersistenceException ex) {
                 view.errors(1);
             }
@@ -98,28 +98,34 @@ public class VendingController {
     }
 
     private boolean displayItem(String slotId) {
+
+        boolean purchase = false; //Avoid purchasing null items
+
         try {
             Item userSelect = service.getOneItem(slotId);
             String purchaseChoice = view.displayItem(userSelect);
 
-            boolean purchase;
             switch (purchaseChoice.toLowerCase()) {
                 case "y":
                 case "yes":
                 case "true":
                     purchase = true;
                     break;
-                default:
+                case "n":
+                case "no":
+                case "false":
                     purchase = false;
                     break;
+                default:
+                    purchase = false;
+                    view.errors(5);
+                    break;
             }
-
-            return purchase;
 
         } catch (NullPointerException e) {
             view.errors(3);
         }
-        
-        return false;
+
+        return purchase;
     }
 }

@@ -38,8 +38,12 @@ public class VendingView {
             i++;
         }
 
-        return io.readString("Please select the item you wish to purchase: (Ent"
-                + "er q to exit)");
+        String itemCode = io.readString("Please select the item you wish to "
+                + "purchase: (Enter q to exit)");
+        
+        spacer();
+        
+        return itemCode;
     }
 
     private void banners(String titleText) {
@@ -75,14 +79,24 @@ public class VendingView {
             case 1:
                 io.print("Please check to ensure that the inventory file "
                         + "exists/isn't corrupt.");
+                spacer();
                 break;
             case 2:
                 io.print("You don't have enough money to afford that item!");
+                spacer();
                 break;
             case 3:
                 io.print("Please enter a valid item code.");
+                spacer();
                 break;
             case 4:
+                io.print("There is no more of that item, sorry for the "
+                        + "inconvienience!");
+                spacer();
+                break;
+            case 5:
+                io.print("Invalid choice.  Defaulting to no...");
+                spacer();
                 break;
         }
     }
@@ -92,7 +106,12 @@ public class VendingView {
         io.print("Amount of item remaining: " + userSelect.getItemCount());
         io.print("Cost of item: " + userSelect.getItemCost().toString());
 
-        return io.readString("Would you like to purchase this item? (y/N): ");
+        String choiceString = io.readString("Would you like to purchase this it"
+                + "em? (y/N): ");
+        
+        spacer();
+        
+        return choiceString;
     }
 
     public int[] changePursePopulation() {
@@ -105,7 +124,13 @@ public class VendingView {
         coins[2] = io.readInt("How many dimes do you have in your change purse?");
         coins[3] = io.readInt("How many quarters do you have in your change purse?");
         
+        spacer();
+        
         return coins;
+    }
+    
+    private void spacer() {
+        io.print("\n\n\n");
     }
 
 }
