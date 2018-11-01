@@ -120,6 +120,9 @@ public class VendingView {
         int[] coins = new int[4];
 
         banners("Money in your change purse");
+        
+        io.print("\nAs you approach a Vending Machine you check how much change "
+                + "you have in your change purse...\n");
 
         coins[0] = io.readInt("How many pennies do you have in your change purse?");
         coins[1] = io.readInt("How many nickels do you have in your change purse?");
