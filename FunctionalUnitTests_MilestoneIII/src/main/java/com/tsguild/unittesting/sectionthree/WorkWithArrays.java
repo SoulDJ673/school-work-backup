@@ -49,7 +49,7 @@ public class WorkWithArrays {
             numbers[i] = num;
             i++;
         }
-        
+
         return numbers;
     }
 
@@ -63,7 +63,33 @@ public class WorkWithArrays {
     ** camelCaseIt( {"DO", "OR", "DO", "NOT", "THERE", "IS", "NO", "TRY"}  ) ->  "doOrDoNotThereIsNoTry"
      */
     public static String camelCaseIt(String[] words) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+
+        String first = words[0];
+
+        String[] camelCased = new String[words.length];
+        int i = 0;
+
+        for (String word : words) {
+            if (i == 0) {
+                camelCased[0] = word.toLowerCase();
+                i++;
+            } else {
+                word = word.toUpperCase();
+                String exceptFirst = word.substring(1);
+                exceptFirst = exceptFirst.toLowerCase();
+                word = word.replace(exceptFirst.toUpperCase(), exceptFirst);
+                camelCased[i] = word;
+                i++;
+
+            }
+        }
+
+        String stringified = "";
+        for (String camelWord : camelCased) {
+            stringified += camelWord;
+        }
+
+        return stringified;
     }
 
     /* 

@@ -49,7 +49,7 @@ public class ArraysBiggestNumTest {
         int[] testArray = {-9000, -700, -50, -3};
 
         int biggestNum = WorkWithArrays.maxOfArray(testArray);
-        
+
         Assert.assertEquals("This should be -3", -3, biggestNum);
     }
 
