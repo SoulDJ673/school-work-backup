@@ -115,14 +115,18 @@ public class WorkWithArrays {
                 colorKeeper.put(color, 1);
             }
         }
-        
-        Collection<Integer> occurances = colorKeeper.values();
-        
+
         int mode = 0;
-        
-        for (int occurance : occurances) {
-            
+        String modeColor = null;
+
+        for (String entry : colors) {
+            if (colorKeeper.get(entry) > mode && colorKeeper.get(entry) != mode) {
+                mode = colorKeeper.get(entry);
+                modeColor = entry;
+            }
         }
+
+        return modeColor;
     }
 
     /* 
