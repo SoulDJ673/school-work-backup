@@ -24,7 +24,7 @@ public class App {
         ClassRosterController controller
                 = new ClassRosterController(myService, myView);
          */
-        ApplicationContext ctx
+         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("applicationContext.xml");
         ClassRosterController controller
                 = ctx.getBean("controller", ClassRosterController.class);
