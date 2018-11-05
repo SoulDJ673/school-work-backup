@@ -5,7 +5,7 @@
  */
 package com.tsguild.unittesting.sectionthree;
 
-import java.util.Collection;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -138,7 +138,14 @@ public class WorkWithArrays {
     ** pointFree( [ -9.9 , -700 , -.5  ]  ) ->  -5
      */
     public static int pointFree(double[] numbers) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+        int[] thisIsPointless = new int[numbers.length];
+
+        int i = 0;
+        for (double number : numbers) {
+            BigDecimal numberD = new BigDecimal(new Double(number));
+            System.out.println(numberD.unscaledValue());
+        }
+        return 0;
     }
 
 }
