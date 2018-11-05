@@ -11,4 +11,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <name>ClassRoster</name>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>4.3.4.RELEASE</version>
+    </dependency>
 </project>

@@ -1,9 +1,6 @@
 package com.tsguild.classroster;
 
 import com.tsguild.classroster.controller.*;
-import com.tsguild.classroster.dao.*;
-import com.tsguild.classroster.service.*;
-import com.tsguild.classroster.ui.*;
 
 /**
  *
@@ -12,15 +9,23 @@ import com.tsguild.classroster.ui.*;
 public class App {
 
     public static void main(String[] args) {
-        //Loose Coupling
-        UserIO myIo = new UserIOConsoleImpl(); //UserIO instantiation
-        ClassRosterView myView = new ClassRosterView(myIo); //UI instantiation
-        ClassRosterDao myDao = new ClassRosterDaoFileImpl(); //Dao instantiation
-        CRAuditDao myAuditDao = new CRAuditDaoFileImpl(); //AuditDao instantiation
-        ClassRosterServiceLayer myService = new ClassRosterServiceLayerImpl(myDao, myAuditDao); //Service Layer instantiation
-        ClassRosterController controller = new ClassRosterController(myService, myView); //Controller instantiation
-
-        //Wake Up Controller
+        /*
+        Use Spring for dependency injection, let's remove these
+        
+        UserIO myIo = new UserIOConsoleImpl();
+        ClassRosterView myView = new ClassRosterView(myIo);
+        ClassRosterDao myDao = new ClassRosterDaoFileImpl();
+        CRAuditDao myAuditDao
+                = new CRAuditDaoFileImpl();
+        ClassRosterServiceLayer myService
+                = new ClassRosterServiceLayerImpl(myDao, myAuditDao);
+        ClassRosterController controller
+                = new ClassRosterController(myService, myView);
+         */
+        ApplicationContext ctx
+                = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassRosterController controller
+                = ctx.getBean("controller", ClassRosterController.class);
         controller.run();
     }
 }

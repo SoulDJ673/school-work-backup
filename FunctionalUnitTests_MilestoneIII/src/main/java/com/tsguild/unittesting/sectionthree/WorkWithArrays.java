@@ -5,6 +5,10 @@
  */
 package com.tsguild.unittesting.sectionthree;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author ahill
@@ -102,7 +106,23 @@ public class WorkWithArrays {
     ** mostCommonColor( {"Green", "Green", "Green", "Green", "Green", "Red", "Green"}  ) ->  "Green"
      */
     public static String mostCommonColor(String[] colors) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+        Map<String, Integer> colorKeeper = new HashMap<>();
+
+        for (String color : colors) {
+            if (colorKeeper.containsKey(color)) {
+                colorKeeper.replace(color, (colorKeeper.get(color) + 1));
+            } else {
+                colorKeeper.put(color, 1);
+            }
+        }
+        
+        Collection<Integer> occurances = colorKeeper.values();
+        
+        int mode = 0;
+        
+        for (int occurance : occurances) {
+            
+        }
     }
 
     /* 
