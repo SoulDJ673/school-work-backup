@@ -1,5 +1,7 @@
 # Table of Contents
- ## Milestone 1
+
+## Milestone 1
+ 
 | Assignment | Directory |
 |:---------------:|:------------:|
 | All Practice Programs | Milestone1Exercises/ |
@@ -7,7 +9,9 @@
 | Llama Window Shop example Variable Exercise - Code Along (Incomplete) | Llama_Windows_Example |
 | All Labs | ClassCodealongsMilestone1/src/main/java/com/tsguild/milestone1/labs |
 | Summative Assignments | Milestone1Summative/ |
- ## Milestone 2
+
+## Milestone 2
+ 
 | Date | Assignment | Directory |
 |:----:|:----------:|:---------:|
 | 08/20/2018 | Dog Contructor Codealong | Milestone2/.../codealong/ |
@@ -24,7 +28,9 @@
 | 09/20/2018 | LlamaMVC CodeAlong | LlamaMVC/ |
 | 09/24/2018 | DVD Library Summative Assessment | DVDLibrary/ |
 | 09/27/2018 | ClassRoster Service Layer CodeAlong | ClassRoster/ |
- ## Milestone 3
+
+## Milestone 3
+
 | Date | Assignment | Directory |
 |:----:|:----------:|:---------:|
 | 10/02/2018 | BigDecimal Class Practice | Milestone3Basics/.../bigdecimalwork |
@@ -36,7 +42,11 @@
 | 10/29/2018 | FirstTest Exercise | FirstTests/ |
 | 10/30/2018 | Stateless Unit Testing - JUnit Exercises | Milestone3Basics/.../testing/ |
 | 10/30/2018 | Functional Unit Tests Exercise |  FunctionalUnitTests_MilestoneIII |
- ## Milestone 4
+
+## Milestone 4
+
 | Date | Assignment | Directory |
 |:------:|:----------------:|:------------:|
- ##### Devin Lloyd
+| 11/07/2018 | Llama Factory Spring DI Codealong | SimpleSpringInjection/ |
+
+##### Devin Lloyd
