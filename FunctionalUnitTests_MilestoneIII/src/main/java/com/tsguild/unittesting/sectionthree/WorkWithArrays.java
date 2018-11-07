@@ -5,7 +5,6 @@
  */
 package com.tsguild.unittesting.sectionthree;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -142,8 +141,25 @@ public class WorkWithArrays {
 
         int i = 0;
         for (double number : numbers) {
-            BigDecimal numberD = new BigDecimal(new Double(number));
-            System.out.println(numberD.unscaledValue());
+            //Remove Leading/Trailing 0s from number
+            String numberS = "" + number + "";
+            numberS = numberS.replace("0", " ");
+            numberS = numberS.trim();
+            numberS = numberS.replace(" ", "0");
+
+            //Remove Decimal
+            char[] numberC = numberS.toCharArray();
+            char[] newNumberC = new char[numberC.length - 1];
+
+            int x = 0;
+            for (char digit : numberC) {
+                char[] oneChar = {digit};
+                if (!oneChar.toString().equalsIgnoreCase(".")) {
+                    newNumberC[x] = digit;
+                    i++;
+                }
+            }
+
         }
         return 0;
     }
