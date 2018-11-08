@@ -66,6 +66,9 @@ public class WorkWithArrays {
     ** camelCaseIt( {"DO", "OR", "DO", "NOT", "THERE", "IS", "NO", "TRY"}  ) ->  "doOrDoNotThereIsNoTry"
      */
     public static String camelCaseIt(String[] words) {
+        
+        if(words == null) return null;
+        if(words.length == 0) return "";
 
         String first = words[0];
 

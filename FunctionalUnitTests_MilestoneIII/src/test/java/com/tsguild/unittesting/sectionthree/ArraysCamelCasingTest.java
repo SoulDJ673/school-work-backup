@@ -61,4 +61,36 @@ public class ArraysCamelCasingTest {
         Assert.assertEquals("Should be doOrDoNotThereIsNoTry", "doOrDoNotThereIsNoTry", result);
     }
 
+    @Test
+    public void nullArray() {
+        String[] testArray = null;
+        String result = camelCaseIt(testArray);
+
+        Assert.assertEquals("Should be null", null, result);
+    }
+    
+    @Test
+    public void numberArray() {
+        String[] testArray = {"1", "2", "3"};
+        String result = camelCaseIt(testArray);
+        
+        Assert.assertEquals("Should be 123", "123", result);
+    }
+    
+    @Test
+    public void whiteSpace() {
+        String[] testArray = {" "};
+        String result = camelCaseIt(testArray);
+        
+        Assert.assertEquals("Should be blank", " ", result);
+    }
+    
+    @Test
+    public void emptyArray(){
+        String[] testArray = {};
+        String result = camelCaseIt(testArray);
+        
+        Assert.assertEquals("Should return blank", "", result);
+    }
+
 }
