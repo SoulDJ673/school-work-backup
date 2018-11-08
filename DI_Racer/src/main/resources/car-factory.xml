@@ -22,23 +22,40 @@
     <bean id="lowPower" class="com.tsguild.exercises.racer.engines.LowPowerEngine"/>
     <bean id="efficient" class="com.tsguild.exercises.racer.engines.EfficientEngine"/>
     <bean id="highPower" class="com.tsguild.exercises.racer.engines.HighPowerEngine"/>
+    <bean id="broken" class="com.tsguild.exercises.racer.engines.BrokenEngine"/>
     
     <!-- Vehicles -->
     <bean id="hamsterBall" class="com.tsguild.exercises.racer.vehicles.HamsterBall"/>
     <bean id="jwBeetle" class="com.tsguild.exercises.racer.vehicles.JWBeetle">
-        <contructor-arg ref="hybrid"/>
-        <property name="gasTank" value="15.00"/>
+        <constructor-arg ref="hybrid"/>
+        <property name="gasTank" value="25.00"/>
     </bean>
     <bean id="pixelTank" class="com.tsguild.exercises.racer.vehicles.PixelTank">
         <constructor-arg ref="lowPower"/>
-        <property name="gasTank" value="100"/>
+        <property name="gasTank" value="25"/>
     </bean>
     <bean id="digitalPorche" class="com.tsguild.exercises.racer.vehicles.DigitalPorshe">
         <constructor-arg ref="efficient"/>
-        <property name="gasTank" value="12.00"/>
+        <property name="gasTank" value="25.00"/>
     </bean>
     <bean name="dragRacer" class="com.tsguild.exercises.racer.vehicles.DragRacer">
         <constructor-arg ref="highPower"/>
-        <property name="gasTank" value="20.00"/>
+        <property name="gasTank" value="25.00"/>
     </bean>
+    <bean id="theJunker" class="com.tsguild.exercises.racer.vehicles.Vehicle">
+        <constructor-arg ref="broken"/>
+        <property name="gasTank" value="25.00"/>
+    </bean>
+    
+    <!-- Helpers -->
+    <bean id="announcer" class="com.tsguild.exercises.racer.helpers.RealAnnouncer"/>
+    <bean id="raceMechanic" class="com.tsguild.exercises.racer.helpers.Mechanic"/>
+    
+    <!-- Race -->
+    <bean id="race" class="com.tsguild.exercises.racer.tracks.Race">
+        <constructor-arg name="trackLength" value="100"/>
+        <constructor-arg name="raceAnnouncer" ref="announcer"/>
+        <property name="mechanic" ref="raceMechanic"/>
+    </bean>
+    
 </beans>
