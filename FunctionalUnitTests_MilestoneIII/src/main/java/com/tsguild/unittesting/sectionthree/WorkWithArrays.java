@@ -66,9 +66,13 @@ public class WorkWithArrays {
     ** camelCaseIt( {"DO", "OR", "DO", "NOT", "THERE", "IS", "NO", "TRY"}  ) ->  "doOrDoNotThereIsNoTry"
      */
     public static String camelCaseIt(String[] words) {
-        
-        if(words == null) return null;
-        if(words.length == 0) return "";
+
+        if (words == null) {
+            return null;
+        }
+        if (words.length == 0) {
+            return "";
+        }
 
         String first = words[0];
 
@@ -110,12 +114,29 @@ public class WorkWithArrays {
     public static String mostCommonColor(String[] colors) {
         Map<String, Integer> colorKeeper = new HashMap<>();
 
+        //Validity Check
+        if (colors == null) {
+            return null;
+        } else if (colors.length < 1) {
+            return "";
+        }
+
         for (String color : colors) {
             if (colorKeeper.containsKey(color)) {
                 colorKeeper.replace(color, (colorKeeper.get(color) + 1));
             } else {
-                colorKeeper.put(color, 1);
+                //Ensure that the strings aren't actually numbers
+                try {
+                    int lol = Integer.parseInt(color);
+                } catch (Exception e) {
+                    colorKeeper.put(color, 1);
+                }
             }
+        }
+
+        //Check to make sure that there are colors in the HashMap
+        if (colorKeeper.isEmpty()) {
+            return null;
         }
 
         int mode = 0;
@@ -135,14 +156,14 @@ public class WorkWithArrays {
     ** Given an array of doubles, return the biggest number of the lot ... as if the decimal had gone missing!
     **
     ** Ex:
-    ** pointFree( [1.1, .22]  ) ->  11
+    ** pointFree( [1.1, .22]  ) ->  22
     ** pointFree( [ .039 , 20 , .005005 ]  ) ->  5005
     ** pointFree( [ -9.9 , -700 , -.5  ]  ) ->  -5
      */
     public static int pointFree(double[] numbers) {
         int[] thisIsPointless = new int[numbers.length];
 
-        int i = 0;
+        int i = 0; //Keeps track of which number
         for (double number : numbers) {
             //Remove Leading/Trailing 0s from number
             String numberS = "" + number + "";
@@ -152,19 +173,28 @@ public class WorkWithArrays {
 
             //Remove Decimal
             char[] numberC = numberS.toCharArray();
-            char[] newNumberC = new char[numberC.length - 1];
+            char[] newNumberC = new char[numberC.length];
 
-            int x = 0;
+            int x = -1; //Keeps track of place in number
             for (char digit : numberC) {
                 char[] oneChar = {digit};
+                String stringified = oneChar.toString();
                 if (!oneChar.toString().equalsIgnoreCase(".")) {
+                    x++;
                     newNumberC[x] = digit;
-                    i++;
                 }
             }
 
+            //Convert number back to String
+            numberS = newNumberC.toString();
+
+            //Add to thisIsPointless
+            thisIsPointless[i] = Integer.parseInt(numberS);
+            i++;
         }
-        return 0;
+
+        //Return largest number
+        return maxOfArray(thisIsPointless);
     }
 
 }

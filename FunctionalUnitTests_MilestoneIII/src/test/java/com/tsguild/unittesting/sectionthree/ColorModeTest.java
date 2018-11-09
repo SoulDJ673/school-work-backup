@@ -18,6 +18,7 @@ package com.tsguild.unittesting.sectionthree;
 
 import static com.tsguild.unittesting.sectionthree.WorkWithArrays.mostCommonColor;
 import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,8 +58,32 @@ public class ColorModeTest {
         String[] testArray = {"Green", "Green", "Green", "Green", "Green",
             "Red", "Green"};
         String modeColor = mostCommonColor(testArray);
-        
+
         Assert.assertEquals("Should return Green", "Green", modeColor);
+    }
+
+    @Test
+    public void nullArray() {
+        String[] testArray = null;
+        String modeColor = mostCommonColor(testArray);
+
+        assertEquals("Should return null", null, modeColor);
+    }
+
+    @Test
+    public void emptyArray() {
+        String[] testArray = {};
+        String modeColor = mostCommonColor(testArray);
+
+        assertEquals("Should be empty", "", modeColor);
+    }
+    
+    @Test
+    public void allNumberStrings() {
+        String[] testArray = {"1", "1", "3", "2", "1", "3"};
+        String modeColor = mostCommonColor(testArray);
+        
+        assertEquals("Should return null", null, modeColor);
     }
 
 }

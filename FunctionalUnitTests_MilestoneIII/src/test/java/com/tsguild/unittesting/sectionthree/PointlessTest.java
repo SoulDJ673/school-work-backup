@@ -17,6 +17,7 @@
 package com.tsguild.unittesting.sectionthree;
 
 import static com.tsguild.unittesting.sectionthree.WorkWithArrays.pointFree;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,12 +34,22 @@ public class PointlessTest {
     public void setUp() {
     }
 
+    /* 
+    ** Given an array of doubles, return the biggest number of the lot ... as if the decimal had gone missing!
+    **
+    ** Ex:
+    ** pointFree( [1.1, .22]  ) ->  22
+    ** pointFree( [ .039 , 20 , .005005 ]  ) ->  5005
+    ** pointFree( [ -9.9 , -700 , -.5  ]  ) ->  -5
+     */
     @Test
     public void intifyTest() {
         double[] testArray = {6.9, .69, .00006009, 690.00};
+
+        int result = pointFree(testArray);
         
-        pointFree(testArray);
-        
+        assertEquals("Should be 6009", 6009, result);
+
     }
 
 }
