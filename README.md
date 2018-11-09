@@ -48,5 +48,6 @@
 | Date | Assignment | Directory |
 |:------:|:----------------:|:------------:|
 | 11/07/2018 | Llama Factory Spring DI Codealong | SimpleSpringInjection/ |
+| 11/09/2018 | Camel Stateful Testing Codealong | Milestone4/ |
 
 ##### Devin Lloyd
