@@ -88,6 +88,7 @@ public class Student {
     //toString() Fix
     @Override
     public String toString() {
-        return "Student{" + "firstName=" + firstName + ", lastName=" + lastName + ", studentId=" + studentId + ", cohort=" + cohort + '}';
+        return "Student{" + "firstName=" + firstName + ", lastName=" + lastName
+                + ", studentId=" + studentId + ", cohort=" + cohort + '}';
     }
 }
