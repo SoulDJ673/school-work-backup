@@ -12,11 +12,11 @@ import org.junit.Test;
  *
  * @author souldj673
  */
-public class MonsterDaoTest {
+public class MonsterDaoAddTest {
 
     MonsterDao testDao;
 
-    public MonsterDaoTest() {
+    public MonsterDaoAddTest() {
     }
 
     @Before
@@ -25,16 +25,19 @@ public class MonsterDaoTest {
     }
 
     @Test
-    public void addAndGetMonsterTest() {
+    public void addMonsterTest() {
 
         //Creating Monster...
         Monster jeff = new Monster("Jeff", LIZARDMAN, 7, "iced creams");
 
         //Adding to Map...
-        testDao.addMonster(0, jeff);
-        Monster returnedMonster = testDao.getMonster(0);
+        Monster returnedMonster = testDao.addMonster(0, jeff);
+        Monster addedMonster = testDao.getMonster(0);
 
         //Asserting...
+        Assert.assertEquals("Making sure that the monster added and the monster"
+                + " in the map are the same...", true,
+                addedMonster.toString().equals(jeff.toString()));
         Assert.assertEquals("Checking name...", jeff.getName(), returnedMonster.getName());
         Assert.assertEquals("Checking type...", jeff.getType(), returnedMonster.getType());
         Assert.assertEquals("Checking people munch count...", jeff.getPeopleEaten(), returnedMonster.getPeopleEaten());
@@ -44,7 +47,7 @@ public class MonsterDaoTest {
 
     @Test
     public void addMultiAndGetAllMonsterTest() {
-        
+
         //Creating Monsters...
         Monster jeff = new Monster("Jeff", LIZARDMAN, 7, "iced creams");
         Monster ethan = new Monster("Ethan", VAMPIRE, 14, "SPF 100 Sunscreen");
@@ -54,18 +57,17 @@ public class MonsterDaoTest {
         testDao.addMonster(0, jeff);
         testDao.addMonster(1, ethan);
         testDao.addMonster(2, owo);
-        
+
         //Retrieving Monsters...
         List<Monster> monsters = testDao.getAllMonsters();
-        
+
         //Asserting...
         Assert.assertEquals("Checking Monster Count...", 3, monsters.size());
-        Assert.assertEquals("Checking to make sure Jeff is here...", true, 
+        Assert.assertEquals("Checking to make sure Jeff is here...", true,
                 monsters.contains(jeff));
-        Assert.assertEquals("Checking to make sure Ethan is here...", true, 
+        Assert.assertEquals("Checking to make sure Ethan is here...", true,
                 monsters.contains(ethan));
-        Assert.assertEquals("Checking to make sure OwO is here...", true, 
+        Assert.assertEquals("Checking to make sure OwO is here...", true,
                 monsters.contains(owo));
     }
-
 }
