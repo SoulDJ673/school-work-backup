@@ -55,20 +55,42 @@ public class MonsterDaoGetTest {
         List<Monster> monsters = testDao.getAllMonsters();
 
         //Make sure they're all in there...
-        Assert.assertEquals("Making sure Jeff is here...", true, 
+        Assert.assertEquals("Making sure Jeff is here...", true,
                 monsters.contains(jeff));
-        Assert.assertEquals("Making sure Ethan is here...", true, 
+        Assert.assertEquals("Making sure Ethan is here...", true,
                 monsters.contains(ethan));
-        Assert.assertEquals("Making sure OwO is here...", true, 
+        Assert.assertEquals("Making sure OwO is here...", true,
                 monsters.contains(owo));
-        
+
         //Validating Identities...
-        Assert.assertEquals("Making sure Jeff is Jeff...", true, 
+        Assert.assertEquals("Making sure Jeff is Jeff...", true,
                 monsters.get(0).toString().equals(jeff.toString()));
-        Assert.assertEquals("Making sure Ethan is Ethan...", true, 
+        Assert.assertEquals("Making sure Ethan is Ethan...", true,
                 monsters.get(1).toString().equals(ethan.toString()));
-        Assert.assertEquals("Making sure OwO is OwO...", true, 
+        Assert.assertEquals("Making sure OwO is OwO...", true,
                 monsters.get(2).toString().equals(owo.toString()));
     }
 
+    @Test
+    public void getInvalidTest() {
+        //Get Invalid monster...
+        Monster nullMonster = testDao.getMonster(7);
+
+        //Asserting...
+        Assert.assertEquals("Making sure the invalid id returns null...", null,
+                nullMonster);
+    }
+
+    @Test
+    public void getAllEmptyTest() {
+        //Need an unpopulated Map...
+        MonsterDao testDaoWithEmptyMap = new AGoodMonsterDao();
+
+        //Get All from the empty Map
+        List<Monster> emptyList = testDaoWithEmptyMap.getAllMonsters();
+
+        //Asserting...
+        Assert.assertEquals("Should return an empty list...", true,
+                emptyList.isEmpty());
+    }
 }
