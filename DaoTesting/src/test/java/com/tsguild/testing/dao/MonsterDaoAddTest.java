@@ -31,17 +31,17 @@ public class MonsterDaoAddTest {
         Monster jeff = new Monster("Jeff", LIZARDMAN, 7, "iced creams");
 
         //Adding to Map...
-        Monster returnedMonster = testDao.addMonster(0, jeff);
+        testDao.addMonster(0, jeff);
         Monster addedMonster = testDao.getMonster(0);
 
         //Asserting...
         Assert.assertEquals("Making sure that the monster added and the monster"
                 + " in the map are the same...", true,
                 addedMonster.toString().equals(jeff.toString()));
-        Assert.assertEquals("Checking name...", jeff.getName(), returnedMonster.getName());
-        Assert.assertEquals("Checking type...", jeff.getType(), returnedMonster.getType());
-        Assert.assertEquals("Checking people munch count...", jeff.getPeopleEaten(), returnedMonster.getPeopleEaten());
-        Assert.assertEquals("Checking favorite food...", jeff.getFavoriteFood(), returnedMonster.getFavoriteFood());
+        Assert.assertEquals("Checking name...", jeff.getName(), addedMonster.getName());
+        Assert.assertEquals("Checking type...", jeff.getType(), addedMonster.getType());
+        Assert.assertEquals("Checking people munch count...", jeff.getPeopleEaten(), addedMonster.getPeopleEaten());
+        Assert.assertEquals("Checking favorite food...", jeff.getFavoriteFood(), addedMonster.getFavoriteFood());
 
     }
 
@@ -69,5 +69,21 @@ public class MonsterDaoAddTest {
                 monsters.contains(ethan));
         Assert.assertEquals("Checking to make sure OwO is here...", true,
                 monsters.contains(owo));
+    }
+
+    @Test
+    public void addNullTest() {
+        //Creating null Monster...
+        Monster nullMonster = null;
+
+        //Adding to Map...
+        testDao.addMonster(0, nullMonster);
+        Monster addedMonster = testDao.getMonster(0);
+
+        //Asserting...
+        Assert.assertEquals("Making sure addedMonster & nullMonster are the sam"
+                + "e...", true, nullMonster == addedMonster);
+        Assert.assertEquals("The added Monster should be null...", null,
+                addedMonster);
     }
 }
