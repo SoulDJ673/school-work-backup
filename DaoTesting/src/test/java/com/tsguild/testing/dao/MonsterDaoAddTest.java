@@ -1,8 +1,10 @@
 package com.tsguild.testing.dao;
 
-import com.tsguild.testing.dao.implementations.AGoodMonsterDao;
+import com.tsguild.testing.dao.implementations.*;
 import com.tsguild.testing.model.Monster;
-import static com.tsguild.testing.model.MonsterType.*;
+import static com.tsguild.testing.model.MonsterType.LIZARDMAN;
+import static com.tsguild.testing.model.MonsterType.VAMPIRE;
+import static com.tsguild.testing.model.MonsterType.YETI;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;

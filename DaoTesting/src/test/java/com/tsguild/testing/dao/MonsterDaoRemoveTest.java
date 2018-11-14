@@ -1,6 +1,6 @@
 package com.tsguild.testing.dao;
 
-import com.tsguild.testing.dao.implementations.AGoodMonsterDao;
+import com.tsguild.testing.dao.implementations.*;
 import com.tsguild.testing.model.Monster;
 import static com.tsguild.testing.model.MonsterType.LIZARDMAN;
 import static com.tsguild.testing.model.MonsterType.VAMPIRE;
@@ -84,12 +84,12 @@ public class MonsterDaoRemoveTest {
         Assert.assertEquals("Verifying OwO's identity...", true,
                 owo.toString().equals(removedMonster3.toString()));
     }
-    
+
     @Test
     public void removeInvalidMonsterTest() {
         //No monsters should be in here...
         Monster removedMonster = testDao.removeMonster(4);
-        
+
         //Asserting...
         Assert.assertEquals("Removing the monster with an ID of 4... Doesn't ex"
                 + "ist, should get a null...", null, removedMonster);
