@@ -132,6 +132,11 @@ public class MonsterDaoUpdateTest {
         //Update...
         testDao.updateMonster(0, updatedJeffAgain); //Same ID...
 
+        //Proof that the peopleEaten count is being used as Key
+        for (Monster monster : testDao.getAllMonsters()) {
+            System.out.println(monster.toString());
+        }
+
         //Assert
         Assert.assertEquals("There should still be only one Jeff...", false,
                 testDao.getAllMonsters().contains(updatedJeff));
