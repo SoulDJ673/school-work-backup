@@ -20,6 +20,7 @@ import com.tsguild.testing.dao.implementations.*;
 import com.tsguild.testing.model.Monster;
 import static com.tsguild.testing.model.MonsterType.LIZARDMAN;
 import static com.tsguild.testing.model.MonsterType.VAMPIRE;
+import static com.tsguild.testing.model.MonsterType.WEREWOLF;
 import static com.tsguild.testing.model.MonsterType.YETI;
 import java.util.List;
 import org.junit.Assert;
@@ -98,5 +99,18 @@ public class MonsterDaoUpdateTest {
                 monsters.get(1).toString().equals(updatedEthan.toString()));
         Assert.assertEquals("Making sure that new OwO is updatedOwO...", true,
                 monsters.get(2).toString().equals(updatedOwO.toString()));
+    }
+
+    @Test
+    public void updateNonExistentTest() {
+        //Create Monster
+        Monster wolfo = new Monster("Wolfo", WEREWOLF, 420, "^w^");
+
+        //Update...
+        testDao.updateMonster(4, wolfo);
+
+        //Assert
+        Assert.assertEquals("Making sure Wolfo isn't in Map...", false,
+                testDao.getAllMonsters().contains(wolfo));
     }
 }
