@@ -26,7 +26,7 @@ public class MonsterDaoGetTest {
 
     @Before
     public void setUp() {
-        testDao = new AGoodMonsterDao();
+        testDao = new BadMonsterDaoA();
 
         //Creating Monsters...
         jeff = new Monster("Jeff", LIZARDMAN, 7, "iced creams");

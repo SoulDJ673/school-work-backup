@@ -43,7 +43,7 @@ public class MonsterDaoUpdateTest {
 
     @Before
     public void setUp() {
-        testDao = new AGoodMonsterDao();
+        testDao = new BadMonsterDaoA();
 
         //Creating Monsters...
         jeff = new Monster("Jeff", LIZARDMAN, 7, "iced creams");
@@ -107,10 +107,38 @@ public class MonsterDaoUpdateTest {
         Monster wolfo = new Monster("Wolfo", WEREWOLF, 420, "^w^");
 
         //Update...
-        testDao.updateMonster(4, wolfo);
+        testDao.updateMonster(4, wolfo); //This shouldn't work because Wolfo was never in the map
 
         //Assert
         Assert.assertEquals("Making sure Wolfo isn't in Map...", false,
                 testDao.getAllMonsters().contains(wolfo));
+    }
+
+    @Test
+    public void badDaoATest() {
+        //Create updatedJeff with peopleEaten as id
+        Monster updatedJeff = new Monster("Jeff", LIZARDMAN, 0, "Lasagna");
+
+        //Update...
+        testDao.updateMonster(0, updatedJeff);
+
+        //Assert
+        Assert.assertEquals("Making sure only one Jeff in Map...", false,
+                testDao.getAllMonsters().contains(jeff));
+
+        //Updating Jeff Again, but he ate someone
+        Monster updatedJeffAgain = new Monster("Jeff", LIZARDMAN, 1, "Lasagna");
+
+        //Update...
+        testDao.updateMonster(0, updatedJeffAgain); //Same ID...
+
+        //Assert
+        Assert.assertEquals("There should still be only one Jeff...", false,
+                testDao.getAllMonsters().contains(updatedJeff));
+        /**
+         * updatedJeffAgain should've replaced updatedJeff! He was added next to
+         * updatedJeff though because his peopleEaten count changed!
+         */
+
     }
 }

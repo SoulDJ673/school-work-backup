@@ -23,7 +23,7 @@ public class MonsterDaoRemoveTest {
 
     @Before
     public void setUp() {
-        testDao = new AGoodMonsterDao();
+        testDao = new BadMonsterDaoA();
     }
 
     @Test
