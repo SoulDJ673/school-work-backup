@@ -50,5 +50,6 @@
 | 11/07/2018 | Llama Factory Spring DI Codealong | SimpleSpringInjection/ |
 | 11/09/2018 | Camel Stateful Testing Codealong | Milestone4/ |
 | 11/13/2018 | Monsterous DAO Stateful Testing | DaoTesting/ |
+| 11/20/2018 | Flooring Mastery Summative Assignment | FlooringMastery/ |
 
 ##### Devin Lloyd
