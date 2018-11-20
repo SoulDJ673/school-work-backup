@@ -1,0 +1,7 @@
+com/tsguild/testing/model/MonsterType.class
+com/tsguild/testing/dao/implementations/BadMonsterDaoB.class
+com/tsguild/testing/model/Monster.class
+com/tsguild/testing/dao/implementations/BadMonsterDaoC.class
+com/tsguild/testing/dao/MonsterDao.class
+com/tsguild/testing/dao/implementations/AGoodMonsterDao.class
+com/tsguild/testing/dao/implementations/BadMonsterDaoA.class
