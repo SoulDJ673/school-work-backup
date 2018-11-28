@@ -8,14 +8,27 @@
   <title>Lloyd, Devin - User Stories</title>
   <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
   <style type="text/css">
-   @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);body{padding:20px;color:#8e8071;font-size:15px;font-family:"Open Sans",AppleSDGothicNeo-Medium,"Segoe UI","Malgun Gothic",sans-serif;background:#fff;-webkit-font-smoothing:antialiased}a{color:#3269a0}a:hover{color:#4183c4}h1,h2,h3,h4,h5{font-weight:400;color:#5c5146;letter-spacing:-1px}h2{border-bottom:1px solid #e6e6e6;line-height:1.7em}h6{color:#777}hr{border:1px solid #e6e6e6}p{line-height:19px}p>code{font-family:"Open Sans",AppleSDGothicNeo-Medium,"Segoe UI","Malgun Gothic",sans-serif;color:#e86741;font-size:.9em}pre>code{font-size:1em;font-family:"Open Sans",AppleSDGothicNeo-Medium,"Segoe UI","Malgun Gothic",sans-serif;letter-spacing:-1px;font-weight:400}blockquote{border-left:4px solid #e6e6e6;padding:0 15px;font-style:italic;color:#e86741}table{background-color:#fafafa}table tr td,table tr th{border:1px solid #e6e6e6}table tr:nth-child(2n){background-color:#f2f2f2}
+   @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);body{padding:20px;color:#fff;font-size:15px;font-family:"Open Sans",AppleSDGothicNeo-Medium,"Segoe UI","Malgun Gothic",sans-serif;background:#303030;-webkit-font-smoothing:antialiased}a{color:#e5b931}a:hover{color:#ebc85e}h1,h2,h3,h4,h5{font-weight:400;letter-spacing:-1px}h2{border-bottom:1px solid #796a5c;line-height:1.7em}h6{color:#777}hr{border:1px solid #3f3730}p{line-height:19px}p>code{font-family:"Open Sans",AppleSDGothicNeo-Medium,"Segoe UI","Malgun Gothic",sans-serif;color:#e86741;font-size:.9em}pre>code{font-size:1em;font-family:"Open Sans",AppleSDGothicNeo-Medium,"Segoe UI","Malgun Gothic",sans-serif;letter-spacing:-1px;font-weight:400}blockquote{border-left:4px solid #4e443b;padding:0 15px;font-style:italic;color:#e86741}table{background-color:#564c42}table tr td,table tr th{border:1px solid #3f3730}table tr:nth-child(2n){background-color:#4e443b}
   </style>
  </head>
  <body>
   
-  <!-- Made with Remarkable :) -->
+  <!-- Made with ViM -->
+  <!-- Theming and Scripts from Remarkable -->
 
   <h1>User Stories</h1>
+  
+  <h3>Story 1</h3>
+  <p> The user will boot the program and be greeted with a menu. They will then promptly select the "Quit" option, and the program will prompt for them to save.  They will respond with yes/no and the program will act according to their answer, then exit.</p>
+  
+  <h3>Story 2</h3>
+  <p> The user will boot the program and be greeted with a menu.  The user will select the option to create an order.  The program will then display prompts asking for information such as the customer name, state of delivery, etc.  An Order object will be created after all of this, which will calculate the total price automatically when constructed.  The program will display the cost of the order before asking the user for confirmation.  Declining the confirmation prompt will discard all data that was created relating to that order, while confirming the order will give it the latest available ID and save it to memory with that ID.  The user will then be returned to the main menu, where they will select the option to quit, and be stopped by a prompt asking them if they'd like to save.  Depending on whether or not they're in production mode, selecting "Yes" will save the order that is in memory to it's corresponding Order_XXYYZZ file.  Being in training mode will throw an exception, but will still allow the user to quit without saving.</p>
+  
+  <h3>Story 3a</h3>
+  <p> The user will boot the program and be greeted with a menu.  The user will select the option to display orders for a date. They will enter the date that the previous order (from Story 1) was set for.  The user will then select the option to remove an order.  The program will first prompt the user to enter a date, then an order ID.  The user will respond with the date of the aforementioned order, and the ID of the order that was returned.  The program will check if there is an order that matches the information provided.  If there is, the user will be prompted for confirmation.  If the user confirms, a call to the orderDao will remove the order from memory. Otherwise, the order will remain in memory. Either way, the user will be returned to the main menu.  If there isn't an order that matches the provided information, the user will be shown an error message before being returned to the main menu.  The user will select the option to quit, being shown a prompt to save before exiting.  Our user is in production mode, so when they confirm the save the order will be removed from the order file.</p>
+
+  <h3>Story 3b</h3>
+  <p> The user will boot the program and be greeted with a menu.  The user will select the option to display orders for a date. They will enter the date that the previous order (from Story 1) was set for.  The user will then select the option to edit an order.  The program will first prompt the user to enter a date, then an order ID. The user will respond with the date of the aforementioned order, and the id of the order that was returned by the display command. The user will then go through various prompts, be shown the previous information about the Order at the corresponding prompt, skipping all of them until they arrive at the area field.  Here they will change the value of the area of material they ordered, then continue on through the prompts until they reach the end.  The program will call the recalculate() method in the Order object, display the new price, and ask the user to confirm the order.  The program will save the Order memory if the user confirms, and it won't if the user doesn't consent.  The user will be returned to the main menu.  The user will select the option to quit, be shown a Save confirmation prompt, and select yes.  If they hadn't, their newly edited order will not be saved to it's file.  However, since they confirmed the save, the data in the file has been replaced with the new data they have given. </p>
   <br/>
   
   <h2>Sprint 1 (11/30)</h2>
@@ -44,3 +57,4 @@
   </script>
  </body>
 </html>
+
