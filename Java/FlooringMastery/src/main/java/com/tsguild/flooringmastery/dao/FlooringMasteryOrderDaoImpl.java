@@ -39,7 +39,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     private final String DELIMITER = ",";
 
-    //Temporarily Hardcoded File
+    //Temporarily Hardcoded File - Remove This and Constructor Later
     private final String TEMPHARDCODEDDATE;
 
     public FlooringMasteryOrderDaoImpl(String dateLocation) throws FileNotFoundException {
@@ -99,6 +99,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
             String marshalledOrder = scanner.nextLine();
             Order order = unmarshallOrder(marshalledOrder);
             dayOrders.add(order);
+
         }
         //Read LocalDate from first order to add to allOrders
         allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
@@ -123,16 +124,21 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         BigDecimal laborCostPerSqrFt = new BigDecimal(pieces[7]);
 
         //Compatibility with Sample Orders
+        LocalDate deliveryDate;
         try {
-            LocalDate deliveryDate = LocalDate.parse(pieces[12]);
-        } catch (OutOfBoundsException) {
-
+            deliveryDate = LocalDate.parse(pieces[12]);
+        } catch (Exception e) { //It won't accept OutOfBoundsException for some reason
+            //We'll make it null so the date can be added back in loadFromFiles
+            deliveryDate = null;
         }
 
         //Now construct
         Order order = new Order(Integer.parseInt(pieces[0]), pieces[1],
                 pieces[2], Double.parseDouble(pieces[3]), pieces[4],
-                Double.parseDouble(pieces[5]), costPerSqrFt, laborCostPerSqrFt);
+                Double.parseDouble(pieces[5]), costPerSqrFt, laborCostPerSqrFt,
+                deliveryDate);
+        
+        return order;
     }
 
 }
