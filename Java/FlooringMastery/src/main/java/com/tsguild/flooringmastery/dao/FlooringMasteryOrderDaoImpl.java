@@ -42,13 +42,11 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
     //Temporarily Hardcoded File - Remove This and Constructor Later
     private final String TEMPHARDCODEDDATE;
 
-    public FlooringMasteryOrderDaoImpl(String dateLocation) throws FileNotFoundException {
+    public FlooringMasteryOrderDaoImpl(String dateLocation) {
         TEMPHARDCODEDDATE = dateLocation;
-        this.loadFromFiles();
     }
 
-    public FlooringMasteryOrderDaoImpl() throws FileNotFoundException {
-        this.loadFromFiles();
+    public FlooringMasteryOrderDaoImpl() {
         TEMPHARDCODEDDATE = null;
     }
 
@@ -137,7 +135,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
                 pieces[2], Double.parseDouble(pieces[3]), pieces[4],
                 Double.parseDouble(pieces[5]), costPerSqrFt, laborCostPerSqrFt,
                 deliveryDate);
-        
+
         return order;
     }
 

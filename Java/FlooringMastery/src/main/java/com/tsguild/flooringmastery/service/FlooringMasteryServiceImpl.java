@@ -22,12 +22,12 @@ import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
  *
  * @author souldj673
  */
-public class FlooringMasteryServiceImpl {
-    
+public class FlooringMasteryServiceImpl implements FlooringMasteryService {
+
     private FlooringMasteryOrderDao orderDao;
 
     public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao) {
         this.orderDao = theOrderDao;
     }
-    
+
 }

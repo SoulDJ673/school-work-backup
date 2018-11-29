@@ -21,7 +21,7 @@ package com.tsguild.flooringmastery.view;
  * @author souldj673
  */
 public class FlooringMasteryView {
-    
+
     private UserIO io;
 
     public FlooringMasteryView(UserIO theIo) {
