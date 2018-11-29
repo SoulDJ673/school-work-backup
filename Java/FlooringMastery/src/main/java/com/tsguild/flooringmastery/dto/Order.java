@@ -51,84 +51,81 @@ public class Order {
         this.area = area;
         this.costPerSqrFt = costPerSqrFt;
         this.laborCostPerSqrFt = laborCostPerSqrFt;
-        this.deliveryDate = date;
         this.materialCost = BigDecimal.valueOf(area).multiply(costPerSqrFt);
         this.laborCost = BigDecimal.valueOf(area).multiply(laborCostPerSqrFt);
         this.tax = (materialCost.add(laborCost)).multiply(BigDecimal.valueOf(taxRate / 100));
         this.total = materialCost.add(laborCost.add(tax));
+        this.deliveryDate = date;
     }
 
-    //Getters and Setters
-    public int getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(int orderNum) {
-        this.orderNum = orderNum;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
+    //Setters
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
-    }
-
-    public String getState() {
-        return state;
     }
 
     public void setState(String state) {
         this.state = state;
     }
 
-    public double getTaxRate() {
-        return taxRate;
-    }
-
-    public void setTaxRate(double taxRate) {
-        this.taxRate = taxRate;
-    }
-
-    public String getProductType() {
-        return productType;
-    }
-
     public void setProductType(String productType) {
         this.productType = productType;
-    }
-
-    public double getArea() {
-        return area;
     }
 
     public void setArea(double area) {
         this.area = area;
     }
 
-    public BigDecimal getCostPerSqrFt() {
-        return costPerSqrFt;
+    //Getters
+    public int getOrderNum() {
+        return orderNum;
     }
 
-    public void setCostPerSqrFt(BigDecimal costPerSqrFt) {
-        this.costPerSqrFt = costPerSqrFt;
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public double getTaxRate() {
+        return taxRate;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public BigDecimal getCostPerSqrFt() {
+        return costPerSqrFt;
     }
 
     public BigDecimal getLaborCostPerSqrFt() {
         return laborCostPerSqrFt;
     }
 
-    public void setLaborCostPerSqrFt(BigDecimal laborCostPerSqrFt) {
-        this.laborCostPerSqrFt = laborCostPerSqrFt;
+    public BigDecimal getMaterialCost() {
+        return materialCost;
     }
 
-    public LocalDate getOrderDate() {
+    public BigDecimal getLaborCost() {
+        return laborCost;
+    }
+
+    public BigDecimal getTax() {
+        return tax;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public LocalDate getDeliveryDate() {
         return deliveryDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.deliveryDate = orderDate;
     }
 
     //Update costs when rates are changed via getters/setters

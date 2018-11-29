@@ -20,7 +20,9 @@ import com.tsguild.flooringmastery.dto.Order;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,13 +93,46 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         Scanner scanner = new Scanner(new BufferedReader(
                 new FileReader(TEMPHARDCODEDDATE)));
 
+        //Create List for storing date orders
+        List<Order> dayOrders = new ArrayList<>();
         while (scanner.hasNextLine()) {
-            Order order = unmarshallOrder();
+            String marshalledOrder = scanner.nextLine();
+            Order order = unmarshallOrder(marshalledOrder);
+            dayOrders.add(order);
         }
+        //Read LocalDate from first order to add to allOrders
+        allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
     }
 
     private void saveToFiles() {
 
+    }
+
+    private Order unmarshallOrder(String marshalledOrder) {
+        /**
+         * Order order
+         *
+         * OrderNumber,CustomerName,State,TaxRate,ProductType,Area,
+         * CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,
+         * Total
+         */
+        String[] pieces = marshalledOrder.split(DELIMITER);
+
+        //Can't create new Order object without first recreating the BigDecimals
+        BigDecimal costPerSqrFt = new BigDecimal(pieces[6]);
+        BigDecimal laborCostPerSqrFt = new BigDecimal(pieces[7]);
+
+        //Compatibility with Sample Orders
+        try {
+            LocalDate deliveryDate = LocalDate.parse(pieces[12]);
+        } catch (OutOfBoundsException) {
+
+        }
+
+        //Now construct
+        Order order = new Order(Integer.parseInt(pieces[0]), pieces[1],
+                pieces[2], Double.parseDouble(pieces[3]), pieces[4],
+                Double.parseDouble(pieces[5]), costPerSqrFt, laborCostPerSqrFt);
     }
 
 }
