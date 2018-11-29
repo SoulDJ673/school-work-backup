@@ -17,25 +17,42 @@
 package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Order;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
  * @author souldj673
  */
 public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
-    
-    private Map<Integer, Order> ordersForDay = new HashMap<>();
+
+    private final Map<Integer, Order> ordersForDay = new HashMap<>();
+    private final Map<LocalDate, List<Order>> allOrders = new HashMap<>();
+
+    private final String DELIMITER = ",";
+
+    //Temporarily Hardcoded File
+    private final String TEMPHARDCODEDDATE;
+
+    public FlooringMasteryOrderDaoImpl(String dateLocation) throws FileNotFoundException {
+        TEMPHARDCODEDDATE = dateLocation;
+        this.loadFromFiles();
+    }
+
+    public FlooringMasteryOrderDaoImpl() throws FileNotFoundException {
+        this.loadFromFiles();
+        TEMPHARDCODEDDATE = null;
+    }
 
     @Override
-    public List<Order> displayOrders() {
-        List<Order> allOrders = new ArrayList();
-        //Add logic to call from load method and add orders to list
-        return allOrders;
+    public Map<Integer, Order> displayOrders() {
+        return ordersForDay;
     }
 
     @Override
@@ -55,8 +72,32 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     @Override
     public void mapOrdersForDate(LocalDate date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //If ordersForDay isn't empty, clear it and reload
+        if (!ordersForDay.isEmpty()) {
+            ordersForDay.clear();
+        }
+
+        /**
+         * Grab a List of orders from the specified date from allOrders, run
+         * through the returned list and add them to ordersForDay
+         */
+        for (Order order : allOrders.get(date)) {
+            ordersForDay.put(order.getOrderNum(), order);
+        }
     }
 
-    
+    //Load/Save all from/to files
+    private void loadFromFiles() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new BufferedReader(
+                new FileReader(TEMPHARDCODEDDATE)));
+
+        while (scanner.hasNextLine()) {
+            Order order = unmarshallOrder();
+        }
+    }
+
+    private void saveToFiles() {
+
+    }
+
 }
