@@ -16,10 +16,18 @@
  */
 package com.tsguild.flooringmastery.service;
 
+import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
+
 /**
  *
  * @author souldj673
  */
 public class FlooringMasteryServiceImpl {
+    
+    private FlooringMasteryOrderDao orderDao;
+
+    public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao) {
+        this.orderDao = theOrderDao;
+    }
     
 }

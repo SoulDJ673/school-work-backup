@@ -22,4 +22,10 @@ package com.tsguild.flooringmastery.view;
  */
 public class FlooringMasteryView {
     
+    private UserIO io;
+
+    public FlooringMasteryView(UserIO theIo) {
+        this.io = theIo;
+    }
+
 }

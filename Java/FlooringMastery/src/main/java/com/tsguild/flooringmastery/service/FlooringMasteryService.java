@@ -21,5 +21,5 @@ package com.tsguild.flooringmastery.service;
  * @author souldj673
  */
 public interface FlooringMasteryService {
-    
+
 }

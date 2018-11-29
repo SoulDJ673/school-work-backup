@@ -16,10 +16,21 @@
  */
 package com.tsguild.flooringmastery.controller;
 
+import com.tsguild.flooringmastery.service.FlooringMasteryService;
+import com.tsguild.flooringmastery.view.FlooringMasteryView;
+
 /**
  *
  * @author souldj673
  */
 public class FlooringMasteryController {
-    
+
+    private FlooringMasteryView view;
+    private FlooringMasteryService service;
+
+    public FlooringMasteryController(FlooringMasteryView view, FlooringMasteryService service) {
+        this.view = view;
+        this.service = service;
+    }
+
 }
