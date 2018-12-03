@@ -52,7 +52,8 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     @Override
     public Order addOrder(Order theOrder) {
-        
+        //Something about hashCodes, get on that
+        throw new UnsupportedOperationException("Nope");
     }
 
     @Override
@@ -70,8 +71,16 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         //Ensure that allOrders is loaded
         loadFromFiles();
 
-        //If ordersForDay isn't empty, clear it and reload
+        /**
+         * If ordersForDay isn't empty, add it's contents to allOrders, then
+         * clear it and reload
+         */
         if (!ordersForDay.isEmpty()) {
+            List<Order> dayOrders = new ArrayList<>();
+            for (Order order : ordersForDay.values()) {
+                dayOrders.add(order);
+            }
+            allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
             ordersForDay.clear();
         }
 
@@ -121,6 +130,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
             }
             //Read LocalDate from first order to add to allOrders
             allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
+            scanner.close();
         }
     }
 
