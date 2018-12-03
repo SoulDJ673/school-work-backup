@@ -16,16 +16,17 @@
  */
 package com.tsguild.flooringmastery.service;
 
-import java.io.FileNotFoundException;
-import java.time.LocalDate;
-import java.util.Map;
-
 /**
  *
  * @author souldj673
  */
-public interface FlooringMasteryService {
+public class FlooringMasteryNoOrdersForDateException extends Exception {
 
-    public Map getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
+    public FlooringMasteryNoOrdersForDateException() {
+    }
 
+    public FlooringMasteryNoOrdersForDateException(String message) {
+        super(message);
+    }
+    
 }

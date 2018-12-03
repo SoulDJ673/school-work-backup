@@ -32,7 +32,7 @@ public class App {
 
     public static final UserIO IO = new UserIOConsoleImpl();
     public static final FlooringMasteryView VIEW = new FlooringMasteryView(IO);
-    public static final FlooringMasteryOrderDao DAO = new FlooringMasteryOrderDaoImpl("Orders/Orders_06022013.txt");
+    public static final FlooringMasteryOrderDao DAO = new FlooringMasteryOrderDaoImpl();
     public static final FlooringMasteryService SERVICE = new FlooringMasteryServiceImpl(DAO);
     private static final FlooringMasteryController CONTROLLER = new FlooringMasteryController(VIEW, SERVICE);
 

@@ -110,6 +110,8 @@ public class FlooringMasteryView {
             case "unsupportedoperation":
                 io.print("\nSorry kiddo, can't do that yet!\n\n");
                 break;
+            case "noorders":
+                io.print("\nThere aren't any orders set to deliver on the given date!\n\n");
         }
     }
 

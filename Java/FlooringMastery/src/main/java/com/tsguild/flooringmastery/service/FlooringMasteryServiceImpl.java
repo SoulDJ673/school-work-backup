@@ -35,11 +35,17 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public Map<Integer, Order> getOrders() throws FileNotFoundException {
-        //Date is hardcoded rn (Default Date)
-        LocalDate temp = LocalDate.of(1999, 01, 01);
-        orderDao.mapOrdersForDate(temp);
-        return orderDao.getOrders();
+    public Map<Integer, Order> getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException {
+        orderDao.mapOrdersForDate(deliveryDate);
+
+        //Check if there are orders for the given date
+        Map<Integer, Order> dayOrders = orderDao.getOrders();
+        if (!dayOrders.isEmpty()) {
+            return dayOrders;
+        } else {
+            throw new FlooringMasteryNoOrdersForDateException("No orders found for given date");
+        }
+
     }
 
 }

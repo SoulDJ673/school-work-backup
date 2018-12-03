@@ -79,8 +79,12 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
          * Grab a List of orders from the specified date from allOrders, run
          * through the returned list and add them to ordersForDay
          */
-        for (Order order : allOrders.get(date)) {
-            ordersForDay.put(order.getOrderNum(), order);
+        try {
+            for (Order order : allOrders.get(date)) {
+                ordersForDay.put(order.getOrderNum(), order);
+            }
+        } catch (NullPointerException n) {
+            ordersForDay.clear();
         }
     }
 
