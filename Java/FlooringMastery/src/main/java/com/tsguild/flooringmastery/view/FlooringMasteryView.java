@@ -47,15 +47,17 @@ public class FlooringMasteryView {
     }
 
     private void banner(String titleText) {
-        String bannerCage = ("#################################################"
-                + "#################################");
+        String bannerCageMaterial = (">");
 
-        //Trim Cage to word length
-        int titleLength = titleText.length();
-        String fittedCage = bannerCage.substring(0, titleLength);
+        //Grow Cage to line length
+        int titleLength = titleText.split("\n")[0].length();
+        String fittedCage = "";
+        for (int i = 0; i < titleLength; i++) {
+            fittedCage += bannerCageMaterial;
+        }
 
         //Print Title with banner
-        io.print(fittedCage + "\n");
+        io.print(fittedCage + "\n\n");
         io.print(titleText + "\n");
         io.print(fittedCage + "\n");
     }
@@ -64,7 +66,21 @@ public class FlooringMasteryView {
         String[] options = {"Display Orders", "Add Order",
             "Edit Order", "Remove Order", "Quit"};
 
-        banner("Main Menu");
+        banner("                  O))       O))      O)       O))O)))     O))                 \n" +
+"                  O) O))   O)))     O) ))     O))O) O))   O))                 \n" +
+"                  O)) O)) O O))    O)  O))    O))O)) O))  O))                 \n" +
+"                  O))  O))  O))   O))   O))   O))O))  O)) O))                 \n" +
+"                  O))   O)  O))  O)))))) O))  O))O))   O) O))                 \n" +
+"                  O))       O)) O))       O)) O))O))    O) ))                 \n" +
+"                  O))       O))O))         O))O))O))      O))                 \n" +
+"                                                                              \n" +
+"                 O))       O))O))))))))O)))     O))O))     O))                 \n" +
+"                 O) O))   O)))O))      O) O))   O))O))     O))                 \n" +
+"                 O)) O)) O O))O))      O)) O))  O))O))     O))                 \n" +
+"                 O))  O))  O))O))))))  O))  O)) O))O))     O))                 \n" +
+"                 O))   O)  O))O))      O))   O) O))O))     O))                 \n" +
+"                 O))       O))O))      O))    O) ))O))     O))                 \n" +
+"                 O))       O))O))))))))O))      O))  O)))))                    \n");
 
         //Return User selection
         return menus(options);
@@ -103,6 +119,8 @@ public class FlooringMasteryView {
     }
 
     public void errors(String exception) {
+        
+        banner("");
         switch (exception.toLowerCase()) {
             case "filenotfound":
                 io.print("\nUh oh! Couldn't find the specified file!\n\n");
