@@ -1,9 +1,9 @@
 package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Order;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,7 +14,7 @@ public interface FlooringMasteryOrderDao {
 
     Map<Integer, Order> DAY_ORDERS = new HashMap<>();
 
-    public Map displayOrders();
+    public Map getOrders();
 
     public Order addOrder(Order theOrder);
 
@@ -22,6 +22,6 @@ public interface FlooringMasteryOrderDao {
 
     public Order removeOrder(int orderId);
 
-    public void mapOrdersForDate(LocalDate date);
+    public void mapOrdersForDate(LocalDate date) throws FileNotFoundException;
 
 }

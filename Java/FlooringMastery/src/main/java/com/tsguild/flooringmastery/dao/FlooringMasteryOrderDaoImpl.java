@@ -18,10 +18,12 @@ package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Order;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,22 +38,15 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     private final Map<Integer, Order> ordersForDay = new HashMap<>();
     private final Map<LocalDate, List<Order>> allOrders = new HashMap<>();
+    private final File orderDirectory = new File("Orders/"); //Reading from Directories!!!
 
     private final String DELIMITER = ",";
 
-    //Temporarily Hardcoded File - Remove This and Constructor Later
-    private final String TEMPHARDCODEDDATE;
-
-    public FlooringMasteryOrderDaoImpl(String dateLocation) {
-        TEMPHARDCODEDDATE = dateLocation;
-    }
-
     public FlooringMasteryOrderDaoImpl() {
-        TEMPHARDCODEDDATE = null;
     }
 
     @Override
-    public Map<Integer, Order> displayOrders() {
+    public Map<Integer, Order> getOrders() {
         return ordersForDay;
     }
 
@@ -71,7 +66,10 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
     }
 
     @Override
-    public void mapOrdersForDate(LocalDate date) {
+    public void mapOrdersForDate(LocalDate date) throws FileNotFoundException {
+        //Ensure that allOrders is loaded
+        loadFromFiles();
+
         //If ordersForDay isn't empty, clear it and reload
         if (!ordersForDay.isEmpty()) {
             ordersForDay.clear();
@@ -86,28 +84,43 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         }
     }
 
-    //Load/Save all from/to files
+    //Load all from files
     private void loadFromFiles() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new BufferedReader(
-                new FileReader(TEMPHARDCODEDDATE)));
+        String[] orderFiles = orderDirectory.list(); //Get Order File names
+        for (String fileName : orderFiles) { //Iterate over each file
 
-        //Create List for storing date orders
-        List<Order> dayOrders = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            String marshalledOrder = scanner.nextLine();
-            Order order = unmarshallOrder(marshalledOrder);
-            dayOrders.add(order);
+            //Separate the Date from the rest of the fileName
+            String fileDeliveryDate = fileName.replace("Orders_", "");
+            fileDeliveryDate = fileDeliveryDate.replace(".txt", "");
 
+            //Parse LocalDate from fileDeliveryDate
+            DateTimeFormatter fileFormat = DateTimeFormatter.ofPattern("MMddyyyy");
+            LocalDate deliveryDate = LocalDate.parse(fileDeliveryDate, fileFormat);
+            deliveryDate.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+
+            //Add rest of directory to fileName
+            fileName = "Orders/" + fileName;
+
+            Scanner scanner = new Scanner(new BufferedReader(
+                    new FileReader(fileName)));
+
+            //Create List for storing date orders
+            List<Order> dayOrders = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                String marshalledOrder = scanner.nextLine();
+                Order order = unmarshallOrder(marshalledOrder, deliveryDate);
+
+                //Don't add a null object
+                if (order != null) {
+                    dayOrders.add(order);
+                }
+            }
+            //Read LocalDate from first order to add to allOrders
+            allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
         }
-        //Read LocalDate from first order to add to allOrders
-        allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
     }
 
-    private void saveToFiles() {
-
-    }
-
-    private Order unmarshallOrder(String marshalledOrder) {
+    private Order unmarshallOrder(String marshalledOrder, LocalDate deliveryDate) {
         /**
          * Order order
          *
@@ -117,18 +130,19 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
          */
         String[] pieces = marshalledOrder.split(DELIMITER);
 
+        /**
+         * Don't return any invalid information (Formatting hint from Sample
+         * File) Check to make sure orderId is actually an ID
+         */
+        try {
+            Integer.parseInt(pieces[0]);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+
         //Can't create new Order object without first recreating the BigDecimals
         BigDecimal costPerSqrFt = new BigDecimal(pieces[6]);
         BigDecimal laborCostPerSqrFt = new BigDecimal(pieces[7]);
-
-        //Compatibility with Sample Orders
-        LocalDate deliveryDate;
-        try {
-            deliveryDate = LocalDate.parse(pieces[12]);
-        } catch (Exception e) { //It won't accept OutOfBoundsException for some reason
-            //We'll make it null so the date can be added back in loadFromFiles
-            deliveryDate = null;
-        }
 
         //Now construct
         Order order = new Order(Integer.parseInt(pieces[0]), pieces[1],
@@ -137,6 +151,10 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
                 deliveryDate);
 
         return order;
+    }
+
+    private void saveToFiles() {
+
     }
 
 }

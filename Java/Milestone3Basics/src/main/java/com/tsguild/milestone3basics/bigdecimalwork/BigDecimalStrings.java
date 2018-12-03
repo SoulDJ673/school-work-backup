@@ -28,5 +28,6 @@ public class BigDecimalStrings {
 
     public static void main(String[] args) {
         System.out.println(testDecimal.toString());
+        System.out.println(new BigDecimal(testDecimal.toString()));
     }
 }

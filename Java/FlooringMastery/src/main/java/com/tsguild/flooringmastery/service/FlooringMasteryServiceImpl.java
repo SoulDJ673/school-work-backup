@@ -17,6 +17,10 @@
 package com.tsguild.flooringmastery.service;
 
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
+import com.tsguild.flooringmastery.dto.Order;
+import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.util.Map;
 
 /**
  *
@@ -24,10 +28,18 @@ import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
  */
 public class FlooringMasteryServiceImpl implements FlooringMasteryService {
 
-    private FlooringMasteryOrderDao orderDao;
+    private final FlooringMasteryOrderDao orderDao;
 
     public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao) {
         this.orderDao = theOrderDao;
+    }
+
+    @Override
+    public Map<Integer, Order> getOrders() throws FileNotFoundException {
+        //Date is hardcoded rn (Default Date)
+        LocalDate temp = LocalDate.of(1999, 01, 01);
+        orderDao.mapOrdersForDate(temp);
+        return orderDao.getOrders();
     }
 
 }

@@ -16,8 +16,11 @@
  */
 package com.tsguild.flooringmastery.controller;
 
+import com.tsguild.flooringmastery.dto.Order;
 import com.tsguild.flooringmastery.service.FlooringMasteryService;
 import com.tsguild.flooringmastery.view.FlooringMasteryView;
+import java.io.FileNotFoundException;
+import java.util.Map;
 
 /**
  *
@@ -31,6 +34,38 @@ public class FlooringMasteryController {
     public FlooringMasteryController(FlooringMasteryView view, FlooringMasteryService service) {
         this.view = view;
         this.service = service;
+    }
+
+    public void run() {
+        menuLoop:
+        while (1 == 1) {
+            try {
+
+                int selection = view.mainMenu();
+                switch (selection) {
+                    case 1:
+                        displayOrders();
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                        throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
+                    case 5:
+                        view.temporaryLolMessage();
+                        return;
+                }
+            } catch (FileNotFoundException e) {
+                view.errors("FileNotFound");
+            } catch (UnsupportedOperationException u) {
+                view.errors("UnsupportedOperation");
+            }
+        }
+    }
+
+    private void displayOrders() throws FileNotFoundException {
+        view.getOrderDate();
+        Map<Integer, Order> dayOrders = service.getOrders();
+        view.displayOrders(dayOrders);
     }
 
 }

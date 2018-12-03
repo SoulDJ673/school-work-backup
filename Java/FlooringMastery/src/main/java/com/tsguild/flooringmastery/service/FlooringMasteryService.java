@@ -16,10 +16,15 @@
  */
 package com.tsguild.flooringmastery.service;
 
+import java.io.FileNotFoundException;
+import java.util.Map;
+
 /**
  *
  * @author souldj673
  */
 public interface FlooringMasteryService {
+
+    public Map getOrders() throws FileNotFoundException;
 
 }

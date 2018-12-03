@@ -139,6 +139,12 @@ public class Order {
     //toString fix
     @Override
     public String toString() {
-        return "Order{" + "orderNum=" + orderNum + ", customerName=" + customerName + ", state=" + state + ", taxRate=" + taxRate + ", productType=" + productType + ", area=" + area + ", costPerSqrFt=" + costPerSqrFt + ", laborCostPerSqrFt=" + laborCostPerSqrFt + ", materialCost=" + materialCost + ", laborCost=" + laborCost + ", tax=" + tax + ", total=" + total + '}';
+        return "Order{" + "orderNum=" + orderNum + ", customerName=" + 
+                customerName + ", state=" + state + ", taxRate=" + taxRate + ", "
+                + "productType=" + productType + ", area=" + area + ", "
+                + "costPerSqrFt=" + costPerSqrFt + ", laborCostPerSqrFt=" + 
+                laborCostPerSqrFt + ", materialCost=" + materialCost + ", "
+                + "laborCost=" + laborCost + ", tax=" + tax + ", total=" + 
+                total + '}';
     }
 }
