@@ -18,6 +18,7 @@ package com.tsguild.flooringmastery.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -139,12 +140,79 @@ public class Order {
     //toString fix
     @Override
     public String toString() {
-        return "Order{" + "orderNum=" + orderNum + ", customerName=" + 
-                customerName + ", state=" + state + ", taxRate=" + taxRate + ", "
+        return "Order{" + "orderNum=" + orderNum + ", customerName="
+                + customerName + ", state=" + state + ", taxRate=" + taxRate + ", "
                 + "productType=" + productType + ", area=" + area + ", "
-                + "costPerSqrFt=" + costPerSqrFt + ", laborCostPerSqrFt=" + 
-                laborCostPerSqrFt + ", materialCost=" + materialCost + ", "
-                + "laborCost=" + laborCost + ", tax=" + tax + ", total=" + 
-                total + '}';
+                + "costPerSqrFt=" + costPerSqrFt + ", laborCostPerSqrFt="
+                + laborCostPerSqrFt + ", materialCost=" + materialCost + ", "
+                + "laborCost=" + laborCost + ", tax=" + tax + ", total="
+                + total + '}';
     }
+
+    @Override
+    public int hashCode() {
+        //The only thing differentiating orders from the same date will be ID
+        int hash = 0;
+        hash = hash + this.orderNum;
+        hash = hash + 11;
+        hash = hash + this.deliveryDate.getYear()
+                + this.deliveryDate.getDayOfMonth()
+                + this.deliveryDate.getMonthValue();
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Order other = (Order) obj;
+        if (this.orderNum != other.orderNum) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.taxRate) != Double.doubleToLongBits(other.taxRate)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.area) != Double.doubleToLongBits(other.area)) {
+            return false;
+        }
+        if (!Objects.equals(this.customerName, other.customerName)) {
+            return false;
+        }
+        if (!Objects.equals(this.state, other.state)) {
+            return false;
+        }
+        if (!Objects.equals(this.productType, other.productType)) {
+            return false;
+        }
+        if (!Objects.equals(this.costPerSqrFt, other.costPerSqrFt)) {
+            return false;
+        }
+        if (!Objects.equals(this.laborCostPerSqrFt, other.laborCostPerSqrFt)) {
+            return false;
+        }
+        if (!Objects.equals(this.materialCost, other.materialCost)) {
+            return false;
+        }
+        if (!Objects.equals(this.laborCost, other.laborCost)) {
+            return false;
+        }
+        if (!Objects.equals(this.tax, other.tax)) {
+            return false;
+        }
+        if (!Objects.equals(this.total, other.total)) {
+            return false;
+        }
+        if (!Objects.equals(this.deliveryDate, other.deliveryDate)) {
+            return false;
+        }
+        return true;
+    }
+
 }
