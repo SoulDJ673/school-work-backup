@@ -17,6 +17,7 @@
 package com.tsguild.flooringmastery.service;
 
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
+import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
 import com.tsguild.flooringmastery.dto.Order;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -30,9 +31,12 @@ import java.util.Map;
 public class FlooringMasteryServiceImpl implements FlooringMasteryService {
 
     private final FlooringMasteryOrderDao orderDao;
+    private final FlooringMasteryTaxesProductDao taxProdDao;
 
-    public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao) {
+    public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao, 
+            FlooringMasteryTaxesProductDao theTaxProdDao) {
         this.orderDao = theOrderDao;
+        this.taxProdDao = theTaxProdDao;
     }
 
     @Override
@@ -79,6 +83,34 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
         }
 
         return nextAvailableId;
+    }
+
+    @Override
+    public Order addOrder(Order order) {
+        //Check for invalid fields in order
+        boolean[] valid = validateOrder(order);
+    }
+
+    private boolean[] validateOrder(Order order) {
+        boolean[] booleanTableThing = new boolean[5];
+
+        //Check for date in future
+        if (order.getDeliveryDate().compareTo(LocalDate.now()) <= 0) {
+            booleanTableThing[0] = false;
+        } else {
+            booleanTableThing[0] = true;
+        }
+
+        //Check for blank or null name
+        if (order.getCustomerName().trim().isEmpty() || order.getCustomerName()
+                == null) {
+            booleanTableThing[1] = false;
+        } else {
+            booleanTableThing[1] = true;
+        }
+
+        //Check for if we sell in that state
+        
     }
 
 }

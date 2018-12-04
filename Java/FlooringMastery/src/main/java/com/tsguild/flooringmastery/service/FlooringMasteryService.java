@@ -48,6 +48,6 @@ public interface FlooringMasteryService {
      */
     public int getLastID();
     
-    public void addOrder(Order order);
+    public Order addOrder(Order order);
 
 }
