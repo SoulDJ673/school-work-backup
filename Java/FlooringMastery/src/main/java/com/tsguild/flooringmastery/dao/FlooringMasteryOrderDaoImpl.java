@@ -46,8 +46,15 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
     }
 
     @Override
-    public Map<Integer, Order> getOrders() {
-        return ordersForDay;
+    public List<Order> getOrders() {
+        //Convert Collection to List
+        List<Order> dayOrders = new ArrayList<>();
+
+        for (Order order : ordersForDay.values()) {
+            dayOrders.add(order);
+        }
+
+        return dayOrders;
     }
 
     @Override
@@ -73,8 +80,13 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     @Override
     public void mapOrdersForDate(LocalDate date) throws FileNotFoundException {
-        //Ensure that allOrders is loaded
-        loadFromFiles();
+        /**
+         * Only call loadFromFiles() if there aren't any key/value pairs in
+         * allOrders (don't wanna overwrite any unsaved changes!
+         */
+        if (allOrders.isEmpty()) {
+            loadFromFiles();
+        }
 
         /**
          * If ordersForDay isn't empty, add it's contents to allOrders, then

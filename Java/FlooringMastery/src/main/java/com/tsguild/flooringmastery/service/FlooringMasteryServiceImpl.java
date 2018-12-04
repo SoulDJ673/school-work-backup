@@ -36,11 +36,11 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public Map<Integer, Order> getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException {
+    public List<Order> getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException {
         orderDao.mapOrdersForDate(deliveryDate);
 
         //Check if there are orders for the given date
-        Map<Integer, Order> dayOrders = orderDao.getOrders();
+        List<Order> dayOrders = orderDao.getOrders();
         if (!dayOrders.isEmpty()) {
             return dayOrders;
         } else {
@@ -50,10 +50,35 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
 
     @Override
     public int getLastID() {
+        //Orders should be loaded by this point, but just in case they aren't...
+        try {
+            orderDao.mapOrdersForDate(LocalDate.now());
+        } catch (NullPointerException n) {
+            /**
+             * This will most likely happen, but since we're only calling this
+             * to load orders into memory, it doesn't matter.
+             */
+        } catch (FileNotFoundException f) {
+            /**
+             * This shouldn't happen, this error should be caught before this
+             * method is used
+             */
+            return -1;
+        }
+
         Map<LocalDate, List<Order>> allOrdersM = orderDao.getAllOrders();
+
         //Iterate over all orders to get highest ID, maybe save it somewhere?
+        int nextAvailableId = 0;
+        for (List<Order> dayOrders : allOrdersM.values()) {
+            for (Order order : dayOrders) {
+                if (order.getOrderNum() >= nextAvailableId) {
+                    nextAvailableId = order.getOrderNum() + 1;
+                }
+            }
+        }
+
+        return nextAvailableId;
     }
-    
-    
 
 }

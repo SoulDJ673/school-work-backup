@@ -22,7 +22,7 @@ import com.tsguild.flooringmastery.service.FlooringMasteryService;
 import com.tsguild.flooringmastery.view.FlooringMasteryView;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.Map;
+import java.util.List;
 
 /**
  *
@@ -49,6 +49,8 @@ public class FlooringMasteryController {
                         displayOrders();
                         break;
                     case 2:
+                        createOrder();
+                        break;
                     case 3:
                     case 4:
                         throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
@@ -60,7 +62,7 @@ public class FlooringMasteryController {
                 view.errors("FileNotFound");
             } catch (UnsupportedOperationException u) {
                 view.errors("UnsupportedOperation");
-            } catch (FlooringMasteryNoOrdersForDateException n){
+            } catch (FlooringMasteryNoOrdersForDateException n) {
                 view.errors("NoOrders");
             }
         }
@@ -68,8 +70,12 @@ public class FlooringMasteryController {
 
     private void displayOrders() throws FileNotFoundException, FlooringMasteryNoOrdersForDateException {
         LocalDate deliveryDate = view.getOrderDate();
-        Map<Integer, Order> dayOrders = service.getOrders(deliveryDate);
+        List<Order> dayOrders = service.getOrders(deliveryDate);
         view.displayOrders(dayOrders);
+    }
+
+    private void createOrder() {
+
     }
 
 }

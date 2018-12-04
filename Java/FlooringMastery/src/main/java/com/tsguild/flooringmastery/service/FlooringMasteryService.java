@@ -16,9 +16,10 @@
  */
 package com.tsguild.flooringmastery.service;
 
+import com.tsguild.flooringmastery.dto.Order;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.Map;
+import java.util.List;
 
 /**
  *
@@ -38,7 +39,7 @@ public interface FlooringMasteryService {
      * @throws FileNotFoundException
      * @throws FlooringMasteryNoOrdersForDateException 
      */
-    public Map getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
+    public List getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
     
     /**
      * This method simply gets the latest order ID
@@ -46,5 +47,7 @@ public interface FlooringMasteryService {
      * @return 
      */
     public int getLastID();
+    
+    public void addOrder(Order order);
 
 }
