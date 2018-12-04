@@ -15,6 +15,8 @@ public interface FlooringMasteryOrderDao {
     Map<Integer, Order> DAY_ORDERS = new HashMap<>();
 
     public Map getOrders();
+    
+    public Map getAllOrders() ;
 
     public Order addOrder(Order theOrder);
 

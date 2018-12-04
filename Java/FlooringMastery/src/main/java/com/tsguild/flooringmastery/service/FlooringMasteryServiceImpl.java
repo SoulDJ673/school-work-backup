@@ -20,6 +20,7 @@ import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
 import com.tsguild.flooringmastery.dto.Order;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,7 +46,14 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
         } else {
             throw new FlooringMasteryNoOrdersForDateException("No orders found for given date");
         }
-
     }
+
+    @Override
+    public int getLastID() {
+        Map<LocalDate, List<Order>> allOrdersM = orderDao.getAllOrders();
+        //Iterate over all orders to get highest ID, maybe save it somewhere?
+    }
+    
+    
 
 }

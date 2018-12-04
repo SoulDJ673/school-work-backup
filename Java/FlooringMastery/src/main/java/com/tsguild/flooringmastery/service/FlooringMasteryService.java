@@ -26,6 +26,25 @@ import java.util.Map;
  */
 public interface FlooringMasteryService {
 
+    /**
+     * This method takes the incoming LocalDate and finds the send it to the DAO
+     * to find the corresponding orders, and returns the Map given back to it 
+     * that contains the orders and their IDs.  This can also just be used to
+     * load the orders for a particular date into the date specific map in the
+     * DAO.
+     * 
+     * @param deliveryDate
+     * @return Map with IDs and Order objects
+     * @throws FileNotFoundException
+     * @throws FlooringMasteryNoOrdersForDateException 
+     */
     public Map getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
+    
+    /**
+     * This method simply gets the latest order ID
+     * 
+     * @return 
+     */
+    public int getLastID();
 
 }

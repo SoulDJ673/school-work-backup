@@ -51,9 +51,14 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
     }
 
     @Override
+    public Map<LocalDate, List<Order>> getAllOrders() {
+        return allOrders;
+    }
+
+    @Override
     public Order addOrder(Order theOrder) {
-        //Something about hashCodes, get on that
-        throw new UnsupportedOperationException("Nope");
+        ordersForDay.put(theOrder.getOrderNum(), theOrder);
+        return theOrder;
     }
 
     @Override
