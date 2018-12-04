@@ -18,8 +18,12 @@ package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -61,8 +65,17 @@ public class FlooringMasteryTaxesProductDaoImpl implements FlooringMasteryTaxesP
     }
 
     @Override
-    public void loadTaxes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void loadTaxes() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new BufferedReader(new FileReader(TAXES)));
+
+        while (scanner.hasNextLine()) {
+            String taxInfo = scanner.nextLine();
+            TaxRate tax = unmarshallTax(taxInfo);
+        }
+    }
+
+    private TaxRate unmarshallTax(String stringedTax) {
+
     }
 
     @Override

@@ -138,12 +138,13 @@ public class Order {
     }
 
     //toString fix
+    
+    //Make it so marshalling is easier!
     @Override
     public String toString() {
-        return "Order{" + "orderNum=" + orderNum + ", customerName="
-                + customerName + ", state=" + state + ", taxRate=" + taxRate + ", "
-                + "productType=" + productType + ", area=" + area + ", "
-                + "costPerSqrFt=" + costPerSqrFt + ", laborCostPerSqrFt="
+        return orderNum + ","
+                + customerName + "," + state + "," + taxRate + "," + productType + "," + area + ","
+                + "," + costPerSqrFt + ","
                 + laborCostPerSqrFt + ", materialCost=" + materialCost + ", "
                 + "laborCost=" + laborCost + ", tax=" + tax + ", total="
                 + total + '}';

@@ -18,7 +18,7 @@ package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
-import java.util.List;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -38,9 +38,9 @@ public interface FlooringMasteryTaxesProductDao {
 
     public Product removeProduct(String type);
 
-    public void loadProducts();
+    public void loadProducts() throws FileNotFoundException;
 
-    public void loadTaxes();
+    public void loadTaxes() throws FileNotFoundException;
 
     public TaxRate getTax(String abbr);
 
