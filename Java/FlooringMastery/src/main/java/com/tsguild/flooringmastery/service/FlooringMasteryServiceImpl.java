@@ -33,7 +33,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     private final FlooringMasteryOrderDao orderDao;
     private final FlooringMasteryTaxesProductDao taxProdDao;
 
-    public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao, 
+    public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao,
             FlooringMasteryTaxesProductDao theTaxProdDao) {
         this.orderDao = theOrderDao;
         this.taxProdDao = theTaxProdDao;
@@ -109,8 +109,28 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
             booleanTableThing[1] = true;
         }
 
-        //Check for if we sell in that state
-        
+        //Check for if we sell in that state & if it's valid
+        if (order.getState().trim().isEmpty() || order.getState() == null
+                || taxProdDao.getTax(order.getState()) == null) {
+            booleanTableThing[2] = false;
+        } else {
+            booleanTableThing[2] = true;
+        }
+
+        //Check for if we sell that product & if it's valid
+        if (order.getProductType().trim().isEmpty() || order.getProductType()
+                == null || taxProdDao.getProduct(order.getProductType()) == null) {
+            booleanTableThing[3] = false;
+        } else {
+            booleanTableThing[3] = true;
+        }
+
+        //Check for minimal size reqs
+        if (order.getArea() < 100) {
+            booleanTableThing[4] = false;
+        } else {
+            booleanTableThing[4] = true;
+        }
     }
 
 }
