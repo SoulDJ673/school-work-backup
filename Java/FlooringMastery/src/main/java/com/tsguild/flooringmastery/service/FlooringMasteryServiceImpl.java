@@ -86,51 +86,90 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public Order addOrder(Order order) {
-        //Check for invalid fields in order
-        boolean[] valid = validateOrder(order);
+    public Order validateOrder(Order order) throws FlooringMasteryInvalidOrderException {
+        /**
+         * Check for invalid fields in order && set them to null to be returned
+         * and fixed
+         */
+        Order validMaybe = validateHelper(order);
+
+        boolean good = true;
+        //Check for null
+        String[] brokenOrder = validMaybe.toString().split(",");
+        for (String piece : brokenOrder) {
+            if (piece == null) {
+                good = false;
+            }
+        }
+
+        if (good) {
+            validMaybe.setTaxRate(taxProdDao.getTax(validMaybe.getState()).getTaxRate());
+            validMaybe.setCostPerSqrFt(taxProdDao.getProduct(validMaybe.getProductType()).getCostPerSqrFt());
+            return order;
+        } else {
+            throw new FlooringMasteryInvalidOrderException("Not right, dude");
+        }
+
     }
 
-    private boolean[] validateOrder(Order order) {
-        boolean[] booleanTableThing = new boolean[5];
+    /**
+     * This will return all of the checked properties of the order, and any that
+     * are invalid will be null
+     *
+     * @param order
+     * @return
+     */
+    private Order validateHelper(Order order) {
 
         //Check for date in future
+        LocalDate maybeBadDelivery;
         if (order.getDeliveryDate().compareTo(LocalDate.now()) <= 0) {
-            booleanTableThing[0] = false;
+            maybeBadDelivery = null;
         } else {
-            booleanTableThing[0] = true;
+            maybeBadDelivery = order.getDeliveryDate();
         }
+
+        //Creates new Order
+        Order kindaTheOrder = new Order(order.getOrderNum(),
+                order.getCustomerName(), order.getState(), order.getProductType(),
+                order.getArea(), maybeBadDelivery);
 
         //Check for blank or null name
         if (order.getCustomerName().trim().isEmpty() || order.getCustomerName()
                 == null) {
-            booleanTableThing[1] = false;
-        } else {
-            booleanTableThing[1] = true;
+            kindaTheOrder.setCustomerName(null);
         }
 
         //Check for if we sell in that state & if it's valid
         if (order.getState().trim().isEmpty() || order.getState() == null
                 || taxProdDao.getTax(order.getState()) == null) {
-            booleanTableThing[2] = false;
-        } else {
-            booleanTableThing[2] = true;
+            kindaTheOrder.setState(null);
         }
 
         //Check for if we sell that product & if it's valid
         if (order.getProductType().trim().isEmpty() || order.getProductType()
-                == null || taxProdDao.getProduct(order.getProductType()) == null) {
-            booleanTableThing[3] = false;
-        } else {
-            booleanTableThing[3] = true;
+                == null || taxProdDao.getProduct(autoCap(order.getProductType())
+                ) == null) {
+            kindaTheOrder.setProductType(null);
         }
 
         //Check for minimal size reqs
         if (order.getArea() < 100) {
-            booleanTableThing[4] = false;
-        } else {
-            booleanTableThing[4] = true;
+            kindaTheOrder.setArea(0);
         }
+
+        return kindaTheOrder;
+    }
+
+    /**
+     * This method capitalizes the first letter of whatever string is passed in
+     *
+     * @param thing
+     * @return
+     */
+    private String autoCap(String thing) {
+        thing = thing.toLowerCase();
+        return thing.replace(thing.substring(0, 1), thing.substring(0, 1).toUpperCase());
     }
 
 }

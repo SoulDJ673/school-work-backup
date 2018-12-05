@@ -46,7 +46,16 @@ public class FlooringMasteryTaxesProductDaoImpl implements FlooringMasteryTaxesP
     //Taxes
     @Override
     public TaxRate getTax(String abbr) {
-        return taxes.get(abbr);
+        //Compatibility with abbr/State Name
+        if (abbr.length() == 2) {
+            return taxes.get(abbr.toUpperCase());
+        } else {
+            for (TaxRate state : taxes.values()) {
+                if (state.getState().equalsIgnoreCase(abbr)) {
+                    return state;
+                }
+            }
+        }
     }
 
     @Override
@@ -75,7 +84,9 @@ public class FlooringMasteryTaxesProductDaoImpl implements FlooringMasteryTaxesP
     }
 
     private TaxRate unmarshallTax(String stringedTax) {
-
+        /**
+         * TX,Texas,4.45
+         */
     }
 
     @Override

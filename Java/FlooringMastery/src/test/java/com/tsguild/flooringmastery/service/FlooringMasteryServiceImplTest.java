@@ -18,6 +18,8 @@ package com.tsguild.flooringmastery.service;
 
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDaoImpl;
+import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
+import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDaoImpl;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +38,8 @@ public class FlooringMasteryServiceImplTest {
     @Before
     public void setUp() {
         FlooringMasteryOrderDao dao = new FlooringMasteryOrderDaoImpl();
-        service = new FlooringMasteryServiceImpl(dao);
+        FlooringMasteryTaxesProductDao taxProd = new FlooringMasteryTaxesProductDaoImpl("Data/Taxes.txt", "Data/Products.txt");
+        service = new FlooringMasteryServiceImpl(dao, taxProd);
     }
 
     @Test

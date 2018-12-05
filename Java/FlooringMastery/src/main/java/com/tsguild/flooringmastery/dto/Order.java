@@ -59,6 +59,31 @@ public class Order {
         this.deliveryDate = date;
     }
 
+    public Order(int orderNum, String customerName, TaxRate stateInfo, Product productType, double area, LocalDate deliveryDate) {
+        this.orderNum = orderNum;
+        this.customerName = customerName;
+        this.state = stateInfo.getState();
+        this.taxRate = stateInfo.getTaxRate();
+        this.productType = productType.getType();
+        this.area = area;
+        this.costPerSqrFt = productType.getCostPerSqrFt();
+        this.laborCostPerSqrFt = productType.getLaborCostPerSqrFt();
+        this.materialCost = BigDecimal.valueOf(area).multiply(costPerSqrFt);
+        this.laborCost = BigDecimal.valueOf(area).multiply(laborCostPerSqrFt);
+        this.tax = (materialCost.add(laborCost)).multiply(BigDecimal.valueOf(taxRate / 100));
+        this.total = materialCost.add(laborCost.add(tax));
+        this.deliveryDate = deliveryDate;
+    }
+
+    public Order(int orderNum, String customerName, String state, String productType, double area, LocalDate deliveryDate) {
+        this.orderNum = orderNum;
+        this.customerName = customerName;
+        this.state = state;
+        this.productType = productType;
+        this.area = area;
+        this.deliveryDate = deliveryDate;
+    }
+
     //Setters
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
@@ -74,6 +99,18 @@ public class Order {
 
     public void setArea(double area) {
         this.area = area;
+    }
+
+    public void setTaxRate(double taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public void setCostPerSqrFt(BigDecimal costPerSqrFt) {
+        this.costPerSqrFt = costPerSqrFt;
+    }
+
+    public void setLaborCostPerSqrFt(BigDecimal laborCostPerSqrFt) {
+        this.laborCostPerSqrFt = laborCostPerSqrFt;
     }
 
     //Getters
