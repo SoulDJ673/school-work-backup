@@ -18,10 +18,14 @@ package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
+import java.math.BigDecimal;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -48,7 +52,11 @@ public class FlooringMasteryTaxesProductDaoImpl implements FlooringMasteryTaxesP
     public TaxRate getTax(String abbr) {
         //Compatibility with abbr/State Name
         if (abbr.length() == 2) {
-            return taxes.get(abbr.toUpperCase());
+            try {
+                return taxes.get(abbr.toUpperCase());
+            } catch (NullPointerException n) {
+                return null;
+            }
         } else {
             for (TaxRate state : taxes.values()) {
                 if (state.getState().equalsIgnoreCase(abbr)) {
@@ -56,6 +64,9 @@ public class FlooringMasteryTaxesProductDaoImpl implements FlooringMasteryTaxesP
                 }
             }
         }
+
+        //It's being a b lasagna
+        return null;
     }
 
     @Override
@@ -80,18 +91,33 @@ public class FlooringMasteryTaxesProductDaoImpl implements FlooringMasteryTaxesP
         while (scanner.hasNextLine()) {
             String taxInfo = scanner.nextLine();
             TaxRate tax = unmarshallTax(taxInfo);
+            taxes.put(tax.getAbbr(), tax);
         }
+        scanner.close();
     }
 
     private TaxRate unmarshallTax(String stringedTax) {
         /**
          * TX,Texas,4.45
          */
+        String[] taxationIsTheft = stringedTax.split(",");
+        TaxRate state = new TaxRate(taxationIsTheft[0], taxationIsTheft[1], Double.parseDouble(taxationIsTheft[2]));
+        return state;
     }
 
     @Override
     public void saveTaxes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<TaxRate> getAllTaxes() {
+        Collection<TaxRate> taxesC = taxes.values();
+        List<TaxRate> taxesList = new ArrayList<>();
+        for (TaxRate tax : taxesC) {
+            taxesList.add(tax);
+        }
+        return taxesList;
     }
 
     //Products
@@ -116,13 +142,40 @@ public class FlooringMasteryTaxesProductDaoImpl implements FlooringMasteryTaxesP
     }
 
     @Override
-    public void loadProducts() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void loadProducts() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new BufferedReader(new FileReader(PRODUCTS)));
+
+        while (scanner.hasNextLine()) {
+            String productType = scanner.nextLine();
+            Product product = unmarshallProduct(productType);
+            products.put(product.getType(), product);
+        }
+        scanner.close();
+    }
+
+    private Product unmarshallProduct(String stringedProduct) {
+        /**
+         * Tile,3.50,4.15 ProductType,CostPerSquareFoot,LaborCostPerSquareFoot
+         */
+        String[] productPieces = stringedProduct.split(",");
+        BigDecimal sqrFtRate = new BigDecimal(Double.parseDouble(productPieces[1]));
+        BigDecimal laborSqrFtRate = new BigDecimal(Double.parseDouble(productPieces[2]));
+        return new Product(productPieces[0], sqrFtRate, laborSqrFtRate);
     }
 
     @Override
     public void saveProducts() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        Collection<Product> productsC = products.values();
+        List<Product> productList = new ArrayList<>();
+        for (Product product : productsC) {
+            productList.add(product);
+        }
+        return productList;
     }
 
 }

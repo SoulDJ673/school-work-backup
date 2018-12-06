@@ -17,6 +17,8 @@
 package com.tsguild.flooringmastery.controller;
 
 import com.tsguild.flooringmastery.dto.Order;
+import com.tsguild.flooringmastery.dto.Product;
+import com.tsguild.flooringmastery.dto.TaxRate;
 import com.tsguild.flooringmastery.service.FlooringMasteryNoOrdersForDateException;
 import com.tsguild.flooringmastery.service.FlooringMasteryService;
 import com.tsguild.flooringmastery.view.FlooringMasteryView;
@@ -53,8 +55,9 @@ public class FlooringMasteryController {
                         break;
                     case 3:
                     case 4:
-                        throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
                     case 5:
+                        throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
+                    case 6:
                         view.temporaryLolMessage();
                         return;
                 }
@@ -74,7 +77,21 @@ public class FlooringMasteryController {
         view.displayOrders(dayOrders);
     }
 
-    private void createOrder() {
+    private void createOrder() throws FileNotFoundException {
+        int lastestID = service.getLastID();
+        List<TaxRate> states = service.getStates();
+        List<Product> products = service.getProducts();
+        Order theOrder = view.createOrder(lastestID, states, products, null);
+
+        //Validation and fixing
+        Order returnedCreateOrder;
+        Order validMaybe;
+        do {
+            validMaybe = service.validateOrder(theOrder);
+            returnedCreateOrder = view.createOrder(lastestID, states, products, theOrder);
+        } while (returnedCreateOrder != null);
+
+        service.addOrder(validMaybe);
 
     }
 

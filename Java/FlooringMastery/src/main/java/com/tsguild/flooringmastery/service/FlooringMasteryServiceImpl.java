@@ -86,29 +86,23 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public Order validateOrder(Order order) throws FlooringMasteryInvalidOrderException {
+    public Order validateOrder(Order order) {
         /**
          * Check for invalid fields in order && set them to null to be returned
          * and fixed
          */
         Order validMaybe = validateHelper(order);
 
-        boolean good = true;
-        //Check for null
-        String[] brokenOrder = validMaybe.toString().split(",");
-        for (String piece : brokenOrder) {
-            if (piece == null) {
-                good = false;
-            }
-        }
-
-        if (good) {
+        try {
             validMaybe.setTaxRate(taxProdDao.getTax(validMaybe.getState()).getTaxRate());
             validMaybe.setCostPerSqrFt(taxProdDao.getProduct(validMaybe.getProductType()).getCostPerSqrFt());
-            return order;
-        } else {
-            throw new FlooringMasteryInvalidOrderException("Not right, dude");
+            validMaybe.setLaborCostPerSqrFt(taxProdDao.getProduct(validMaybe.getProductType()).getLaborCostPerSqrFt());
+            validMaybe.recalc();
+        } catch (NullPointerException n) {
+            return validMaybe;
         }
+
+        return validMaybe;
 
     }
 
@@ -170,6 +164,23 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     private String autoCap(String thing) {
         thing = thing.toLowerCase();
         return thing.replace(thing.substring(0, 1), thing.substring(0, 1).toUpperCase());
+    }
+
+    @Override
+    public Order addOrder(Order order) {
+        return orderDao.addOrder(order);
+    }
+
+    @Override
+    public List getProducts() throws FileNotFoundException {
+        taxProdDao.loadProducts();
+        return taxProdDao.getAllProducts();
+    }
+
+    @Override
+    public List getStates() throws FileNotFoundException {
+        taxProdDao.loadTaxes();
+        return taxProdDao.getAllTaxes();
     }
 
 }

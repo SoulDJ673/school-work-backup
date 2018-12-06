@@ -29,27 +29,31 @@ public interface FlooringMasteryService {
 
     /**
      * This method takes the incoming LocalDate and finds the send it to the DAO
-     * to find the corresponding orders, and returns the Map given back to it 
-     * that contains the orders and their IDs.  This can also just be used to
+     * to find the corresponding orders, and returns the Map given back to it
+     * that contains the orders and their IDs. This can also just be used to
      * load the orders for a particular date into the date specific map in the
      * DAO.
-     * 
+     *
      * @param deliveryDate
      * @return Map with IDs and Order objects
      * @throws FileNotFoundException
-     * @throws FlooringMasteryNoOrdersForDateException 
+     * @throws FlooringMasteryNoOrdersForDateException
      */
     public List getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
-    
+
     /**
      * This method simply gets the latest order ID
-     * 
-     * @return 
+     *
+     * @return
      */
     public int getLastID();
-    
-    public Order validateOrder(Order order) throws FlooringMasteryInvalidOrderException;
-    
+
+    public Order validateOrder(Order order);
+
     public Order addOrder(Order order);
+
+    public List getProducts() throws FileNotFoundException;
+
+    public List getStates() throws FileNotFoundException;
 
 }

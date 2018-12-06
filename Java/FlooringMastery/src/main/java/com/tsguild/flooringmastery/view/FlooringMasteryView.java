@@ -17,6 +17,9 @@
 package com.tsguild.flooringmastery.view;
 
 import com.tsguild.flooringmastery.dto.Order;
+import com.tsguild.flooringmastery.dto.Product;
+import com.tsguild.flooringmastery.dto.TaxRate;
+import com.tsguild.flooringmastery.service.FlooringMasteryInvalidOrderException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -26,25 +29,25 @@ import java.util.List;
  * @author souldj673
  */
 public class FlooringMasteryView {
-    
+
     private UserIO io;
-    
+
     public FlooringMasteryView(UserIO theIo) {
         this.io = theIo;
     }
-    
+
     private int menus(String[] options) {
         int i = 1;
         for (String option : options) {
             io.print(i + ".) " + option + "\n");
             i++;
         }
-        
+
         int itemCode = io.readInt("Select what you would like to do: (1-" + (i - 1) + ")");
-        
+
         return itemCode;
     }
-    
+
     private void banner(String titleText) {
         String bannerCageMaterial = (">");
 
@@ -60,11 +63,11 @@ public class FlooringMasteryView {
         io.print(titleText + "\n");
         io.print(fittedCage + "\n");
     }
-    
+
     public int mainMenu() {
         String[] options = {"Display Orders", "Add Order",
-            "Edit Order", "Remove Order", "Quit"};
-        
+            "Edit Order", "Remove Order", "Save", "Quit"};
+
         io.print("                                      \n"
                 + "@@@@@@@@@@    @@@@@@   @@@  @@@  @@@  \n"
                 + "@@@@@@@@@@@  @@@@@@@@  @@@  @@@@ @@@  \n"
@@ -93,30 +96,30 @@ public class FlooringMasteryView {
         //Return User selection
         return menus(options);
     }
-    
+
     public void temporaryLolMessage() {
         io.print("\nI'd ask you to save, but production/training mode isn't "
                 + "\nimplemented yet.  Since writing to files isn't implemented "
                 + "\neither, there isn't a point yet to have a save prompt here.");
     }
-    
+
     public LocalDate getOrderDate() {
         LocalDate orderDate;
         DateTimeFormatter monthDayYear = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        
+
         io.print("\nI need the date that the order was created.\n");
         int orderDay = io.readInt("Please input the day the order was created:", 1, 31);
         int orderMonth = io.readInt("Input the month:", 1, 12);
         int orderYear = io.readInt("Input the year:");
-        
+
         orderDate = LocalDate.of(orderYear, orderMonth, orderDay);
-        
+
         return orderDate;
     }
-    
+
     public void displayOrders(List<Order> orders) {
         io.print("\n");
-        
+
         for (Order order : orders) {
             io.print(order.getOrderNum() + ".) " + order.getCustomerName()
                     + " - Order for " + order.getProductType() + " to "
@@ -124,9 +127,103 @@ public class FlooringMasteryView {
         }
         io.print("\n\n");
     }
-    
+
+    public Order createOrder(int latestId, List<TaxRate> states, List<Product> products, Order order) {
+        banner("                                                           \n"
+                + " @@@@@@@  @@@@@@@   @@@@@@@@   @@@@@@   @@@@@@@  @@@@@@@@  \n"
+                + "@@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@  @@@@@@@@  \n"
+                + "!@@       @@!  @@@  @@!       @@!  @@@    @@!    @@!       \n"
+                + "!@!       !@!  @!@  !@!       !@!  @!@    !@!    !@!       \n"
+                + "!@!       @!@!!@!   @!!!:!    @!@!@!@!    @!!    @!!!:!    \n"
+                + "!!!       !!@!@!    !!!!!:    !!!@!!!!    !!!    !!!!!:    \n"
+                + ":!!       !!: :!!   !!:       !!:  !!!    !!:    !!:       \n"
+                + ":!:       :!:  !:!  :!:       :!:  !:!    :!:    :!:       \n"
+                + " ::: :::  ::   :::   :: ::::  ::   :::     ::     :: ::::  \n"
+                + " :: :: :   :   : :  : :: ::    :   : :     :     : :: ::   \n"
+                + "                                                           ");
+
+        Order theOrder;
+
+        if (order == null) {
+            String custName = io.readString("Firstly, I need your name.  What is that?");
+
+            io.print("\n\nI need the delivery date for your order.\n");
+            int day = io.readInt("Please insert the date of delivery (1-31) ");
+            int month = io.readInt("\nNow the month (1-12) ");
+            int year = io.readInt("\nLastly, the year (YYYY) ");
+            LocalDate deliveryDate = LocalDate.of(year, month, day);
+
+            displayValidStates(states);
+            String state = io.readString("\n\nWhich state will the order be sent to? (DC)");
+
+            displayValidProducts(products);
+            String product = io.readString("\n\nWhich material are you ordering? (Tile)");
+            double area = io.readDouble("\nHow much material, in square feet, would you like to order? (100 (minimum))");
+
+            theOrder = new Order(latestId, custName, state, product, area, deliveryDate);
+        } else {
+
+            boolean fixed = false;
+
+            if (order.getCustomerName() == null) {
+                String custName = io.readString("Let's try again with your name.  It cannot be blank. ");
+                order.setCustomerName(custName);
+            }
+            if (order.getState() == null) {
+                displayValidStates(states);
+                String state = io.readString("\n\nThe state you entered before was either invalid or we don't deliver there.  Try again. (DC)");
+                order.setState(state);
+            }
+            if (order.getProductType() == null) {
+                displayValidProducts(products);
+                String product = io.readString("\n\nThe previously entered material was either invalid or we don't sell that.  Try again. (Tile)");
+                order.setProductType(product);
+            }
+            if (order.getArea() == 0) {
+                double area = io.readDouble("\nThe minimum amount of material we sell is 100 sqft. Try again. (100)");
+                order.setArea(area);
+            }
+
+            if (!fixed) {
+                return null;
+            } else {
+                theOrder = order;
+            }
+
+        }
+
+        return theOrder;
+    }
+
+    private Order creationConfirmationPrompt(Order theOrder) {
+        io.print("Your order ID is " + theOrder.getOrderNum() + ".");
+        io.print("\nYour total cost is: " + theOrder.getTotal());
+        String choice = io.readString("\n\nWould you like to confirm this purchase? (y/N)");
+        switch (choice.toLowerCase()) {
+            case "y":
+            case "yes":
+                return theOrder;
+            default:
+                return null;
+        }
+    }
+
+    private void displayValidStates(List<TaxRate> states) {
+        io.print("The following are valid responses:\n");
+        for (TaxRate state : states) {
+            io.print(state.getAbbr() + "\n");
+        }
+    }
+
+    private void displayValidProducts(List<Product> products) {
+        io.print("The following are valid responses:\n");
+        for (Product product : products) {
+            io.print(product.getType() + "\n");
+        }
+    }
+
     public void errors(String exception) {
-        
+
         banner("");
         switch (exception.toLowerCase()) {
             case "filenotfound":
@@ -139,5 +236,5 @@ public class FlooringMasteryView {
                 io.print("\nThere aren't any orders set to deliver on the given date!\n\n");
         }
     }
-    
+
 }

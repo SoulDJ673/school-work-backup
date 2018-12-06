@@ -19,6 +19,8 @@ package App;
 import com.tsguild.flooringmastery.controller.FlooringMasteryController;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDaoImpl;
+import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
+import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDaoImpl;
 import com.tsguild.flooringmastery.service.FlooringMasteryService;
 import com.tsguild.flooringmastery.service.FlooringMasteryServiceImpl;
 import com.tsguild.flooringmastery.view.*;
@@ -33,7 +35,8 @@ public class App {
     public static final UserIO IO = new UserIOConsoleImpl();
     public static final FlooringMasteryView VIEW = new FlooringMasteryView(IO);
     public static final FlooringMasteryOrderDao DAO = new FlooringMasteryOrderDaoImpl();
-    public static final FlooringMasteryService SERVICE = new FlooringMasteryServiceImpl(DAO);
+    public static final FlooringMasteryTaxesProductDao TAXPROD = new FlooringMasteryTaxesProductDaoImpl("Data/Taxes.txt", "Data/Products.txt");
+    public static final FlooringMasteryService SERVICE = new FlooringMasteryServiceImpl(DAO, TAXPROD);
     private static final FlooringMasteryController CONTROLLER = new FlooringMasteryController(VIEW, SERVICE);
 
     public static void main(String[] args) {
