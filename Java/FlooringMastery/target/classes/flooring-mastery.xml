@@ -15,30 +15,31 @@
  http://www.springframework.org/schema/aop
  http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
- <!-- Beans -->
- <!-- View -->
- <bean id="io" class="com.tsguild.flooringmastery.view.UserIO"/>
- <bean id="view" class="com.tsguild.flooringmastery.view.FlooringMasteryView">
-	 <contructor-arg ref="io"/>
- </bean>
+    <!-- Beans -->
+    <!-- View -->
+    <bean id="io" class="com.tsguild.flooringmastery.view.UserIOConsoleImpl"/>
+    <bean id="view" class="com.tsguild.flooringmastery.view.FlooringMasteryView">
+        <constructor-arg ref="io"/>
+    </bean>
 
- <!-- Dao -->
- <bean id="orderDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao">
-	 <constructor-arg value="Orders/"/>
- </bean>
- <bean id="taxProdDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao">
-	 <constructor-arg value="Data/Taxes.txt"/>
-	 <constructor-arg value="Data/Products.txt"/>
- </bean>
+    <!-- Dao -->
+    <bean id="orderDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryOrderDaoImpl">
+        <constructor-arg value="Orders/"/>
+    </bean>
+    <bean id="taxProdDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDaoImpl">
+        <constructor-arg value="Data/Taxes.txt"/>
+        <constructor-arg value="Data/Products.txt"/>
+    </bean>
 
- <!-- Service -->
- <bean id="service" class="com.tsguild.flooringmastery.service.FlooringMasteryService">
-	 <constructor-arg ref="orderDao"/>
-	 <constructor-arg ref="taxProdDao"/>
- </bean>
+    <!-- Service -->
+    <bean id="service" class="com.tsguild.flooringmastery.service.FlooringMasteryServiceImpl">
+        <constructor-arg ref="orderDao"/>
+        <constructor-arg ref="taxProdDao"/>
+    </bean>
 
- <!-- Controller -->
- <bean id="controller" class="com.tsguild.flooringmastery.controller.FlooringMasteryController">
-	 <constructor-arg ref="view"/>
-	 <constructor-arg ref="service"/>
- </bean>
+    <!-- Controller -->
+    <bean id="controller" class="com.tsguild.flooringmastery.controller.FlooringMasteryController">
+        <constructor-arg ref="view"/>
+        <constructor-arg ref="service"/>
+    </bean>
+</beans>

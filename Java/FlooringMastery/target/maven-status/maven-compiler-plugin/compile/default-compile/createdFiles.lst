@@ -6,10 +6,10 @@ com/tsguild/flooringmastery/view/UserIO.class
 com/tsguild/flooringmastery/view/FlooringMasteryView.class
 com/tsguild/flooringmastery/dto/TaxRate.class
 com/tsguild/flooringmastery/service/FlooringMasteryServiceImpl.class
+com/tsguild/flooringmastery/FlooringMastery.class
 com/tsguild/flooringmastery/dao/FlooringMasteryTaxesProductDaoImpl.class
 com/tsguild/flooringmastery/service/FlooringMasteryInvalidOrderException.class
 com/tsguild/flooringmastery/dto/Order.class
-App/App.class
 com/tsguild/flooringmastery/dto/Product.class
 com/tsguild/flooringmastery/service/FlooringMasteryNoOrdersForDateException.class
 com/tsguild/flooringmastery/service/FlooringMasteryService.class

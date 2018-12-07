@@ -37,7 +37,7 @@ public class FlooringMasteryServiceImplTest {
 
     @Before
     public void setUp() {
-        FlooringMasteryOrderDao dao = new FlooringMasteryOrderDaoImpl();
+        FlooringMasteryOrderDao dao = new FlooringMasteryOrderDaoImpl("Orders/");
         FlooringMasteryTaxesProductDao taxProd = new FlooringMasteryTaxesProductDaoImpl("Data/Taxes.txt", "Data/Products.txt");
         service = new FlooringMasteryServiceImpl(dao, taxProd);
     }
