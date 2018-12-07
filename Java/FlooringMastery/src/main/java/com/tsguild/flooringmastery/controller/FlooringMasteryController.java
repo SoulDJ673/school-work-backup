@@ -77,6 +77,13 @@ public class FlooringMasteryController {
         view.displayOrders(dayOrders);
     }
 
+    /**
+     * For this, you need to throw an exception for an invalid order in the
+     * validation stage, and only return an order if it's valid. This should fix
+     * the issue that's been happening. Also, make a more specific exception.
+     *
+     * @throws FileNotFoundException
+     */
     private void createOrder() throws FileNotFoundException {
         int lastestID = service.getLastID();
         List<TaxRate> states = service.getStates();
