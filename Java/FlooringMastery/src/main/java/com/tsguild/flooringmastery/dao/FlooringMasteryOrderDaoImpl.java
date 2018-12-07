@@ -38,11 +38,12 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     private final Map<Integer, Order> ordersForDay = new HashMap<>();
     private final Map<LocalDate, List<Order>> allOrders = new HashMap<>();
-    private final File orderDirectory = new File("Orders/"); //Reading from Directories!!!
+    private final File orderDirectory; //Reading from Directories!!!
 
     private final String DELIMITER = ",";
 
-    public FlooringMasteryOrderDaoImpl() {
+    public FlooringMasteryOrderDaoImpl(String orderDir) {
+        orderDirectory = new File(orderDir);
     }
 
     @Override

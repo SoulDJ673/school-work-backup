@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package App;
+package com.tsguild.flooringmastery;
 
 import com.tsguild.flooringmastery.controller.FlooringMasteryController;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
@@ -23,18 +23,23 @@ import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDaoImpl;
 import com.tsguild.flooringmastery.service.FlooringMasteryService;
 import com.tsguild.flooringmastery.service.FlooringMasteryServiceImpl;
-import com.tsguild.flooringmastery.view.*;
+import com.tsguild.flooringmastery.view.FlooringMasteryView;
+import com.tsguild.flooringmastery.view.UserIO;
+import com.tsguild.flooringmastery.view.UserIOConsoleImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * @author souldj673
  *
- * THIS IS TEMPORARY. WILL BE MIGRATING TO SPRING DI LATER
+ * @author souldj673
  */
-public class App {
+public class FlooringMastery {
+    
+    ApplicationContext appContext = new ClassPathXmlApplicationContext("flooring-mastery.xml");
 
     public static final UserIO IO = new UserIOConsoleImpl();
     public static final FlooringMasteryView VIEW = new FlooringMasteryView(IO);
-    public static final FlooringMasteryOrderDao DAO = new FlooringMasteryOrderDaoImpl();
+    public static final FlooringMasteryOrderDao DAO = new FlooringMasteryOrderDaoImpl("Orders/");
     public static final FlooringMasteryTaxesProductDao TAXPROD = new FlooringMasteryTaxesProductDaoImpl("Data/Taxes.txt", "Data/Products.txt");
     public static final FlooringMasteryService SERVICE = new FlooringMasteryServiceImpl(DAO, TAXPROD);
     private static final FlooringMasteryController CONTROLLER = new FlooringMasteryController(VIEW, SERVICE);
