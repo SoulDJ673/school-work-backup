@@ -23,9 +23,22 @@
  </bean>
 
  <!-- Dao -->
- <bean id="orderDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao"/>
+ <bean id="orderDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao">
+	 <constructor-arg value="Orders/"/>
+ </bean>
  <bean id="taxProdDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao">
-	 <constructor-arg>Data/Taxes.txt</constructor-arg>
-	 <constructor-arg>Data/Products.txt</constructor-arg>
+	 <constructor-arg value="Data/Taxes.txt"/>
+	 <constructor-arg value="Data/Products.txt"/>
  </bean>
 
+ <!-- Service -->
+ <bean id="service" class="com.tsguild.flooringmastery.service.FlooringMasteryService">
+	 <constructor-arg ref="orderDao"/>
+	 <constructor-arg ref="taxProdDao"/>
+ </bean>
+
+ <!-- Controller -->
+ <bean id="controller" class="com.tsguild.flooringmastery.controller.FlooringMasteryController">
+	 <constructor-arg ref="view"/>
+	 <constructor-arg ref="service"/>
+ </bean>

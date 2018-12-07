@@ -34,17 +34,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author souldj673
  */
 public class FlooringMastery {
-    
-    ApplicationContext appContext = new ClassPathXmlApplicationContext("flooring-mastery.xml");
-
-    public static final UserIO IO = new UserIOConsoleImpl();
-    public static final FlooringMasteryView VIEW = new FlooringMasteryView(IO);
-    public static final FlooringMasteryOrderDao DAO = new FlooringMasteryOrderDaoImpl("Orders/");
-    public static final FlooringMasteryTaxesProductDao TAXPROD = new FlooringMasteryTaxesProductDaoImpl("Data/Taxes.txt", "Data/Products.txt");
-    public static final FlooringMasteryService SERVICE = new FlooringMasteryServiceImpl(DAO, TAXPROD);
-    private static final FlooringMasteryController CONTROLLER = new FlooringMasteryController(VIEW, SERVICE);
 
     public static void main(String[] args) {
+        ApplicationContext fmContext = new ClassPathXmlApplicationContext("flooring-mastery.xml");
+
+        UserIO IO = fmContext.getBean(UserIOConsoleImpl.class);
+        FlooringMasteryView VIEW = fmContext.getBean(FlooringMasteryView.class);
+        FlooringMasteryOrderDao DAO = fmContext.getBean(FlooringMasteryOrderDaoImpl.class);
+        FlooringMasteryTaxesProductDao TAXPROD = fmContext.getBean(FlooringMasteryTaxesProductDaoImpl.class);
+        FlooringMasteryService SERVICE = fmContext.getBean(FlooringMasteryServiceImpl.class);
+        FlooringMasteryController CONTROLLER = fmContext.getBean(FlooringMasteryController.class);
+
         CONTROLLER.run();
     }
 
