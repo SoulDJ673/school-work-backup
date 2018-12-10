@@ -19,7 +19,7 @@ package com.tsguild.flooringmastery.view;
 import com.tsguild.flooringmastery.dto.Order;
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
-import com.tsguild.flooringmastery.service.FlooringMasteryInvalidOrderException;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -31,9 +31,11 @@ import java.util.List;
 public class FlooringMasteryView {
 
     private UserIO io;
+    private ConsoleEraser eraser;
 
-    public FlooringMasteryView(UserIO theIo) {
+    public FlooringMasteryView(UserIO theIo, ConsoleEraser theEraser) {
         this.io = theIo;
+        this.eraser = theEraser;
     }
 
     private int menus(String[] options) {
@@ -163,6 +165,9 @@ public class FlooringMasteryView {
             theOrder = new Order(latestId, custName, state, product, area, deliveryDate);
         } else {
 
+            /**
+             * This is legacy code and no longer serves a purpose.
+             */
             boolean fixed = false;
 
             if (order.getCustomerName() == null) {
@@ -195,9 +200,13 @@ public class FlooringMasteryView {
         return theOrder;
     }
 
-    private Order creationConfirmationPrompt(Order theOrder) {
-        io.print("Your order ID is " + theOrder.getOrderNum() + ".");
-        io.print("\nYour total cost is: " + theOrder.getTotal());
+    public Order creationConfirmationPrompt(Order theOrder) {
+        this.clearConsole();
+        io.print("\n\nThe name for the order is " + theOrder.getCustomerName());
+        io.print("\nYour order ID is " + theOrder.getOrderNum() + ".");
+        io.print("\nThe order is for " + theOrder.getArea() + " sqft of "
+                + theOrder.getProductType() + " to " + theOrder.getState());
+        io.print("\nYour total cost is: $" + theOrder.getTotal().setScale(2, RoundingMode.FLOOR));
         String choice = io.readString("\n\nWould you like to confirm this purchase? (y/N)");
         switch (choice.toLowerCase()) {
             case "y":
@@ -227,14 +236,42 @@ public class FlooringMasteryView {
         banner("");
         switch (exception.toLowerCase()) {
             case "filenotfound":
-                io.print("\nUh oh! Couldn't find the specified file!\n\n");
+                io.print("\nThere aren't any order files!\n\n");
                 break;
             case "unsupportedoperation":
                 io.print("\nSorry kiddo, can't do that yet!\n\n");
                 break;
             case "noorders":
-                io.print("\nThere aren't any orders set to deliver on the given date!\n\n");
+                io.print("\nThere aren't any orders set to deliver on the given"
+                        + " date!\n\n");
+                break;
+            case "invalidorder":
+                io.print("\nYou entered some invalid information into your orde"
+                        + "r.  Let's try again, but this time with valid inform"
+                        + "ation.\n\n");
+                break;
+            case "filenotfoundpretest":
+                io.print("\nThere aren't any order files to read from! Must be"
+                        + " the first time running...  We'll keep going though.");
+                break;
         }
+    }
+
+    public void notices(String notice) {
+        switch (notice.toLowerCase()) {
+            case "trainingmode":
+                io.print("\nYou are in training mode.  Any changes will not be "
+                        + "saved.\n\n");
+                break;
+            case "productionmode":
+                io.print("\nYou are in production mode.  All changes will be "
+                        + "saved.");
+        }
+    }
+
+    private void clearConsole() {
+
+        eraser.clearConsole();
     }
 
 }

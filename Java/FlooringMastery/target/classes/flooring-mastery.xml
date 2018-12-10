@@ -19,7 +19,8 @@
     <!-- View -->
     <bean id="io" class="com.tsguild.flooringmastery.view.UserIOConsoleImpl"/>
     <bean id="view" class="com.tsguild.flooringmastery.view.FlooringMasteryView">
-        <constructor-arg ref="io"/>
+	    <constructor-arg ref="io"/>
+	    <constructor-arg ref="io"/>
     </bean>
 
     <!-- Dao -->

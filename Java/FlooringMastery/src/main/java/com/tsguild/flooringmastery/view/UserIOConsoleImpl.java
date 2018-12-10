@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  * @author souldj673
  */
-public class UserIOConsoleImpl implements UserIO {
+public class UserIOConsoleImpl implements UserIO, ConsoleEraser {
 
     //Class accessible scanner for user input
     private Scanner userInput = new Scanner(System.in);
@@ -224,5 +224,17 @@ public class UserIOConsoleImpl implements UserIO {
                 System.out.println("You must input a long.");
             }
         }
+    }
+
+    @Override
+    public void clearConsole() {
+        /**
+         * These are ANSII Escape codes. They are what will be used to clear the
+         * console (UN*X based systems only (Also Windows 10 v1511)).
+         *
+         * Clear Home Close
+         */
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }

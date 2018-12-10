@@ -65,7 +65,17 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     @Override
     public Order addOrder(Order theOrder) {
-        ordersForDay.put(theOrder.getOrderNum(), theOrder);
+        //Make sure correct day is loaded
+        try {
+            this.mapOrdersForDate(theOrder.getDeliveryDate());
+        } catch (FileNotFoundException f) {
+            /**
+             * This exception is only thrown when the specified file name given
+             * to the scanner doesn't exist, but since the name would not be
+             * given to scanner unless it exists, this shouldn't happen.
+             */
+        }
+        this.ordersForDay.put(theOrder.getOrderNum(), theOrder);
         return theOrder;
     }
 
@@ -81,13 +91,6 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     @Override
     public void mapOrdersForDate(LocalDate date) throws FileNotFoundException {
-        /**
-         * Only call loadFromFiles() if there aren't any key/value pairs in
-         * allOrders (don't wanna overwrite any unsaved changes!
-         */
-        if (allOrders.isEmpty()) {
-            loadFromFiles();
-        }
 
         /**
          * If ordersForDay isn't empty, add it's contents to allOrders, then
@@ -100,6 +103,14 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
             }
             allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
             ordersForDay.clear();
+        }
+
+        /**
+         * Only call loadFromFiles() if there aren't any key/value pairs in
+         * allOrders (don't wanna overwrite any unsaved changes!
+         */
+        if (allOrders.isEmpty() && ordersForDay.isEmpty()) {
+            loadFromFiles();
         }
 
         /**

@@ -48,7 +48,7 @@ public interface FlooringMasteryService {
      */
     public int getLastID();
 
-    public Order validateOrder(Order order);
+    public Order validateOrder(Order order) throws FlooringMasteryInvalidOrderException;
 
     public Order addOrder(Order order);
 

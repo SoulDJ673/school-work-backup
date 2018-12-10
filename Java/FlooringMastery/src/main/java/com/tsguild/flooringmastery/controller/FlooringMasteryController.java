@@ -19,6 +19,7 @@ package com.tsguild.flooringmastery.controller;
 import com.tsguild.flooringmastery.dto.Order;
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
+import com.tsguild.flooringmastery.service.FlooringMasteryInvalidOrderException;
 import com.tsguild.flooringmastery.service.FlooringMasteryNoOrdersForDateException;
 import com.tsguild.flooringmastery.service.FlooringMasteryService;
 import com.tsguild.flooringmastery.view.FlooringMasteryView;
@@ -41,6 +42,19 @@ public class FlooringMasteryController {
     }
 
     public void run() {
+
+        //This is to make sure that at least one orders file exists.
+        try {
+            service.getOrders(LocalDate.now());
+        } catch (FileNotFoundException f) {
+            view.errors("FileNotFoundPreTest");
+
+        } catch (FlooringMasteryNoOrdersForDateException n) {
+            /**
+             * This is to be expected. This should be thrown because orders must
+             * be set to delivered in the future.
+             */
+        }
         menuLoop:
         while (1 == 1) {
             try {
@@ -91,14 +105,25 @@ public class FlooringMasteryController {
         Order theOrder = view.createOrder(lastestID, states, products, null);
 
         //Validation and fixing
-        Order returnedCreateOrder;
         Order validMaybe;
-        do {
-            validMaybe = service.validateOrder(theOrder);
-            returnedCreateOrder = view.createOrder(lastestID, states, products, theOrder);
-        } while (returnedCreateOrder != null);
+        boolean fixed = false;
 
-        service.addOrder(validMaybe);
+        do {
+            try {
+                validMaybe = service.validateOrder(theOrder);
+                fixed = true;
+            } catch (FlooringMasteryInvalidOrderException o) {
+                view.errors("InvalidOrder");
+                validMaybe = view.createOrder(lastestID, states, products, theOrder);
+            }
+        } while (!fixed);
+        Order confirmOrder;
+        confirmOrder = view.creationConfirmationPrompt(validMaybe);
+
+        //If user confirms, add to Order map
+        if (confirmOrder != null) {
+            service.addOrder(confirmOrder);
+        }
 
     }
 

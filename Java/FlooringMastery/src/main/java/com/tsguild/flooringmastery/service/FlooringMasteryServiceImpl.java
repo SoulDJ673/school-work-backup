@@ -86,7 +86,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public Order validateOrder(Order order) {
+    public Order validateOrder(Order order) throws FlooringMasteryInvalidOrderException {
         /**
          * Check for invalid fields in order && set them to null to be returned
          * and fixed
@@ -99,7 +99,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
             validMaybe.setLaborCostPerSqrFt(taxProdDao.getProduct(validMaybe.getProductType()).getLaborCostPerSqrFt());
             validMaybe.recalc();
         } catch (NullPointerException n) {
-            return validMaybe;
+            throw new FlooringMasteryInvalidOrderException();
         }
 
         return validMaybe;
@@ -113,12 +113,12 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
      * @param order
      * @return
      */
-    private Order validateHelper(Order order) {
+    private Order validateHelper(Order order) throws FlooringMasteryInvalidOrderException {
 
         //Check for date in future
         LocalDate maybeBadDelivery;
         if (order.getDeliveryDate().compareTo(LocalDate.now()) <= 0) {
-            maybeBadDelivery = null;
+            throw new FlooringMasteryInvalidOrderException();
         } else {
             maybeBadDelivery = order.getDeliveryDate();
         }
@@ -131,25 +131,25 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
         //Check for blank or null name
         if (order.getCustomerName().trim().isEmpty() || order.getCustomerName()
                 == null) {
-            kindaTheOrder.setCustomerName(null);
+            throw new FlooringMasteryInvalidOrderException();
         }
 
         //Check for if we sell in that state & if it's valid
         if (order.getState().trim().isEmpty() || order.getState() == null
                 || taxProdDao.getTax(order.getState()) == null) {
-            kindaTheOrder.setState(null);
+            throw new FlooringMasteryInvalidOrderException();
         }
 
         //Check for if we sell that product & if it's valid
         if (order.getProductType().trim().isEmpty() || order.getProductType()
                 == null || taxProdDao.getProduct(autoCap(order.getProductType())
                 ) == null) {
-            kindaTheOrder.setProductType(null);
+            throw new FlooringMasteryInvalidOrderException();
         }
 
         //Check for minimal size reqs
         if (order.getArea() < 100) {
-            kindaTheOrder.setArea(0);
+            throw new FlooringMasteryInvalidOrderException();
         }
 
         return kindaTheOrder;
