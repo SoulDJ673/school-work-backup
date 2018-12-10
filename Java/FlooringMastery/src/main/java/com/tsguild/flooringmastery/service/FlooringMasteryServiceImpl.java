@@ -16,6 +16,7 @@
  */
 package com.tsguild.flooringmastery.service;
 
+import com.tsguild.flooringmastery.dao.FlooringMasteryModeDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
 import com.tsguild.flooringmastery.dto.Order;
@@ -32,11 +33,13 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
 
     private final FlooringMasteryOrderDao orderDao;
     private final FlooringMasteryTaxesProductDao taxProdDao;
+    private final FlooringMasteryModeDao modeDao;
 
     public FlooringMasteryServiceImpl(FlooringMasteryOrderDao theOrderDao,
-            FlooringMasteryTaxesProductDao theTaxProdDao) {
+            FlooringMasteryTaxesProductDao theTaxProdDao, FlooringMasteryModeDao theModeDao) {
         this.orderDao = theOrderDao;
         this.taxProdDao = theTaxProdDao;
+        this.modeDao = theModeDao;
     }
 
     @Override
@@ -181,6 +184,17 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     public List getStates() throws FileNotFoundException {
         taxProdDao.loadTaxes();
         return taxProdDao.getAllTaxes();
+    }
+
+    /**
+     * This implementation only uses the isProduction() method in the dao to
+     * determine the mode type.
+     *
+     * @return true(Production) / false(training)
+     */
+    @Override
+    public boolean getMode() {
+        return modeDao.isProduction();
     }
 
 }

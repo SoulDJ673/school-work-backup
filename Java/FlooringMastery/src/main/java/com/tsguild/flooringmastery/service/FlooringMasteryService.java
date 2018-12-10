@@ -56,4 +56,6 @@ public interface FlooringMasteryService {
 
     public List getStates() throws FileNotFoundException;
 
+    public boolean getMode();
+
 }
