@@ -16,6 +16,8 @@
  */
 package com.tsguild.flooringmastery.dao;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author souldj673
@@ -25,6 +27,8 @@ public interface FlooringMasteryModeDao {
     public boolean isProduction();
 
     public boolean isTraining();
+    
+    public void loadMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
 
     //Rest of CRUDing for Requirements
     public void changeMode();

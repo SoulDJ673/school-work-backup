@@ -70,30 +70,9 @@ public class FlooringMasteryView {
         String[] options = {"Display Orders", "Add Order",
             "Edit Order", "Remove Order", "Save", "Quit"};
 
-        io.print("                                      \n"
-                + "@@@@@@@@@@    @@@@@@   @@@  @@@  @@@  \n"
-                + "@@@@@@@@@@@  @@@@@@@@  @@@  @@@@ @@@  \n"
-                + "@@! @@! @@!  @@!  @@@  @@!  @@!@!@@@  \n"
-                + "!@! !@! !@!  !@!  @!@  !@!  !@!!@!@!  \n"
-                + "@!! !!@ @!@  @!@!@!@!  !!@  @!@ !!@!  \n"
-                + "!@!   ! !@!  !!!@!!!!  !!!  !@!  !!!  \n"
-                + "!!:     !!:  !!:  !!!  !!:  !!:  !!!  \n"
-                + ":!:     :!:  :!:  !:!  :!:  :!:  !:!  \n"
-                + ":::     ::   ::   :::   ::   ::   ::  \n"
-                + " :      :     :   : :  :    ::    :   \n"
-                + "                                      \n"
-                + "                                           \n"
-                + "@@@@@@@@@@   @@@@@@@@  @@@  @@@  @@@  @@@  \n"
-                + "@@@@@@@@@@@  @@@@@@@@  @@@@ @@@  @@@  @@@  \n"
-                + "@@! @@! @@!  @@!       @@!@!@@@  @@!  @@@  \n"
-                + "!@! !@! !@!  !@!       !@!!@!@!  !@!  @!@  \n"
-                + "@!! !!@ @!@  @!!!:!    @!@ !!@!  @!@  !@!  \n"
-                + "!@!   ! !@!  !!!!!:    !@!  !!!  !@!  !!!  \n"
-                + "!!:     !!:  !!:       !!:  !!!  !!:  !!!  \n"
-                + ":!:     :!:  :!:       :!:  !:!  :!:  !:!  \n"
-                + ":::     ::    :: ::::   ::   ::  ::::: ::  \n"
-                + " :      :    : :: ::   ::    :    : :  :   \n"
-                + "                                           \n\n");
+        io.print("O┬┌─┐  ╔╦╗┌─┐┬┌┐┌  ╔╦╗┌─┐┌┐┌┬ ┬  ┌─┐O┬\n"
+                + "┌┘│└┘  ║║║├─┤││││  ║║║├┤ ││││ │  │└┘┌┘\n"
+                + "┴O└──  ╩ ╩┴ ┴┴┘└┘  ╩ ╩└─┘┘└┘└─┘  └──┴O\n\n");
 
         //Return User selection
         return menus(options);
@@ -131,18 +110,9 @@ public class FlooringMasteryView {
     }
 
     public Order createOrder(int latestId, List<TaxRate> states, List<Product> products, Order order) {
-        banner("                                                           \n"
-                + " @@@@@@@  @@@@@@@   @@@@@@@@   @@@@@@   @@@@@@@  @@@@@@@@  \n"
-                + "@@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@  @@@@@@@@  \n"
-                + "!@@       @@!  @@@  @@!       @@!  @@@    @@!    @@!       \n"
-                + "!@!       !@!  @!@  !@!       !@!  @!@    !@!    !@!       \n"
-                + "!@!       @!@!!@!   @!!!:!    @!@!@!@!    @!!    @!!!:!    \n"
-                + "!!!       !!@!@!    !!!!!:    !!!@!!!!    !!!    !!!!!:    \n"
-                + ":!!       !!: :!!   !!:       !!:  !!!    !!:    !!:       \n"
-                + ":!:       :!:  !:!  :!:       :!:  !:!    :!:    :!:       \n"
-                + " ::: :::  ::   :::   :: ::::  ::   :::     ::     :: ::::  \n"
-                + " :: :: :   :   : :  : :: ::    :   : :     :     : :: ::   \n"
-                + "                                                           ");
+        banner("O┬  ╔═╗┬─┐┌─┐┌─┐┌┬┐┌─┐  O┬\n"
+                + "┌┘  ║  ├┬┘├┤ ├─┤ │ ├┤   ┌┘\n"
+                + "┴O  ╚═╝┴└─└─┘┴ ┴ ┴ └─┘  ┴O\n\n");
 
         Order theOrder;
 
@@ -202,11 +172,7 @@ public class FlooringMasteryView {
 
     public Order creationConfirmationPrompt(Order theOrder) {
         this.clearConsole();
-        io.print("\n\nThe name for the order is " + theOrder.getCustomerName());
-        io.print("\nYour order ID is " + theOrder.getOrderNum() + ".");
-        io.print("\nThe order is for " + theOrder.getArea() + " sqft of "
-                + theOrder.getProductType() + " to " + theOrder.getState());
-        io.print("\nYour total cost is: $" + theOrder.getTotal().setScale(2, RoundingMode.FLOOR));
+        displayOrderInfo(theOrder);
         String choice = io.readString("\n\nWould you like to confirm this purchase? (y/N)");
         switch (choice.toLowerCase()) {
             case "y":
@@ -229,6 +195,40 @@ public class FlooringMasteryView {
         for (Product product : products) {
             io.print(product.getType() + "\n");
         }
+    }
+
+    public int removeOrderIdGrabber() {
+        banner("O┬  ╦═╗┌─┐┌┬┐┌─┐┬  ┬┌─┐  O┬\n"
+                + "┌┘  ╠╦╝├┤ ││││ │└┐┌┘├┤   ┌┘\n"
+                + "┴O  ╩╚═└─┘┴ ┴└─┘ └┘ └─┘  ┴O\n\n");
+
+        int orderId;
+
+        validLoop:
+        while (true) {
+            String orderIdMaybe = io.readString("Please enter your order ID (Ex: 1)"
+                    + " or type 'q' to return to the main menu");
+            switch (orderIdMaybe.toLowerCase()) {
+                case "q":
+                case "quit":
+                case "main":
+                case "exit":
+                case "x":
+                    return -69;
+            }
+
+            try {
+                orderId = Integer.parseInt(orderIdMaybe);
+                break validLoop;
+            } catch (NumberFormatException n) {
+                io.print("\n");
+            }
+        }
+        return orderId;
+    }
+
+    public boolean removeOrderConfirmPrompt(Order theOrder) {
+
     }
 
     public void errors(String exception) {
@@ -254,6 +254,17 @@ public class FlooringMasteryView {
                 io.print("\nThere aren't any order files to read from! Must be"
                         + " the first time running...  We'll keep going though.");
                 break;
+            case "modenoneerror":
+                io.print("\nThe file for the mode type is nonexistent or unread"
+                        + "able.  Please check to make sure reading permissions"
+                        + " are correct and that the file exists. The program w"
+                        + "ill not run.");
+                break;
+            case "modeinvaliderror":
+                io.print("\nThe running mode chosen was invalid.  Please check "
+                        + "the Data/Mode.txt file to ensure that a valid runnin"
+                        + "g mode is set (Training/Production).  The program wi"
+                        + "ll not run.");
         }
     }
 
@@ -272,6 +283,14 @@ public class FlooringMasteryView {
     private void clearConsole() {
 
         eraser.clearConsole();
+    }
+
+    private void displayOrderInfo(Order theOrder) {
+        io.print("\n\nName:" + theOrder.getCustomerName());
+        io.print("\nOrder ID: " + theOrder.getOrderNum());
+        io.print("\nThe order is for " + theOrder.getArea() + " sqft of "
+                + theOrder.getProductType() + " to " + theOrder.getState());
+        io.print("\nTotal Cost: $" + theOrder.getTotal().setScale(2, RoundingMode.HALF_UP));
     }
 
 }

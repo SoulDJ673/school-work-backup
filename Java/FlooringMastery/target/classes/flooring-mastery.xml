@@ -19,8 +19,8 @@
     <!-- View -->
     <bean id="io" class="com.tsguild.flooringmastery.view.UserIOConsoleImpl"/>
     <bean id="view" class="com.tsguild.flooringmastery.view.FlooringMasteryView">
-	    <constructor-arg ref="io"/>
-	    <constructor-arg ref="io"/>
+        <constructor-arg ref="io"/>
+        <constructor-arg ref="io"/>
     </bean>
 
     <!-- Dao -->
@@ -31,11 +31,13 @@
         <constructor-arg value="Data/Taxes.txt"/>
         <constructor-arg value="Data/Products.txt"/>
     </bean>
+    <bean id="modeDao" class="com.tsguild.flooringmastery.dao.FlooringMasteryModeDaoImpl"/>
 
     <!-- Service -->
     <bean id="service" class="com.tsguild.flooringmastery.service.FlooringMasteryServiceImpl">
         <constructor-arg ref="orderDao"/>
         <constructor-arg ref="taxProdDao"/>
+        <constructor-arg ref="modeDao"/>
     </bean>
 
     <!-- Controller -->

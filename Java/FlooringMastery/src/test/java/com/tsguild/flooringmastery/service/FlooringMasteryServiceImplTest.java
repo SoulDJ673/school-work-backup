@@ -16,6 +16,8 @@
  */
 package com.tsguild.flooringmastery.service;
 
+import com.tsguild.flooringmastery.dao.FlooringMasteryModeDao;
+import com.tsguild.flooringmastery.dao.FlooringMasteryModeDaoImpl;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDaoImpl;
 import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
@@ -39,7 +41,8 @@ public class FlooringMasteryServiceImplTest {
     public void setUp() {
         FlooringMasteryOrderDao dao = new FlooringMasteryOrderDaoImpl("Orders/");
         FlooringMasteryTaxesProductDao taxProd = new FlooringMasteryTaxesProductDaoImpl("Data/Taxes.txt", "Data/Products.txt");
-        service = new FlooringMasteryServiceImpl(dao, taxProd);
+        FlooringMasteryModeDao mode = new FlooringMasteryModeDaoImpl();
+        service = new FlooringMasteryServiceImpl(dao, taxProd, mode);
     }
 
     @Test

@@ -17,6 +17,7 @@
 package com.tsguild.flooringmastery.service;
 
 import com.tsguild.flooringmastery.dao.FlooringMasteryModeDao;
+import com.tsguild.flooringmastery.dao.FlooringMasteryModeErrorException;
 import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
 import com.tsguild.flooringmastery.dto.Order;
@@ -191,10 +192,17 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
      * determine the mode type.
      *
      * @return true(Production) / false(training)
+     * @throws java.io.FileNotFoundException
+     * @throws com.tsguild.flooringmastery.dao.FlooringMasteryModeErrorException
      */
     @Override
-    public boolean getMode() {
+    public boolean getMode() throws FileNotFoundException, FlooringMasteryModeErrorException {
+        modeDao.loadMode();
         return modeDao.isProduction();
+    }
+
+    public Order removeOrder(int orderId) {
+        return orderDao.removeOrder(orderId);
     }
 
 }

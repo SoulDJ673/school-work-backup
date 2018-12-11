@@ -47,7 +47,8 @@ public class FlooringMasteryModeDaoImpl implements FlooringMasteryModeDao {
         }
     }
 
-    private void loadMode() throws FileNotFoundException, FlooringMasteryModeErrorException {
+    @Override
+    public void loadMode() throws FileNotFoundException, FlooringMasteryModeErrorException {
         Scanner scanner = new Scanner(new BufferedReader(
                 new FileReader("Data/Mode.txt")));
 

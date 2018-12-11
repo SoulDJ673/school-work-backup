@@ -16,6 +16,7 @@
  */
 package com.tsguild.flooringmastery.controller;
 
+import com.tsguild.flooringmastery.dao.FlooringMasteryModeErrorException;
 import com.tsguild.flooringmastery.dto.Order;
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
@@ -26,6 +27,8 @@ import com.tsguild.flooringmastery.view.FlooringMasteryView;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,6 +45,20 @@ public class FlooringMasteryController {
     }
 
     public void run() {
+
+        boolean isProductionMode = false;
+        try {
+            isProductionMode = service.getMode();
+        } catch (FileNotFoundException ex) {
+            view.errors("ModeNoneError");
+        } catch (FlooringMasteryModeErrorException ex) {
+            view.errors("ModeInvalidError");
+        }
+        if (!isProductionMode) {
+            view.notices("TrainingMode");
+        } else {
+            view.notices("ProductionMode");
+        }
 
         //This is to make sure that at least one orders file exists.
         try {
@@ -67,8 +84,9 @@ public class FlooringMasteryController {
                     case 2:
                         createOrder();
                         break;
-                    case 3:
                     case 4:
+                        removeOrder();
+                    case 3:
                     case 5:
                         throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
                     case 6:
@@ -124,6 +142,27 @@ public class FlooringMasteryController {
         if (confirmOrder != null) {
             service.addOrder(confirmOrder);
         }
+
+    }
+
+    private void removeOrder() {
+        /**
+         * An ID of -69 can not be achieved. It is a magic number that is only
+         * used to return to the main menu.
+         */
+        int orderId = view.removeOrderIdGrabber();
+        Order grabbedOrder;
+
+        if (orderId == -69) {
+            return;
+        } else {
+            grabbedOrder = service.getOrder(orderId);
+        }
+        
+        /**
+         * removeOrderConfirmPrompt - Add here
+         * If true, remove Order.  False will keep order.
+         */
 
     }
 

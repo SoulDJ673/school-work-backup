@@ -16,6 +16,7 @@
  */
 package com.tsguild.flooringmastery.service;
 
+import com.tsguild.flooringmastery.dao.FlooringMasteryModeErrorException;
 import com.tsguild.flooringmastery.dto.Order;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -42,6 +43,16 @@ public interface FlooringMasteryService {
     public List getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
 
     /**
+     * This method will loop through all of the orders until it finds one with
+     * the matching ID. Because of this, no LocalDate is needed. Will return
+     * null if the order cannot be found.
+     *
+     * @param orderId
+     * @return
+     */
+    public Order getOrder(int orderId);
+
+    /**
      * This method simply gets the latest order ID
      *
      * @return
@@ -56,6 +67,6 @@ public interface FlooringMasteryService {
 
     public List getStates() throws FileNotFoundException;
 
-    public boolean getMode();
+    public boolean getMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
 
 }
