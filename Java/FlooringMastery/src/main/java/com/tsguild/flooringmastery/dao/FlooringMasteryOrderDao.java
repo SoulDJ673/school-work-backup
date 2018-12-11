@@ -16,8 +16,8 @@ public interface FlooringMasteryOrderDao {
     Map<Integer, Order> DAY_ORDERS = new HashMap<>();
 
     public List getOrders();
-    
-    public Map getAllOrders() ;
+
+    public Map getAllOrders();
 
     public Order addOrder(Order theOrder);
 
@@ -26,5 +26,7 @@ public interface FlooringMasteryOrderDao {
     public Order removeOrder(int orderId);
 
     public void mapOrdersForDate(LocalDate date) throws FileNotFoundException;
+
+    public Order getOrder(int orderId);
 
 }

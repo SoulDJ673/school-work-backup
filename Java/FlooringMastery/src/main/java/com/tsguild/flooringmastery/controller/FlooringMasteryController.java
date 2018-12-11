@@ -27,8 +27,6 @@ import com.tsguild.flooringmastery.view.FlooringMasteryView;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -158,11 +156,17 @@ public class FlooringMasteryController {
         } else {
             grabbedOrder = service.getOrder(orderId);
         }
-        
+
         /**
-         * removeOrderConfirmPrompt - Add here
-         * If true, remove Order.  False will keep order.
+         * removeOrderConfirmPrompt - Add here If true, remove Order. False will
+         * keep order.
          */
+        boolean remove = view.removeOrderConfirmPrompt(grabbedOrder);
+        if (remove) {
+            service.removeOrder(orderId);
+        } else {
+            return;
+        }
 
     }
 

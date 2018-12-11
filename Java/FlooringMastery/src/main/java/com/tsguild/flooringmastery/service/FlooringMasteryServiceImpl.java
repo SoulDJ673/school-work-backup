@@ -201,8 +201,14 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
         return modeDao.isProduction();
     }
 
+    @Override
     public Order removeOrder(int orderId) {
         return orderDao.removeOrder(orderId);
+    }
+
+    @Override
+    public Order getOrder(int orderId) {
+        return orderDao.getOrder(orderId);
     }
 
 }

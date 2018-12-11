@@ -200,4 +200,28 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     }
 
+    /**
+     * This method will loop through all of the orders until it finds one with
+     * the matching ID. Because of this, no LocalDate is needed. Will return
+     * null if the order cannot be found.
+     *
+     * @param orderId
+     * @return
+     */
+    @Override
+    public Order getOrder(int orderId) {
+
+        int nextAvailableId = 0;
+        for (List<Order> dayOrders : allOrders.values()) {
+            for (Order order : dayOrders) {
+                /**
+                 * This needs to check every Order ID to see if it matches. If
+                 * it does, return it.
+                 */
+            }
+        }
+
+        return nextAvailableId;
+    }
+
 }

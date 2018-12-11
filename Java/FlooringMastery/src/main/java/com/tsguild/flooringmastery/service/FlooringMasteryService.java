@@ -43,9 +43,7 @@ public interface FlooringMasteryService {
     public List getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
 
     /**
-     * This method will loop through all of the orders until it finds one with
-     * the matching ID. Because of this, no LocalDate is needed. Will return
-     * null if the order cannot be found.
+     * Simple call to orderDao
      *
      * @param orderId
      * @return
@@ -68,5 +66,7 @@ public interface FlooringMasteryService {
     public List getStates() throws FileNotFoundException;
 
     public boolean getMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
+
+    public Order removeOrder(int orderId);
 
 }
