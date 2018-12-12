@@ -21,6 +21,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -61,6 +66,30 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
     @Override
     public Map<LocalDate, List<Order>> getAllOrders() {
         return allOrders;
+    }
+
+    /**
+     * This method will loop through all of the orders until it finds one with
+     * the matching ID. Because of this, no LocalDate is needed. Will return
+     * null if the order cannot be found.
+     *
+     * @param orderId
+     * @return
+     */
+    @Override
+    public Order getOrder(int orderId) {
+
+        Order foundOrder = null;
+
+        for (List<Order> dayOrders : allOrders.values()) {
+            for (Order order : dayOrders) {
+                if (order.getOrderNum() == orderId) {
+                    foundOrder = order;
+                }
+            }
+        }
+
+        return foundOrder;
     }
 
     @Override
@@ -97,12 +126,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
          * clear it and reload
          */
         if (!ordersForDay.isEmpty()) {
-            List<Order> dayOrders = new ArrayList<>();
-            for (Order order : ordersForDay.values()) {
-                dayOrders.add(order);
-            }
-            allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
-            ordersForDay.clear();
+            dayOrdersToAllAndClear();
         }
 
         /**
@@ -196,32 +220,45 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         return order;
     }
 
-    private void saveToFiles() {
+    /**
+     * Persistance :)))
+     */
+    private void saveToFiles() throws IOException {
 
+        for (List<Order> ordersForDay : allOrders.values()) {
+            //Set up the file name
+            LocalDate retrievedDate = ordersForDay.get(0).getDeliveryDate();
+            DateTimeFormatter fileDate = DateTimeFormatter.ofPattern("MMddyyyy");
+            String fileName = orderDirectory.getPath() + "/Orders_" + retrievedDate.format(fileDate) + ".txt";
+
+            PrintWriter save = new PrintWriter(new FileWriter(fileName));
+
+            //Write all files for date to one file
+            for (Order order : ordersForDay) {
+                save.println(order.toString());
+                save.flush();
+            }
+            save.close();
+        }
+    }
+
+    @Override
+    public void persistOrders() throws IOException {
+        //Making sure that all orders are in allOrders
+        dayOrdersToAllAndClear();
+        saveToFiles();
     }
 
     /**
-     * This method will loop through all of the orders until it finds one with
-     * the matching ID. Because of this, no LocalDate is needed. Will return
-     * null if the order cannot be found.
-     *
-     * @param orderId
-     * @return
+     * This method moves all orders in ordersForDay into allOrders, then clears
+     * ordersForDay.
      */
-    @Override
-    public Order getOrder(int orderId) {
-
-        Order foundOrder = null;
-
-        for (List<Order> dayOrders : allOrders.values()) {
-            for (Order order : dayOrders) {
-                if (order.getOrderNum() == orderId) {
-                    foundOrder = order;
-                }
-            }
+    private void dayOrdersToAllAndClear() {
+        List<Order> dayOrders = new ArrayList<>();
+        for (Order order : ordersForDay.values()) {
+            dayOrders.add(order);
         }
-
-        return foundOrder;
+        allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
+        ordersForDay.clear();
     }
-
 }

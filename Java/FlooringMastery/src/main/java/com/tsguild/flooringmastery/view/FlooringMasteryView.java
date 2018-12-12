@@ -259,23 +259,39 @@ public class FlooringMasteryView {
                 break;
             case "filenotfoundpretest":
                 io.print("\nThere aren't any order files to read from! Must be"
-                        + " the first time running...  We'll keep going though.");
+                        + " the first time running...  We'll keep going though.\n");
                 break;
             case "modenoneerror":
                 io.print("\nThe file for the mode type is nonexistent or unread"
                         + "able.  Please check to make sure reading permissions"
                         + " are correct and that the file exists. The program w"
-                        + "ill not run.");
+                        + "ill not run.\n");
                 break;
             case "modeinvaliderror":
                 io.print("\nThe running mode chosen was invalid.  Please check "
                         + "the Data/Mode.txt file to ensure that a valid runnin"
                         + "g mode is set (Training/Production).  The program wi"
-                        + "ll not run.");
+                        + "ll not run.\n");
                 break;
             case "nullorder":
-                io.print("The order ID you entered doesn't match any existing o"
-                        + "rders.");
+                io.print("\nThe order ID you entered doesn't match any existing o"
+                        + "rders.\n");
+                break;
+            case "wrongmode":
+                io.print("\nYou are in training mode, and are therefore unable to"
+                        + " save.\n");
+                break;
+            case "poststartmodeerror":
+                io.print("\nThe mode was unable to be determined.  There is eit"
+                        + "her a bug in this program or the Mode.txt file has c"
+                        + "orrupted/gone missing after the start of this progra"
+                        + "m.  This is a very serious problem, the program will"
+                        + " terminate immediately.");
+                break;
+            case "ioexception":
+                io.print("\nThere was a problem while writing your changes to s"
+                        + "torage.  Check to make sure the write permissions ar"
+                        + "e correct for all of the program files.\n\n");
                 break;
         }
     }
@@ -296,7 +312,7 @@ public class FlooringMasteryView {
     }
 
     public int saveAndExit() {
-        io.print("You are about to exit the program.  You have 3 options.");
+        io.print("You are about to exit the program.  You have 3 options.\n");
         String[] options = {"Return to Main Menu", "Exit without Saving", "Save and Exit"};
         return menus(options);
     }

@@ -19,6 +19,7 @@ package com.tsguild.flooringmastery.service;
 import com.tsguild.flooringmastery.dao.FlooringMasteryModeErrorException;
 import com.tsguild.flooringmastery.dto.Order;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -68,5 +69,7 @@ public interface FlooringMasteryService {
     public boolean getMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
 
     public Order removeOrder(int orderId);
+    
+    public void saveOrders() throws IOException;
 
 }

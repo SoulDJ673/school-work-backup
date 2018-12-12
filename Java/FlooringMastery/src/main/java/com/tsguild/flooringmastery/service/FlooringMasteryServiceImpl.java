@@ -22,6 +22,7 @@ import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
 import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
 import com.tsguild.flooringmastery.dto.Order;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -209,6 +210,11 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     @Override
     public Order getOrder(int orderId) {
         return orderDao.getOrder(orderId);
+    }
+    
+    @Override
+    public void saveOrders() throws IOException{
+        orderDao.persistOrders();
     }
 
 }

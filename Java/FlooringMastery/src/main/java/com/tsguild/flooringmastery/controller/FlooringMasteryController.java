@@ -25,6 +25,7 @@ import com.tsguild.flooringmastery.service.FlooringMasteryNoOrdersForDateExcepti
 import com.tsguild.flooringmastery.service.FlooringMasteryService;
 import com.tsguild.flooringmastery.view.FlooringMasteryView;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -49,8 +50,10 @@ public class FlooringMasteryController {
             isProductionMode = service.getMode();
         } catch (FileNotFoundException ex) {
             view.errors("ModeNoneError");
+            return;
         } catch (FlooringMasteryModeErrorException ex) {
             view.errors("ModeInvalidError");
+            return;
         }
         if (!isProductionMode) {
             view.notices("TrainingMode");
@@ -82,15 +85,19 @@ public class FlooringMasteryController {
                     case 2:
                         createOrder();
                         break;
+                    case 3:
+                        editOrder();
                     case 4:
                         removeOrder();
                         break;
-                    case 3:
                     case 5:
-                        throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
+                        save();
+                        break;
                     case 6:
-                        view.saveAndExit();
-                        return;
+                        boolean leave = saveAndExit();
+                        if (leave) {
+                            return;
+                        }
                 }
             } catch (FileNotFoundException e) {
                 view.errors("FileNotFound");
@@ -98,6 +105,10 @@ public class FlooringMasteryController {
                 view.errors("UnsupportedOperation");
             } catch (FlooringMasteryNoOrdersForDateException n) {
                 view.errors("NoOrders");
+            } catch (IOException i) {
+                view.errors("IOException");
+            } catch (FlooringMasteryEmergencyEscape e) {
+                return;
             }
         }
     }
@@ -168,6 +179,55 @@ public class FlooringMasteryController {
             view.notices("OperationSuccess");
         }
 
+    }
+
+    /**
+     * This method will return true if the user wants to exit, and false to
+     * return to the main menu.
+     *
+     * @return
+     */
+    private boolean saveAndExit() throws IOException {
+        int choice = view.saveAndExit();
+        switch (choice) {
+            case 1:
+                return false;
+            case 2:
+                return true;
+            case 3:
+                try {
+                    if (service.getMode()) {
+                        service.saveOrders();
+                        return true;
+                    } else {
+                        view.errors("WrongMode");
+                        return true;
+                    }
+                } catch (FileNotFoundException | FlooringMasteryModeErrorException f) {
+                    view.errors("PostStartModeError");
+                    return true;
+                }
+        }
+
+        //It shouldn't get here, but if it does, return to main
+        return false;
+    }
+
+    private void save() throws IOException, FlooringMasteryEmergencyEscape {
+        try {
+            if (service.getMode()) {
+                service.saveOrders();
+            } else {
+                view.errors("WrongMode");
+            }
+        } catch (FileNotFoundException | FlooringMasteryModeErrorException f) {
+            view.errors("PostStartModeError");
+            throw new FlooringMasteryEmergencyEscape();
+        }
+    }
+
+    private void editOrder() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
