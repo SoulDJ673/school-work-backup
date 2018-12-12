@@ -84,6 +84,7 @@ public class FlooringMasteryController {
                         break;
                     case 4:
                         removeOrder();
+                        break;
                     case 3:
                     case 5:
                         throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
@@ -164,8 +165,7 @@ public class FlooringMasteryController {
         boolean remove = view.removeOrderConfirmPrompt(grabbedOrder);
         if (remove) {
             service.removeOrder(orderId);
-        } else {
-            return;
+            view.notices("OperationSuccess");
         }
 
     }

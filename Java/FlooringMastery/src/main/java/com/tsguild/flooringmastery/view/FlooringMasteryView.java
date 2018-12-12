@@ -197,6 +197,7 @@ public class FlooringMasteryView {
         }
     }
 
+    //Remove Pt 1
     public int removeOrderIdGrabber() {
         banner("O┬  ╦═╗┌─┐┌┬┐┌─┐┬  ┬┌─┐  O┬\n"
                 + "┌┘  ╠╦╝├┤ ││││ │└┐┌┘├┤   ┌┘\n"
@@ -227,7 +228,19 @@ public class FlooringMasteryView {
         return orderId;
     }
 
+    //Remove Pt 2
     public boolean removeOrderConfirmPrompt(Order theOrder) {
+        displayOrderInfo(theOrder);
+        String userResponse = io.readString("\nAre you sure that you want to pe"
+                + "rmanently remove this order? (y/N)");
+        switch (userResponse.toLowerCase()) {
+            case "y":
+            case "yes":
+            case "true":
+                return true;
+            default:
+                return false;
+        }
 
     }
 
@@ -265,6 +278,11 @@ public class FlooringMasteryView {
                         + "the Data/Mode.txt file to ensure that a valid runnin"
                         + "g mode is set (Training/Production).  The program wi"
                         + "ll not run.");
+                break;
+            case "nullorder":
+                io.print("The order ID you entered doesn't match any existing o"
+                        + "rders.");
+                break;
         }
     }
 
@@ -277,6 +295,9 @@ public class FlooringMasteryView {
             case "productionmode":
                 io.print("\nYou are in production mode.  All changes will be "
                         + "saved.");
+                break;
+            case "operationsuccess":
+                io.print("\nOperation was successful.\n\n");
         }
     }
 

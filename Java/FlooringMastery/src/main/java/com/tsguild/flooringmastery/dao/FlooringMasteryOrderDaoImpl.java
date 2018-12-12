@@ -211,17 +211,17 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
     @Override
     public Order getOrder(int orderId) {
 
-        int nextAvailableId = 0;
+        Order foundOrder = null;
+
         for (List<Order> dayOrders : allOrders.values()) {
             for (Order order : dayOrders) {
-                /**
-                 * This needs to check every Order ID to see if it matches. If
-                 * it does, return it.
-                 */
+                if (order.getOrderNum() == orderId) {
+                    foundOrder = order;
+                }
             }
         }
 
-        return nextAvailableId;
+        return foundOrder;
     }
 
 }
