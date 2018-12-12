@@ -79,17 +79,12 @@ public class FlooringMasteryView {
     }
 
     public LocalDate getOrderDate() {
-        LocalDate orderDate;
-        DateTimeFormatter monthDayYear = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
-        io.print("\nI need the date that the order was created.\n");
-        int orderDay = io.readInt("Please input the day the order was created:", 1, 31);
-        int orderMonth = io.readInt("Input the month:", 1, 12);
-        int orderYear = io.readInt("Input the year:");
-
-        orderDate = LocalDate.of(orderYear, orderMonth, orderDay);
-
-        return orderDate;
+        String enteredDate = io.readString("Enter the date in the format MM-dd-yyyy (01-01-1999): ");
+        DateTimeFormatter orderDate = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        LocalDate deliveryDate = LocalDate.parse(enteredDate, orderDate);
+        
+        return deliveryDate;
     }
 
     public void displayOrders(List<Order> orders) {
@@ -110,14 +105,14 @@ public class FlooringMasteryView {
 
         Order theOrder;
 
-        if (order == null) {
+        if (true) {
             String custName = io.readString("Firstly, I need your name.  What is that?");
 
             io.print("\n\nI need the delivery date for your order.\n");
-            int day = io.readInt("Please insert the date of delivery (1-31) ");
-            int month = io.readInt("\nNow the month (1-12) ");
-            int year = io.readInt("\nLastly, the year (YYYY) ");
-            LocalDate deliveryDate = LocalDate.of(year, month, day);
+
+            String enteredDate = io.readString("Enter the date in the format MM-dd-yyyy (01-01-1999): ");
+            DateTimeFormatter orderDate = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+            LocalDate deliveryDate = LocalDate.parse(enteredDate, orderDate);
 
             displayValidStates(states);
             String state = io.readString("\n\nWhich state will the order be sent to? (DC)");
@@ -171,6 +166,7 @@ public class FlooringMasteryView {
         switch (choice.toLowerCase()) {
             case "y":
             case "yes":
+            case "true":
                 return theOrder;
             default:
                 return null;
@@ -284,9 +280,10 @@ public class FlooringMasteryView {
             case "poststartmodeerror":
                 io.print("\nThe mode was unable to be determined.  There is eit"
                         + "her a bug in this program or the Mode.txt file has c"
-                        + "orrupted/gone missing after the start of this progra"
-                        + "m.  This is a very serious problem, the program will"
-                        + " terminate immediately.");
+                        + "hanged/corrupted/gone missing after the start of thi"
+                        + "s program.  The program could be under attack.  This"
+                        + " is a very serious problem, the program will termina"
+                        + "te immediately.");
                 break;
             case "ioexception":
                 io.print("\nThere was a problem while writing your changes to s"
@@ -304,7 +301,7 @@ public class FlooringMasteryView {
                 break;
             case "productionmode":
                 io.print("\nYou are in production mode.  All changes will be "
-                        + "saved.");
+                        + "saved.\n\n");
                 break;
             case "operationsuccess":
                 io.print("\nOperation was successful.\n\n");

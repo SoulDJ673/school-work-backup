@@ -1,4 +1,70 @@
-TX,Texas,4.45
-WA,Washington,9.25
-KY,Kentucky,6.00
-CA,Calfornia,25.00
+MO,The Molten Mountains of Jeni VII,1.00
+WF,The Weyland-Yutani Facility on Pelorum,6.29
+CA,The City of Chengzhou on Ariel,4.45
+TA,The Tale Military Outpost on Mare,-1.21
+GT,The Ghost Town of Barnes' Hope on Jiangyin,31.00
+SO,The Settlement of New Sacramento on Silverhold,35.83
+DB,The Deemi Military Base above Jaggo,12.05
+AS,The Alliance Shipyard above Boros,28.00
+CM,The Crystalline Mountains of Dobrynya Prime,2.00
+SC,The Skalou Colony,3.47
+IC,The Imentet Colony,30.06
+ED,The Emyn Docks on Zephyr,13.00
+WR,The Weyland-Yutani Research Facility above Bernadette,42.42
+AM,The Alliance Military Base above Ariel,42.00
+WA,The Wreckage of the Anig on Deysi,-2.29
+SM,The Shattered Moon of Ahemait,-4.00
+LO,The Living Ocean of 7775 Niu Xiu IV,18.65
+RC,The Radioactive City of Vorta,37.59
+BF,The Blue Sun Facility on Lilac,3.00
+HR,The Hio Ranch on Silverhold,37.00
+HM,The Heni Military Base above Imhotep,44.00
+CV,The Crystalline City of V'Moni,16.00
+FH,The Frozen Highlands of Yuxan II,19.00
+RI,The Radioactive City of I'Mani,0.00
+BO,The Brakhuium Mines of Rana,16.21
+FS,The Federal Outpost on St. Albans,18.05
+VS,The Vorcia Spaceport on New Ceres,0.00
+RK,The Ruins of Kano City on Rukbat II,19.00
+LI,The Living City of Mani,0.22
+CR,The Coeurle Research Facility on Grauduse Prime,17.00
+LS,The Luminous Sea of Acheron VI,18.00
+LM,The Luminous Moon of 6646 Pegasi VII,4.26
+FA,The Frozen Ocean of Alpha Felis II,11.00
+TF,The Town of Fuzhou on Whittier,24.63
+CB,The Cyloo Military Base above Byorme IV,28.80
+DO,The Dilithium Mines of Izar II,17.20
+CC,The Cinnri Colony,33.00
+PM,The Pruugi Military Base above Gerdr,4.00
+CO,The City of Mondai on Thadi,18.36
+LF,The Lou Farmstead on Hera,11.72
+RG,The Ruins of Gloarfti City on Atargatis,11.29
+CH,The City of Hingi on Dose,11.87
+TO,The Town of Kelly's Landing on Angel,25.86
+LB,The Luminous City of Bothi,23.00
+DM,The Dahu Military Base above Iota Velorum IV,-1.00
+CY,The Crystalline Ocean of Hermes,34.00
+SR,The Srantoo Colony,13.00
+RS,The Reyne Spaceport above Liann Jiun,2.49
+AA,The Alliance Shipyard above Ariel,-2.00
+TS,The Tiboe Station above Telmun,28.83
+TM,The Traniium Mines of 8387 Corvi Prime,15.33
+FM,The Floating City of M'Kloni,44.00
+WT,The Wreckage of the Kali on New Babylon,30.27
+CZ,The Colony of Collins' Hope on Zephyr,-3.00
+OS,The Orgon Spaceport on Varge V,31.00
+FO,The Federal Outpost on Lilac,16.00
+LC,The Luminous City of C'Vera,27.00
+BS,The Blue Sun Industrial Complex above Ariel,27.00
+WG,The Wreckage of the Gara on Kayria,2.07
+CI,The Crystalline Moon of Irra V,38.71
+MM,The Metallic Moon of New Oberon,1.00
+RO,The Ruins of Droni City on New Europa,35.00
+PB,The Pathua Military Base above Inean VI,36.00
+IR,The Iskellian Research Facility on Parth,41.18
+FC,The Floating City of Ferra Th'Deltau,10.87
+WO,The Wreckage of the Pascia on 3024 Ji Xiu Prime,22.94
+LA,The Luminous Sea of Aldos,1.24
+WZ,The Wreckage of the Zarbo on Alecto,9.58
+BM,The Bani Military Base above Enon II,44.32
+WE,The Wreckage of the Zoni on Tosia,1.00

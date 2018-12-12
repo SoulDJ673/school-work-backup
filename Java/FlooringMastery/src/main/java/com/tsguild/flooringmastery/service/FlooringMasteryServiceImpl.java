@@ -216,7 +216,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     @Override
     public Order getOrder(int orderId) {
         Order theOrder = orderDao.getOrder(orderId);
-        orderDao.mapOrdersForDate(theOrder.getDeliveryDate());
+        return theOrder;
     }
 
     @Override

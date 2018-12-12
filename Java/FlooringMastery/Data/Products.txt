@@ -1,4 +1,179 @@
-Carpet,2.25,2.10
-Laminate,1.75,2.10
-Tile,3.50,4.15
-Wood,5.15,4.75
+Albedonite,18.00,6.00
+Bromite,97.00,2.51
+Common Cryite,20.00,8.89
+Exotic Magin,60.17,9.00
+Flammable Leptcite,86.82,8.00
+Hydril,63.00,5.00
+Leinium,2.00,0.00
+Low-density Schizonite,24.00,5.08
+Non-flammable Ultrine,46.00,6.37
+Nonus,15.00,3.65
+Ossenite,54.00,3.00
+Ossil,17.00,3.96
+Plasmanium,2.00,3.00
+Positive Iridus,19.00,9.66
+Sarconite,77.00,8.24
+Solidified Monogen,79.00,2.00
+Stableized Bendezil,11.18,5.00
+Terresium,73.56,9.92
+Transparent Adamesium,82.32,2.32
+Unstable Plutosium,86.94,4.21
+Aluminine,92.77,251.25
+Chloril,82.66,5.09
+Common Dynacite,22.00,7.23
+Crystalized Quasirus,404.00,403.44
+Cyclonite,64.17,0.01
+Eternigen,74.97,1.00
+Etheregen,36.00,7.50
+Gaseous Mesorus,95.00,2.00
+Gravidium,65.05,9.64
+Isomorphic Gelite,39.03,5.40
+Metallesium,15.18,1.00
+Morphon,495.30,88.00
+Negative Monium,22.28,2.00
+Ossegen,95.26,1.00
+Posisite,92.04,9.41
+Primite,245.08,359.00
+Reticuloril,99.64,0.70
+Unstable Etheronite,13.00,9.79
+Vanadogen,89.62,5.40
+Vanadus,10.90,8.00
+Aluminine,79.00,6.75
+Chloril,398.91,216.60
+Common Dynacite,369.33,177.41
+Crystalized Quasirus,206.00,399.03
+Cyclonite,21.39,8.82
+Eternigen,86.00,7.98
+Etheregen,90.00,8.35
+Gaseous Mesorus,271.09,54.00
+Gravidium,104.03,224.00
+Isomorphic Gelite,84.78,8.00
+Metallesium,35.00,2.00
+Morphon,98.00,252.00
+Negative Monium,12.55,3.15
+Ossegen,66.00,4.00
+Posisite,19.13,4.00
+Primite,88.61,372.27
+Reticuloril,235.00,98.00
+Unstable Etheronite,88.01,4.00
+Vanadogen,3.00,7.07
+Vanadus,75.00,7.00
+Anti Cerite,33.00,1.00
+Charged Ectonium,48.00,4.47
+Destablilized Molybdenesium,98.04,4.03
+Exotic Impervus,61.77,4.00
+Flammable Evomite,52.00,8.00
+Gaseous Venusil,19.90,9.00
+Isomorphic Potadium,51.00,7.00
+Isotopic Fibrogen,74.00,1.00
+Lithite,18.00,8.90
+Metallus,38.59,7.00
+Negative Hydrite,7.14,4.10
+Nonconductive Venererus,89.50,6.15
+Opaque Osmesium,7.54,2.00
+Positive Mentanite,91.00,3.00
+Refractive Sinistranium,43.00,2.00
+Refractive Sinistrium,54.07,0.06
+Rhodanium,47.09,6.00
+Solidified Berylline,13.58,5.69
+Stableized Neumite,73.00,7.00
+Ultrasite,13.00,0.27
+Acoustinium,40.43,6.61
+Charged Acoustirus,21.27,5.01
+Crystalized Ethericite,68.89,0.00
+Denatured Fluronite,51.19,8.00
+Denatured Porphyrosite,83.00,7.00
+Dynagen,41.00,8.95
+Dyspromite,18.00,3.00
+Gaseous Sclerine,86.00,9.00
+Isotopic Sodogen,20.99,3.34
+Leptomite,83.00,5.50
+Low-density Peron,61.86,0.00
+Neunite,38.00,0.40
+Non-refractive Etherenium,15.83,0.00
+Non-refractive Ultrium,99.80,1.20
+Opaque Xanthus,89.00,8.00
+Radioactive Turbanium,95.42,4.26
+Stableized Adamogen,87.00,2.00
+Stableized Primonite,36.00,8.00
+Uranidium,57.00,9.00
+Xenomite,74.92,6.00
+Albedine,36.87,0.00
+Alloyed Etherinite,53.00,0.00
+Argesium,31.00,5.00
+Bromogen,31.00,8.45
+Chronil,74.00,9.82
+Conductive Counteresium,97.00,8.00
+Corbonium,50.00,7.00
+Electrocite,12.41,9.00
+Geoloril,39.07,3.00
+Heminium,80.00,0.94
+Low-density Dynesium,82.41,4.87
+Magnesine,89.06,1.31
+Munium,26.00,9.28
+Non-flammable Lunaril,73.86,4.06
+Nonconductive Eurus,48.00,0.00
+Positive Covalon,1.18,9.00
+Refractive Axonus,26.36,3.74
+Stableized Pyronite,64.00,8.00
+Turbus,85.00,2.00
+Alloyed Primesium,55.00,8.37
+Baryil,14.24,8.00
+Cesanium,69.66,9.50
+Common Evegen,32.00,0.00
+Common Halocite,90.38,4.00
+Common Sthenonite,62.15,4.79
+Contraril,78.88,8.79
+Cosmonite,62.10,4.00
+Cyanosite,96.43,7.00
+Dysil,74.87,1.32
+Etherecite,27.00,2.00
+Exotic Halosium,76.55,2.22
+Hypogen,23.16,6.00
+Liquid Neun,2.00,1.32
+Phlosoium,50.61,6.00
+Sthenodium,87.39,2.33
+Ultramite,44.22,7.83
+Unstable Energanium,56.00,2.22
+Unstable Gelonite,70.00,1.00
+Venusine,74.00,7.99
+Adamantogen,61.00,5.84
+Argonite,89.82,0.00
+Axonogen,63.00,2.72
+Charged Strontanium,54.04,2.49
+Conductive Borite,47.00,5.00
+Conductive Bosocite,33.24,2.66
+Cryil,56.55,8.00
+Destablilized Sodidium,91.04,3.73
+Destresium,95.84,7.08
+Exotic Dynamite,97.71,4.00
+Flammable Xenonium,38.84,2.00
+Halomite,27.00,3.54
+Hermeton,39.44,0.00
+Liquid Contrium,17.00,7.00
+Metallomite,63.00,2.00
+Negative Monon,31.07,4.21
+Non-refractive Nonite,28.24,1.24
+Osmonite,62.42,5.30
+Pachyogen,14.00,6.00
+Selenanium,21.00,8.00
+Conductive Hadrine,32.00,5.00
+Crystalized Hermimite,92.00,9.00
+Denatured Nitronite,58.00,2.89
+Destablilized Citridium,82.00,6.23
+Flammable Intracite,25.95,4.31
+Gaseous Dynanite,36.47,4.36
+Gyril,0.05,5.00
+Hadranium,46.00,3.00
+Imperiunium,45.18,3.00
+Liquid Polyn,28.69,1.00
+Midisite,32.91,6.08
+Morphic Exonium,94.00,8.00
+Pallail,88.00,2.90
+Positive Exonite,45.00,7.00
+Positive Hermin,87.24,0.00
+Positive Phorus,18.00,1.00
+Refractive Imperil,18.56,8.93
+Rhodonium,82.00,3.00
+Sarcoril,90.41,1.00
+Sthenocite,82.84,7.86

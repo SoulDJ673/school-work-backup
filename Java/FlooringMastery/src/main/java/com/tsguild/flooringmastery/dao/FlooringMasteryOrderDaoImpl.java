@@ -32,8 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -43,7 +41,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
 
     private final Map<Integer, Order> ordersForDay = new HashMap<>();
     private final Map<LocalDate, List<Order>> allOrders = new HashMap<>();
-    private final File orderDirectory; //Reading from Directories!!!
+    private File orderDirectory; //Reading from Directories!!!
 
     private final String DELIMITER = ",";
 
@@ -103,6 +101,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
              * to the scanner doesn't exist, but since the name would not be
              * given to scanner unless it exists, this shouldn't happen.
              */
+            this.dayOrdersToAllAndClear();
         }
         this.ordersForDay.put(theOrder.getOrderNum(), theOrder);
         return theOrder;
@@ -130,6 +129,14 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         }
 
         /**
+         * When there are no orders for the date, just remove the date from
+         * allOrders but still make dayOrders
+         */
+        if (ordersForDay.isEmpty() && !allOrders.isEmpty()) {
+            allOrders.remove(date);
+        }
+
+        /**
          * Only call loadFromFiles() if there aren't any key/value pairs in
          * allOrders (don't wanna overwrite any unsaved changes!
          */
@@ -146,7 +153,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
                 ordersForDay.put(order.getOrderNum(), order);
             }
         } catch (NullPointerException n) {
-            ordersForDay.clear();
+            dayOrdersToAllAndClear();
         }
     }
 
@@ -182,7 +189,7 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
                 }
             }
             //Read LocalDate from first order to add to allOrders
-            allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
+            allOrders.put(deliveryDate, dayOrders);
             scanner.close();
         }
     }
@@ -225,6 +232,12 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
      */
     private void saveToFiles() throws IOException {
 
+        //Clear Directory for Rewrite
+        File[] theFiles = orderDirectory.listFiles();
+        for (File aFile : theFiles) {
+            boolean check = aFile.delete();
+        }
+
         for (List<Order> ordersForDay : allOrders.values()) {
             //Set up the file name
             LocalDate retrievedDate = ordersForDay.get(0).getDeliveryDate();
@@ -255,6 +268,11 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
      */
     private void dayOrdersToAllAndClear() {
         List<Order> dayOrders = new ArrayList<>();
+        if (ordersForDay.isEmpty()) {
+            ordersForDay.clear();
+            return;
+        }
+
         for (Order order : ordersForDay.values()) {
             dayOrders.add(order);
         }

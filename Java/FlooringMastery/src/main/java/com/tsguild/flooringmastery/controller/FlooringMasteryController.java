@@ -43,9 +43,11 @@ public class FlooringMasteryController {
         this.service = service;
     }
 
+    boolean isProductionMode;
+
     public void run() {
 
-        boolean isProductionMode = false;
+        isProductionMode = false;
         try {
             isProductionMode = service.getMode();
         } catch (FileNotFoundException ex) {
@@ -87,6 +89,7 @@ public class FlooringMasteryController {
                         break;
                     case 3:
                         editOrder();
+                        break;
                     case 4:
                         removeOrder();
                         break;
@@ -138,19 +141,20 @@ public class FlooringMasteryController {
 
         do {
             try {
-                validMaybe = service.validateOrder(theOrder);
+                theOrder = service.validateOrder(theOrder);
                 fixed = true;
             } catch (FlooringMasteryInvalidOrderException o) {
                 view.errors("InvalidOrder");
-                validMaybe = view.createOrder(lastestID, states, products, theOrder);
+                theOrder = view.createOrder(lastestID, states, products, theOrder);
             }
         } while (!fixed);
         Order confirmOrder;
-        confirmOrder = view.creationConfirmationPrompt(validMaybe);
+        confirmOrder = view.creationConfirmationPrompt(theOrder);
 
         //If user confirms, add to Order map
         if (confirmOrder != null) {
             service.addOrder(confirmOrder);
+            view.notices("OperationSuccess");
         }
 
     }
@@ -167,6 +171,11 @@ public class FlooringMasteryController {
             return;
         } else {
             grabbedOrder = service.getOrder(orderId);
+        }
+
+        if (grabbedOrder == null) {
+            view.errors("NullOrder");
+            return;
         }
 
         /**
@@ -188,7 +197,7 @@ public class FlooringMasteryController {
      *
      * @return
      */
-    private boolean saveAndExit() throws IOException {
+    private boolean saveAndExit() throws IOException, FlooringMasteryEmergencyEscape {
         int choice = view.saveAndExit();
         switch (choice) {
             case 1:
@@ -197,8 +206,13 @@ public class FlooringMasteryController {
                 return true;
             case 3:
                 try {
+                    if (service.getMode() != isProductionMode) {
+                        view.errors("PostStartModeError");
+                        throw new FlooringMasteryEmergencyEscape();
+                    }
                     if (service.getMode()) {
                         service.saveOrders();
+                        view.notices("OperationSuccessful");
                         return true;
                     } else {
                         view.errors("WrongMode");
@@ -216,7 +230,12 @@ public class FlooringMasteryController {
 
     private void save() throws IOException, FlooringMasteryEmergencyEscape {
         try {
-            if (service.getMode()) {
+
+            if (service.getMode() != isProductionMode) {
+                view.errors("PostStartModeError");
+                throw new FlooringMasteryEmergencyEscape();
+            }
+            if (isProductionMode) {
                 service.saveOrders();
             } else {
                 view.errors("WrongMode");
