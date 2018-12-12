@@ -78,12 +78,6 @@ public class FlooringMasteryView {
         return menus(options);
     }
 
-    public void temporaryLolMessage() {
-        io.print("\nI'd ask you to save, but production/training mode isn't "
-                + "\nimplemented yet.  Since writing to files isn't implemented "
-                + "\neither, there isn't a point yet to have a save prompt here.");
-    }
-
     public LocalDate getOrderDate() {
         LocalDate orderDate;
         DateTimeFormatter monthDayYear = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -301,11 +295,28 @@ public class FlooringMasteryView {
         }
     }
 
-    private void clearConsole() {
+    public int saveAndExit() {
+        io.print("You are about to exit the program.  You have 3 options.");
+        String[] options = {"Return to Main Menu", "Exit without Saving", "Save and Exit"};
+        return menus(options);
+    }
 
+    /**
+     * A little method to clear the console screen for a better UX. It uses ANSI
+     * escape codes, but these don't seem to be supported in NetBeans so this
+     * method isn't really used in this project.
+     */
+    private void clearConsole() {
         eraser.clearConsole();
     }
 
+    /**
+     * This is a helper method used by createOrder, removeOrder, editOrder, and
+     * maybe a search function if implemented. It reads and displays the
+     * important information on the given order.
+     *
+     * @param theOrder
+     */
     private void displayOrderInfo(Order theOrder) {
         io.print("\n\nName:" + theOrder.getCustomerName());
         io.print("\nOrder ID: " + theOrder.getOrderNum());

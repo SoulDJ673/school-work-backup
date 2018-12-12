@@ -89,7 +89,7 @@ public class FlooringMasteryController {
                     case 5:
                         throw new UnsupportedOperationException("Sorry kiddo, can't do that yet.");
                     case 6:
-                        view.temporaryLolMessage();
+                        view.saveAndExit();
                         return;
                 }
             } catch (FileNotFoundException e) {
