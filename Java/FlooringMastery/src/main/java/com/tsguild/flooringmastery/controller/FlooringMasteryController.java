@@ -177,6 +177,7 @@ public class FlooringMasteryController {
         if (remove) {
             service.removeOrder(orderId);
             view.notices("OperationSuccess");
+            return;
         }
 
     }

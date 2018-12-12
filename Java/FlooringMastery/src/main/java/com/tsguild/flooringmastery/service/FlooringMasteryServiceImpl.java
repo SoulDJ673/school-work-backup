@@ -204,16 +204,23 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
 
     @Override
     public Order removeOrder(int orderId) {
-        return orderDao.removeOrder(orderId);
+        Order theOrder = orderDao.removeOrder(orderId);
+        try {
+            orderDao.mapOrdersForDate(null);
+        } catch (FileNotFoundException f) {
+            //Doesn't matter
+        }
+        return theOrder;
     }
 
     @Override
     public Order getOrder(int orderId) {
-        return orderDao.getOrder(orderId);
+        Order theOrder = orderDao.getOrder(orderId);
+        orderDao.mapOrdersForDate(theOrder.getDeliveryDate());
     }
-    
+
     @Override
-    public void saveOrders() throws IOException{
+    public void saveOrders() throws IOException {
         orderDao.persistOrders();
     }
 
