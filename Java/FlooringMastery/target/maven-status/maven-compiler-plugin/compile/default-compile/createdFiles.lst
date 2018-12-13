@@ -12,6 +12,7 @@ com/tsguild/flooringmastery/FlooringMastery.class
 com/tsguild/flooringmastery/dao/FlooringMasteryTaxesProductDaoImpl.class
 com/tsguild/flooringmastery/service/FlooringMasteryInvalidOrderException.class
 com/tsguild/flooringmastery/dto/Order.class
+com/tsguild/flooringmastery/controller/FlooringMasteryEmergencyEscape.class
 com/tsguild/flooringmastery/dao/FlooringMasteryModeDaoImpl.class
 com/tsguild/flooringmastery/dto/Product.class
 com/tsguild/flooringmastery/service/FlooringMasteryNoOrdersForDateException.class

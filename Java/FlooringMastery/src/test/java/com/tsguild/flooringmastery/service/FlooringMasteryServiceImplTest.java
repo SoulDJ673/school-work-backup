@@ -47,6 +47,7 @@ public class FlooringMasteryServiceImplTest {
 
     @Test
     public void latestIdTest() {
+        
         int id = service.getLastID();
         Assert.assertEquals(4, id);
     }

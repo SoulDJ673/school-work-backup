@@ -78,7 +78,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
         Map<LocalDate, List<Order>> allOrdersM = orderDao.getAllOrders();
 
         //Iterate over all orders to get highest ID, maybe save it somewhere?
-        int nextAvailableId = 0;
+        int nextAvailableId = 1;
         for (List<Order> dayOrders : allOrdersM.values()) {
             for (Order order : dayOrders) {
                 if (order.getOrderNum() >= nextAvailableId) {
