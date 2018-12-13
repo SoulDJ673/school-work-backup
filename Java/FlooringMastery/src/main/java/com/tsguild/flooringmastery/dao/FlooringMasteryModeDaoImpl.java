@@ -60,6 +60,9 @@ public class FlooringMasteryModeDaoImpl implements FlooringMasteryModeDao {
             mode = garbageSeparator[1].trim();
         }
 
+        if (!mode.equalsIgnoreCase("production") && !mode.equalsIgnoreCase("training")) {
+            throw new FlooringMasteryModeErrorException();
+        }
     }
 
     @Override

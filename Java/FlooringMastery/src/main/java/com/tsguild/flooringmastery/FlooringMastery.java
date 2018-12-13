@@ -40,7 +40,7 @@ public class FlooringMastery {
         ApplicationContext fmContext = new ClassPathXmlApplicationContext("flooring-mastery.xml");
 
         UserIO IO = fmContext.getBean(UserIOConsoleImpl.class);
-        ConsoleEraser ERASER = fmContext.getBean(UserIOConsoleImpl.class);
+        //ConsoleEraser ERASER = fmContext.getBean(UserIOConsoleImpl.class);
         FlooringMasteryView VIEW = fmContext.getBean(FlooringMasteryView.class);
         FlooringMasteryOrderDao DAO = fmContext.getBean(FlooringMasteryOrderDaoImpl.class);
         FlooringMasteryTaxesProductDao TAXPROD = fmContext.getBean(FlooringMasteryTaxesProductDaoImpl.class);

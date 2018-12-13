@@ -22,16 +22,20 @@ import com.tsguild.flooringmastery.dto.TaxRate;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 /**
- *
  * @author souldj673
  */
 public class FlooringMasteryView {
 
     private UserIO io;
     private ConsoleEraser eraser;
+
+    public FlooringMasteryView(UserIO io) {
+        this.io = io;
+    }
 
     public FlooringMasteryView(UserIO theIo, ConsoleEraser theEraser) {
         this.io = theIo;
@@ -53,28 +57,30 @@ public class FlooringMasteryView {
     private void banner(String titleText) {
         String bannerCageMaterial = (">");
 
-        //Grow Cage to line length
+        // Grow Cage to line length
         int titleLength = titleText.split("\n")[0].length();
         String fittedCage = "";
         for (int i = 0; i < titleLength; i++) {
             fittedCage += bannerCageMaterial;
         }
 
-        //Print Title with banner
-        io.print(fittedCage + "\n\n");
+        // Print Title with banner
+        io.print("\n\n" + fittedCage + "\n");
         io.print(titleText + "\n");
         io.print(fittedCage + "\n");
     }
 
     public int mainMenu() {
-        String[] options = {"Display Orders", "Add Order",
-            "Edit Order", "Remove Order", "Save", "Quit"};
+        String[] options = {
+            "Display Orders", "Add Order", "Edit Order", "Remove Order", "Save", "Quit"
+        };
 
-        io.print("O┬┌─┐  ╔╦╗┌─┐┬┌┐┌  ╔╦╗┌─┐┌┐┌┬ ┬  ┌─┐O┬\n"
+        io.print(
+                "O┬┌─┐  ╔╦╗┌─┐┬┌┐┌  ╔╦╗┌─┐┌┐┌┬ ┬  ┌─┐O┬\n"
                 + "┌┘│└┘  ║║║├─┤││││  ║║║├┤ ││││ │  │└┘┌┘\n"
                 + "┴O└──  ╩ ╩┴ ┴┴┘└┘  ╩ ╩└─┘┘└┘└─┘  └──┴O\n\n");
 
-        //Return User selection
+        // Return User selection
         return menus(options);
     }
 
@@ -91,17 +97,21 @@ public class FlooringMasteryView {
         io.print("\n");
 
         for (Order order : orders) {
-            io.print(order.getOrderNum() + ".) " + order.getCustomerName()
+            io.print(
+                    order.getOrderNum() + ".) " + order.getCustomerName()
                     + " - Order for " + order.getProductType() + " to "
                     + order.getState() + "\n");
         }
         io.print("\n\n");
     }
 
-    public Order createOrder(int latestId, List<TaxRate> states, List<Product> products, Order order) {
-        banner("O┬  ╔═╗┬─┐┌─┐┌─┐┌┬┐┌─┐  O┬\n"
+    public Order createOrder(
+            int latestId, List<TaxRate> states, List<Product> products, Order order) {
+        this.clearConsole();
+        banner(
+                "O┬  ╔═╗┬─┐┌─┐┌─┐┌┬┐┌─┐  O┬\n"
                 + "┌┘  ║  ├┬┘├┤ ├─┤ │ ├┤   ┌┘\n"
-                + "┴O  ╚═╝┴└─└─┘┴ ┴ ┴ └─┘  ┴O\n\n");
+                + "┴O  ╚═╝┴└─└─┘┴ ┴ ┴ └─┘  ┴O");
 
         Order theOrder;
 
@@ -110,22 +120,35 @@ public class FlooringMasteryView {
 
             io.print("\n\nI need the delivery date for your order.\n");
 
-            String enteredDate = io.readString("Enter the date in the format MM-dd-yyyy (01-01-1999): ");
-            DateTimeFormatter orderDate = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-            LocalDate deliveryDate = LocalDate.parse(enteredDate, orderDate);
+            LocalDate deliveryDate;
+            while (true) {
+                String enteredDate
+                        = io.readString("Enter the date in the format MM-dd-yyyy (01-01-1999): ");
+                DateTimeFormatter orderDate = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+                try {
+                    deliveryDate = LocalDate.parse(enteredDate, orderDate);
+                    break;
+                } catch (DateTimeParseException t) {
+                    errors("InvalidEntry");
+                }
+            }
 
             displayValidStates(states);
             String state = io.readString("\n\nWhich state will the order be sent to? (DC)");
 
             displayValidProducts(products);
             String product = io.readString("\n\nWhich material are you ordering? (Tile)");
-            double area = io.readDouble("\nHow much material, in square feet, would you like to order? (100 (minimum))");
+            double area
+                    = io.readDouble(
+                            "\nHow much material, in square feet, would you like to order? (100 (minimum))");
 
             theOrder = new Order(latestId, custName, state, product, area, deliveryDate);
         } else {
 
             /**
              * This is legacy code and no longer serves a purpose.
+             *
+             * May be reimplemented.
              */
             boolean fixed = false;
 
@@ -135,16 +158,21 @@ public class FlooringMasteryView {
             }
             if (order.getState() == null) {
                 displayValidStates(states);
-                String state = io.readString("\n\nThe state you entered before was either invalid or we don't deliver there.  Try again. (DC)");
+                String state
+                        = io.readString(
+                                "\n\nThe state you entered before was either invalid or we don't deliver there.  Try again. (DC)");
                 order.setState(state);
             }
             if (order.getProductType() == null) {
                 displayValidProducts(products);
-                String product = io.readString("\n\nThe previously entered material was either invalid or we don't sell that.  Try again. (Tile)");
+                String product
+                        = io.readString(
+                                "\n\nThe previously entered material was either invalid or we don't sell that.  Try again. (Tile)");
                 order.setProductType(product);
             }
             if (order.getArea() == 0) {
-                double area = io.readDouble("\nThe minimum amount of material we sell is 100 sqft. Try again. (100)");
+                double area
+                        = io.readDouble("\nThe minimum amount of material we sell is 100 sqft. Try again. (100)");
                 order.setArea(area);
             }
 
@@ -153,7 +181,6 @@ public class FlooringMasteryView {
             } else {
                 theOrder = order;
             }
-
         }
 
         return theOrder;
@@ -163,11 +190,13 @@ public class FlooringMasteryView {
         this.clearConsole();
         displayOrderInfo(theOrder);
         String choice = io.readString("\n\nWould you like to confirm this purchase? (y/N)");
+
         switch (choice.toLowerCase()) {
             case "y":
             case "yes":
             case "true":
                 return theOrder;
+
             default:
                 return null;
         }
@@ -175,13 +204,16 @@ public class FlooringMasteryView {
 
     private void displayValidStates(List<TaxRate> states) {
         io.print("The following are valid responses:\n");
+
         int stateCount = 0;
+
         for (TaxRate state : states) {
             if (stateCount < 10) {
-                io.print(state.getAbbr() + " ");
+                io.print(state.getAbbr() + " || ");
                 stateCount++;
+
             } else {
-                io.print(state.getAbbr() + "\n");
+                io.print(state.getAbbr() + " ||\n|| ");
                 stateCount = 0;
             }
         }
@@ -189,30 +221,35 @@ public class FlooringMasteryView {
 
     private void displayValidProducts(List<Product> products) {
         io.print("The following are valid responses:\n");
+
         int productCount = 0;
+
         for (Product product : products) {
             if (productCount < 10) {
-                io.print(product.getType() + " ");
+                io.print(product.getType() + " || ");
                 productCount++;
+
             } else {
-                io.print(product.getType() + "\n");
+                io.print(product.getType() + " ||\n|| ");
                 productCount = 0;
             }
         }
     }
 
-    //Remove Pt 1
+    // Remove Pt 1
     public int removeOrderIdGrabber() {
         banner("O┬  ╦═╗┌─┐┌┬┐┌─┐┬  ┬┌─┐  O┬\n"
                 + "┌┘  ╠╦╝├┤ ││││ │└┐┌┘├┤   ┌┘\n"
-                + "┴O  ╩╚═└─┘┴ ┴└─┘ └┘ └─┘  ┴O\n\n");
+                + "┴O  ╩╚═└─┘┴ ┴└─┘ └┘ └─┘  ┴O");
 
         int orderId;
 
         validLoop:
         while (true) {
-            String orderIdMaybe = io.readString("Please enter your order ID (Ex: 1)"
-                    + " or type 'q' to return to the main menu");
+            String orderIdMaybe
+                    = io.readString(
+                            "Please enter your order ID (Ex: 1)" + " or type 'q' to return to the main menu");
+
             switch (orderIdMaybe.toLowerCase()) {
                 case "q":
                 case "quit":
@@ -224,7 +261,9 @@ public class FlooringMasteryView {
 
             try {
                 orderId = Integer.parseInt(orderIdMaybe);
+
                 break validLoop;
+
             } catch (NumberFormatException n) {
                 io.print("\n");
             }
@@ -232,11 +271,12 @@ public class FlooringMasteryView {
         return orderId;
     }
 
-    //Remove Pt 2
+    // Remove Pt 2
     public boolean removeOrderConfirmPrompt(Order theOrder) {
         displayOrderInfo(theOrder);
         String userResponse = io.readString("\nAre you sure that you want to pe"
                 + "rmanently remove this order? (y/N)");
+
         switch (userResponse.toLowerCase()) {
             case "y":
             case "yes":
@@ -245,64 +285,80 @@ public class FlooringMasteryView {
             default:
                 return false;
         }
-
     }
 
     public void errors(String exception) {
 
-        banner("");
+        banner(">> ERROR <<");
+
         switch (exception.toLowerCase()) {
             case "filenotfound":
                 io.print("\nThere aren't any order files!\n\n");
                 break;
+
             case "unsupportedoperation":
                 io.print("\nSorry kiddo, can't do that yet!\n\n");
                 break;
+
             case "noorders":
                 io.print("\nThere aren't any orders set to deliver on the given"
                         + " date!\n\n");
                 break;
+
             case "invalidorder":
-                io.print("\nYou entered some invalid information into your orde"
+                io.print(
+                        "\nYou entered some invalid information into your orde"
                         + "r.  Let's try again, but this time with valid inform"
                         + "ation.\n\n");
                 break;
+
             case "filenotfoundpretest":
                 io.print("\nThere aren't any order files to read from! Must be"
                         + " the first time running...  We'll keep going though.\n");
                 break;
+
             case "modenoneerror":
-                io.print("\nThe file for the mode type is nonexistent or unread"
+                io.print(
+                        "\nThe file for the mode type is nonexistent or unread"
                         + "able.  Please check to make sure reading permissions"
                         + " are correct and that the file exists. The program w"
                         + "ill not run.\n");
                 break;
+
             case "modeinvaliderror":
-                io.print("\nThe running mode chosen was invalid.  Please check "
-                        + "the Data/Mode.txt file to ensure that a valid runnin"
-                        + "g mode is set (Training/Production).  The program wi"
+                io.print(
+                        "\nThe running mode chosen was invalid.  Please check "
+                        + "the \nData/Mode.txt file to ensure that a valid runnin"
+                        + "g \nmode is set (Training/Production).  The program wi"
                         + "ll not run.\n");
                 break;
+
             case "nullorder":
-                io.print("\nThe order ID you entered doesn't match any existing o"
-                        + "rders.\n");
+                io.print("\nThe order ID you entered doesn't match any existing"
+                        + " orders.\n");
                 break;
+
             case "wrongmode":
-                io.print("\nYou are in training mode, and are therefore unable to"
-                        + " save.\n");
+                io.print("\nYou are in training mode, and are therefore unable "
+                        + "to save.\n");
                 break;
+
             case "poststartmodeerror":
                 io.print("\nThe mode was unable to be determined.  There is eit"
-                        + "her a bug in this program or the Mode.txt file has c"
-                        + "hanged/corrupted/gone missing after the start of thi"
-                        + "s program.  The program could be under attack.  This"
-                        + " is a very serious problem, the program will termina"
+                        + "her \na bug in this program or the Mode.txt file has c"
+                        + "hanged/corrupted/gone\n missing after the start of thi"
+                        + "s program.  \nThe program could be under attack.  This"
+                        + " is \na very serious problem, the program will termina"
                         + "te immediately.");
                 break;
+
             case "ioexception":
                 io.print("\nThere was a problem while writing your changes to s"
                         + "torage.  Check to make sure the write permissions ar"
                         + "e correct for all of the program files.\n\n");
+                break;
+            case "invalidentry":
+                io.print("That wasn't right.  Try again.\n");
                 break;
         }
     }
@@ -310,13 +366,13 @@ public class FlooringMasteryView {
     public void notices(String notice) {
         switch (notice.toLowerCase()) {
             case "trainingmode":
-                io.print("\nYou are in training mode.  Any changes will not be "
-                        + "saved.\n\n");
+                io.print("\nYou are in training mode.  Any changes will not be " + "saved.\n\n");
                 break;
+
             case "productionmode":
-                io.print("\nYou are in production mode.  All changes will be "
-                        + "saved.\n\n");
+                io.print("\nYou are in production mode.  All changes will be " + "saved.\n\n");
                 break;
+
             case "operationsuccess":
                 io.print("\nOperation was successful.\n\n");
         }
@@ -325,6 +381,7 @@ public class FlooringMasteryView {
     public int saveAndExit() {
         io.print("You are about to exit the program.  You have 3 options.\n");
         String[] options = {"Return to Main Menu", "Exit without Saving", "Save and Exit"};
+
         return menus(options);
     }
 
@@ -334,7 +391,7 @@ public class FlooringMasteryView {
      * method isn't really used in this project.
      */
     private void clearConsole() {
-        eraser.clearConsole();
+
     }
 
     /**
@@ -349,9 +406,7 @@ public class FlooringMasteryView {
         io.print("\nOrder ID: " + theOrder.getOrderNum());
         io.print("\nThe order is for " + theOrder.getArea() + " sqft of "
                 + theOrder.getProductType() + " to " + theOrder.getState()
-                + " on " + theOrder.getDeliveryDate()
-                        .format(DateTimeFormatter.ofPattern("MM-dd-yyyy")));
+                + " on " + theOrder.getDeliveryDate().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")));
         io.print("\nTotal Cost: $" + theOrder.getTotal().setScale(2, RoundingMode.HALF_UP));
     }
-
 }
