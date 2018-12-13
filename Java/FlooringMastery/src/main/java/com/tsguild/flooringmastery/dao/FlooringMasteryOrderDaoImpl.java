@@ -129,14 +129,6 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         }
 
         /**
-         * When there are no orders for the date, just remove the date from
-         * allOrders but still make dayOrders
-         */
-        if (ordersForDay.isEmpty() && !allOrders.isEmpty()) {
-            allOrders.remove(date);
-        }
-
-        /**
          * Only call loadFromFiles() if there aren't any key/value pairs in
          * allOrders (don't wanna overwrite any unsaved changes!
          */
@@ -276,7 +268,13 @@ public class FlooringMasteryOrderDaoImpl implements FlooringMasteryOrderDao {
         for (Order order : ordersForDay.values()) {
             dayOrders.add(order);
         }
-        allOrders.put(dayOrders.get(0).getDeliveryDate(), dayOrders);
-        ordersForDay.clear();
+
+        //Look for an order until one is found, then grab the date from it
+        for (int j = 0; j < dayOrders.size(); j++) {
+            if (dayOrders.get(j) != null) {
+                allOrders.put(dayOrders.get(j).getDeliveryDate(), dayOrders);
+                ordersForDay.clear();
+            }
+        }
     }
 }

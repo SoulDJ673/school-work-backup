@@ -83,7 +83,7 @@ public class FlooringMasteryView {
         String enteredDate = io.readString("Enter the date in the format MM-dd-yyyy (01-01-1999): ");
         DateTimeFormatter orderDate = DateTimeFormatter.ofPattern("MM-dd-yyyy");
         LocalDate deliveryDate = LocalDate.parse(enteredDate, orderDate);
-        
+
         return deliveryDate;
     }
 
@@ -175,15 +175,29 @@ public class FlooringMasteryView {
 
     private void displayValidStates(List<TaxRate> states) {
         io.print("The following are valid responses:\n");
+        int stateCount = 0;
         for (TaxRate state : states) {
-            io.print(state.getAbbr() + "\n");
+            if (stateCount < 10) {
+                io.print(state.getAbbr() + " ");
+                stateCount++;
+            } else {
+                io.print(state.getAbbr() + "\n");
+                stateCount = 0;
+            }
         }
     }
 
     private void displayValidProducts(List<Product> products) {
         io.print("The following are valid responses:\n");
+        int productCount = 0;
         for (Product product : products) {
-            io.print(product.getType() + "\n");
+            if (productCount < 10) {
+                io.print(product.getType() + " ");
+                productCount++;
+            } else {
+                io.print(product.getType() + "\n");
+                productCount = 0;
+            }
         }
     }
 
@@ -334,7 +348,9 @@ public class FlooringMasteryView {
         io.print("\n\nName:" + theOrder.getCustomerName());
         io.print("\nOrder ID: " + theOrder.getOrderNum());
         io.print("\nThe order is for " + theOrder.getArea() + " sqft of "
-                + theOrder.getProductType() + " to " + theOrder.getState());
+                + theOrder.getProductType() + " to " + theOrder.getState()
+                + " on " + theOrder.getDeliveryDate()
+                        .format(DateTimeFormatter.ofPattern("MM-dd-yyyy")));
         io.print("\nTotal Cost: $" + theOrder.getTotal().setScale(2, RoundingMode.HALF_UP));
     }
 
