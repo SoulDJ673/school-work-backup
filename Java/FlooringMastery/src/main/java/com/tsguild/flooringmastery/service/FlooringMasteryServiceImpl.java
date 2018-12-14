@@ -121,17 +121,9 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     private Order validateHelper(Order order) throws FlooringMasteryInvalidOrderException {
 
         //Check for date in future
-        LocalDate maybeBadDelivery;
         if (order.getDeliveryDate().compareTo(LocalDate.now()) <= 0) {
             throw new FlooringMasteryInvalidOrderException();
-        } else {
-            maybeBadDelivery = order.getDeliveryDate();
         }
-
-        //Creates new Order
-        Order kindaTheOrder = new Order(order.getOrderNum(),
-                order.getCustomerName(), order.getState(), order.getProductType(),
-                order.getArea(), maybeBadDelivery);
 
         //Check for blank or null name
         if (order.getCustomerName().trim().isEmpty() || order.getCustomerName()
@@ -157,7 +149,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
             throw new FlooringMasteryInvalidOrderException();
         }
 
-        return kindaTheOrder;
+        return order;
     }
 
     /**
@@ -214,8 +206,14 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public Order getOrder(int orderId) {
+    public Order getOrder(int orderId) throws FlooringMasteryInvalidOrderException {
         Order theOrder = orderDao.getOrder(orderId);
+
+        //Check to make sure it's a valid order
+        if (theOrder == null) {
+            throw new FlooringMasteryInvalidOrderException();
+        }
+
         return theOrder;
     }
 

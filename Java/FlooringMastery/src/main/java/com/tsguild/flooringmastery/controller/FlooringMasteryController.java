@@ -28,6 +28,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -117,9 +119,25 @@ public class FlooringMasteryController {
     }
 
     private void displayOrders() throws FileNotFoundException, FlooringMasteryNoOrdersForDateException {
-        LocalDate deliveryDate = view.getOrderDate();
-        List<Order> dayOrders = service.getOrders(deliveryDate);
-        view.displayOrders(dayOrders);
+        int choice = view.displayOrderMenu();
+        switch (choice) {
+            case 1:
+                int orderId = view.displayOrderIdGrabber();
+                Order retrievedOrder;
+                try {
+                    retrievedOrder = service.getOrder(orderId);
+                } catch (FlooringMasteryInvalidOrderException ex) {
+                    view.errors("NullOrder");
+                    return;
+                }
+                view.displayOrders(retrievedOrder);
+                break;
+            case 2:
+                LocalDate deliveryDate = view.getOrderDate();
+                List<Order> dayOrders = service.getOrders(deliveryDate);
+                view.displayOrders(dayOrders);
+                break;
+        }
     }
 
     /**
@@ -170,12 +188,12 @@ public class FlooringMasteryController {
         if (orderId == -69) {
             return;
         } else {
-            grabbedOrder = service.getOrder(orderId);
-        }
-
-        if (grabbedOrder == null) {
-            view.errors("NullOrder");
-            return;
+            try {
+                grabbedOrder = service.getOrder(orderId);
+            } catch (FlooringMasteryInvalidOrderException ex) {
+                view.errors("NullOrder");
+                return;
+            }
         }
 
         /**

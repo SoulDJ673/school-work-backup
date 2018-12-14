@@ -76,7 +76,7 @@ public class FlooringMasteryView {
         };
 
         io.print(
-                "O┬┌─┐  ╔╦╗┌─┐┬┌┐┌  ╔╦╗┌─┐┌┐┌┬ ┬  ┌─┐O┬\n"
+                "\nO┬┌─┐  ╔╦╗┌─┐┬┌┐┌  ╔╦╗┌─┐┌┐┌┬ ┬  ┌─┐O┬\n"
                 + "┌┘│└┘  ║║║├─┤││││  ║║║├┤ ││││ │  │└┘┌┘\n"
                 + "┴O└──  ╩ ╩┴ ┴┴┘└┘  ╩ ╩└─┘┘└┘└─┘  └──┴O\n\n");
 
@@ -93,6 +93,8 @@ public class FlooringMasteryView {
         return deliveryDate;
     }
 
+    //Display
+    //Many Orders
     public void displayOrders(List<Order> orders) {
         io.print("\n");
 
@@ -105,8 +107,23 @@ public class FlooringMasteryView {
         io.print("\n\n");
     }
 
-    public Order createOrder(
-            int latestId, List<TaxRate> states, List<Product> products, Order order) {
+    //Just One
+    public void displayOrders(Order order) {
+        io.print("\n");
+        this.displayOrderInfo(order);
+    }
+
+    public int displayOrderMenu() {
+        banner("O┬  ╔╦╗┬┌─┐┌─┐┬  ┌─┐┬ ┬  O┬\n"
+                + "┌┘   ║║│└─┐├─┘│  ├─┤└┬┘  ┌┘\n"
+                + "┴O  ═╩╝┴└─┘┴  ┴─┘┴ ┴ ┴   ┴O");
+        String[] choices = {"Display information on one order", "Display all or"
+            + "ders for one date"};
+        return menus(choices);
+    }
+
+    //Create
+    public Order createOrder(int latestId, List<TaxRate> states, List<Product> products, Order order) {
         this.clearConsole();
         banner(
                 "O┬  ╔═╗┬─┐┌─┐┌─┐┌┬┐┌─┐  O┬\n"
@@ -408,5 +425,9 @@ public class FlooringMasteryView {
                 + theOrder.getProductType() + " to " + theOrder.getState()
                 + " on " + theOrder.getDeliveryDate().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")));
         io.print("\nTotal Cost: $" + theOrder.getTotal().setScale(2, RoundingMode.HALF_UP));
+    }
+
+    public int displayOrderIdGrabber() {
+        return io.readInt("\n\nEnter the order ID (ex. 1): ");
     }
 }

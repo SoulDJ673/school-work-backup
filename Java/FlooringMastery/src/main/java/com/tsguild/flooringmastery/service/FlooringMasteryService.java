@@ -44,12 +44,13 @@ public interface FlooringMasteryService {
     public List getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
 
     /**
-     * Simple call to orderDao
+     * Simple call to orderDao, validates before return
      *
      * @param orderId
      * @return
+     * @throws com.tsguild.flooringmastery.service.FlooringMasteryInvalidOrderException
      */
-    public Order getOrder(int orderId);
+    public Order getOrder(int orderId) throws FlooringMasteryInvalidOrderException;
 
     /**
      * This method simply gets the latest order ID
@@ -69,7 +70,7 @@ public interface FlooringMasteryService {
     public boolean getMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
 
     public Order removeOrder(int orderId);
-    
+
     public void saveOrders() throws IOException;
 
 }
