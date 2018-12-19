@@ -16,6 +16,7 @@
  */
 package com.tsguild.vendingmachine.dao;
 
+import com.tsguild.vendingmachine.dto.Item;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,11 +27,14 @@ import org.junit.Test;
  */
 public class VendingDAOImplTest {
 
+    VendingDAO dao;
+
     public VendingDAOImplTest() {
     }
 
     @Before
     public void setUp() {
+        dao = new VendingDAOImpl("inventory.txt");
     }
 
     //Throwing the exception when unable to load the file
@@ -72,10 +76,27 @@ public class VendingDAOImplTest {
         VendingDAO fakeDao = new VendingDAOImpl(" ");
         try {
             fakeDao.loadAllItems();
-            Assert.assertEquals("The exception wasn't thrown :0", false, true);
+            Assert.assertEquals("The exception wasn't thrown :O", false, true);
         } catch (VendingPersistenceException ex) {
             Assert.assertEquals("An exception was thrown because the file doesn't exist", true, true);
         }
+    }
+
+    //Get Items
+    @Test
+    public void getANonexistantItemTest() {
+        Item lol = dao.getAnItem("77");
+        //Lol should be null
+
+        Assert.assertEquals("Checking to make sure lol is null", null, lol);
+    }
+
+    @Test
+    public void getANullIDTest() {
+        Item stillLol = dao.getAnItem(null);
+        //Should be null without throwing an exception
+
+        Assert.assertEquals("Checking to make sure the returned item is null", null, stillLol);
     }
 
 }
