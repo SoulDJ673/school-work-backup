@@ -29,12 +29,12 @@ import org.junit.Test;
  * @author souldj673
  */
 public class VendingDAOImplTest {
-
+    
     VendingDAO dao;
-
+    
     public VendingDAOImplTest() {
     }
-
+    
     @Before
     public void setUp() {
         dao = new VendingDAOImpl("inventory.txt");
@@ -56,7 +56,7 @@ public class VendingDAOImplTest {
             Assert.assertEquals("An exception was thrown because the file doesn't exist", true, true);
         }
     }
-
+    
     @Test
     public void loadAllItemsExceptionThrowingValidFileTest() {
         VendingDAO fakeDao = new VendingDAOImpl("inventory.txt");
@@ -67,7 +67,7 @@ public class VendingDAOImplTest {
             Assert.fail("An exception was thrown because the file doesn't exist");
         }
     }
-
+    
     @Test
     public void loadAllItemsExceptionThrowingNullTest() {
         VendingDAO fakeDao = new VendingDAOImpl(null); //It's throwing an exception here when it shouldn't be
@@ -78,7 +78,7 @@ public class VendingDAOImplTest {
             Assert.assertEquals("An exception was thrown because the file doesn't exist", true, true);
         }
     }
-
+    
     @Test
     public void loadAllItemsExceptionThrowingBlankTest() {
         VendingDAO fakeDao = new VendingDAOImpl(" ");
@@ -101,7 +101,7 @@ public class VendingDAOImplTest {
 
         Assert.assertEquals("Checking to make sure lol is null", null, lol);
     }
-
+    
     @Test
     public void getANullIDTest() {
         Item stillLol = dao.getAnItem(null);
@@ -109,7 +109,7 @@ public class VendingDAOImplTest {
 
         Assert.assertEquals("Checking to make sure the returned item is null", null, stillLol);
     }
-
+    
     @Test
     public void getABlankIDTest() {
         Item stillLol = dao.getAnItem("  ");
@@ -122,9 +122,9 @@ public class VendingDAOImplTest {
     @Test
     public void getAllItemsNormal() {
         List<Item> theItems = dao.getAllItems();
-
+        
         Assert.assertEquals("This is just making sure that the list isn't empty", false, theItems.isEmpty());
-
+        
         boolean atLeastOneIsNotNull = false;
         for (Item item : theItems) {
             if (item != null) {
@@ -133,14 +133,14 @@ public class VendingDAOImplTest {
         }
         Assert.assertEquals("Making sure the items in the list aren't null", true, atLeastOneIsNotNull);
     }
-
+    
     @Test
     public void getAllItemsNull() {
         VendingDAO fakeDao = new VendingDAOImpl("inventroy.tt");
         List<Item> theItems = fakeDao.getAllItems();
-
+        
         Assert.assertEquals("This is just making sure that the list is empty", true, theItems.isEmpty());
-
+        
         boolean atLeastOneIsNotNull = false;
         for (Item item : theItems) {
             if (item != null) {
@@ -148,5 +148,26 @@ public class VendingDAOImplTest {
             }
         }
         Assert.assertEquals("Making sure the items in the list are null", false, atLeastOneIsNotNull);
+    }
+
+    //Update Items
+    @Test
+    public void updateItemNormalTest() {
+        Item changedItem = new Item("2a");
+        Item oldItem = dao.getAnItem("2a");
+        dao.updateAnItem("2a", changedItem);
+        
+        Assert.assertEquals("Making sure the updated item actually is", changedItem, dao.getAnItem("2a"));
+        Assert.assertEquals("Making sure the changed item is different from the old one", false, changedItem.equals(oldItem));
+    }
+    
+    @Test
+    public void updateItemNullsTest() {
+        VendingDAO customDao = new VendingDAOImpl("fake");
+        
+        Item changedItem = new Item("3b");
+        customDao.updateAnItem("2a", changedItem);
+        
+        Assert.assertEquals("Making sure the updated item actually is", changedItem, customDao.getAnItem("2a"));
     }
 }
