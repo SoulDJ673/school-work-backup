@@ -363,8 +363,8 @@ public class FlooringMasteryView {
             case "poststartmodeerror":
                 io.print("\nThe mode was unable to be determined.  There is eit"
                         + "her \na bug in this program or the Mode.txt file has c"
-                        + "hanged/corrupted/gone\n missing after the start of thi"
-                        + "s program.  \nThe program could be under attack.  This"
+                        + "hanged/corrupted/gone \nmissing after the start of thi"
+                        + "s program.  The program could be under attack.  This"
                         + " is \na very serious problem, the program will termina"
                         + "te immediately.");
                 break;
