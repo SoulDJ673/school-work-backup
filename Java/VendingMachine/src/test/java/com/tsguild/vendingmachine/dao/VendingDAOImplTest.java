@@ -17,6 +17,9 @@
 package com.tsguild.vendingmachine.dao;
 
 import com.tsguild.vendingmachine.dto.Item;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,6 +38,11 @@ public class VendingDAOImplTest {
     @Before
     public void setUp() {
         dao = new VendingDAOImpl("inventory.txt");
+        try {
+            dao.loadAllItems();
+        } catch (VendingPersistenceException ex) {
+            Logger.getLogger(VendingDAOImplTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     //Throwing the exception when unable to load the file
@@ -62,7 +70,7 @@ public class VendingDAOImplTest {
 
     @Test
     public void loadAllItemsExceptionThrowingNullTest() {
-        VendingDAO fakeDao = new VendingDAOImpl(null);
+        VendingDAO fakeDao = new VendingDAOImpl(null); //It's throwing an exception here when it shouldn't be
         try {
             fakeDao.loadAllItems();
             Assert.assertEquals("The exception wasn't thrown :0", false, true);
@@ -82,7 +90,10 @@ public class VendingDAOImplTest {
         }
     }
 
-    //Get Items
+    /**
+     * Get Items
+     */
+    //Get an Item
     @Test
     public void getANonexistantItemTest() {
         Item lol = dao.getAnItem("77");
@@ -99,4 +110,43 @@ public class VendingDAOImplTest {
         Assert.assertEquals("Checking to make sure the returned item is null", null, stillLol);
     }
 
+    @Test
+    public void getABlankIDTest() {
+        Item stillLol = dao.getAnItem("  ");
+        //Should be null without throwing an exception
+
+        Assert.assertEquals("Checking to make sure the returned item is null", null, stillLol);
+    }
+
+    //Get A List of Items
+    @Test
+    public void getAllItemsNormal() {
+        List<Item> theItems = dao.getAllItems();
+
+        Assert.assertEquals("This is just making sure that the list isn't empty", false, theItems.isEmpty());
+
+        boolean atLeastOneIsNotNull = false;
+        for (Item item : theItems) {
+            if (item != null) {
+                atLeastOneIsNotNull = true;
+            }
+        }
+        Assert.assertEquals("Making sure the items in the list aren't null", true, atLeastOneIsNotNull);
+    }
+
+    @Test
+    public void getAllItemsNull() {
+        VendingDAO fakeDao = new VendingDAOImpl("inventroy.tt");
+        List<Item> theItems = fakeDao.getAllItems();
+
+        Assert.assertEquals("This is just making sure that the list is empty", true, theItems.isEmpty());
+
+        boolean atLeastOneIsNotNull = false;
+        for (Item item : theItems) {
+            if (item != null) {
+                atLeastOneIsNotNull = true;
+            }
+        }
+        Assert.assertEquals("Making sure the items in the list are null", false, atLeastOneIsNotNull);
+    }
 }
