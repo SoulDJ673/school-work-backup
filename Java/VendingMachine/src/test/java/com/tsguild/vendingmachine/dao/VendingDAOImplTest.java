@@ -170,4 +170,7 @@ public class VendingDAOImplTest {
         
         Assert.assertEquals("Making sure the updated item actually is", changedItem, customDao.getAnItem("2a"));
     }
+    
+    //Remove Items
+    
 }
