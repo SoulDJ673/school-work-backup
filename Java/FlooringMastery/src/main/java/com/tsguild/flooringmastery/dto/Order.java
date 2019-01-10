@@ -244,10 +244,7 @@ public class Order {
         if (!Objects.equals(this.total, other.total)) {
             return false;
         }
-        if (!Objects.equals(this.deliveryDate, other.deliveryDate)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.deliveryDate, other.deliveryDate);
     }
 
 }

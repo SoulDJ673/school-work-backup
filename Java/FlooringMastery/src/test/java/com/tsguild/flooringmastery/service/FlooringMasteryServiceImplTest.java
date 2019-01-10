@@ -16,12 +16,7 @@
  */
 package com.tsguild.flooringmastery.service;
 
-import com.tsguild.flooringmastery.dao.FlooringMasteryModeDao;
-import com.tsguild.flooringmastery.dao.FlooringMasteryModeDaoImpl;
-import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDao;
-import com.tsguild.flooringmastery.dao.FlooringMasteryOrderDaoImpl;
-import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDao;
-import com.tsguild.flooringmastery.dao.FlooringMasteryTaxesProductDaoImpl;
+import com.tsguild.flooringmastery.dao.*;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;

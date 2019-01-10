@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/DI_Racer/pom.xml" />
+        <option value="$PROJECT_DIR$/LlamaMVC/pom.xml" />
+        <option value="$PROJECT_DIR$/DVDLibrary/pom.xml" />
+        <option value="$PROJECT_DIR$/DaoTesting/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/DaoTesting/pom.xml" />
+        <option value="$PROJECT_DIR$/FirstTests/pom.xml" />
+        <option value="$PROJECT_DIR$/Milestone2/pom.xml" />
+        <option value="$PROJECT_DIR$/Milestone4/pom.xml" />
+        <option value="$PROJECT_DIR$/AddressBook/pom.xml" />
+        <option value="$PROJECT_DIR$/ClassRoster/pom.xml" />
+        <option value="$PROJECT_DIR$/ClassModeling/pom.xml" />
+        <option value="$PROJECT_DIR$/VendingMachine/target/maven-archiver/pom.properties" />
+        <option value="$PROJECT_DIR$/VendingMachine/pom.xml" />
+        <option value="$PROJECT_DIR$/FlooringMastery/pom.xml" />
+        <option value="$PROJECT_DIR$/Milestone3Basics/pom.xml" />
+        <option value="$PROJECT_DIR$/Milestone1Exercises/pom.xml" />
+        <option value="$PROJECT_DIR$/Milestone1Summative/pom.xml" />
+        <option value="$PROJECT_DIR$/Llama_Windows_Example/pom.xml" />
+        <option value="$PROJECT_DIR$/SimpleSpringInjection/pom.xml" />
+        <option value="$PROJECT_DIR$/ClassCodealongsMilestone1/pom.xml" />
+        <option value="$PROJECT_DIR$/FunctionalUnitTests_MilestoneIII/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

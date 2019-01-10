@@ -24,13 +24,13 @@ import java.io.FileNotFoundException;
  */
 public interface FlooringMasteryModeDao {
 
-    public boolean isProduction();
+    boolean isProduction();
 
-    public boolean isTraining();
+    boolean isTraining();
     
-    public void loadMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
+    void loadMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
 
     //Rest of CRUDing for Requirements
-    public void changeMode();
+    void changeMode();
 
 }

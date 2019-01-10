@@ -31,20 +31,12 @@ public class FlooringMasteryModeDaoImpl implements FlooringMasteryModeDao {
 
     @Override
     public boolean isProduction() {
-        if (mode.equalsIgnoreCase("production")) {
-            return true;
-        } else {
-            return false;
-        }
+        return mode.equalsIgnoreCase("production");
     }
 
     @Override
     public boolean isTraining() {
-        if (mode.equalsIgnoreCase("training")) {
-            return true;
-        } else {
-            return false;
-        }
+        return mode.equalsIgnoreCase("training");
     }
 
     @Override

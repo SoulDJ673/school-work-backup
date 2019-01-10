@@ -26,7 +26,6 @@ import com.tsguild.flooringmastery.service.FlooringMasteryServiceImpl;
 import com.tsguild.flooringmastery.view.FlooringMasteryView;
 import com.tsguild.flooringmastery.view.UserIO;
 import com.tsguild.flooringmastery.view.UserIOConsoleImpl;
-import com.tsguild.flooringmastery.view.ConsoleEraser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -18,6 +18,7 @@ package com.tsguild.flooringmastery.service;
 
 import com.tsguild.flooringmastery.dao.FlooringMasteryModeErrorException;
 import com.tsguild.flooringmastery.dto.Order;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -41,7 +42,7 @@ public interface FlooringMasteryService {
      * @throws FileNotFoundException
      * @throws FlooringMasteryNoOrdersForDateException
      */
-    public List getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
+    List getOrders(LocalDate deliveryDate) throws FileNotFoundException, FlooringMasteryNoOrdersForDateException;
 
     /**
      * Simple call to orderDao, validates before return
@@ -50,27 +51,27 @@ public interface FlooringMasteryService {
      * @return
      * @throws com.tsguild.flooringmastery.service.FlooringMasteryInvalidOrderException
      */
-    public Order getOrder(int orderId) throws FlooringMasteryInvalidOrderException;
+    Order getOrder(int orderId) throws FlooringMasteryInvalidOrderException;
 
     /**
      * This method simply gets the latest order ID
      *
      * @return
      */
-    public int getLastID();
+    int getLastID();
 
-    public Order validateOrder(Order order) throws FlooringMasteryInvalidOrderException;
+    Order validateOrder(Order order) throws FlooringMasteryInvalidOrderException;
 
-    public Order addOrder(Order order);
+    Order addOrder(Order order);
 
-    public List getProducts() throws FileNotFoundException;
+    List getProducts() throws FileNotFoundException;
 
-    public List getStates() throws FileNotFoundException;
+    List getStates() throws FileNotFoundException;
 
-    public boolean getMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
+    boolean getMode() throws FileNotFoundException, FlooringMasteryModeErrorException;
 
-    public Order removeOrder(int orderId);
+    Order removeOrder(int orderId);
 
-    public void saveOrders() throws IOException;
+    void saveOrders() throws IOException;
 
 }

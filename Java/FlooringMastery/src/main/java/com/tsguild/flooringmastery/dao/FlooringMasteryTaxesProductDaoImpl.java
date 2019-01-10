@@ -18,16 +18,12 @@ package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
-import java.math.BigDecimal;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  *

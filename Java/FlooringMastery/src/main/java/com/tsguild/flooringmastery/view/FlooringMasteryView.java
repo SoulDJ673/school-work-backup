@@ -19,6 +19,7 @@ package com.tsguild.flooringmastery.view;
 import com.tsguild.flooringmastery.dto.Order;
 import com.tsguild.flooringmastery.dto.Product;
 import com.tsguild.flooringmastery.dto.TaxRate;
+
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -72,13 +73,13 @@ public class FlooringMasteryView {
 
     public int mainMenu() {
         String[] options = {
-            "Display Orders", "Add Order", "Edit Order", "Remove Order", "Save", "Quit"
+                "Display Orders", "Add Order", "Edit Order", "Remove Order", "Save", "Quit"
         };
 
         io.print(
                 "\nO┬┌─┐  ╔╦╗┌─┐┬┌┐┌  ╔╦╗┌─┐┌┐┌┬ ┬  ┌─┐O┬\n"
-                + "┌┘│└┘  ║║║├─┤││││  ║║║├┤ ││││ │  │└┘┌┘\n"
-                + "┴O└──  ╩ ╩┴ ┴┴┘└┘  ╩ ╩└─┘┘└┘└─┘  └──┴O\n\n");
+                        + "┌┘│└┘  ║║║├─┤││││  ║║║├┤ ││││ │  │└┘┌┘\n"
+                        + "┴O└──  ╩ ╩┴ ┴┴┘└┘  ╩ ╩└─┘┘└┘└─┘  └──┴O\n\n");
 
         // Return User selection
         return menus(options);
@@ -101,8 +102,8 @@ public class FlooringMasteryView {
         for (Order order : orders) {
             io.print(
                     order.getOrderNum() + ".) " + order.getCustomerName()
-                    + " - Order for " + order.getProductType() + " to "
-                    + order.getState() + "\n");
+                            + " - Order for " + order.getProductType() + " to "
+                            + order.getState() + "\n");
         }
         io.print("\n\n");
     }
@@ -118,7 +119,7 @@ public class FlooringMasteryView {
                 + "┌┘   ║║│└─┐├─┘│  ├─┤└┬┘  ┌┘\n"
                 + "┴O  ═╩╝┴└─┘┴  ┴─┘┴ ┴ ┴   ┴O");
         String[] choices = {"Display information on one order", "Display all or"
-            + "ders for one date"};
+                + "ders for one date"};
         return menus(choices);
     }
 
@@ -127,8 +128,8 @@ public class FlooringMasteryView {
         this.clearConsole();
         banner(
                 "O┬  ╔═╗┬─┐┌─┐┌─┐┌┬┐┌─┐  O┬\n"
-                + "┌┘  ║  ├┬┘├┤ ├─┤ │ ├┤   ┌┘\n"
-                + "┴O  ╚═╝┴└─└─┘┴ ┴ ┴ └─┘  ┴O");
+                        + "┌┘  ║  ├┬┘├┤ ├─┤ │ ├┤   ┌┘\n"
+                        + "┴O  ╚═╝┴└─└─┘┴ ┴ ┴ └─┘  ┴O");
 
         Order theOrder;
 
@@ -157,7 +158,7 @@ public class FlooringMasteryView {
             String product = io.readString("\n\nWhich material are you ordering? (Tile)");
             double area
                     = io.readDouble(
-                            "\nHow much material, in square feet, would you like to order? (100 (minimum))");
+                    "\nHow much material, in square feet, would you like to order? (100 (minimum))");
 
             theOrder = new Order(latestId, custName, state, product, area, deliveryDate);
         } else {
@@ -177,14 +178,14 @@ public class FlooringMasteryView {
                 displayValidStates(states);
                 String state
                         = io.readString(
-                                "\n\nThe state you entered before was either invalid or we don't deliver there.  Try again. (DC)");
+                        "\n\nThe state you entered before was either invalid or we don't deliver there.  Try again. (DC)");
                 order.setState(state);
             }
             if (order.getProductType() == null) {
                 displayValidProducts(products);
                 String product
                         = io.readString(
-                                "\n\nThe previously entered material was either invalid or we don't sell that.  Try again. (Tile)");
+                        "\n\nThe previously entered material was either invalid or we don't sell that.  Try again. (Tile)");
                 order.setProductType(product);
             }
             if (order.getArea() == 0) {
@@ -265,7 +266,7 @@ public class FlooringMasteryView {
         while (true) {
             String orderIdMaybe
                     = io.readString(
-                            "Please enter your order ID (Ex: 1)" + " or type 'q' to return to the main menu");
+                    "Please enter your order ID (Ex: 1)" + " or type 'q' to return to the main menu");
 
             switch (orderIdMaybe.toLowerCase()) {
                 case "q":
@@ -325,8 +326,8 @@ public class FlooringMasteryView {
             case "invalidorder":
                 io.print(
                         "\nYou entered some invalid information into your orde"
-                        + "r.  Let's try again, but this time with valid inform"
-                        + "ation.\n\n");
+                                + "r.  Let's try again, but this time with valid inform"
+                                + "ation.\n\n");
                 break;
 
             case "filenotfoundpretest":
@@ -337,17 +338,17 @@ public class FlooringMasteryView {
             case "modenoneerror":
                 io.print(
                         "\nThe file for the mode type is nonexistent or unread"
-                        + "able.  Please check to make sure reading permissions"
-                        + " are correct and that the file exists. The program w"
-                        + "ill not run.\n");
+                                + "able.  Please check to make sure reading permissions"
+                                + " are correct and that the file exists. The program w"
+                                + "ill not run.\n");
                 break;
 
             case "modeinvaliderror":
                 io.print(
                         "\nThe running mode chosen was invalid.  Please check "
-                        + "the \nData/Mode.txt file to ensure that a valid runnin"
-                        + "g \nmode is set (Training/Production).  The program wi"
-                        + "ll not run.\n");
+                                + "the \nData/Mode.txt file to ensure that a valid runnin"
+                                + "g \nmode is set (Training/Production).  The program wi"
+                                + "ll not run.\n");
                 break;
 
             case "nullorder":

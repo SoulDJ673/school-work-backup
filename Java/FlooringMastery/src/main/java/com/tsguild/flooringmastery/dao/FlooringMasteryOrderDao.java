@@ -1,6 +1,7 @@
 package com.tsguild.flooringmastery.dao;
 
 import com.tsguild.flooringmastery.dto.Order;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -20,27 +21,27 @@ public interface FlooringMasteryOrderDao {
      * @param orderId
      * @return
      */
-    public Order getOrder(int orderId);
+    Order getOrder(int orderId);
 
     /**
      * This method will return a list of all the orders for a specific date.
      *
      * @return
      */
-    public List getOrders();
+    List getOrders();
 
     /**
      * This method will return a map of all the existing orders.
      *
      * @return
      */
-    public Map getAllOrders();
+    Map getAllOrders();
 
-    public Order addOrder(Order theOrder);
+    Order addOrder(Order theOrder);
 
-    public void editOrder(Order theOrder);
+    void editOrder(Order theOrder);
 
-    public Order removeOrder(int orderId);
+    Order removeOrder(int orderId);
 
     /**
      * This method will load all of the orders for a specific date into their
@@ -52,13 +53,13 @@ public interface FlooringMasteryOrderDao {
      * @param date
      * @throws FileNotFoundException
      */
-    public void mapOrdersForDate(LocalDate date) throws FileNotFoundException;
+    void mapOrdersForDate(LocalDate date) throws FileNotFoundException;
 
     /**
      * This calls any saving related methods/helper methods to help in
      * persistence.  Will throw an IOException if it is unable to write.
      * @throws java.io.IOException
      */
-    public void persistOrders() throws IOException;
+    void persistOrders() throws IOException;
 
 }

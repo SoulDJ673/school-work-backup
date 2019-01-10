@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="AddressBook" />
+        <module name="ClassCodealongsMilestone1" />
+        <module name="ClassModeling" />
+        <module name="ClassRoster" />
+        <module name="DaoTesting" />
+        <module name="DI_Racer" />
+        <module name="DVDLibrary" />
+        <module name="FirstTests" />
+        <module name="FlooringMastery" />
+        <module name="FunctionalUnitTests_MilestoneIII" />
+        <module name="Llama_Windows_Example" />
+        <module name="LlamaMVC" />
+        <module name="maven-archiver (1)" />
+        <module name="maven-archiver (2)" />
+        <module name="Milestone1Exercises" />
+        <module name="Milestone1Summative" />
+        <module name="Milestone2" />
+        <module name="Milestone3Basics" />
+        <module name="Milestone4" />
+        <module name="SimpleSpringInjection" />
+        <module name="VendingMachine" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

@@ -21,5 +21,5 @@ package com.tsguild.flooringmastery.view;
  * @author souldj673
  */
 public interface ConsoleEraser {
-    public void clearConsole();
+    void clearConsole();
 }
