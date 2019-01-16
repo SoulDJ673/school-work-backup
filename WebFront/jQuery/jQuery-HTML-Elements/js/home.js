@@ -28,5 +28,5 @@ $(document).ready(function () {
 
     /* Add Custom Footer */
     $('.footer').append('p').text('Devin Lloyd - souldj673@firemail.cc');
-    $('.footer').css({ 'font-family': 'Courier', 'height': '24' });
+    $('.footer').css({ 'font-family': 'Courier', 'font-size': '24px', 'height':'32px'});
 });

@@ -48,6 +48,9 @@ $(document).ready(function () {
 
     /* Table Rows */
     $('tr').hover(function () {
+        /* The Header Row Shouldn't Change */
+        $('th').css({ "background-color": "AliceBlue" });
+
         /* In Callback */
         $(this).css({ "background-color": "WhiteSmoke" });
     }, function () {
