@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     /* Weather Buttons */
     $('#akronWeatherButton').on("click", function (event) {
-        event.preventDefault();  //Browser shut the hell your mouth
+        event.preventDefault();  //Browser shut the heccc your mouth
         $('#akronWeather').toggle("slow");
     });
     $('#minneapolisWeatherButton').on("click", function () {
@@ -58,4 +58,13 @@ $(document).ready(function () {
         /* Out Callback */
         $(this).css({ "background-color": "" });
     });
+
+    //    /* Table Rows Using .parent() function PoC*/
+    //    $('td').hover(function () { //Select the children of the rows we want ('td')
+    //        $(this).parent().css({ "background-color": "WhiteSmoke" }); //Change the bgcolor of the parent ('tr') of the selected element ('td')
+    //    }, function () {
+    //        /* Out Callback */
+    //        $(this).parent().css({ "background-color": "" }); //Reset the bgcolor of the parent ('tr')
+    //    });
+
 });

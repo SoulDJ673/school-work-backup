@@ -29,4 +29,5 @@ $(document).ready(function () {
     /* Add Custom Footer */
     $('.footer').append('p').text('Devin Lloyd - souldj673@firemail.cc');
     $('.footer').css({ 'font-family': 'Courier', 'font-size': '24px', 'height':'32px'});
+    //Changing the Height of the Footer wasn't necessary, I just did it to get rid of the margins
 });
