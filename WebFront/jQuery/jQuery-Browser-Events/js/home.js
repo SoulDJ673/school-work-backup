@@ -36,7 +36,8 @@ $(document).ready(function () {
     });
 
     /* Weather Buttons */
-    $('#akronWeatherButton').on("click", function () {
+    $('#akronWeatherButton').on("click", function (event) {
+        event.preventDefault();  //Browser shut the hell your mouth
         $('#akronWeather').toggle("slow");
     });
     $('#minneapolisWeatherButton').on("click", function () {

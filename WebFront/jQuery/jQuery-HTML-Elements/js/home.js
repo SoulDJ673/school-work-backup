@@ -16,9 +16,9 @@ $(document).ready(function () {
     $('#yellowTeamList').css({ 'background-color': 'Yellow' });
     $('#orangeTeamList').css({ 'background-color': 'Orange' });
 
-    /* Add Peeps to the Yellow Team  &&&&&& ERROR &&&&& ERROR &&&&& ERROR &&&&& */
-    $('#yellowTeamList').append('li').html('<li>Joseph Banks</li>');
-    $('#yellowTeamList').append('li').html('<li>Simon Jones</li>');
+    /* Add Peeps to the Yellow Team (Fixed :]) */
+    $('#yellowTeamList').append('<li>Joseph Banks</li>');
+    $('#yellowTeamList').append('<li>Simon Jones</li>');
 
     /* Hide "Hide Me!!!" */
     $('#oops').hide();
