@@ -4,9 +4,9 @@ echo "=== Begin Pushing ==="
 echo ""
 
 echo ">>> These are done simulataneously..."
-( echo "Bitbucket First..." && git push origin master > /dev/null && echo "Bitbucket is Done!" ) &
-( echo "Github Next..." && git push github-backup master > /dev/null && echo "Github is Done!" ) &
-( echo "Home Gitea Last..." && git push home master > /dev/null && echo "Home Backup is Done!" )
+( echo "Bitbucket First..." && git push -qqq origin master && echo "Bitbucket is Done!" ) &
+( echo "Github Next..." && git push -qqq github-backup master && echo "Github is Done!" ) &
+( echo "Home Gitea Last..." && git push -qqq home master && echo "Home Backup is Done!" )
 
 echo ""
 echo "=== Pushes Complete ==="
