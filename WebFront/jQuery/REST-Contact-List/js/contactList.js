@@ -50,11 +50,12 @@ function loadContacts() {
             $.each(contactArray, function (index, contact) {
                 var name = contact.firstName + ' ' + contact.lastName;
                 var company = contact.company;
+                var contactId = contact.contactId;
 
                 var row = '<tr>';
                 row += '<td>' + name + '</td>';
                 row += '<td>' + company + '</td>';
-                row += '<td><a>Edit</a></td>';
+                row += '<td><a onclick="showEditForm(' + contactId + ')">Edit</a></td>';
                 row += '<td><a>Delete</a></td>';
                 row += '</tr>';
 
@@ -72,6 +73,42 @@ function clearContactTable() {
     $('#contentRows').empty();
 }
 
-function showEditForm() {
-    
+function showEditForm(contactId) {
+    /* Clear error messages */
+    $('#errorMessages').empty();
+
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/contact/' + contactId,
+        success: function (data, status) {
+            $('#edit-first-name').val(data.firstName);
+            $('#edit-last-name').val(data.lastName);
+            $('#edit-company').val(data.company);
+            $('#edit-phone').val(data.phone);
+            $('#edit-email').val(data.email);
+            $('#edit-contact-id').val(data.contactId);
+        },
+        error: function () {
+            $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                .text('Error calling web service.  Try again later.'));
+        }
+    });
+
+    $('#contactTableDiv').hide();
+    $('#editFormDiv').show();
+}
+
+function hideEditForm() {
+    /* Clear the diddily */
+    $('#errorMessages').empty();
+
+    /* Clear edit form */
+    $('#edit-first-name').val('');
+    $('#edit-last-name').val('');
+    $('#edit-company').val('');
+    $('#edit-phone').val('');
+    $('#edit-email').val('');
+
+    $('#editFormDiv').hide();
+    $('#contactTableDiv').show();
 }
