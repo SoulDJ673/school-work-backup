@@ -2,9 +2,45 @@ $(document).ready(function () {
 
     loadContacts();
 
+    $('#add-button').click(function (event) {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8080/contact',
+            data: JSON.stringify({
+                firstName: $('#add-first-name').val(),
+                lastName: $('#add-last-name').val(),
+                company: $('#add-company').val(),
+                phone: $('#add-phone').val(),
+                email: $('#add-email').val(),
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+
+            },
+            'dataType': 'json',
+            success: function () {
+                /* Make sure error message div is empty */
+                $('#errorMessages').empty();
+
+                $('#add-first-name').val();
+                $('#add-last-name').val();
+                $('#add-company').val();
+                $('#add-phone').val();
+                $('#add-email').val();
+
+                loadContacts();
+            },
+            error: function () {
+                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                    .text('Error calling web service.  Try again later.'));
+            }
+        });
+    });
 });
 
 function loadContacts() {
+    clearContactTable();
     var contentRows = $('#contentRows');
 
     $.ajax({
@@ -27,7 +63,15 @@ function loadContacts() {
         },
         error: function () {
             $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
-            .text('Error calling web service.  Try again later.'));
+                .text('Error calling web service.  Try again later.'));
         }
     });
+}
+
+function clearContactTable() {
+    $('#contentRows').empty();
+}
+
+function showEditForm() {
+    
 }
