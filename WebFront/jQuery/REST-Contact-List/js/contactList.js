@@ -37,6 +37,35 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#edit-button').click(function (event) {
+        $.ajax({
+            type: 'PUT',
+            url: 'http://localhost:8080/contact/' + $('#edit-contact-id').val(),
+            data: JSON.stringify({
+                contactId: $('#edit-contact-id').val(),
+                firstName: $('#edit-first-name').val(),
+                lastName: $('#edit-last-name').val(),
+                company: $('#edit-company').val(),
+                phone: $('#edit-phone').val(),
+                email: $('#edit-email').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            'dataType': 'json',
+            success: function () {
+                $('#errorMessages').empty();
+                hideEditForm();
+                loadContacts();
+            },
+            error: function () {
+                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                    .text('Error calling web service.  Try again later.'));
+            }
+        });
+    });
 });
 
 function loadContacts() {
@@ -56,7 +85,7 @@ function loadContacts() {
                 row += '<td>' + name + '</td>';
                 row += '<td>' + company + '</td>';
                 row += '<td><a onclick="showEditForm(' + contactId + ')">Edit</a></td>';
-                row += '<td><a>Delete</a></td>';
+                row += '<td><a onclick="deleteContact(' + contactId +')">Delete</a></td>';
                 row += '</tr>';
 
                 contentRows.append(row);
@@ -111,4 +140,14 @@ function hideEditForm() {
 
     $('#editFormDiv').hide();
     $('#contactTableDiv').show();
+}
+
+function deleteContact(contactId) {
+    $.ajax({
+        type: 'DELETE',
+        url: 'http://localhost:8080/contact/' + contactId,
+        success: function () {
+            loadContacts();
+        }
+    });
 }
