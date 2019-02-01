@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.7.16">
+  <title>Kek Weather</title>
+  <meta content="">
+
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <style>
+    body {
+      /* Make the page dark and nice to look at */
+      background-color: #212121;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      /* Make text readable */
+      color: #efefef;
+    }
+
+    label{
+      /* Make labels stand out */
+      color:ghostwhite;
+    }
+
+    #header-div {
+      /* Make the container stand out */
+      background-color: #616161;
+      border-color: #424242;
+      width: 50%;
+
+      /* Make it pretty PogU */
+      box-shadow: 5px 5px 5px #000000;
+      border-bottom-left-radius: 10pt;
+      border-bottom-right-radius: 10pt;
+      padding-bottom: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="header-div">
+    <h1 class="text-center text-shadow" id="header-text">Kek Weather Page</h1>
+    <p class="text-center">Getcha some weather! Enter your info and we'll get it for ya!</p>
+  </div>
+  <br />
+  <form class="form-horizontal" role="form" id="getLocationData-form">
+    <div class="form-group">
+      <label for="enterZipCode" class="col-md-2 control-label">Zip Code:</label>
+      <div class="col-md-2">
+        <input type="number" class="form-control" id="enterZipCode" placeholder="12345" required />
+      </div>
+    </div>
+  </form>
+  <script src="js/home.js"></script>
+  <script src="js/jquery-2.2.4.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+</body>
+
+</html>
