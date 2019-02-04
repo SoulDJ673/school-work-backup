@@ -39,23 +39,93 @@
       border-bottom-right-radius: 10pt;
       padding-bottom: 1px;
     }
+
+    /* Fixing Colors for dark theme */
+    select {
+      background-color: #323232;
+      color: #efefef;
+    }
+
+    input[type=number],
+    input[type=text] {
+      background-color: #323232;
+      color: #efefef;
+    }
+
+    input[type=number]:focus,
+    input[type=text]:focus {
+      border: 3px solid #c0c0c0;
+    }
+
+    #unitDropdown {
+      /* Make the menu thicc */
+      padding: 10pt;
+      width: 40%;
+      margin: auto;
+    }
+
+    button,
+    .btn,
+    .btn-default {
+      background-color: #323232;
+      color: #efefef;
+    }
+
+    /* Change Default Button Hover Behavior */
+    button:hover,
+    .btn:hover,
+    .btn-default:hover {
+      background-color:#616161;
+      color: #efefef;
+      border: 3px solid #c0c0c0;
+    }
+
+    /* Centers Elements */
+    .center {
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+
   </style>
 </head>
 
 <body>
   <div class="container" id="header-div">
     <h1 class="text-center text-shadow" id="header-text">Kek Weather Page</h1>
-    <p class="text-center">Getcha some weather! Enter your info and we'll get it for ya!</p>
+    <p class="text-center">Getcha some weather! Enter your info and we'll send it to the camera FBI Man! monkaSHAKE</p>
   </div>
   <br />
-  <form class="form-horizontal" role="form" id="getLocationData-form">
-    <div class="form-group">
-      <label for="enterZipCode" class="col-md-2 control-label">Zip Code:</label>
-      <div class="col-md-2">
-        <input type="number" class="form-control" id="enterZipCode" placeholder="12345" required />
+  <div id="getInfo">
+    <form class="form-horizontal" role="form" id="getLocationData-form">
+      <div class="row center">
+        <div class="form-group col-md-6">
+          <label for="enterZipCode" class="col-md-6 control-label">Zip Code:</label>
+          <div class="col-md-4">
+            <input type="text" class="form-control" id="enterZipCode" placeholder="12345" required />
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="enterCountryCode" class="col-md-6 control-label">Country:</label>
+          <div class="col-md-4">
+            <input type="text" class="form-control" id="enterCountryCode" placeholder="US" required />
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
+      <div class="row center">
+        <div class="col-md-6">
+          <select name="units" class="col-md-4" id="unitDropdown">
+            <option value="imperial" selected>Imperial</option>
+            <option value="metric">Metric</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <button id="infoSubmitButton" class="btn btn-default">Go!</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="returnedInfo"></div>
   <script src="js/home.js"></script>
   <script src="js/jquery-2.2.4.min.js"></script>
   <script src="js/bootstrap.js"></script>
