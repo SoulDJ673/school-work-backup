@@ -40,6 +40,19 @@
       padding-bottom: 1px;
     }
 
+    #errorCage {
+      /* Make the container stand out */
+      background-color: #ff6a6a;
+      border-color: #ff0000;
+      width: 50%;
+
+      /* Make it pretty PogU */
+      box-shadow: 5px 5px 5px #ff0000;
+      border-bottom-left-radius: 10pt;
+      border-bottom-right-radius: 10pt;
+      padding-bottom: 1px;
+    }
+
     /* Fixing Colors for dark theme */
     select {
       background-color: #323232;
@@ -95,6 +108,8 @@
     <h1 class="text-center text-shadow" id="header-text">Kek Weather Page</h1>
     <p class="text-center">Getcha some weather! Enter your info and we'll send it to the camera FBI Man! monkaSHAKE</p>
   </div>
+  <!-- Any error messages will go in here, and the header will be hidden and replaced with the error -->
+  <div class="container" id="errorCage" style=display:none></div>
   <br />
   <div id="getInfo">
     <form class="form-horizontal" role="form" id="getLocationData-form">
@@ -113,19 +128,21 @@
         </div>
       </div>
       <div class="row center">
-        <div class="col-md-6">
-          <select name="units" class="col-md-4" id="unitDropdown">
+        <div class="form-group col-md-6">
+          <select name="units" class="col-md-6" id="unitDropdown">
             <option value="imperial" selected>Imperial</option>
             <option value="metric">Metric</option>
           </select>
         </div>
-        <div class="col-md-6">
+        <div class="form-group col-md-6">
           <button id="infoSubmitButton" class="btn btn-default">Go!</button>
         </div>
       </div>
     </form>
   </div>
-  <div id="returnedInfo"></div>
+  <div id="returnedInfo">
+
+  </div>
   <script src="js/home.js"></script>
   <script src="js/jquery-2.2.4.min.js"></script>
   <script src="js/bootstrap.js"></script>
