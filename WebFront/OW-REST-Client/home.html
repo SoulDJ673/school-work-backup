@@ -118,6 +118,10 @@
       padding-right: 10%;
     }
 
+    .fiveDay {
+      width: 20%;
+    }
+
   </style>
 </head>
 
@@ -129,9 +133,11 @@
   <!-- Any error messages will go in here, and the header will be hidden and replaced with the error -->
   <div class="container" id="errorCage" style=display:none></div>
   <br />
+
   <div class="center">
     <button id="toggleInputFields" class="btn btn-default">Toggle Input Fields</button>
   </div>
+
   <br />
   <div id="getInfo">
     <form class="form-horizontal" role="form" id="getLocationData-form">
@@ -155,12 +161,29 @@
   </div>
   </form>
   </div>
+
+  <br />
   <div id="returnedInfo">
     <div id="currentConditions">
       <div class="row row-eq-height">
         <div class="col-md-6" id="iconDescription">
         </div>
         <div class="col-md-6" id="weatherData">
+        </div>
+      </div>
+    </div>
+    <br />
+    <div id="fiveDayForecast">
+      <div class="row row-eq-height">
+        <div class="fiveDay">
+        </div>
+        <div class="fiveDay">
+        </div>
+        <div class="fiveDay">
+        </div>
+        <div class="fiveDay">
+        </div>
+        <div class="fiveDay">
         </div>
       </div>
     </div>
