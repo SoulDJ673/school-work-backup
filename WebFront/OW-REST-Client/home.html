@@ -37,7 +37,7 @@
       box-shadow: 5px 5px 5px #000000;
       border-bottom-left-radius: 10pt;
       border-bottom-right-radius: 10pt;
-      padding-bottom: 1px;
+      padding-bottom: 1%;
     }
 
     #errorCage {
@@ -122,6 +122,27 @@
       width: 20%;
     }
 
+    #fiveDayForecast,
+    #currentConditions {
+      /* Make the container stand out */
+      background-color: #515151;
+      border-color: #424242;
+      width: 90%;
+
+      /* Make it pretty PogU */
+      box-shadow: 5px 5px 5px #000000;
+      border-bottom-left-radius: 10pt;
+      border-bottom-right-radius: 10pt;
+      padding-bottom: 1px;
+    }
+
+    #toggleInputFields {
+      border: none;
+      margin: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
   </style>
 </head>
 
@@ -129,15 +150,10 @@
   <div class="container" id="header-div">
     <h1 class="text-center text-shadow" id="header-text">Kek Weather Page</h1>
     <p class="text-center">Getcha some weather! Enter your info and we'll send it to the camera FBI Man! monkaSHAKE</p>
+    <button id="toggleInputFields" class="btn btn-default">Toggle Input Fields</button>
   </div>
   <!-- Any error messages will go in here, and the header will be hidden and replaced with the error -->
   <div class="container" id="errorCage" style=display:none></div>
-  <br />
-
-  <div class="center">
-    <button id="toggleInputFields" class="btn btn-default">Toggle Input Fields</button>
-  </div>
-
   <br />
   <div id="getInfo">
     <form class="form-horizontal" role="form" id="getLocationData-form">
@@ -163,8 +179,8 @@
   </div>
 
   <br />
-  <div id="returnedInfo">
-    <div id="currentConditions">
+  <div id="returnedInfo" style=display:none>
+    <div id="currentConditions" class="container">
       <div class="row row-eq-height">
         <div class="col-md-6" id="iconDescription">
         </div>
@@ -173,7 +189,8 @@
       </div>
     </div>
     <br />
-    <div id="fiveDayForecast">
+    <br />
+    <div id="fiveDayForecast" class="container">
       <div class="row row-eq-height">
         <div class="fiveDay">
         </div>
@@ -189,7 +206,7 @@
     </div>
   </div>
   <script src="js/home.js"></script>
-  <script src="js/jquery-2.2.4.min.js"></script>
+  <script src="js/jquery-3.0.0.min.js"></script>
   <script src="js/bootstrap.js"></script>
 </body>
 
