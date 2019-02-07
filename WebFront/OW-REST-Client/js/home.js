@@ -18,6 +18,9 @@ $(document).ready(function () {
 });
 
 function getWeatherData() {
+
+    clearNewAdditions();
+
     var zipCode = $('#enterZipCode').val();
     var units = $('#unitDropdown').val();
 
@@ -49,8 +52,8 @@ function getWeatherData() {
             });
 
             /* Apply */
-            $('#conditionsHead').text(city);
-            $('#iconDescription').prepend($('<img>').html('<img alt="' + description + '" src="https://openweathermap.org/img/w/' + icon + '.png">' + condition + '</img>'));
+            $('#conditionsHead').html('<h2 class="addedInfo">Current Conditions in ' + city + '</h2>');
+            $('#iconDescription').prepend($('<img>').html('<img class="addedInfo" alt="' + description + '" src="https://openweathermap.org/img/w/' + icon + '.png"></img>'));
 
             /* Reveal */
             $('#returnedInfo').fadeIn();
@@ -85,4 +88,16 @@ function hideInputFields() {
     $('#hideInputFields').hide();
     $('#getInfo').slideUp();
     $('#showInputFields').show();
+}
+
+function clearNewAdditions() {
+    $('h1').remove('.addedInfo');
+    $('h2').remove('.addedInfo');
+    $('h3').remove('.addedInfo');
+    $('h4').remove('.addedInfo');
+    $('img').remove('.addedInfo');
+    $('p').remove('.addedInfo');
+    $('td').remove('.addedInfo');
+    $('tr').remove('.addedInfo');
+    $('th').remove('.addedInfo');
 }
