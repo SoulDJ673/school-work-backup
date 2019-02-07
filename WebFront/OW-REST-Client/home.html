@@ -136,7 +136,7 @@
       padding-bottom: 1px;
     }
 
-    #toggleInputFields {
+    .toggleInputFields {
       border: none;
       margin: auto;
       margin-left: auto;
@@ -150,10 +150,13 @@
   <div class="container" id="header-div">
     <h1 class="text-center text-shadow" id="header-text">Kek Weather Page</h1>
     <p class="text-center">Getcha some weather! Enter your info and we'll send it to the camera FBI Man! monkaSHAKE</p>
-    <button id="toggleInputFields" class="btn btn-default">Toggle Input Fields</button>
+    <button id="hideInputFields" class="btn btn-default toggleInputFields">Hide Input Fields</button>
+    <button id="showInputFields" class="btn btn-default toggleInputFields" style=display:none>Show Input Fields</button>
   </div>
   <!-- Any error messages will go in here, and the header will be hidden and replaced with the error -->
-  <div class="container" id="errorCage" style=display:none></div>
+  <div class="container" id="errorCage" style=display:none>
+    <button id="clearErrors" class="btn btn-default">X</button>
+  </div>
   <br />
   <div id="getInfo">
     <form class="form-horizontal" role="form" id="getLocationData-form">
@@ -181,6 +184,7 @@
   <br />
   <div id="returnedInfo" style=display:none>
     <div id="currentConditions" class="container">
+      <h2>Current Conditions in </h2>
       <div class="row row-eq-height">
         <div class="col-md-6" id="iconDescription">
         </div>
