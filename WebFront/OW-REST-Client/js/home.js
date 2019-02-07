@@ -1,15 +1,11 @@
 $(document).ready(function () {
     /* Toggle Input Fields */
     $('#hideInputFields').on("click", function (event) {
-        $('#hideInputFields').hide();
-        $('#getInfo').hide();
-        $('#showInputFields').show();
+        hideInputFields();
     });
 
     $('#showInputFields').on("click", function (event) {
-        $('#showInputFields').hide();
-        $('#hideInputFields').show();
-        $('#getInfo').show();
+        showInputFields();
     });
 
     $('#infoSubmitButton').on("click", function (event) {
@@ -30,6 +26,9 @@ function getWeatherData() {
         type: 'GET',
         url: 'https://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + '&appid=e52123ca9924186bd5b93d59366b7e55',
         success: function (data) {
+            /* Only hide input form if successful */
+            hideInputFields();
+
             /* Turn JSON into Displayable Data */
             var city = data.name;
 
@@ -49,21 +48,17 @@ function getWeatherData() {
                 }
             });
 
-            /* Use the icon id to get the icon */
-            $.ajax({
-                type: 'GET',
-                url: 'https://openweathermap.org/img/w/' + icon + '.png',
-                success: function (data) {
+            /* Apply */
+            $('#conditionsHead').text(city);
+            $('#iconDescription').prepend($('<img>').html('<img alt="' + description + '" src="https://openweathermap.org/img/w/' + icon + '.png">' + condition + '</img>'));
 
-                },
-                error: function () {
-                    showGenericError();
-                }
-            });
+            /* Reveal */
+            $('#returnedInfo').fadeIn();
 
         },
         error: function () {
             showGenericError();
+            console.log("Ajax call to retrieve current weather information failed.")
         }
     });
 };
@@ -79,3 +74,15 @@ function clearErrorsFtn() {
     $('#errorPrison').hide();
     $('#headerDiv').show();
 };
+
+function showInputFields() {
+    $('#showInputFields').hide();
+    $('#hideInputFields').show();
+    $('#getInfo').slideDown();
+}
+
+function hideInputFields() {
+    $('#hideInputFields').hide();
+    $('#getInfo').slideUp();
+    $('#showInputFields').show();
+}
