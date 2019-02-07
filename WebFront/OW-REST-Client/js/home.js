@@ -15,27 +15,67 @@ $(document).ready(function () {
     $('#infoSubmitButton').on("click", function (event) {
         getWeatherData();
     });
+
+    $('.clearErrors').on("click", function (event) {
+        clearErrorsFtn();
+    });
 });
 
 function getWeatherData() {
     var zipCode = $('#enterZipCode').val();
     var units = $('#unitDropdown').val();
 
+    /* Current Conditions FeelsOkayMan */
     $.ajax({
         type: 'GET',
         url: 'https://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + '&appid=e52123ca9924186bd5b93d59366b7e55',
         success: function (data) {
             /* Turn JSON into Displayable Data */
             var city = data.name;
-            var condition = data.weather.main;
-            var description = data.weather.description;
 
-            console.log(data);
+            /* These will be set in the each function below */
+            var condition = null;
+            var description = null;
+            var icon = null;
+            var id = null;
+
+            /* Weather key has object values in an array, pick the first one */
+            $.each(data.weather, function (index, weather) {
+                if (index === 0) {
+                    condition = weather.main;
+                    description = weather.description;
+                    icon = weather.icon;
+                    id = weather.id;
+                }
+            });
+
+            /* Use the icon id to get the icon */
+            $.ajax({
+                type: 'GET',
+                url: 'https://openweathermap.org/img/w/' + icon + '.png',
+                success: function (data) {
+
+                },
+                error: function () {
+                    showGenericError();
+                }
+            });
+
         },
         error: function () {
-            $('#headerDiv').hide();
-            $('#errorCage').show();
-            $('#errorCage').prepend($('<p>').text('Error calling web service.  Try again later.'));
+            showGenericError();
         }
     });
+};
+
+function showGenericError() {
+    $('#headerDiv').hide();
+    $('#errorPrison').show();
+    $('#errorCage').prepend($('<h3>').text('Error calling web service.  Try again later.'));
+};
+
+function clearErrorsFtn() {
+    $('#errorCage').empty();
+    $('#errorPrison').hide();
+    $('#headerDiv').show();
 };

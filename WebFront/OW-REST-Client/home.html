@@ -27,7 +27,7 @@
       color:ghostwhite;
     }
 
-    #header-div {
+    #headerDiv {
       /* Make the container stand out */
       background-color: #616161;
       border-color: #424242;
@@ -40,7 +40,7 @@
       padding-bottom: 1%;
     }
 
-    #errorCage {
+    #errorPrison {
       /* Make the container stand out */
       background-color: #ff6a6a;
       border-color: #ff0000;
@@ -147,15 +147,21 @@
 </head>
 
 <body>
-  <div class="container" id="header-div">
+  <div class="container" id="headerDiv">
     <h1 class="text-center text-shadow" id="header-text">Kek Weather Page</h1>
     <p class="text-center">Getcha some weather! Enter your info and we'll send it to the camera FBI Man! monkaSHAKE</p>
     <button id="hideInputFields" class="btn btn-default toggleInputFields">Hide Input Fields</button>
     <button id="showInputFields" class="btn btn-default toggleInputFields" style=display:none>Show Input Fields</button>
   </div>
-  <!-- Any error messages will go in here, and the header will be hidden and replaced with the error -->
-  <div class="container" id="errorCage" style=display:none>
-    <button id="clearErrors" class="btn btn-default">X</button>
+  <div class="container" id="errorPrison" style=display:none>
+    <div class="row row-eq-height">
+      <!-- Any error messages will go in here, and the header will be hidden and replaced with the error -->
+      <div class="col-md-10" id="errorCage">
+      </div>
+      <div class="col-md-2" id="clearErrorsDiv">
+        <button class="btn btn-default clearErrors">X</button>
+      </div>
+    </div>
   </div>
   <br />
   <div id="getInfo">
@@ -175,7 +181,7 @@
     </form>
     <br />
     <div id="submitButtonDiv">
-      <button id="infoSubmitButton" class="btn btn-default">Go!</button>
+      <button id="infoSubmitButton" class="btn btn-default">Get Weather</button>
     </div>
   </div>
   </form>
@@ -195,18 +201,8 @@
     <br />
     <br />
     <div id="fiveDayForecast" class="container">
-      <div class="row row-eq-height">
-        <div class="fiveDay">
-        </div>
-        <div class="fiveDay">
-        </div>
-        <div class="fiveDay">
-        </div>
-        <div class="fiveDay">
-        </div>
-        <div class="fiveDay">
-        </div>
-      </div>
+      <table id="fiveDayForecastTable">
+      </table>
     </div>
   </div>
   <script src="js/jquery-3.0.0.min.js"></script>
