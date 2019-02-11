@@ -17,7 +17,9 @@
     h2,
     h3,
     h4,
-    p {
+    p,
+    li,
+    ul {
       /* Make text readable */
       color: #efefef;
     }
@@ -155,6 +157,10 @@
       padding-bottom: 1%;
     }
 
+    .displayData {
+      width: 75%
+    }
+
   </style>
 </head>
 
@@ -201,19 +207,31 @@
 
   <br />
   <div id="returnedInfo" style=display:none>
-    <div id="currentConditions" class="container">
+    <div id="currentConditions" class="container displayData">
       <h2 id="conditionsHead">Current Conditions in </h2>
       <div class="row row-eq-height">
         <div class="col-md-6" id="iconDescription">
         </div>
         <div class="col-md-6" id="weatherData">
+          <h4 id="currentTemp" style=display:none>Temperature: </h4>
+          <h4 id="currentHumid" style=display:none>Humidity: </h4>
+          <div id="currentWindDiv">
+            <h4>Wind Data: </h4>
+            <ul>
+              <li id="currentWindSpeed" style=display:none>Wind Speed: </li>
+              <li id="currentWindDir" style=display:none>Direction: </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
     <br />
     <br />
-    <div id="fiveDayForecast" class="container">
+    <div id="fiveDayForecast" class="container displayData">
       <table id="fiveDayForecastTable">
+        <tr id="5DayForecastRow">
+
+        </tr>
       </table>
     </div>
   </div>
