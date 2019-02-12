@@ -76,10 +76,11 @@ function getWeatherData() {
             /* Current Conditions Right */
             $('#currentTemp').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentTemp').text() + temp + " " + tempUnit + '</h4>'));
             $('#currentHumid').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentHumid').text() + humidity + "%" + '</h4>'));
-            $('#currentWindSpeed').before($('<li class="addedInfo>').text($('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit));
+            $('#currentWindSpeed').before($('<li class="addedInfo">').text($('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit));
             $('#currentWindDir').before($('<li class="addedInfo">').text($('#currentWindDir').text() + windDir + " degrees (meteorlogical)"));
 
             /* Reveal */
+            console.log("Ajax call to retrieve current weather info successful.")
             $('#returnedInfo').fadeIn();
 
         },
@@ -123,6 +124,21 @@ function getWeatherData() {
                             id = weather.id;
                         }
                     });
+
+                    var displayDate = humanizeDate(date);
+
+                    /* Apply */
+                    $('#5DayForecastHeadRow').append($('<th>').text(displayDate.monthName + " " + displayDate.dateNum));
+                    /*$('#iconDescription').prepend($('<img>').html('<img class="addedInfo" alt="' + condition + '" src="https://openweathermap.org/img/w/' + icon + '.png"></img>'));
+                    $('#iconDescription').append($('<p>').html('<p class="addedInfo">' + description + '</p>'));
+                    $('#currentTemp').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentTemp').text() + temp + " " + tempUnit + '</h4>'));
+                    $('#currentHumid').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentHumid').text() + humidity + "%" + '</h4>'));
+                    $('#currentWindSpeed').before($('<li class="addedInfo">').text($('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit));
+                    $('#currentWindDir').before($('<li class="addedInfo">').text($('#currentWindDir').text() + windDir + " degrees (meteorlogical)"));
+
+                    /* Reveal */
+                    console.log("Ajax call to retrieve current weather info successful.")
+                    $('#returnedInfo').fadeIn();
                 }
             });
         },
@@ -168,4 +184,49 @@ function clearNewAdditions() {
     $('tr').remove('.addedInfo');
     $('th').remove('.addedInfo');
     $('li').remove('.addedInfo');
+}
+
+function humanizeDate(date) {
+    var splitDateTime = date.split(" ");
+    var aloneDate = splitDateTime[0];
+
+    /* Get Month Alone */
+    var dateArray = aloneDate.split("-");
+    var monthNum = dateArray[1];
+    var monthName;
+
+    /* Name Month */
+    if (monthNum.search("01") != -1) {
+        monthName = "January";
+    } else if (monthNum.search("02") != -1) {
+        monthName = "February";
+    } else if (monthNum.search("03") != -1) {
+        monthName = "March";
+    } else if (monthNum.search("04") != -1) {
+        monthName = "April";
+    } else if (monthNum.search("05") != -1) {
+        monthName = "May";
+    } else if (monthNum.search("06") != -1) {
+        monthName = "June";
+    } else if (monthNum.search("07") != -1) {
+        monthName = "July";
+    } else if (monthNum.search("08") != -1) {
+        monthName = "August";
+    } else if (monthNum.search("09") != -1) {
+        monthName = "September";
+    } else if (monthNum.search("10") != -1) {
+        monthName = "October";
+    } else if (monthNum.search("11") != -1) {
+        monthName = "November";
+    } else if (monthNum.search("12") != -1) {
+        monthName = "December";
+    } else {
+        showGenericError();
+        return;
+    }
+
+    /* Package up month name and date for return */
+    var dateNum = dateArray[2];
+    var dayForDisplay = { monthName, dateNum }; //This is an OBJECT, not an array
+    return dayForDisplay;
 }
