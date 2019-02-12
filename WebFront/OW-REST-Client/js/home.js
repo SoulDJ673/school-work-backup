@@ -104,10 +104,8 @@ function getWeatherData() {
                 if (dateTime.search("12:00:00") != -1) {
 
                     /* Turn JSON into Displayable Data */
-                    var temp = weather.main.temp;
-                    var humidity = weather.main.humidity;
-                    var windSpeed = weather.wind.speed;
-                    var windDir = weather.wind.deg;
+                    var temp_min = weather.main.temp_min;
+                    var temp_max = weather.main.temp_max;
                     var date = weather.dt_txt;
 
                     /* These will be set in the each function below */
@@ -128,16 +126,14 @@ function getWeatherData() {
                     var displayDate = humanizeDate(date);
 
                     /* Apply */
+                    /* Header Row */
                     $('#5DayForecastHeadRow').append($('<th>').text(displayDate.monthName + " " + displayDate.dateNum));
-                    /*$('#iconDescription').prepend($('<img>').html('<img class="addedInfo" alt="' + condition + '" src="https://openweathermap.org/img/w/' + icon + '.png"></img>'));
-                    $('#iconDescription').append($('<p>').html('<p class="addedInfo">' + description + '</p>'));
-                    $('#currentTemp').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentTemp').text() + temp + " " + tempUnit + '</h4>'));
-                    $('#currentHumid').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentHumid').text() + humidity + "%" + '</h4>'));
-                    $('#currentWindSpeed').before($('<li class="addedInfo">').text($('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit));
-                    $('#currentWindDir').before($('<li class="addedInfo">').text($('#currentWindDir').text() + windDir + " degrees (meteorlogical)"));
+
+                    /* Data Row */
+                    $('#5DayForecastRow').append($('<td>').html('<img class="addedInfo" alt="' + condition + '" src="https://openweathermap.org/img/w/' + icon + '.png"></img><p class="addedInfo">' + description + '</p><h4 class="addedInfo">Low: ' + temp_min + " " + tempUnit + '</h4><h4 class="addedInfo">High: ' + temp_max + " " + tempUnit + '</h4>'));
 
                     /* Reveal */
-                    console.log("Ajax call to retrieve current weather info successful.")
+                    console.log("Ajax call to retrieve 5 day weather info successful.")
                     $('#returnedInfo').fadeIn();
                 }
             });
