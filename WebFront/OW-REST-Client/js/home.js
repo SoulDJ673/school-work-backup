@@ -70,7 +70,7 @@ function getWeatherData() {
             /* Apply */
             /* Current Conditions Left */
             $('#conditionsHead').html('<h2 class="addedInfo">Current Conditions in ' + city + '</h2>');
-            $('#iconDescription').prepend($('<img>').html('<img class="addedInfo" alt="' + condition + '" src="https://openweathermap.org/img/w/' + icon + '.png"></img>'));
+            $('#iconDescription').prepend($('<img class="addedInfo" alt="' + condition + '" src="https://openweathermap.org/img/w/' + icon + '.png">').html('</img>'));
             $('#iconDescription').append($('<p>').html('<p class="addedInfo">' + description + '</p>'));
 
             /* Current Conditions Right */
