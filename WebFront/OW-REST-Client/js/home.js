@@ -76,8 +76,8 @@ function getWeatherData() {
             /* Current Conditions Right */
             $('#currentTemp').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentTemp').text() + temp + " " + tempUnit + '</h4>'));
             $('#currentHumid').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentHumid').text() + humidity + "%" + '</h4>'));
-            $('#currentWindSpeed').before($('<li>').html('<li class="addedInfo">' + $('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit + '</li>'))
-            $('#currentWindDir').before($('<li>').html('<li class="addedInfo">' + $('#currentWindDir').text() + windDir + " degrees (meteorlogical)"));
+            $('#currentWindSpeed').before($('<li class="addedInfo>').text($('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit));
+            $('#currentWindDir').before($('<li class="addedInfo">').text($('#currentWindDir').text() + windDir + " degrees (meteorlogical)"));
 
             /* Reveal */
             $('#returnedInfo').fadeIn();
@@ -167,4 +167,5 @@ function clearNewAdditions() {
     $('td').remove('.addedInfo');
     $('tr').remove('.addedInfo');
     $('th').remove('.addedInfo');
+    $('li').remove('.addedInfo');
 }
