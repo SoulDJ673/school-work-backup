@@ -9,7 +9,13 @@ $(document).ready(function () {
     });
 
     $('#infoSubmitButton').on("click", function (event) {
-        getWeatherData();
+        var stringedZip = $('#enterZipCode').val().toString();
+        if (stringedZip.length === 5) {
+            getWeatherData();
+        } else {
+            showGenericError("Zip code must be 5 digits long");
+        }
+
     });
 
     $('.clearErrors').on("click", function (event) {
@@ -85,7 +91,7 @@ function getWeatherData() {
 
         },
         error: function () {
-            showGenericError();
+            showGenericError("Failed to connect to current weather API");
             console.log("Ajax call to retrieve current weather information failed.")
         }
     });
@@ -127,10 +133,10 @@ function getWeatherData() {
 
                     /* Apply */
                     /* Header Row */
-                    $('#5DayForecastHeadRow').append($('<th>').text(displayDate.monthName + " " + displayDate.dateNum));
+                    $('#5DayForecastHeadRow').append($('<th class="addedInfo">').text(displayDate.monthName + " " + displayDate.dateNum));
 
                     /* Data Row */
-                    $('#5DayForecastRow').append($('<td>').html('<img class="addedInfo" alt="' + condition + '" src="https://openweathermap.org/img/w/' + icon + '.png"></img><p class="addedInfo">' + description + '</p><h4 class="addedInfo">Low: ' + temp_min + " " + tempUnit + '</h4><h4 class="addedInfo">High: ' + temp_max + " " + tempUnit + '</h4>'));
+                    $('#5DayForecastRow').append($('<td class="addedInfo">').html('<img class="addedInfo" alt="' + condition + '" src="https://openweathermap.org/img/w/' + icon + '.png"></img><p class="addedInfo">' + description + '</p><h4 class="addedInfo">Low: ' + temp_min + " " + tempUnit + '</h4><h4 class="addedInfo">High: ' + temp_max + " " + tempUnit + '</h4>'));
 
                     /* Reveal */
                     console.log("Ajax call to retrieve 5 day weather info successful.")
@@ -139,16 +145,16 @@ function getWeatherData() {
             });
         },
         error: function () {
-            showGenericError();
+            showGenericError("Failed to connect to 5 Day API.");
             console.log('5 Day Forecast Ajax call failed');
         }
     });
 };
 
-function showGenericError() {
+function showGenericError(text) {
     $('#headerDiv').hide();
     $('#errorPrison').show();
-    $('#errorCage').prepend($('<h3>').text('Error calling web service.  Try again later.'));
+    $('#errorCage').prepend($('<h4>').text(text));
 };
 
 function clearErrorsFtn() {
@@ -217,7 +223,7 @@ function humanizeDate(date) {
     } else if (monthNum.search("12") != -1) {
         monthName = "December";
     } else {
-        showGenericError();
+        showGenericError("Error grabbing date");
         return;
     }
 
