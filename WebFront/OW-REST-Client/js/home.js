@@ -80,10 +80,10 @@ function getWeatherData() {
             $('#iconDescription').append($('<p>').html('<p class="addedInfo">' + description + '</p>'));
 
             /* Current Conditions Right */
-            $('#currentTemp').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentTemp').text() + temp + " " + tempUnit + '</h4>'));
-            $('#currentHumid').before($('<h4>').html('<h4 class="addedInfo">' + $('#currentHumid').text() + humidity + "%" + '</h4>'));
-            $('#currentWindSpeed').before($('<li class="addedInfo">').text($('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit));
-            $('#currentWindDir').before($('<li class="addedInfo">').text($('#currentWindDir').text() + windDir + " degrees (meteorlogical)"));
+            $('#currentTemp').before($('<p>').html('<p class="addedInfo">' + $('#currentTemp').text() + temp + " " + tempUnit + '</p>'));
+            $('#currentHumid').before($('<p>').html('<p class="addedInfo">' + $('#currentHumid').text() + humidity + "%" + '</p>'));
+            $('#currentWindSpeed').before($('<p class="addedInfo">').text($('#currentWindSpeed').text() + windSpeed + " " + windSpeedUnit));
+            $('#currentWindDir').before($('<p class="addedInfo">').text($('#currentWindDir').text() + windDir + " degrees (meteorlogical)"));
 
             /* Reveal */
             console.log("Ajax call to retrieve current weather info successful.")
