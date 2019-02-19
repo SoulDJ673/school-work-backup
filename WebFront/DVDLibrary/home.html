@@ -15,7 +15,9 @@
     h3,
     h4,
     li,
-    ul {
+    ul,
+    th,
+    td {
       color: #efefef;
     }
 
@@ -66,7 +68,7 @@
       flex-grow: 1;
     }
     .overlay {
-      background-color: #00000000;
+      background-color: #00000030;
       width: 100%;
       height: 100%;
       top: 0;
@@ -86,12 +88,39 @@
       border-radius: 15px;
       box-shadow: 0px 0px 10px #000000;
     }
+
+    tbody,table,tr,th,td {
+      border-color: #dbdada;
+      border-left-color: #dbdada;
+      border-right: #dbdada;
+      text-align: center;
+    }
+    #dvdDisplay {
+      justify-content: center;
+      margin-top: 90px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="flex-container overlay">
-    <div id="deleteConfirmBox"></div>
+  <div id="deleteConfirmDiv" class="flex-container overlay" style="display:none">
+    <div id="deleteConfirmBox" style="width:40%;height:auto;">
+      <div style="height:12pt;padding-left:8pt;padding-top:5px;top:0;">
+        <h4>Confirmation</h4>
+      </div>
+      <div style="padding-top: 20pt;padding-left: 20pt;padding-right: 20pt">
+        <p>Are you sure that you want to delete this DVD from your collection?</p>
+        <br />
+        <div class="flex-container" style="justify-content: center;position: static;margin-bottom: 20pt">
+          <div class="flex-container" style="width:50%;justify-content: center; align-content: center">
+            <button id="confirmCancel" class="btn btn-default">Cancel</button>
+          </div>
+          <div class="flex-container" style="width:50%;justify-content: center;align-content: center">
+            <button id="confirmDeleteButton" class="btn btn-default">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="flex-container" id="actionBarDiv">
@@ -107,7 +136,21 @@
       <input type="text" id="searchString" class="col-md-3" placeholder="Search Term" style="margin-right: 15px;">
     </div>
   </div>
-  <div id=dvdDisplay></div>
+  <div id="dvdDisplay" class="flex-container">
+    <table id="library" class="table table-hover" style="width: 80%">
+      <tr>
+        <th style="width:25%">Title</th>
+        <th style="width:25%">Release Date</th>
+        <th style="width:20%">Director</th>
+        <th style="width:10%">Rating</th>
+        <th style="width:20%"></th>
+      </tr>
+      <tbody id="dvdSection">
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/tooltip.min.js"></script>
