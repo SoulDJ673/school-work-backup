@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    populateLibrary();
 });
 
 function populateLibrary() {
@@ -7,18 +8,22 @@ function populateLibrary() {
 
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/contacts',
-        success: function (contactArray) {
-            $.each(contactArray, function (index, contact) {
-                var name = contact.firstName + ' ' + contact.lastName;
-                var company = contact.company;
-                var contactId = contact.contactId;
+        url: 'http://localhost:8080/dvds',
+        success: function (dvdArray) {
+            $.each(dvdArray, function (index, dvd) {
+                var id = dvd.dvdId;
+                var title = dvd.title;
+                var year = dvd.releaseYear;
+                var director = dvd.director;
+                var rating = dvd.rating;
+                var notes = dvd.notes;
 
                 var row = '<tr>';
-                row += '<td>' + name + '</td>';
-                row += '<td>' + company + '</td>';
-                row += '<td><a onclick="showEditForm(' + contactId + ')">Edit</a></td>';
-                row += '<td><a onclick="deleteContact(' + contactId + ')">Delete</a></td>';
+                row += '<td>' + title + '</td>';
+                row += '<td>' + year + '</td>';
+                row += '<td>' + director + '</td>';
+                row += '<td>' + rating + '</td>';
+                row += '<td><a onclick="showEditForm(' + id + ')">Edit</a> <a onclick="deleteDVD(' + id + ')">Delete</a></td>';
                 row += '</tr>';
 
                 contentRows.append(row);
@@ -56,14 +61,23 @@ function deleteDVD(dvdId) {
     showDeleteConfirmDiv();
     $('#confirmCancel').click(function (event) {
         hideDeleteConfirmDiv();
+        id = null;
         return;
     });
 
     $('#confirmDeleteButton').click(function (event) {
-        console.log(id);
+        $.ajax({
+            type: 'DELETE',
+            url: 'http://localhost:8080/dvd/' + id,
+            success: function () {
+                populateLibrary();
+            },
+        });
         hideDeleteConfirmDiv();
+        id = null;
         return;
     });
 
+    /* id = null fixes multidelete issue on reuse */
     return;
 }
