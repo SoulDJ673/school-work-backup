@@ -43,7 +43,8 @@
       color: #dbdada;
     }
 
-    #actionBarDiv {
+    #actionBarDiv,
+    #editNavBarDiv {
       background-color: #444444;
       position: fixed;
       top: 0%;
@@ -63,7 +64,8 @@
       align-items: center;
     }
 
-    #actionBarRight {
+    #actionBarRight,
+    #editBarRight {
       justify-content: flex-end;
       align-items: center;
       flex-grow: 1;
@@ -142,6 +144,14 @@
         <!-- Auto add options here in JS as DVDs are added -->
       </select>
       <input type="text" id="searchString" class="col-md-3" placeholder="Search Term" style="margin-right: 15px;">
+    </div>
+  </div>
+  <div class="flex-container" id="editNavBarDiv" style="display:none">
+    <div>
+      <button class="btn btn-default" id="exitButton" style="margin-left:15px">Return to Main</button>
+    </div>
+    <div id="editBarRight" class="flex-container">
+      <!-- Change to make relevant -->
     </div>
   </div>
   <div id="dvdDisplay" class="flex-container">

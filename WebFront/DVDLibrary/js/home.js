@@ -1,5 +1,9 @@
 $(document).ready(function () {
     populateLibrary();
+
+    $('#exitButton').click(function (event) {
+        hideEditForm();
+    });
 });
 
 function populateLibrary() {
@@ -83,6 +87,15 @@ function deleteDVD(dvdId) {
 }
 
 function showEditForm(dvdId) {
+    $('#actionBarDiv').hide();
+    $('#editNavBarDiv').show();
     $('#dvdDisplay').slideUp();
     $('#dvdEditForm').slideDown();
+}
+
+function hideEditForm() {
+    $('#actionBarDiv').show();
+    $('#editNavBarDiv').hide();
+    $('#dvdDisplay').slideDown();
+    $('#dvdEditForm').slideUp();
 }
