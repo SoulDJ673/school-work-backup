@@ -17,7 +17,8 @@
     li,
     ul,
     th,
-    td {
+    td,
+    label {
       color: #efefef;
     }
 
@@ -95,9 +96,16 @@
       border-right: #dbdada;
       text-align: center;
     }
+
     #dvdDisplay {
       justify-content: center;
       margin-top: 90px;
+    }
+
+    #dvdEditForm {
+      margin-top: 90px;
+      margin-left: 10%;
+      margin-right: 10%;
     }
   </style>
 </head>
@@ -146,10 +154,16 @@
         <th style="width:20%"></th>
       </tr>
       <tbody id="dvdSection">
-        <tr>
-        </tr>
       </tbody>
     </table>
+  </div>
+  <div id="dvdEditForm" class="flex-container" style="display: none">
+    <form>
+      <div class="form-group">
+        <label class="control-label" for="editDvdTitle">DVD Title:</label>
+        <input type="text" id="editDvdTitle" class="form-control" placeholder="DVD Title" required />
+      </div>
+    </form>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

@@ -81,3 +81,8 @@ function deleteDVD(dvdId) {
     /* id = null fixes multidelete issue on reuse */
     return;
 }
+
+function showEditForm(dvdId) {
+    $('#dvdDisplay').slideUp();
+    $('#dvdEditForm').slideDown();
+}
