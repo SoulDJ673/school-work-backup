@@ -87,8 +87,25 @@ function deleteDVD(dvdId) {
 }
 
 function showEditForm(dvdId) {
+    var id = dvdId;
     $('#actionBarDiv').hide();
     $('#editNavBarDiv').show();
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/dvd/' + id,
+        success: function (data, status) {
+            $('#editDvdTitle').val(data.title);
+            $('#edit-last-name').val(data.releaseYear);
+            $('#edit-company').val(data.director);
+            $('#edit-phone').val(data.rating);
+            $('#edit-email').val(data.notes);
+            $('#edit-contact-id').val(data.id);
+        },
+        error: function () {
+            $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                .text('Error calling web service.  Try again later.'));
+        }
+    });
     $('#dvdDisplay').slideUp();
     $('#dvdEditForm').slideDown();
 }
