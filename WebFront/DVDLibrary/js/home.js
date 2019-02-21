@@ -4,6 +4,10 @@ $(document).ready(function () {
     $('#exitButton').click(function (event) {
         hideEditForm();
     });
+
+    $('#editDvdSubmitButton').click(function (event) {
+        submitEditData();
+    });
 });
 
 function populateLibrary() {
@@ -95,11 +99,14 @@ function showEditForm(dvdId) {
         url: 'http://localhost:8080/dvd/' + id,
         success: function (data, status) {
             $('#editDvdTitle').val(data.title);
-            $('#edit-last-name').val(data.releaseYear);
-            $('#edit-company').val(data.director);
-            $('#edit-phone').val(data.rating);
-            $('#edit-email').val(data.notes);
-            $('#edit-contact-id').val(data.id);
+            $('#editDvdYear').val(data.releaseYear);
+            $('#editDvdDirector').val(data.director);
+            $('#editDvdRating').val(data.rating);
+            $('#editDvdNotes').val(data.notes);
+            $('#editDvdIDHolder').val(id);
+
+            /* Fix Header to show title */
+            $('#editTitleHeader').text(data.title);
         },
         error: function () {
             $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
@@ -108,6 +115,34 @@ function showEditForm(dvdId) {
     });
     $('#dvdDisplay').slideUp();
     $('#dvdEditForm').slideDown();
+}
+
+function submitEditData() {
+    $.ajax({
+        type: 'PUT',
+        url: 'http://localhost:8080/dvd/' + $('#editDvdIDHolder').val(),
+        data: JSON.stringify({
+            dvdId: $('#editDvdIDHolder').val(),
+            title: $('#editDvdTitle').val(),
+            releaseYear: $('#editDvdYear').val(),
+            director: $('#editDvdDirector').val(),
+            notes: $('#editDvdNotes').val(),
+            rating: $('#editDvdRating').val()
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        'dataType': 'json',
+        success: function () {
+            populateLibrary();
+            hideEditForm();
+        },
+        error: function () {
+            $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                .text('Error calling web service.  Try again later.'));
+        }
+    });
 }
 
 function hideEditForm() {

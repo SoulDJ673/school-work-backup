@@ -55,6 +55,11 @@
       overflow: hidden;
     }
 
+    #editNavBarDiv {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
     #dvdDisplay {
       margin-top: 65px;
     }
@@ -147,11 +152,12 @@
     </div>
   </div>
   <div class="flex-container" id="editNavBarDiv" style="display:none">
-    <div>
-      <button class="btn btn-default" id="exitButton" style="margin-left:15px">Return to Main</button>
+    <div class="flex-container" style="align-items: center;align-content: center;">
+      <h1 style="margin-right: 10px;">Edit DVD: </h1>
+      <h1 id="editTitleHeader">Title Placeholder</h1>
     </div>
     <div id="editBarRight" class="flex-container">
-      <!-- Change to make relevant -->
+      <button class="btn btn-default" id="exitButton" style="margin-left:15px">Return to Main</button>
     </div>
   </div>
   <div id="dvdDisplay" class="flex-container">
@@ -168,10 +174,50 @@
     </table>
   </div>
   <div id="dvdEditForm" class="flex-container" style="display: none">
-    <form>
+    <form class="form-horizontal" style="width:70%">
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="editDvdTitle" style="margin:20pt;">DVD Title:</label>
+        <div>
+          <input type="text" id="editDvdTitle" class="form-control" placeholder="DVD Title" style="width:250px"
+            required />
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="editDvdYear" style="margin:20pt;">Release Year:</label>
+        <div>
+          <input type="text" id="editDvdYear" class="form-control" placeholder="DVD Year" style="width:250px" required />
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="editDvdDirector" style="margin:20pt;">Director:</label>
+        <div>
+          <input type="text" id="editDvdDirector" class="form-control" placeholder="Director" style="width:250px"
+            required />
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="editDvdRating" style="margin:20pt;">Rating:</label>
+        <div>
+          <select class="form-control" id="editDvdRating">
+            <option value="G" selected>G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="XXX" onclick="alert('Are you sure you should be doing that???')">XXX</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="editDvdNotes" style="margin:20pt;">Notes:</label>
+        <div>
+          <textarea id="editDvdNotes" style="width:350px;height:150px;" placeholder="Put any notes about the movie in here."></textarea>
+        </div>
+      </div>
       <div class="form-group">
-        <label class="control-label" for="editDvdTitle">DVD Title:</label>
-        <input type="text" id="editDvdTitle" class="form-control" placeholder="DVD Title" required />
+        <input type="hidden" id="editDvdIDHolder" class="form-control" placeholder="ID" required />
+      </div>
+      <div class="form-group flex-container" style="align-content: center;">
+        <button type="button" id="editDvdSubmitButton" class="form-control btn btn-default" style="width:100px;margin:20pt;">Submit</button>
       </div>
     </form>
   </div>
