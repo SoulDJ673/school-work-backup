@@ -31,7 +31,7 @@ function populateLibrary() {
                 row += '<td>' + year + '</td>';
                 row += '<td>' + director + '</td>';
                 row += '<td>' + rating + '</td>';
-                row += '<td><a onclick="showEditForm(' + id + ')">Edit</a> <a onclick="deleteDVD(' + id + ')">Delete</a></td>';
+                row += '<td><a onclick="showEditForm(' + id + ')" style="margin-right:10px">Edit</a> <a onclick="deleteDVD(' + id + ')">Delete</a></td>';
                 row += '</tr>';
 
                 contentRows.append(row);
@@ -113,8 +113,8 @@ function showEditForm(dvdId) {
                 .text('Error calling web service.  Try again later.'));
         }
     });
-    $('#dvdDisplay').slideUp();
-    $('#dvdEditForm').slideDown();
+    $('#dvdDisplay').hide();
+    $('#dvdEditForm').fadeIn('slow');
 }
 
 function submitEditData() {
@@ -148,6 +148,6 @@ function submitEditData() {
 function hideEditForm() {
     $('#actionBarDiv').show();
     $('#editNavBarDiv').hide();
-    $('#dvdDisplay').slideDown();
-    $('#dvdEditForm').slideUp();
+    $('#dvdDisplay').fadeIn('slow');
+    $('#dvdEditForm').hide();
 }
