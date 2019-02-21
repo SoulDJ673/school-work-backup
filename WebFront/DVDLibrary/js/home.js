@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     $('#exitButton').click(function (event) {
         hideEditForm();
+        hideCreateForm();
     });
 
     $('#editDvdSubmitButton').click(function (event) {
@@ -150,4 +151,18 @@ function hideEditForm() {
     $('#editNavBarDiv').hide();
     $('#dvdDisplay').fadeIn('slow');
     $('#dvdEditForm').hide();
+}
+
+function showCreateForm() {
+    $('#actionBarDiv').hide();
+    $('#createNavBarDiv').show();
+    $('#dvdDisplay').hide();
+    $('#dvdCreateForm').fadeIn('slow');
+}
+
+function hideCreateForm() {
+    $('#actionBarDiv').show();
+    $('#createNavBarDiv').hide();
+    $('#dvdCreateForm').hide();
+    $('#dvdDisplay').fadeIn('slow');
 }
