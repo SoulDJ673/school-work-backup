@@ -8,6 +8,10 @@ $(document).ready(function () {
     $('#createDvdSubmitButton').click(function (event) {
         submitCreateData();
     });
+
+    $('#searchButton').click(function (event) {
+        searchLibrary();
+    });
 });
 
 function populateLibrary() {
@@ -135,7 +139,7 @@ function submitEditData() {
         },
         'dataType': 'json',
         success: function () {
-            anikiEgg();
+            anikiEgg(1);
             populateLibrary();
             hideEditForm();
         },
@@ -183,7 +187,7 @@ function submitCreateData() {
         },
         'dataType': 'json',
         success: function () {
-            anikiEgg();
+            anikiEgg(0);
             populateLibrary();
             hideCreateForm();
         },
@@ -201,21 +205,165 @@ function hideCreateForm() {
     $('#dvdDisplay').fadeIn('slow');
 }
 
-function anikiEgg() {
-    if ($('#editDvdDirector').val() === "Van") {
-        if ($('#editDvdRating').val() === "XXX") {
-            if ($('#editDvdYear').val() === "2018") {
-                if ($('#editDvdNotes').val() === "Aniki") {
-                    alert("PepeHands we love and miss you Billy <3 GachiF");
+function searchLibrary() {
+    clearDVDLibraryTable();
+    var contentRows = $('#dvdSection');
+    if ($('#categoryDropdown').val() === "title") {
+        var searchString = $('#searchString').val();
+        var searchStringFixed = searchString.replace(/ /gi, "%20");
+        console.log(searchStringFixed);
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/dvds/title/' + searchStringFixed,
+            success: function (dvdArray) {
+                $.each(dvdArray, function (index, dvd) {
+                    var id = dvd.dvdId;
+                    var title = dvd.title;
+                    var year = dvd.releaseYear;
+                    var director = dvd.director;
+                    var rating = dvd.rating;
+                    var notes = dvd.notes;
+
+                    var row = '<tr>';
+                    row += '<td>' + title + '</td>';
+                    row += '<td>' + year + '</td>';
+                    row += '<td>' + director + '</td>';
+                    row += '<td>' + rating + '</td>';
+                    row += '<td><a onclick="showEditForm(' + id + ')" style="margin-right:10px">Edit</a> <a onclick="deleteDVD(' + id + ')">Delete</a></td>';
+                    row += '</tr>';
+
+                    contentRows.append(row);
+                });
+            },
+            error: function () {
+                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                    .text('Error calling web service.  Try again later.'));
+            }
+        });
+    } else if ($('#categoryDropdown').val() === "year") {
+        var searchString = $('#searchString').val();
+        var searchStringFixed = searchString.replace(/ /gi, "%20");
+        console.log(searchStringFixed);
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/dvds/year/' + searchStringFixed,
+            success: function (dvdArray) {
+                $.each(dvdArray, function (index, dvd) {
+                    var id = dvd.dvdId;
+                    var title = dvd.title;
+                    var year = dvd.releaseYear;
+                    var director = dvd.director;
+                    var rating = dvd.rating;
+                    var notes = dvd.notes;
+
+                    var row = '<tr>';
+                    row += '<td>' + title + '</td>';
+                    row += '<td>' + year + '</td>';
+                    row += '<td>' + director + '</td>';
+                    row += '<td>' + rating + '</td>';
+                    row += '<td><a onclick="showEditForm(' + id + ')" style="margin-right:10px">Edit</a> <a onclick="deleteDVD(' + id + ')">Delete</a></td>';
+                    row += '</tr>';
+
+                    contentRows.append(row);
+                });
+            },
+            error: function () {
+                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                    .text('Error calling web service.  Try again later.'));
+            }
+        });
+    } else if ($('#categoryDropdown').val() === "rating") {
+        var searchString = $('#searchString').val();
+        var searchStringFixed = searchString.replace(/ /gi, "%20");
+        console.log(searchStringFixed);
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/dvds/rating/' + searchStringFixed,
+            success: function (dvdArray) {
+                $.each(dvdArray, function (index, dvd) {
+                    var id = dvd.dvdId;
+                    var title = dvd.title;
+                    var year = dvd.releaseYear;
+                    var director = dvd.director;
+                    var rating = dvd.rating;
+                    var notes = dvd.notes;
+
+                    var row = '<tr>';
+                    row += '<td>' + title + '</td>';
+                    row += '<td>' + year + '</td>';
+                    row += '<td>' + director + '</td>';
+                    row += '<td>' + rating + '</td>';
+                    row += '<td><a onclick="showEditForm(' + id + ')" style="margin-right:10px">Edit</a> <a onclick="deleteDVD(' + id + ')">Delete</a></td>';
+                    row += '</tr>';
+
+                    contentRows.append(row);
+                });
+            },
+            error: function () {
+                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                    .text('Error calling web service.  Try again later.'));
+            }
+        });
+    } else if ($('#categoryDropdown').val() === "director") {
+        var searchString = $('#searchString').val();
+        var searchStringFixed = searchString.replace(/ /gi, "%20");
+        console.log(searchStringFixed);
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/dvds/director/' + searchStringFixed,
+            success: function (dvdArray) {
+                $.each(dvdArray, function (index, dvd) {
+                    var id = dvd.dvdId;
+                    var title = dvd.title;
+                    var year = dvd.releaseYear;
+                    var director = dvd.director;
+                    var rating = dvd.rating;
+                    var notes = dvd.notes;
+
+                    var row = '<tr>';
+                    row += '<td>' + title + '</td>';
+                    row += '<td>' + year + '</td>';
+                    row += '<td>' + director + '</td>';
+                    row += '<td>' + rating + '</td>';
+                    row += '<td><a onclick="showEditForm(' + id + ')" style="margin-right:10px">Edit</a> <a onclick="deleteDVD(' + id + ')">Delete</a></td>';
+                    row += '</tr>';
+
+                    contentRows.append(row);
+                });
+            },
+            error: function () {
+                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                    .text('Error calling web service.  Try again later.'));
+            }
+        });
+    }
+
+    if ($('#searchString').val() === "") {
+        populateLibrary();
+    } else if ($('#searchString').val() === " ") {
+        populateLibrary();
+    }
+}
+
+function anikiEgg(menu) {
+    if (menu === 1) {
+        if ($('#editDvdDirector').val() === "Van") {
+            if ($('#editDvdRating').val() === "XXX") {
+                if ($('#editDvdYear').val() === "2018") {
+                    if ($('#editDvdNotes').val() === "Aniki") {
+                        alert("PepeHands we love and miss you Billy <3 GachiF");
+                    }
                 }
             }
         }
     }
-    if ($('#createDvdDirector').val() === "Van") {
-        if ($('#createDvdRating').val() === "XXX") {
-            if ($('#createDvdYear').val() === "2018") {
-                if ($('#createDvdNotes').val() === "Aniki") {
-                    alert("PepeHands we love and miss you Billy <3 GachiF");
+    if (menu === 0) {
+        if ($('#createDvdDirector').val() === "Van") {
+            if ($('#createDvdRating').val() === "XXX") {
+                if ($('#createDvdYear').val() === "2018") {
+                    if ($('#createDvdNotes').val() === "Aniki") {
+                        alert("PepeHands we love and miss you Billy <3 GachiF");
+                    }
                 }
             }
         }
