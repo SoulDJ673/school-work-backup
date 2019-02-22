@@ -160,16 +160,17 @@
       <h1 id="editTitleHeader">Title Placeholder</h1>
     </div>
     <div id="editBarRight" class="flex-container">
-      <button class="btn btn-default" id="exitButton" style="margin-left:15px">Return to Main</button>
+      <button class="btn btn-default" id="exitButton" onclick="hideEditForm()" style="margin-left:15px">Return to Main</button>
     </div>
   </div>
   <div class="flex-container" id="createNavBarDiv" style="display:none">
     <div class="flex-container" style="align-items: center;align-content: center;">
       <h1 style="margin-right: 10px;">Create DVD</h1>
     </div>
-    <!-- Exactly the same as editBar -->
+    <!-- Exactly the same appearance as editBar -->
     <div id="editBarRight" class="flex-container">
-      <button class="btn btn-default" id="exitButton" style="margin-left:15px">Return to Main</button>
+      <button class="btn btn-default" id="exitButton" style="margin-left:15px" onclick="hideCreateForm()">Return to
+        Main</button>
     </div>
   </div>
 
@@ -217,7 +218,7 @@
             <option value="PG">PG</option>
             <option value="PG-13">PG-13</option>
             <option value="R">R</option>
-            <option value="XXX" onclick="alert('Are you sure you should be doing that???')">XXX</option>
+            <option value="XXX" onclick="alert('Yknow, the leather club is a few blocks down...')">XXX</option>
           </select>
         </div>
       </div>

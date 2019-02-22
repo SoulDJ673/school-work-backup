@@ -1,11 +1,6 @@
 $(document).ready(function () {
     populateLibrary();
 
-    $('#exitButton').click(function (event) {
-        hideEditForm();
-        hideCreateForm();
-    });
-
     $('#editDvdSubmitButton').click(function (event) {
         submitEditData();
     });
@@ -136,6 +131,7 @@ function submitEditData() {
         },
         'dataType': 'json',
         success: function () {
+            anikiEgg();
             populateLibrary();
             hideEditForm();
         },
@@ -165,4 +161,16 @@ function hideCreateForm() {
     $('#createNavBarDiv').hide();
     $('#dvdCreateForm').hide();
     $('#dvdDisplay').fadeIn('slow');
+}
+
+function anikiEgg() {
+    if ($('#editDvdDirector').val() === "Van") {
+        if ($('#editDvdRating').val() === "XXX") {
+            if ($('#editDvdYear').val() === "2016") {
+                if ($('#editDvdNotes').val() === "Aniki") {
+                    alert("PepeHands we love and miss you Billy <3 GachiF");
+                }
+            }
+        }
+    }
 }
