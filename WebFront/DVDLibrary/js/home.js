@@ -31,7 +31,18 @@ function populateLibrary() {
                 var notes = dvd.notes;
 
                 var row = '<tr>';
-                row += '<td>' + title + '</td>';
+                // Aniki Egg
+                if (director === "Van") {
+                    if (rating === "XXX") {
+                        if (year === 2018) {
+                            if (notes === "Aniki") {
+                                row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                            }
+                        }
+                    }
+                } else {
+                    row += '<td>' + title + '</td>';
+                }
                 row += '<td>' + year + '</td>';
                 row += '<td>' + director + '</td>';
                 row += '<td>' + rating + '</td>';
@@ -211,7 +222,6 @@ function searchLibrary() {
     if ($('#categoryDropdown').val() === "title") {
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
-        console.log(searchStringFixed);
         $.ajax({
             type: 'GET',
             url: 'http://localhost:8080/dvds/title/' + searchStringFixed,
@@ -243,7 +253,6 @@ function searchLibrary() {
     } else if ($('#categoryDropdown').val() === "year") {
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
-        console.log(searchStringFixed);
         $.ajax({
             type: 'GET',
             url: 'http://localhost:8080/dvds/year/' + searchStringFixed,
@@ -275,7 +284,6 @@ function searchLibrary() {
     } else if ($('#categoryDropdown').val() === "rating") {
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
-        console.log(searchStringFixed);
         $.ajax({
             type: 'GET',
             url: 'http://localhost:8080/dvds/rating/' + searchStringFixed,
@@ -307,7 +315,6 @@ function searchLibrary() {
     } else if ($('#categoryDropdown').val() === "director") {
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
-        console.log(searchStringFixed);
         $.ajax({
             type: 'GET',
             url: 'http://localhost:8080/dvds/director/' + searchStringFixed,
@@ -346,23 +353,25 @@ function searchLibrary() {
 }
 
 function anikiEgg(menu) {
+    // Edit
     if (menu === 1) {
         if ($('#editDvdDirector').val() === "Van") {
             if ($('#editDvdRating').val() === "XXX") {
                 if ($('#editDvdYear').val() === "2018") {
                     if ($('#editDvdNotes').val() === "Aniki") {
-                        alert("PepeHands we love and miss you Billy <3 GachiF");
+                        alert("PepeHands we love and miss you Billy <3 gachiF");
                     }
                 }
             }
         }
     }
+    // Create
     if (menu === 0) {
         if ($('#createDvdDirector').val() === "Van") {
             if ($('#createDvdRating').val() === "XXX") {
                 if ($('#createDvdYear').val() === "2018") {
                     if ($('#createDvdNotes').val() === "Aniki") {
-                        alert("PepeHands we love and miss you Billy <3 GachiF");
+                        alert("PepeHands we love and miss you Billy <3 gachiF");
                     }
                 }
             }
