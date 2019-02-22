@@ -237,6 +237,50 @@
     </form>
   </div>
   <div id="dvdCreateForm" class="flex-container" style="display: none">
+    <form class="form-horizontal" style="width:70%">
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="createDvdTitle" style="margin:20pt;">DVD Title:</label>
+        <div>
+          <input type="text" id="createDvdTitle" class="form-control createDvd" placeholder="DVD Title" style="width:250px"
+            required />
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="createDvdYear" style="margin:20pt;">Release Year:</label>
+        <div>
+          <input type="text" id="createDvdYear" class="form-control createDvd" placeholder="DVD Year" style="width:250px"
+            required />
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="createDvdDirector" style="margin:20pt;">Director:</label>
+        <div>
+          <input type="text" id="createDvdDirector" class="form-control createDvd" placeholder="Director" style="width:250px"
+            required />
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="createDvdRating" style="margin:20pt;">Rating:</label>
+        <div>
+          <select class="form-control createDvd" id="createDvdRating">
+            <option value="G" selected>G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="XXX" onclick="alert('Yknow, the leather club is a few blocks down...')">XXX</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-items: center;align-items: center;">
+        <label class="control-label" for="createDvdNotes" style="margin:20pt;">Notes:</label>
+        <div>
+          <textarea id="createDvdNotes" style="width:350px;height:150px;" class="createDvd" placeholder="Put any notes about the movie in here."></textarea>
+        </div>
+      </div>
+      <div class="form-group flex-container" style="align-content: center;">
+        <button type="button" id="createDvdSubmitButton" class="form-control btn btn-default" style="width:100px;margin:20pt;">Submit</button>
+      </div>
+    </form>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

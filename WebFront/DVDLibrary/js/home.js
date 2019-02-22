@@ -4,6 +4,10 @@ $(document).ready(function () {
     $('#editDvdSubmitButton').click(function (event) {
         submitEditData();
     });
+
+    $('#createDvdSubmitButton').click(function (event) {
+        submitCreateData();
+    });
 });
 
 function populateLibrary() {
@@ -152,8 +156,42 @@ function hideEditForm() {
 function showCreateForm() {
     $('#actionBarDiv').hide();
     $('#createNavBarDiv').show();
+
+    // Always reset input fields
+    $('select.createDvd').val('G');
+    $('input.createDvd').val(null);
+    $('textarea.createDvd').val(null);
+
     $('#dvdDisplay').hide();
     $('#dvdCreateForm').fadeIn('slow');
+}
+
+function submitCreateData() {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/dvd',
+        data: JSON.stringify({
+            title: $('#createDvdTitle').val(),
+            releaseYear: $('#createDvdYear').val(),
+            director: $('#createDvdDirector').val(),
+            notes: $('#createDvdNotes').val(),
+            rating: $('#createDvdRating').val()
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        'dataType': 'json',
+        success: function () {
+            anikiEgg();
+            populateLibrary();
+            hideCreateForm();
+        },
+        error: function () {
+            $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                .text('Error calling web service.  Try again later.'));
+        }
+    });
 }
 
 function hideCreateForm() {
@@ -166,8 +204,17 @@ function hideCreateForm() {
 function anikiEgg() {
     if ($('#editDvdDirector').val() === "Van") {
         if ($('#editDvdRating').val() === "XXX") {
-            if ($('#editDvdYear').val() === "2016") {
+            if ($('#editDvdYear').val() === "2018") {
                 if ($('#editDvdNotes').val() === "Aniki") {
+                    alert("PepeHands we love and miss you Billy <3 GachiF");
+                }
+            }
+        }
+    }
+    if ($('#createDvdDirector').val() === "Van") {
+        if ($('#createDvdRating').val() === "XXX") {
+            if ($('#createDvdYear').val() === "2018") {
+                if ($('#createDvdNotes').val() === "Aniki") {
                     alert("PepeHands we love and miss you Billy <3 GachiF");
                 }
             }
