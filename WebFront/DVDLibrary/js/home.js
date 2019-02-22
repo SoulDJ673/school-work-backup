@@ -12,6 +12,11 @@ $(document).ready(function () {
     $('#searchButton').click(function (event) {
         searchLibrary();
     });
+
+    $('#clearSearchResults').click(function (event) {
+        populateLibrary();
+        $('#clearSearchResults').hide();
+    });
 });
 
 function populateLibrary() {
@@ -219,7 +224,17 @@ function hideCreateForm() {
 function searchLibrary() {
     clearDVDLibraryTable();
     var contentRows = $('#dvdSection');
+
+    if ($('#searchString').val() === "") {
+        populateLibrary();
+        return;
+    } else if ($('#searchString').val() === " ") {
+        populateLibrary();
+        return;
+    }
+
     if ($('#categoryDropdown').val() === "title") {
+        $('#clearSearchResults').show();
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
         $.ajax({
@@ -251,6 +266,7 @@ function searchLibrary() {
             }
         });
     } else if ($('#categoryDropdown').val() === "year") {
+        $('#clearSearchResults').show();
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
         $.ajax({
@@ -282,6 +298,7 @@ function searchLibrary() {
             }
         });
     } else if ($('#categoryDropdown').val() === "rating") {
+        $('#clearSearchResults').show();
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
         $.ajax({
@@ -313,6 +330,7 @@ function searchLibrary() {
             }
         });
     } else if ($('#categoryDropdown').val() === "director") {
+        $('#clearSearchResults').show();
         var searchString = $('#searchString').val();
         var searchStringFixed = searchString.replace(/ /gi, "%20");
         $.ajax({
@@ -343,12 +361,6 @@ function searchLibrary() {
                     .text('Error calling web service.  Try again later.'));
             }
         });
-    }
-
-    if ($('#searchString').val() === "") {
-        populateLibrary();
-    } else if ($('#searchString').val() === " ") {
-        populateLibrary();
     }
 }
 
