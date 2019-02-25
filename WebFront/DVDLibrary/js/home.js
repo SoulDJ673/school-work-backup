@@ -14,8 +14,10 @@ $(document).ready(function () {
     });
 
     $('#clearSearchResults').click(function (event) {
-        populateLibrary();
         $('#clearSearchResults').hide();
+        $('#searchString').css({ 'border-color': '#00000000' });
+        $('#categoryDropdown').css({ 'border-color': '#00000000' });
+        populateLibrary();
     });
 });
 
@@ -222,16 +224,35 @@ function hideCreateForm() {
 }
 
 function searchLibrary() {
-    clearDVDLibraryTable();
     var contentRows = $('#dvdSection');
+    var sS = $('#searchString').val();
 
-    if ($('#searchString').val() === "") {
-        populateLibrary();
+    // Input Validation
+    if (sS.trim() === "") {
+        $('#searchString').css({ 'border-color': '#ff0000' });
+
+        //Check Dropdown after query before function return
+        if ($('#categoryDropdown').val() === "") {
+            $('#categoryDropdown').css({ 'border-color': '#FF0000' });
+            return;
+        } else {
+            $('#categoryDropdown').css({ 'border-color': '#00000000' });
+        }
         return;
-    } else if ($('#searchString').val() === " ") {
-        populateLibrary();
-        return;
+    } else {
+        $('#searchString').css({ 'border-color': '#00000000' });
+
+        //Check dropdown after query success before continuing
+        if ($('#categoryDropdown').val() === "") {
+            $('#categoryDropdown').css({ 'border-color': '#FF0000' });
+            return;
+        } else {
+            $('#categoryDropdown').css({ 'border-color': '#00000000' });
+        }
     }
+
+    // Start Search
+    clearDVDLibraryTable();
 
     if ($('#categoryDropdown').val() === "title") {
         $('#clearSearchResults').show();
@@ -250,7 +271,18 @@ function searchLibrary() {
                     var notes = dvd.notes;
 
                     var row = '<tr>';
-                    row += '<td>' + title + '</td>';
+                    // Aniki Egg
+                    if (director === "Van") {
+                        if (rating === "XXX") {
+                            if (year === 2018) {
+                                if (notes === "Aniki") {
+                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                }
+                            }
+                        }
+                    } else {
+                        row += '<td>' + title + '</td>';
+                    }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
                     row += '<td>' + rating + '</td>';
@@ -282,7 +314,18 @@ function searchLibrary() {
                     var notes = dvd.notes;
 
                     var row = '<tr>';
-                    row += '<td>' + title + '</td>';
+                    // Aniki Egg
+                    if (director === "Van") {
+                        if (rating === "XXX") {
+                            if (year === 2018) {
+                                if (notes === "Aniki") {
+                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                }
+                            }
+                        }
+                    } else {
+                        row += '<td>' + title + '</td>';
+                    }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
                     row += '<td>' + rating + '</td>';
@@ -314,7 +357,18 @@ function searchLibrary() {
                     var notes = dvd.notes;
 
                     var row = '<tr>';
-                    row += '<td>' + title + '</td>';
+                    // Aniki Egg
+                    if (director === "Van") {
+                        if (rating === "XXX") {
+                            if (year === 2018) {
+                                if (notes === "Aniki") {
+                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                }
+                            }
+                        }
+                    } else {
+                        row += '<td>' + title + '</td>';
+                    }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
                     row += '<td>' + rating + '</td>';
@@ -346,7 +400,18 @@ function searchLibrary() {
                     var notes = dvd.notes;
 
                     var row = '<tr>';
-                    row += '<td>' + title + '</td>';
+                    // Aniki Egg
+                    if (director === "Van") {
+                        if (rating === "XXX") {
+                            if (year === 2018) {
+                                if (notes === "Aniki") {
+                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                }
+                            }
+                        }
+                    } else {
+                        row += '<td>' + title + '</td>';
+                    }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
                     row += '<td>' + rating + '</td>';
