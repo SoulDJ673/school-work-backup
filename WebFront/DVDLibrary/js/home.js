@@ -43,12 +43,12 @@ function populateLibrary() {
                     if (rating === "XXX") {
                         if (year === 2018) {
                             if (notes === "Aniki") {
-                                row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</a>' + '</td>';
                             }
                         }
                     }
                 } else {
-                    row += '<td>' + title + '</td>';
+                    row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + '</a>' + '</td>';
                 }
                 row += '<td>' + year + '</td>';
                 row += '<td>' + director + '</td>';
@@ -276,12 +276,12 @@ function searchLibrary() {
                         if (rating === "XXX") {
                             if (year === 2018) {
                                 if (notes === "Aniki") {
-                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                    row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</a>' + '</td>';
                                 }
                             }
                         }
                     } else {
-                        row += '<td>' + title + '</td>';
+                        row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + '</a>' + '</td>';
                     }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
@@ -319,12 +319,12 @@ function searchLibrary() {
                         if (rating === "XXX") {
                             if (year === 2018) {
                                 if (notes === "Aniki") {
-                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                    row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</a>' + '</td>';
                                 }
                             }
                         }
                     } else {
-                        row += '<td>' + title + '</td>';
+                        row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + '</a>' + '</td>';
                     }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
@@ -362,12 +362,12 @@ function searchLibrary() {
                         if (rating === "XXX") {
                             if (year === 2018) {
                                 if (notes === "Aniki") {
-                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                    row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</a>' + '</td>';
                                 }
                             }
                         }
                     } else {
-                        row += '<td>' + title + '</td>';
+                        row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + '</a>' + '</td>';
                     }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
@@ -405,12 +405,12 @@ function searchLibrary() {
                         if (rating === "XXX") {
                             if (year === 2018) {
                                 if (notes === "Aniki") {
-                                    row += '<td>' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</td>';
+                                    row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + " " + '<a href="https://www.youtube.com/watch?v=02C1R7fHH-A"><img src="https://cdn.frankerfacez.com/emoticon/238016/1" alt="gachiF"></img></a>' + '</a>' + '</td>';
                                 }
                             }
                         }
                     } else {
-                        row += '<td>' + title + '</td>';
+                        row += '<td>' + '<a onclick="showProperties(' + id + ')">' + title + '</a>' + '</td>';
                     }
                     row += '<td>' + year + '</td>';
                     row += '<td>' + director + '</td>';
@@ -454,4 +454,36 @@ function anikiEgg(menu) {
             }
         }
     }
+}
+
+function hideProperties() {
+    $('#actionBarDiv').show();
+    $('#propertiesNavBarDiv').hide();
+    $('#dvdDisplay').fadeIn('slow');
+    $('#dvdProperties').hide();
+}
+
+function showProperties(dvdId) {
+    var id = dvdId;
+    $('#actionBarDiv').hide();
+    $('#propertiesNavBarDiv').show();
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/dvd/' + id,
+        success: function (data, status) {
+            $('#dvdPropReleaseValue').text(data.releaseYear);
+            $('#dvdPropDirectorValue').text(data.director);
+            $('#dvdPropRatingValue').text(data.rating);
+            $('#dvdPropNotesValue').text(data.notes);
+
+            /* Fix Header to show title */
+            $('#propertiesTitleHeader').text(data.title);
+        },
+        error: function () {
+            $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
+                .text('Error calling web service.  Try again later.'));
+        }
+    });
+    $('#dvdDisplay').hide();
+    $('#dvdProperties').fadeIn('slow');
 }

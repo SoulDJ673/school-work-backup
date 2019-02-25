@@ -47,7 +47,8 @@
 
     #actionBarDiv,
     #editNavBarDiv,
-    #createNavBarDiv {
+    #createNavBarDiv,
+    #propertiesNavBarDiv {
       background-color: #444444;
       position: fixed;
       top: 0%;
@@ -59,7 +60,8 @@
     }
 
     #editNavBarDiv,
-    #createNavBarDiv {
+    #createNavBarDiv,
+    #propertiesNavBarDiv {
       padding-left: 10px;
       padding-right: 10px;
     }
@@ -70,7 +72,8 @@
     }
 
     #actionBarRight,
-    #editBarRight {
+    #editBarRight,
+    #propertiesBarRight {
       justify-content: flex-end;
       align-items: center;
       flex-grow: 1;
@@ -110,7 +113,8 @@
     }
 
     #dvdEditForm,
-    #dvdCreateForm {
+    #dvdCreateForm,
+    #dvdProperties {
       margin-top: 90px;
       margin-left: 10%;
       margin-right: 10%;
@@ -146,7 +150,8 @@
         DVD</button>
     </div>
     <div id="actionBarRight" class="flex-container">
-      <button id="clearSearchResults" class="btn btn-default" style="margin-left: 15px;margin-right: 15px;display: none;">Clear Results</button>
+      <button id="clearSearchResults" class="btn btn-default" style="margin-left: 15px;margin-right: 15px;display: none;">Clear
+        Results</button>
       <button id="searchButton" class="btn btn-default" style="margin-left: 15px;margin-right: 15px;">Search</button>
       <select name="categories" id="categoryDropdown" style="height:36px;margin-right:15px;">
         <option value="" selected hidden>Search Category</option>
@@ -174,6 +179,15 @@
     <!-- Exactly the same appearance as editBar -->
     <div id="editBarRight" class="flex-container">
       <button class="btn btn-default" id="exitButton" style="margin-left:15px" onclick="hideCreateForm()">Return to
+        Main</button>
+    </div>
+  </div>
+  <div class="flex-container" id="propertiesNavBarDiv" style="display:none">
+    <div class="flex-container" style="align-items: center;align-content: center;">
+      <h1 style="margin-right: 10px;" id="propertiesTitleHeader">Title Placeholder</h1>
+    </div>
+    <div id="propertiesBarRight" class="flex-container">
+      <button class="btn btn-default" id="exitButton" onclick="hideProperties()" style="margin-left:15px">Return to
         Main</button>
     </div>
   </div>
@@ -285,6 +299,28 @@
         <button type="button" id="createDvdSubmitButton" class="form-control btn btn-default" style="width:100px;margin:20pt;">Submit</button>
       </div>
     </form>
+  </div>
+  <div id="dvdProperties" style="display: none">
+    <div>
+      <h3 id="dvdPropRelease" style="margin-right:20pt;">Release Year:</h3>
+      <h3 id="dvdPropReleaseValue"></h3>
+    </div>
+    <br />
+    <div>
+      <h3 id="dvdPropDirector" style="margin-right:20pt;">Director:</h3>
+      <h3 id="dvdPropDirectorValue"></h3>
+    </div>
+    <br />
+    <div>
+      <h3 id="dvdPropRating" style="margin-right:20pt;">Rating:</h3>
+      <h3 id="dvdPropRatingValue"></h3>
+    </div>
+    <br />
+    <div>
+      <h3 id="dvdPropNotes" style="margin-right:20pt;">Notes:</h3>
+      <h3 id="dvdPropNotesValue"></h3>
+    </div>
+    <br />
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
