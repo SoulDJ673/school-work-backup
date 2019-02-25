@@ -234,9 +234,13 @@ function searchLibrary() {
         //Check Dropdown after query before function return
         if ($('#categoryDropdown').val() === "") {
             $('#categoryDropdown').css({ 'border-color': '#FF0000' });
+            var message = ["Both Search Category and Search Term are required."];
+            createErrorMessage(message);
             return;
         } else {
             $('#categoryDropdown').css({ 'border-color': '#00000000' });
+            var message = ["Search Term Required."];
+            createErrorMessage(message);
         }
         return;
     } else {
@@ -245,6 +249,8 @@ function searchLibrary() {
         //Check dropdown after query success before continuing
         if ($('#categoryDropdown').val() === "") {
             $('#categoryDropdown').css({ 'border-color': '#FF0000' });
+            var message = ["Search Category Required."];
+            createErrorMessage(message);
             return;
         } else {
             $('#categoryDropdown').css({ 'border-color': '#00000000' });
@@ -293,8 +299,8 @@ function searchLibrary() {
                 });
             },
             error: function () {
-                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
-                    .text('Error calling web service.  Try again later.'));
+                var message = ['Error calling web service.  Try again later.'];
+                createErrorMessage(message);
             }
         });
     } else if ($('#categoryDropdown').val() === "year") {
@@ -336,8 +342,8 @@ function searchLibrary() {
                 });
             },
             error: function () {
-                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
-                    .text('Error calling web service.  Try again later.'));
+                var message = ['Error calling web service.  Try again later.'];
+                createErrorMessage(message);
             }
         });
     } else if ($('#categoryDropdown').val() === "rating") {
@@ -379,8 +385,8 @@ function searchLibrary() {
                 });
             },
             error: function () {
-                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
-                    .text('Error calling web service.  Try again later.'));
+                var message = ['Error calling web service.  Try again later.'];
+                createErrorMessage(message);
             }
         });
     } else if ($('#categoryDropdown').val() === "director") {
@@ -422,8 +428,8 @@ function searchLibrary() {
                 });
             },
             error: function () {
-                $('#errorMessages').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' })
-                    .text('Error calling web service.  Try again later.'));
+                var message = ['Error calling web service.  Try again later.'];
+                createErrorMessage(message);
             }
         });
     }
@@ -486,4 +492,27 @@ function showProperties(dvdId) {
     });
     $('#dvdDisplay').hide();
     $('#dvdProperties').fadeIn('slow');
+}
+
+function createErrorMessage(messages) {
+    //Clear Out Messages
+    var empty = checkForErrors();
+    if (!empty) {
+        $('#errorCage').empty();
+    }
+
+    //Messages is an array
+    $.each(messages, function (index, message) {
+        $('#errorCage').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' }).text(message));
+    });
+
+}
+
+function checkForErrors() {
+    var errors = $('#errorCage').val();
+    if (errors.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
