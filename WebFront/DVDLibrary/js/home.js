@@ -18,20 +18,16 @@ $(document).ready(function () {
         var yearInput = $('#createDvdYear').val();
 
         var validYear;
-        if (yearInput.length == 0 || yearInput == "" || yearInput == null) {
-            var message = "The year must exist.";
-            createErrorMessage(message);
-        } else {
-            validYear = isInt(yearInput);
-            if (!validYear) {
-                var messageYear = "The year must be an integer.";
-                messages.push(messageYear);
-            }
+
+        validYear = isInt(yearInput);
+        if (!validYear || yearInput.length == 0) {
+            var messageYear = "The year must be an integer.";
+            messages.push(messageYear);
         }
 
         var titleInput = $('#createDvdTitle').val();
-        var validTitle = isEmpty(titleInput);
-        if (!validYear) {
+        var invalidTitle = isEmpty(titleInput);
+        if (invalidTitle) {
             var messageTitle = "The title must exist";
             messages.push(messageTitle);
         }
@@ -41,7 +37,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!checkForErrors()) {
+        if (checkForErrors()) {
             submitCreateData();
         }
     });
@@ -69,7 +65,8 @@ function isInt(value) {
 
 function isEmpty(string) {
     /* This function will check to see if a given string is empty */
-    if (string.length > 0) {
+    console.log(string.length);
+    if (string.length === 0) {
         return true;
     } else {
         return false;
