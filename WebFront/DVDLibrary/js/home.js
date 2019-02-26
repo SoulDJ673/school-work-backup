@@ -2,14 +2,23 @@ $(document).ready(function () {
     populateLibrary();
 
     $('#editDvdSubmitButton').click(function (event) {
+        if (checkForErrors()) {
+            clearErrorCage();
+        }
         submitEditData();
     });
 
     $('#createDvdSubmitButton').click(function (event) {
+        if (checkForErrors()) {
+            clearErrorCage();
+        }
         submitCreateData();
     });
 
     $('#searchButton').click(function (event) {
+        if (checkForErrors()) {
+            clearErrorCage();
+        }
         searchLibrary();
     });
 
@@ -19,6 +28,7 @@ $(document).ready(function () {
         $('#categoryDropdown').css({ 'border-color': '#00000000' });
         populateLibrary();
     });
+
 });
 
 function populateLibrary() {
@@ -495,24 +505,27 @@ function showProperties(dvdId) {
 }
 
 function createErrorMessage(messages) {
-    //Clear Out Messages
-    var empty = checkForErrors();
-    if (!empty) {
-        $('#errorCage').empty();
-    }
+    clearErrorCage();
 
     //Messages is an array
     $.each(messages, function (index, message) {
         $('#errorCage').append($('<li>').attr({ class: 'list-group-item list-group-item-danger' }).text(message));
     });
 
+    $('#errorCage').show();
 }
 
 function checkForErrors() {
-    var errors = $('#errorCage').val();
+    var errors = $('#errorCage').html();
+    console.log(errors);
     if (errors.length > 0) {
         return true;
     } else {
         return false;
     }
+}
+
+function clearErrorCage() {
+    $('#errorCage').empty();
+    $('#errorCage').hide();
 }
