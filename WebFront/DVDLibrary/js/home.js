@@ -9,10 +9,41 @@ $(document).ready(function () {
     });
 
     $('#createDvdSubmitButton').click(function (event) {
-        if (checkForErrors()) {
-            clearErrorCage();
+
+        clearErrorCage();
+
+        // Validate
+        var messages = [];
+
+        var yearInput = $('#createDvdYear').val();
+
+        var validYear;
+        if (yearInput.length == 0 || yearInput == "" || yearInput == null) {
+            var message = "The year must exist.";
+            createErrorMessage(message);
+        } else {
+            validYear = isInt(yearInput);
+            if (!validYear) {
+                var messageYear = "The year must be an integer.";
+                messages.push(messageYear);
+            }
         }
-        submitCreateData();
+
+        var titleInput = $('#createDvdTitle').val();
+        var validTitle = isEmpty(titleInput);
+        if (!validYear) {
+            var messageTitle = "The title must exist";
+            messages.push(messageTitle);
+        }
+
+        if (messages.length > 0) {
+            createErrorMessage(messages);
+            return;
+        }
+
+        if (!checkForErrors()) {
+            submitCreateData();
+        }
     });
 
     $('#searchButton').click(function (event) {
@@ -30,6 +61,20 @@ $(document).ready(function () {
     });
 
 });
+
+function isInt(value) {
+    var x;
+    return isNaN(value) ? !1 : (x = parseFloat(value), (0 | x) === x);
+}
+
+function isEmpty(string) {
+    /* This function will check to see if a given string is empty */
+    if (string.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function populateLibrary() {
     clearDVDLibraryTable();
