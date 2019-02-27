@@ -34,10 +34,12 @@ $(document).ready(function () {
 
         if (messages.length > 0) {
             createErrorMessage(messages);
+            console.log("Went to create error messages");
             return;
         }
 
-        if (checkForErrors()) {
+        if (!checkForErrors()) {
+            console.log("Went to submit data");
             submitCreateData();
         }
     });
@@ -120,7 +122,7 @@ function populateLibrary() {
 
 function clearDVDLibraryTable() {
     $('#dvdSection').empty();
-}
+} s
 
 function showDeleteConfirmDiv() {
     $('#deleteConfirmDiv').show();
@@ -561,8 +563,10 @@ function checkForErrors() {
     var errors = $('#errorCage').html();
     console.log(errors);
     if (errors.length > 0) {
+        console.log("checkForErrors returned true!");
         return true;
     } else {
+        console.log("checkForErrors returned false!");
         return false;
     }
 }
