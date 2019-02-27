@@ -2,10 +2,38 @@ $(document).ready(function () {
     populateLibrary();
 
     $('#editDvdSubmitButton').click(function (event) {
-        if (checkForErrors()) {
-            clearErrorCage();
+        clearErrorCage();
+
+        // Validate
+        var messages = [];
+
+        var yearInput = $('#editDvdYear').val();
+
+        var validYear;
+
+        validYear = validYearCheck(yearInput);
+        if (!validYear || yearInput.length == 0) {
+            var messageYear = "The year must be a 4 digit integer.";
+            messages.push(messageYear);
         }
-        submitEditData();
+
+        var titleInput = $('#editDvdTitle').val();
+        var invalidTitle = isEmpty(titleInput);
+        if (invalidTitle) {
+            var messageTitle = "The title must exist";
+            messages.push(messageTitle);
+        }
+
+        if (messages.length > 0) {
+            createErrorMessage(messages);
+            console.log("Went to create error messages");
+            return;
+        }
+
+        if (!checkForErrors()) {
+            console.log("Went to submit data");
+            submitEditData();
+        }
     });
 
     $('#createDvdSubmitButton').click(function (event) {
@@ -19,9 +47,9 @@ $(document).ready(function () {
 
         var validYear;
 
-        validYear = isInt(yearInput);
+        validYear = validYearCheck(yearInput);
         if (!validYear || yearInput.length == 0) {
-            var messageYear = "The year must be an integer.";
+            var messageYear = "The year must be a 4 digit integer.";
             messages.push(messageYear);
         }
 
@@ -63,6 +91,20 @@ $(document).ready(function () {
 function isInt(value) {
     var x;
     return isNaN(value) ? !1 : (x = parseFloat(value), (0 | x) === x);
+}
+
+function validYearCheck(value) {
+    var year = value;
+    var yearLength = year.length;
+    if (yearLength === 4) {
+        if (isInt(year)) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
 }
 
 function isEmpty(string) {
