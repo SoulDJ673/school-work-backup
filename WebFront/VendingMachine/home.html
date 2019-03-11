@@ -32,7 +32,7 @@
             margin-top: 80px;
         }
 
-        #moneySection {
+        #rightBar {
             width: 30%;
             background-color: #333333;
             position: fixed;
@@ -41,6 +41,14 @@
             right: 0;
             z-index: -1;
             padding-top: 80px;
+        }
+
+        button,
+        .btn,
+        .btn-default {
+            background-color: #555555;
+            border-color: #333333;
+            color: #cccccc;
         }
     </style>
 </head>
@@ -54,8 +62,21 @@
             <!-- We'll put stuff in here using JavaScript -->
             <!-- Items will be stored/updated here -->
         </div>
-        <div id="moneySection">
-            <p>Lol</p>
+        <div id="rightBar">
+            <div id="moneyStuff">
+
+                <div class="flex-container"
+                    style="justify-content: center;justify-items: center;align-content: center;align-items: center">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-default">Add Dollar</button>
+                        <button type="button" class="btn btn-default">Add Dime</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-default">Add Nickel</button>
+                        <button type="button" class="btn btn-default">Add Quarter</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
