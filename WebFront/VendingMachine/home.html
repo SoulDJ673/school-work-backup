@@ -7,7 +7,6 @@
     <style>
         .flex-container {
             display: flex;
-
         }
 
         body {
@@ -25,7 +24,6 @@
             top: 0;
             left: 0;
             width: 100%;
-            overflow: hidden;
         }
 
         #contentBody {
@@ -77,21 +75,35 @@
                     <output id="depositedMoneyDisplay"></output>
                 </div>
 
-
                 <div class="flex-container"
-                    style="justify-content: center;justify-items: center;align-content: center;align-items: center">
+                    style="justify-content: center;justify-items: center;align-content: center;align-items: center;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td align="center">
+                                    <button type="button" class="btn btn-default" style="margin:10px">Add
+                                        Dollar</button>
+                                </td>
+                                <td align="center">
+                                    <button type="button" class="btn btn-default" style="margin:10px">Add
+                                        Quarter</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <button type="button" class="btn btn-default" style="margin:10px">Add Dime</button>
+                                </td>
+                                <td align="center">
+                                    <button type="button" class="btn btn-default" style="margin:10px">Add
+                                        Nickel</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    <!-- Try a Table Here (Nvm) -->
 
-                    <div class="width:25%">
-                        <button type="button" class="btn btn-default" style="margin:10px">Add Dollar</button>
-                        <br>
-                        <button type="button" class="btn btn-default" style="margin:10px">Add Dime</button>
-                    </div>
-                    <div style="width:25%">
-                        <button type="button" class="btn btn-default" style="margin:10px">Add Nickel</button><br>
-                        <button type="button" class="btn btn-default" style="margin:10px">Add Quarter</button>
-                    </div>
+
+
                 </div>
             </div>
         </div>
