@@ -46,10 +46,14 @@
 
         button,
         .btn,
-        .btn-default {
+        .btn-default,
+        output {
             background-color: #555555;
             border-color: #333333;
             color: #cccccc;
+            border-radius: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
     </style>
 </head>
@@ -66,10 +70,18 @@
         <div id="rightBar">
             <div id="moneyStuff">
 
+                <h3 class="text-center">Total $ In</h3>
+
+                <div class="flex-container"
+                    style="justify-content: center;justify-items: center;align-content: center;align-items: center">
+                    <output id="depositedMoneyDisplay"></output>
+                </div>
+
+
                 <div class="flex-container"
                     style="justify-content: center;justify-items: center;align-content: center;align-items: center">
 
-                    <!-- Try a Table Here -->
+                    <!-- Try a Table Here (Nvm) -->
 
                     <div class="width:25%">
                         <button type="button" class="btn btn-default" style="margin:10px">Add Dollar</button>
