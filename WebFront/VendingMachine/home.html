@@ -9,6 +9,13 @@
             display: flex;
         }
 
+        .flex-container-centered {
+            justify-content: center;
+            justify-items: center;
+            align-content: center;
+            align-items: center;
+        }
+
         body {
             background-color: #121212;
             color: #cccccc;
@@ -74,13 +81,11 @@
 
                 <h3 class="text-center">Total $ In</h3>
 
-                <div class="flex-container"
-                    style="justify-content: center;justify-items: center;align-content: center;align-items: center">
+                <div class="flex-container flex-container-centered">
                     <output id="depositedMoneyDisplay"></output>
                 </div>
 
-                <div class="flex-container"
-                    style="justify-content: center;justify-items: center;align-content: center;align-items: center;margin-left: 10px;">
+                <div class="flex-container flex-container-centered" style="margin-left: 10px;">
                     <table id="moneyButtonTable">
                         <tbody>
                             <tr>
@@ -104,10 +109,16 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
 
+            <hr align="center" style="width:80%">
 
+            <div id="IODisplay">
+                <h3 class="text-center">Messages</h3>
 
-
+                <div id="messagesDiv" class="flex-container flex-container-centered">
+                    <output style="height:48px;width: 80%"></output>
                 </div>
             </div>
         </div>
