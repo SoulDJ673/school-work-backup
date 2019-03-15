@@ -59,6 +59,19 @@
             border-radius: 20px;
             padding-left: 20px;
             padding-right: 20px;
+            border-width: 0px;
+        }
+
+        input[type="submit"] {
+            background-color: #555555;
+            border-color: #333333;
+            color: #cccccc;
+            border-radius: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-width: 0px;
         }
 
         #moneyButtonTable {
@@ -118,13 +131,19 @@
                 <h3 class="text-center">Messages</h3>
 
                 <div id="messagesDiv" class="flex-container flex-container-centered">
-                    <output style="height:48px;width: 80%"></output>
+                    <output style="height:64px;width: 80%"></output>
                 </div>
-                <form id="itemSelect">
-                    <div class="form-group">
-                        <label for="itemCodeInput">Item: </label>
-                        <input type="text" id="itemCodeInput" required/>
-                        <input type="submit" value="Make Purchase">
+
+                <br>
+
+                <form id="itemSelect" onsubmit="purchaseItem($('#itemCodeInput').val());return false;" accept-charset=utf-8>
+                    <div class="flex-container flex-container-centered">
+                        <div class="form-group" style="width:80%">
+                            <label for="itemCodeInput" style="font-size: 14pt">Item: </label>
+                            <input type="text" id="itemCodeInput" required style="margin-left: 30px" />
+                            <br />
+                            <input type="submit" value="Make Purchase" style="margin-top: 10px;">
+                        </div>
                     </div>
                 </form>
             </div>
