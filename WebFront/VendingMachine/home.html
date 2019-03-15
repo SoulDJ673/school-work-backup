@@ -46,7 +46,7 @@
             right: 0;
             z-index: -1;
             padding-top: 80px;
-            overflow: hidden;
+            overflow: auto;
         }
 
         button,
@@ -136,7 +136,8 @@
 
                 <br>
 
-                <form id="itemSelect" onsubmit="purchaseItem($('#itemCodeInput').val());return false;" accept-charset=utf-8>
+                <form id="itemSelect" onsubmit="purchaseItem($('#itemCodeInput').val());return false;"
+                    accept-charset=utf-8>
                     <div class="flex-container flex-container-centered">
                         <div class="form-group" style="width:80%">
                             <label for="itemCodeInput" style="font-size: 14pt">Item: </label>
@@ -146,6 +147,22 @@
                         </div>
                     </div>
                 </form>
+            </div>
+
+            <hr align="center" style="width:80%">
+
+            <div id="changeDiv">
+                <h3 class="text-center">Change</h3>
+
+                <div class="flex-container flex-container-centered">
+                    <output style="height:48px;width:40%"></output>
+                </div>
+
+                <br />
+                <div class="flex-container flex-container-centered">
+                    <button type="button" class="btn btn-default">Change Return</button>
+                </div>
+                <br />
             </div>
         </div>
     </div>
