@@ -7,6 +7,7 @@
     <style>
         .flex-container {
             display: flex;
+            flex-wrap: wrap;
         }
 
         .flex-container-centered {
@@ -80,11 +81,11 @@
         }
 
         .item-box {
-            width: 200px;
+            min-width: 200px;
             height: 200px;
             border-color: #ffffff;
             border-width: 3px;
-            margin: 10px;
+            margin: 20px;
             background-color: #3d3d3d;
             border-radius: 10px;
             padding: 20px;
@@ -97,7 +98,7 @@
         <h1 style="text-shadow:2px 2px 5px black">Vending Machine</h1>
     </div>
     <div id="contentBody" class="flex-container">
-        <div id="foodStuffs" style="width:70%">
+        <div id="foodStuffs" class="flex-container flex-container-centered" style="width:70%">
             <!-- We'll put stuff in here using JavaScript -->
             <!-- Items will be stored/updated here -->
         </div>
@@ -107,7 +108,8 @@
                 <h3 class="text-center">Total $ In</h3>
 
                 <div class="flex-container flex-container-centered">
-                    <output id="depositedMoneyDisplay"></output>
+                    <!-- Default Value is $0.00-->
+                    <output id="depositedMoneyDisplay">$0.00</output>
                 </div>
 
                 <div class="flex-container flex-container-centered" style="margin-left: 10px;">
