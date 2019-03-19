@@ -70,6 +70,8 @@
             min-height: 16pt;
         }
 
+
+
         input[type="submit"] {
             background-color: #555555;
             border-color: #333333;
@@ -96,6 +98,10 @@
             border-radius: 10px;
             padding: 20px;
         }
+
+        .item-box:hover {
+            background-color: #303030;
+        }
     </style>
 </head>
 
@@ -103,12 +109,14 @@
     <div id="headerDiv" class="flex-container" style="position: fixed">
         <h1 style="text-shadow:2px 2px 5px black">Vending Machine</h1>
     </div>
+    <!-- Using a flex container to divide page because I'm lazy -->
     <div id="contentBody" class="flex-container">
         <div id="foodStuffs" class="flex-container flex-container-centered" style="width:70%">
             <!-- We'll put stuff in here using JavaScript -->
             <!-- Items will be stored/updated here -->
         </div>
         <div id="rightBar">
+            <!-- User input and vending output happens here -->
             <div id="moneyStuff">
 
                 <h3 class="text-center">Total $ In</h3>
@@ -120,23 +128,28 @@
 
                 <div class="flex-container flex-container-centered" style="margin-left: 10px;">
                     <table id="moneyButtonTable">
+                        <!-- This is how I made the buttons into an even 2x2 -->
                         <tbody>
                             <tr>
                                 <td align="center">
-                                    <button type="button" class="btn btn-default" style="margin:10px">Add
+                                    <button type="button" class="btn btn-default" style="margin:10px"
+                                        onclick="addCoinage(1.00)">Add
                                         Dollar</button>
                                 </td>
                                 <td align="center">
-                                    <button type="button" class="btn btn-default" style="margin:10px">Add
+                                    <button type="button" class="btn btn-default" style="margin:10px"
+                                        onclick="addCoinage(0.25)">Add
                                         Quarter</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <button type="button" class="btn btn-default" style="margin:10px">Add Dime</button>
+                                    <button type="button" class="btn btn-default" style="margin:10px"
+                                        onclick="addCoinage(0.10)">Add Dime</button>
                                 </td>
                                 <td align="center">
-                                    <button type="button" class="btn btn-default" style="margin:10px">Add
+                                    <button type="button" class="btn btn-default" style="margin:10px"
+                                        onclick="addCoinage(0.05)">Add
                                         Nickel</button>
                                 </td>
                             </tr>
@@ -151,7 +164,7 @@
                 <h3 class="text-center">Messages</h3>
 
                 <div id="messagesDiv" class="flex-container flex-container-centered">
-                    <output style="height:64px;width: 80%"></output>
+                    <output align='center' id="messagesOutput" style="height:64px;width: 80%"></output>
                 </div>
 
                 <br>

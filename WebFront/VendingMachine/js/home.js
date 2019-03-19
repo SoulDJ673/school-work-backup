@@ -1,16 +1,36 @@
+var depositedMoney = 0.00;
+
 $(document).ready(function () {
     loadItems();
 });
 
 function addCoinage(value) {
-
+    depositedMoney += value;
+    $('#depositedMoneyDisplay').val("$" + depositedMoney.toFixed(2));
 };
 
 function purchaseItem(id) {
-
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/money/' + depositedMoney + '/item/' + id,
+        success: function (data, response) {
+            var change = 0;
+            change += .10(response.responseJSON.dimes);
+            alert(response.responseJSON.dimes);
+            alert(response.responseJSON.nickels);
+            alert(response.responseJSON.pennies);
+            alert(response.responseJSON.quarters);
+            loadItems();
+        },
+        error: function (headers) {
+            alert(headers.responseJSON.message);
+        }
+    });
 };
 
 function loadItems() {
+    $('#foodStuffs').empty();
+
     $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/items',
@@ -33,7 +53,7 @@ function loadItems() {
             });
         },
         error: function () {
-
+            $('#messagesOutput').val("Failed to contact web service.")
         }
     });
 };
