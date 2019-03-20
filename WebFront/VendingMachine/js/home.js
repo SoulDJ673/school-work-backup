@@ -1,4 +1,5 @@
 var depositedMoney = 0.00;
+var change = 0.00;
 
 $(document).ready(function () {
     loadItems();
@@ -13,17 +14,18 @@ function purchaseItem(id) {
     $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/money/' + depositedMoney + '/item/' + id,
-        success: function (data, response) {
+        success: function (status, data, response) {
             var change = 0;
-            change += .10(response.responseJSON.dimes);
-            alert(response.responseJSON.dimes);
-            alert(response.responseJSON.nickels);
-            alert(response.responseJSON.pennies);
-            alert(response.responseJSON.quarters);
+            change += .10 * (response.responseJSON.dimes);
+            change += .05 * (response.responseJSON.nickels);
+            change += .01 * (response.responseJSON.pennies);
+            change += .25 * (response.responseJSON.quarters);
+            $('#messagesOutput').val('Thank You!');
+            $('#changeDisplay').val('$' + change);
             loadItems();
         },
         error: function (headers) {
-            alert(headers.responseJSON.message);
+            $('#messagesOutput').val(headers.responseJSON.message);
         }
     });
 };
