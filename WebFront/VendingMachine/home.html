@@ -193,7 +193,10 @@
 
                 <br />
                 <div class="flex-container flex-container-centered">
-                    <button type="button" class="btn btn-default">Change Return</button>
+                    <!-- Button reads value from money display, puts that into change display, and resets money display -->
+                    <button type="button" class="btn btn-default" onclick="$('#changeDisplay').val('$' + depositedMoney);
+                        depositedMoney = 0; $('#depositedMoneyDisplay').val('$' + depositedMoney.toFixed(2));">Change
+                        Return</button>
                 </div>
                 <br />
             </div>

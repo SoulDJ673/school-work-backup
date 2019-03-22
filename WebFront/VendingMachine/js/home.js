@@ -22,6 +22,10 @@ function purchaseItem(id) {
             change += .25 * (response.responseJSON.quarters);
             $('#messagesOutput').val('Thank You!');
             $('#changeDisplay').val('$' + change);
+
+            //Reset deposit display
+            depositedMoney = 0;
+            $('#depositedMoneyDisplay').val("$" + depositedMoney.toFixed(2));
             loadItems();
         },
         error: function (headers) {
