@@ -4,6 +4,7 @@
 <head>
     <title>Not A Vending Machine</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- To be deported to css folder -->
     <style>
         .flex-container {
             display: flex;
@@ -113,7 +114,7 @@
     <div id="contentBody" class="flex-container">
         <div id="foodStuffs" class="flex-container flex-container-centered" style="width:70%;max-width: 1280px;">
             <!-- We'll put stuff in here using JavaScript -->
-            <!-- Items will be stored/updated here -->
+            <!-- Item boxes will be stored/updated here -->
         </div>
         <div id="rightBar">
             <!-- User input and vending output happens here -->
@@ -158,6 +159,7 @@
                 </div>
             </div>
 
+            <!-- Pretty Line PagChomp -->
             <hr align="center" style="width:80%">
 
             <div id="IODisplay">
@@ -169,11 +171,14 @@
 
                 <br>
 
+                <!-- Form submission for actually purchasing an item.  
+                    return false to prevent reloading the page for no reason (browser default) -->
                 <form id="itemSelect" onsubmit="purchaseItem($('#itemCodeInput').val());return false;"
                     accept-charset=utf-8>
                     <div class="flex-container flex-container-centered">
                         <div class="form-group" style="width:80%">
                             <label for="itemCodeInput" style="font-size: 14pt">Item: </label>
+                            <!-- Input validation is build into the API :) -->
                             <input type="text" id="itemCodeInput" required style="margin-left: 30px" />
                             <br />
                             <input type="submit" value="Make Purchase" style="margin-top: 10px;">
@@ -188,6 +193,7 @@
                 <h3 class="text-center">Change</h3>
 
                 <div class="flex-container flex-container-centered">
+                    <!-- A bit cramped, but functional.  Added messages so the user knows how to retrieve change -->
                     <output id="changeDisplay" style="height:48px;width:40%" onmouseout="$('#messagesOutput').val('');"
                         onmouseover="$('#messagesOutput').val('Click on the change output display to retrieve your money!');"
                         onclick="alert('Change Retrieved');$('#changeDisplay').val('');"></output>
@@ -204,6 +210,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Maybe went a bit too flex happy -->
 
     <script src="js/jquery-3.0.0.min.js"></script>
     <script src="js/bootstrap.js"></script>
