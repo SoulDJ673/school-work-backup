@@ -4,9 +4,16 @@
 
 This is everything from the first semester.  You will find it in the Java/ directory.
 
+
 ## Web Frontend
 
-This is everything from the second semester.  You will find it in the WebFront/ directory
+This is everything from the winter part of the second semester.  You will find it in the WebFront/ directory
+
+
+## Web Services
+
+This is everything from the spring part of the second semester.  It brings Java and Web Frontend Development together.  You will find it in the Web\ Services/ directory.
+
 
 ## push
 
