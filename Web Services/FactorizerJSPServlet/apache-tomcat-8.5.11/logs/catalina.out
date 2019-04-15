@@ -69,3 +69,10 @@ Picked up _JAVA_OPTIONS:  -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -
 12-Apr-2019 09:33:54.386 INFO [http-nio-8080-exec-34] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/FactorizerJSPServlet/apache-tomcat-8.5.11/conf/Catalina/localhost/FactorizerJSPServlet.xml
 12-Apr-2019 09:33:54.566 INFO [http-nio-8080-exec-34] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/FactorizerJSPServlet/apache-tomcat-8.5.11/conf/Catalina/localhost/FactorizerJSPServlet.xml has finished in 180 ms
 12-Apr-2019 09:33:54.641 INFO [http-nio-8080-exec-39] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FactorizerJSPServlet]] after start() had already been called. The second call will be ignored.
+12-Apr-2019 10:49:17.933 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+12-Apr-2019 10:49:17.988 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+12-Apr-2019 10:49:18.039 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+12-Apr-2019 10:49:18.063 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+12-Apr-2019 10:49:18.066 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+12-Apr-2019 10:49:18.067 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+12-Apr-2019 10:49:18.068 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

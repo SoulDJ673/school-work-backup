@@ -3,10 +3,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Factorizor</title>
+        <title>Factorizer</title>
     </head>
     <body>
-        <h1>Factorizor</h1>
+        <h1>Factorizer</h1>
         <p>
             Please enter the number you want to factor:
         </p>
