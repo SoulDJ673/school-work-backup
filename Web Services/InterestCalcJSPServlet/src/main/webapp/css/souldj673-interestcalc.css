@@ -1,4 +1,12 @@
-html {
-    background-color: papayawhip;
+html, body {
+    background-color: #e2c497;
     color: rgba(0, 0, 0, 90%);
+}
+
+body {
+    padding: 7%;
+}
+
+.flex-container {
+    display: flex;
 }
