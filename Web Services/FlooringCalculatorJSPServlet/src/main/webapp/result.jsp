@@ -18,10 +18,18 @@
             <h1>Flooring Calculator</h1>
         </div>
         <div class="centered-flex-container text-background">
-            <h3>Your total comes out to be: $${result}</h3>
+            <div>
+                <h3>Your total comes out to be: $${result}</h3>
+                <br>
+                <br>
+                <p class="text-center">Labor Costs: $${laborCost}</p>
+                <p class="text-center">Labor Time (Minutes): ${workTime} minutes</p>
+                <p class="text-center">Material Costs: $${materialCost}</p>
+
+            </div>
         </div>
         <div class="centered-flex-container">
-            <button class="btn-form" onclick="" style="padding: 5px;padding-left: 10px;padding-right: 10px;">Return</a>
+            <a href="index.jsp" class="button-link">Return</a>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

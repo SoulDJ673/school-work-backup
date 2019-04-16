@@ -31,16 +31,44 @@ public class FlooringCalculator extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Grabbing Values for index.jsp
-        double width = Double.parseDouble(request.getParameter("widthOfArea"));
-        double length = Double.parseDouble(request.getParameter("lengthOfArea"));
-        double price = Double.parseDouble(request.getParameter("pricePerSqFoot"));
+        double width;
+        double length;
+        double price;
 
-        //Calculate
-        double result = width * length * price;
+        //Taking care of empty strings & grabbing values from index.jsp
+        if (request.getParameter("widthOfArea").isEmpty()) {
+            width = 0.0;
+        } else {
+            width = Double.parseDouble(request.getParameter("widthOfArea"));
+        }
+        if (request.getParameter("lengthOfArea").isEmpty()) {
+            length = 0.0;
+        } else {
+            length = Double.parseDouble(request.getParameter("lengthOfArea"));
+        }
+        if (request.getParameter("pricePerSqFoot").isEmpty()) {
+            price = 0.0;
+        } else {
+            price = Double.parseDouble(request.getParameter("pricePerSqFoot"));
+        }
+
+        //Calculations
+        double area = length * width;
+        int buildRate = 20; //Team can build at 20 sq ft per hour
+        double workTimeMinutes = ((area / buildRate) * 60);
+        double workCharges = (workTimeMinutes / 15); // area / 20sqftPerHour multiplied by 60 minutes / 15 minute cycles
+        int workChargeRounded = (int) Math.round(workCharges); //Rounds up to the next charge and converts to int
+        double laborRate = 86.00; //Cost per hour of labor
+
+        double laborCost = (workChargeRounded * laborRate);
+        double materialCost = (length * width * price);
+        double result = materialCost + laborCost;
 
         //Setting attribute because permissions
         request.setAttribute("result", result);
+        request.setAttribute("workTime", workTimeMinutes);
+        request.setAttribute("laborCost", laborCost);
+        request.setAttribute("materialCost", materialCost);
 
         //Use Request Dispatcher for result.jsp to forward request
         RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
