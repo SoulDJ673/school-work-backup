@@ -40,3 +40,11 @@
 16-Apr-2019 10:41:18.576 INFO [http-nio-8080-exec-5] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml
 16-Apr-2019 10:41:18.618 INFO [http-nio-8080-exec-5] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml has finished in 41 ms
 16-Apr-2019 10:41:18.670 INFO [http-nio-8080-exec-7] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/InterestCalcJSPServlet]] after start() had already been called. The second call will be ignored.
+16-Apr-2019 10:54:33.258 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+16-Apr-2019 10:54:33.259 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+16-Apr-2019 10:54:33.311 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+16-Apr-2019 10:54:33.363 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+16-Apr-2019 10:54:33.413 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+16-Apr-2019 10:54:33.414 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+16-Apr-2019 10:54:33.415 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+16-Apr-2019 10:54:33.416 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

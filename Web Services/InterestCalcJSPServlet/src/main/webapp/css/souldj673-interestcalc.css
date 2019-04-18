@@ -1,6 +1,6 @@
 html, body {
-    background-color: #e2c497;
-    color: rgba(0, 0, 0, 90%);
+    background-color: #000000;
+    color: #eaeaea;
 }
 
 body {
@@ -9,4 +9,11 @@ body {
 
 .flex-container {
     display: flex;
+}
+
+hr {
+    width: 70%;
+    background-color: #424242aa;
+    text-align: left;
+    margin-left: 0;
 }
