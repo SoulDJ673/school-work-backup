@@ -23,7 +23,7 @@
                 <label for="rate">Annual Interest Rate:</label>
                 <input class="back-grey" type="text" placeholder="Annual interest rate (in %)" name="rate">
                 <br style="margin-bottom: 20px;">
-                <label for="initialMoney">Initial Principle:</label>
+                <label for="initialPrinciple">Initial Principle:</label>
                 <input class="back-grey" type="text" placeholder="Initial $$$" name="initPrinciple">
                 <br style="margin-bottom: 20px;">
                 <label for="yearsHeld">Time:</label>
