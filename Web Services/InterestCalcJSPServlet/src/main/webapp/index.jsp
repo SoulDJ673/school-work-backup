@@ -21,11 +21,15 @@
         <div style="margin-left: 7%">
             <form method="post" action="InterestServlet">
                 <label for="rate">Annual Interest Rate:</label>
-                <input type="text" placeholder="Annual interest rate (in %)" name="rate">
+                <input class="back-grey" type="text" placeholder="Annual interest rate (in %)" name="rate">
                 <br style="margin-bottom: 20px;">
                 <label for="initialMoney">Initial Principle:</label>
-                <input type="text" placeholder="Initial $$$" name="initPrinciple">
-                
+                <input class="back-grey" type="text" placeholder="Initial $$$" name="initPrinciple">
+                <br style="margin-bottom: 20px;">
+                <label for="yearsHeld">Time:</label>
+                <input class="back-grey" type="number" placeholder="Years to hold" name="yearsHeld">
+                <br style="margin-bottom: 20px;">
+                <input class="back-grey" type="submit" value="Go!">
             </form>
         </div>
 

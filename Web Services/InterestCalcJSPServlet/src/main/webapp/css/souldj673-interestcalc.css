@@ -26,3 +26,17 @@ hr {
     width: 5%;
     height: 5%;
 }
+
+/* Make the number input boxes uniform to the text ones */
+
+input[type=number] {
+    height: 38px;
+    padding: 5px;
+    border-width: 2;
+}
+
+input, button {
+    border-radius: 10px;
+    border-color: #00000000;
+    padding: 5px;
+}
