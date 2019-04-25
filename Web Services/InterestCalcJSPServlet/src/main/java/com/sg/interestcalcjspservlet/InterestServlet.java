@@ -18,7 +18,6 @@ package com.sg.interestcalcjspservlet;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,7 +49,7 @@ public class InterestServlet extends HttpServlet {
         String rate = request.getParameter("rate");
         rate = rate.replace("%", "");
         rate = rate.trim();
-        String initialPrinciple = request.getParameter("initialPrinciple");
+        String initialPrinciple = request.getParameter("initPrinciple");
         initialPrinciple = initialPrinciple.replace("$", "");
         initialPrinciple = initialPrinciple.trim();
 
