@@ -17,6 +17,8 @@
 package com.sg.interestcalcjspservlet;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,26 +46,54 @@ public class InterestServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        //Strip unneccessary symbol or text content
+        String rate = request.getParameter("rate");
+        rate = rate.replace("%", "");
+        rate = rate.trim();
+        String initialPrinciple = request.getParameter("initialPrinciple");
+        initialPrinciple = initialPrinciple.replace("$", "");
+        initialPrinciple = initialPrinciple.trim();
+
         //Data Containers
         int yearsToHold = Integer.parseInt(request.getParameter("yearsHeld"));
-        int[] products = new int[Integer.parseInt(request.getParameter("yearsHeld"))];
-        int[] principles = new int[Integer.parseInt(request.getParameter("yearsHeld"))];
+        BigDecimal[] products = new BigDecimal[yearsToHold * 4];
+        BigDecimal[] principles = new BigDecimal[yearsToHold * 4];
 
         //Math
-        for (int year = 0; year < yearsToHold; year++) {
-            int principle;
-            int interest;
-            int result;
-            
-            if (year == 0) {
+        double annualInterestRate = Double.parseDouble(rate);
+        double quarterlyRate = annualInterestRate / 4;
+        for (int quarter = 0; quarter < yearsToHold * 4; quarter++) {
+            BigDecimal principle;
+            BigDecimal interest;
+            BigDecimal result;
+
+            if (quarter == 0) {
                 //Grab principle from request if this is the first run through
-                principle = Integer.parseInt(request.getParameter("initialPrinciple"));
+                principle = new BigDecimal(initialPrinciple);
             } else {
-                principle = products[year - 1];
+                principle = products[quarter - 1];
             }
+            //Interest
+            interest = principle.multiply(new BigDecimal(1 + (quarterlyRate / 100)));
+
+            result = principle.add(interest);
+
+            //Add back to arrays
+            principles[quarter] = principle;
+            products[quarter] = result;
+        }
+
+        //Package up relevant data
+        double[] yearlyPrinciples = new double[yearsToHold];
+        double[] yearlyResults = new double[yearsToHold];
+        for (int quarter = 0; quarter < yearsToHold * 4; quarter = quarter + 4) {
+            yearlyPrinciples[quarter] = principles[quarter].doubleValue();
+            yearlyResults[quarter] = products[quarter].doubleValue();
         }
 
         //Send data off to result page
+        request.setAttribute("principles", yearlyPrinciples);
+        request.setAttribute("products", yearlyResults);
         RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
         rd.forward(request, response);
     }
