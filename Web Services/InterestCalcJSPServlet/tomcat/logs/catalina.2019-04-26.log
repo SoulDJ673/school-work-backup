@@ -1,0 +1,73 @@
+26-Apr-2019 10:20:07.345 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.11
+26-Apr-2019 10:20:07.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jan 10 2017 21:02:52 UTC
+26-Apr-2019 10:20:07.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.11.0
+26-Apr-2019 10:20:07.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+26-Apr-2019 10:20:07.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.0.7-1-MANJARO
+26-Apr-2019 10:20:07.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+26-Apr-2019 10:20:07.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-8-jdk/jre
+26-Apr-2019 10:20:07.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_202-b08
+26-Apr-2019 10:20:07.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+26-Apr-2019 10:20:07.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat
+26-Apr-2019 10:20:07.357 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat
+26-Apr-2019 10:20:07.357 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/logging.properties
+26-Apr-2019 10:20:07.358 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+26-Apr-2019 10:20:07.358 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+26-Apr-2019 10:20:07.358 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+26-Apr-2019 10:20:07.358 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat
+26-Apr-2019 10:20:07.358 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat
+26-Apr-2019 10:20:07.358 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/temp
+26-Apr-2019 10:20:07.359 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+26-Apr-2019 10:20:07.828 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+26-Apr-2019 10:20:07.862 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+26-Apr-2019 10:20:07.865 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+26-Apr-2019 10:20:07.885 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+26-Apr-2019 10:20:07.886 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 2896 ms
+26-Apr-2019 10:20:08.018 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+26-Apr-2019 10:20:08.027 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.11
+26-Apr-2019 10:20:08.111 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml
+26-Apr-2019 10:20:10.178 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml has finished in 2,066 ms
+26-Apr-2019 10:20:10.181 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/docs
+26-Apr-2019 10:20:10.247 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/docs has finished in 66 ms
+26-Apr-2019 10:20:10.247 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/manager
+26-Apr-2019 10:20:10.366 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/manager has finished in 119 ms
+26-Apr-2019 10:20:10.368 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/examples
+26-Apr-2019 10:20:11.326 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/examples has finished in 959 ms
+26-Apr-2019 10:20:11.327 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/ROOT
+26-Apr-2019 10:20:11.363 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/ROOT has finished in 35 ms
+26-Apr-2019 10:20:11.363 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/host-manager
+26-Apr-2019 10:20:11.415 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/webapps/host-manager has finished in 52 ms
+26-Apr-2019 10:20:11.480 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+26-Apr-2019 10:20:11.551 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+26-Apr-2019 10:20:11.562 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 3674 ms
+26-Apr-2019 10:20:59.414 INFO [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/InterestCalcJSPServlet]
+26-Apr-2019 10:20:59.510 INFO [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml
+26-Apr-2019 10:20:59.597 INFO [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml has finished in 87 ms
+26-Apr-2019 10:20:59.865 INFO [http-nio-8080-exec-10] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/InterestCalcJSPServlet]] after start() had already been called. The second call will be ignored.
+26-Apr-2019 10:23:12.181 INFO [http-nio-8080-exec-11] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] has started
+26-Apr-2019 10:23:12.228 INFO [http-nio-8080-exec-11] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
+26-Apr-2019 10:28:18.109 INFO [http-nio-8080-exec-21] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] has started
+26-Apr-2019 10:28:18.175 INFO [http-nio-8080-exec-21] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
+26-Apr-2019 10:28:22.308 INFO [http-nio-8080-exec-26] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] has started
+26-Apr-2019 10:28:22.337 INFO [http-nio-8080-exec-26] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
+26-Apr-2019 10:28:35.795 INFO [http-nio-8080-exec-28] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] has started
+26-Apr-2019 10:28:35.896 INFO [http-nio-8080-exec-28] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
+26-Apr-2019 10:28:38.548 INFO [http-nio-8080-exec-20] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] has started
+26-Apr-2019 10:28:38.676 INFO [http-nio-8080-exec-20] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
+26-Apr-2019 10:29:00.738 INFO [http-nio-8080-exec-33] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/InterestCalcJSPServlet]
+26-Apr-2019 10:29:27.803 INFO [http-nio-8080-exec-36] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml
+26-Apr-2019 10:29:27.828 INFO [http-nio-8080-exec-36] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml has finished in 27 ms
+26-Apr-2019 10:29:27.888 INFO [http-nio-8080-exec-22] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/InterestCalcJSPServlet]] after start() had already been called. The second call will be ignored.
+26-Apr-2019 10:30:45.382 INFO [http-nio-8080-exec-37] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] has started
+26-Apr-2019 10:30:45.410 INFO [http-nio-8080-exec-37] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
+26-Apr-2019 10:31:11.130 INFO [http-nio-8080-exec-23] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/InterestCalcJSPServlet]
+26-Apr-2019 10:31:11.194 INFO [http-nio-8080-exec-40] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml
+26-Apr-2019 10:31:11.411 INFO [http-nio-8080-exec-40] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/InterestCalcJSPServlet/tomcat/conf/Catalina/localhost/InterestCalcJSPServlet.xml has finished in 217 ms
+26-Apr-2019 10:31:11.511 INFO [http-nio-8080-exec-42] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/InterestCalcJSPServlet]] after start() had already been called. The second call will be ignored.
+26-Apr-2019 11:28:02.349 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+26-Apr-2019 11:28:02.350 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+26-Apr-2019 11:28:02.406 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+26-Apr-2019 11:28:02.406 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+26-Apr-2019 11:28:02.447 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+26-Apr-2019 11:28:02.455 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+26-Apr-2019 11:28:02.456 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+26-Apr-2019 11:28:02.459 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

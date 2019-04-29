@@ -114,3 +114,10 @@ Picked up _JAVA_OPTIONS:  -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
 25-Apr-2019 10:58:47.275 INFO [http-nio-8080-exec-13] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
 25-Apr-2019 10:59:28.987 INFO [http-nio-8080-exec-12] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] has started
 25-Apr-2019 10:59:29.021 INFO [http-nio-8080-exec-12] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/InterestCalcJSPServlet] is completed
+25-Apr-2019 11:00:24.801 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+25-Apr-2019 11:00:24.810 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+25-Apr-2019 11:00:24.870 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+25-Apr-2019 11:00:24.911 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+25-Apr-2019 11:00:24.914 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+25-Apr-2019 11:00:24.918 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+25-Apr-2019 11:00:24.920 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

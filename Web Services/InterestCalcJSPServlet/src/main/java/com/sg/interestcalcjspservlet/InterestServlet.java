@@ -73,7 +73,7 @@ public class InterestServlet extends HttpServlet {
                 principle = products[quarter - 1];
             }
             //Interest
-            interest = principle.multiply(new BigDecimal(1 + (quarterlyRate / 100)));
+            interest = principle.multiply(new BigDecimal((quarterlyRate / 100)));
 
             result = principle.add(interest);
 
@@ -85,9 +85,18 @@ public class InterestServlet extends HttpServlet {
         //Package up relevant data
         double[] yearlyPrinciples = new double[yearsToHold];
         double[] yearlyResults = new double[yearsToHold];
-        for (int quarter = 0; quarter < yearsToHold * 4; quarter = quarter + 4) {
-            yearlyPrinciples[quarter] = principles[quarter].doubleValue();
-            yearlyResults[quarter] = products[quarter].doubleValue();
+        for (int quarter = 0; quarter <= yearsToHold * 4; quarter = quarter + 4) {
+            try {
+                if (quarter == 0) {
+                    yearlyPrinciples[quarter / 4] = principles[quarter].doubleValue();
+                    yearlyResults[quarter / 4] = products[quarter].doubleValue();
+                } else if (quarter > 0) {
+                    yearlyPrinciples[quarter / 4] = principles[quarter - 1].doubleValue();
+                    yearlyResults[quarter / 4] = products[quarter - 1].doubleValue();
+                }
+            } catch (Exception e) {
+                continue;
+            }
         }
 
         //Send data off to result page

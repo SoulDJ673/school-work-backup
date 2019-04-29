@@ -19,10 +19,10 @@
         <h2 class="comment">Calculate Interest rates and stuff. Idc.</h2>
         <hr>
         <div style="margin-left: 7%">
-            <table>
+            <table class="text-red back-grey">
                 <tr>
                     <c:forEach var="currentYearPrinciple" items="${principles}">
-                        <c:out value="<td>$(currentYearPrinciple)</td>"/>
+                        <td>$<c:out value="${currentYearPrinciple}"/></td>
                     </c:forEach>
                 </tr>
             </table>
