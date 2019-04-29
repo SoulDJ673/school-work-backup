@@ -21,7 +21,22 @@
         <div style="margin-left: 7%">
             <table class="text-red back-grey">
                 <tr>
-                    <c:forEach var="currentYearPrinciple" items="${principles}">
+                    <th>Year</th>
+                        <c:forEach var="currentYear" items="${principles.keySet().toArray()}">
+                        <td>
+                            <c:out value="${currentYear}"/>
+                        </td>
+                    </c:forEach>
+                </tr>
+                <tr>
+                    <td>Yearly Starting Principles</td>
+                    <c:forEach var="currentYearPrinciple" items="${principles.values()}">
+                        <td>$<c:out value="${currentYearPrinciple}"/></td>
+                    </c:forEach>
+                </tr>               
+                <tr>
+                    <td>Yearly Ending Principles</td>
+                    <c:forEach var="currentYearPrinciple" items="${products.values()}">
                         <td>$<c:out value="${currentYearPrinciple}"/></td>
                     </c:forEach>
                 </tr>

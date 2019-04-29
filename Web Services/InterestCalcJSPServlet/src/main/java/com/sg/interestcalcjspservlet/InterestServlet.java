@@ -18,6 +18,8 @@ package com.sg.interestcalcjspservlet;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -83,21 +85,23 @@ public class InterestServlet extends HttpServlet {
         }
 
         //Package up relevant data
-        double[] yearlyPrinciples = new double[yearsToHold];
-        double[] yearlyResults = new double[yearsToHold];
+        Map<Integer, Double> yearlyPrinciples = new TreeMap<>();
+        Map<Integer, Double> yearlyResults = new TreeMap<>();
         for (int quarter = 0; quarter <= yearsToHold * 4; quarter = quarter + 4) {
             try {
                 if (quarter == 0) {
-                    yearlyPrinciples[quarter / 4] = principles[quarter].doubleValue();
-                    yearlyResults[quarter / 4] = products[quarter].doubleValue();
+                    yearlyPrinciples.put(quarter / 4, principles[quarter].doubleValue());
+                    yearlyResults.put(quarter / 4, products[quarter].doubleValue());
                 } else if (quarter > 0) {
-                    yearlyPrinciples[quarter / 4] = principles[quarter - 1].doubleValue();
-                    yearlyResults[quarter / 4] = products[quarter - 1].doubleValue();
+                    yearlyPrinciples.put(quarter / 4, principles[quarter - 1].doubleValue());
+                    yearlyResults.put(quarter / 4, products[quarter - 1].doubleValue());
                 }
             } catch (Exception e) {
                 continue;
             }
         }
+        
+        
 
         //Send data off to result page
         request.setAttribute("principles", yearlyPrinciples);
