@@ -1,0 +1,18 @@
+@font-face {
+    font-family: PetscopWide;
+    src: url(../font/PetscopWide.ttf) format('truetype')
+}
+
+body, html {
+    background-color: #000
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: #efefef;
+    font-family: PetscopWide, Arial, Helvetica, sans-serif
+}
+
+.title {
+    font-size: 36pt;
+    text-align: center;
+}
