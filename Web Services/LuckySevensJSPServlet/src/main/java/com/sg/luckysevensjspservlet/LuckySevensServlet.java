@@ -80,6 +80,7 @@ public class LuckySevensServlet extends HttpServlet {
         }
         
         //If money is gone, end game
+        request.setAttribute("betMoney", request.getParameter("dollarInput"));
         request.setAttribute("maxMoney", maxMoney);
         request.setAttribute("maxRolls", maxRolls);
         request.setAttribute("rolls", rolls);
