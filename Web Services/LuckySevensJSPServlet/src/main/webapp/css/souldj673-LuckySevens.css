@@ -7,12 +7,41 @@ body, html {
     background-color: #000
 }
 
-h1, h2, h3, h4, h5, h6, p {
+html {
+    padding: 5%
+}
+
+h1, h2, h3, h4, h5, h6, label, li, p {
     color: #efefef;
-    font-family: PetscopWide, Arial, Helvetica, sans-serif
+    font-family: PetscopWide, Arial, Helvetica, sans-serif;
+    text-align: left
+}
+
+li, ul {
+    padding-left: 2%;
+    margin-left: 0
 }
 
 .title {
     font-size: 36pt;
-    text-align: center;
+    margin: 15px;
+    margin-left: 0;
+    margin-top: 32px
+}
+
+.subtitle {
+    font-size: 12pt
+}
+
+hr {
+    width: 75%;
+    text-align: left;
+    left: 0;
+    margin-bottom: 20px
+}
+
+input, input[type=number] {
+    height: 24pt;
+    border-radius: 7px;
+    border-color: rgba(0, 0, 0, 0);
 }
