@@ -44,3 +44,31 @@
 30-Apr-2019 09:36:47.530 INFO [http-nio-8080-exec-7] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
 30-Apr-2019 09:36:47.793 INFO [http-nio-8080-exec-5] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
 30-Apr-2019 09:36:47.859 INFO [http-nio-8080-exec-5] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 09:58:30.643 INFO [http-nio-8080-exec-16] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 09:58:30.664 INFO [http-nio-8080-exec-16] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:01:45.714 INFO [http-nio-8080-exec-24] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:01:45.738 INFO [http-nio-8080-exec-24] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:02:27.548 INFO [http-nio-8080-exec-22] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:02:27.575 INFO [http-nio-8080-exec-22] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:02:28.946 INFO [http-nio-8080-exec-18] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:02:28.982 INFO [http-nio-8080-exec-18] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:06:42.253 INFO [http-nio-8080-exec-29] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:06:42.292 INFO [http-nio-8080-exec-29] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:06:53.844 INFO [http-nio-8080-exec-22] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/LuckySevensJSPServlet]
+30-Apr-2019 10:07:56.406 INFO [http-nio-8080-exec-33] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/LuckySevensJSPServlet.xml
+30-Apr-2019 10:07:56.763 INFO [http-nio-8080-exec-33] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/LuckySevensJSPServlet.xml has finished in 357 ms
+30-Apr-2019 10:07:56.936 INFO [http-nio-8080-exec-29] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/LuckySevensJSPServlet]] after start() had already been called. The second call will be ignored.
+30-Apr-2019 10:08:12.675 INFO [http-nio-8080-exec-39] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:08:12.875 INFO [http-nio-8080-exec-39] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:09:15.322 INFO [http-nio-8080-exec-38] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:09:15.467 INFO [http-nio-8080-exec-38] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:09:16.781 INFO [http-nio-8080-exec-42] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:09:16.908 INFO [http-nio-8080-exec-42] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:09:47.129 INFO [http-nio-8080-exec-48] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:09:47.252 INFO [http-nio-8080-exec-48] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:17:26.080 INFO [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:17:26.206 INFO [http-nio-8080-exec-59] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:18:03.654 INFO [http-nio-8080-exec-55] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:18:03.745 INFO [http-nio-8080-exec-55] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed
+30-Apr-2019 10:27:14.143 INFO [http-nio-8080-exec-76] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] has started
+30-Apr-2019 10:27:14.227 INFO [http-nio-8080-exec-76] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/LuckySevensJSPServlet] is completed

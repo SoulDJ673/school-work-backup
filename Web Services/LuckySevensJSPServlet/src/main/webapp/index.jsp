@@ -3,7 +3,7 @@
     Created on : Apr 29, 2019, 10:10:36 AM
     Author     : souldj673
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,6 +29,7 @@
             <form method="post" action="LuckySevensServlet">
                 <label for="dollarInput">Money to bet: $</label>
                 <input class="text-grey back-purple" type="number" name="dollarInput" placeholder="Amount in Dollars" required/>
+                <input class="back-purple" type="submit" value="Play!"/>
             </form>
         </div>
     </body>

@@ -43,5 +43,19 @@ hr {
 input, input[type=number] {
     height: 24pt;
     border-radius: 7px;
-    border-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0)
+}
+
+input[type=submit] {
+    margin-left: 20px;
+    font-family: PetscopWide, Arial, Helvetica, sans-serif;
+    color: #000;
+    text-shadow: 1px 1px 5px #000;
+}
+
+a {
+    margin-left: 20px;
+    font-family: PetscopWide, Arial, Helvetica, sans-serif;
+    color: #000;
+    text-shadow: 1px 1px 5px #000;
 }
