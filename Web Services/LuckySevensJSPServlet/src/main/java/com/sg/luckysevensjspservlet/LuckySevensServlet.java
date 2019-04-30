@@ -17,7 +17,7 @@
 package com.sg.luckysevensjspservlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,6 +49,42 @@ public class LuckySevensServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
             rd.forward(request, response);
         };
+
+        //Var and Random Declaration and Initialization
+        Random diceRoller = new Random();
+        int dollars = Integer.parseInt(request.getParameter("dollarInput"));
+        int maxMoney = dollars;
+        int rolls = 0;
+        int maxRolls = 0;
+
+        while (dollars > 0) {
+
+            //Roll dice and add total
+            int rollOne = diceRoller.nextInt(6) + 1;
+            int rollTwo = diceRoller.nextInt(6) + 1;
+            int diceTotal = rollOne + rollTwo;
+            rolls++;
+
+            //Update Money
+            if (diceTotal == 7) {
+                dollars = dollars + 4;
+
+                //Check if we had more than we had once!
+                if (dollars > maxMoney) {
+                    maxMoney = dollars;
+                    maxRolls = rolls;
+                }
+            } else {
+                dollars--;
+            }
+        }
+        
+        //If money is gone, end game
+        request.setAttribute("maxMoney", maxMoney);
+        request.setAttribute("maxRolls", maxRolls);
+        request.setAttribute("rolls", rolls);
+        RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+        rd.forward(request, response);
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
