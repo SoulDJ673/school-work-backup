@@ -58,4 +58,6 @@ a {
     font-family: PetscopWide, Arial, Helvetica, sans-serif;
     color: #000;
     text-shadow: 1px 1px 5px #000;
+    padding: 10px;
+    border-radius: 10px;
 }

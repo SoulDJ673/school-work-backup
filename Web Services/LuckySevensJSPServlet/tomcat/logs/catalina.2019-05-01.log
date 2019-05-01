@@ -1,0 +1,48 @@
+01-May-2019 08:40:38.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.11
+01-May-2019 08:40:38.491 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jan 10 2017 21:02:52 UTC
+01-May-2019 08:40:38.491 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.11.0
+01-May-2019 08:40:38.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+01-May-2019 08:40:38.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.0.0-arch1-1-ARCH
+01-May-2019 08:40:38.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+01-May-2019 08:40:38.493 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-8-jdk/jre
+01-May-2019 08:40:38.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_202-b08
+01-May-2019 08:40:38.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+01-May-2019 08:40:38.496 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat
+01-May-2019 08:40:38.496 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat
+01-May-2019 08:40:38.497 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/logging.properties
+01-May-2019 08:40:38.498 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+01-May-2019 08:40:38.498 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+01-May-2019 08:40:38.499 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+01-May-2019 08:40:38.500 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat
+01-May-2019 08:40:38.500 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat
+01-May-2019 08:40:38.501 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/temp
+01-May-2019 08:40:38.502 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+01-May-2019 08:40:39.272 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+01-May-2019 08:40:39.353 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+01-May-2019 08:40:39.382 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+01-May-2019 08:40:39.388 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+01-May-2019 08:40:39.392 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 2717 ms
+01-May-2019 08:40:39.499 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+01-May-2019 08:40:39.499 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.11
+01-May-2019 08:40:39.537 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/LuckySevensJSPServlet.xml
+01-May-2019 08:40:41.075 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/LuckySevensJSPServlet.xml has finished in 1,537 ms
+01-May-2019 08:40:41.076 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/docs
+01-May-2019 08:40:41.119 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/docs has finished in 44 ms
+01-May-2019 08:40:41.120 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/manager
+01-May-2019 08:40:41.196 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/manager has finished in 76 ms
+01-May-2019 08:40:41.196 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/examples
+01-May-2019 08:40:41.757 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/examples has finished in 561 ms
+01-May-2019 08:40:41.758 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/ROOT
+01-May-2019 08:40:41.810 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/ROOT has finished in 51 ms
+01-May-2019 08:40:41.810 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/host-manager
+01-May-2019 08:40:41.890 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/webapps/host-manager has finished in 80 ms
+01-May-2019 08:40:41.926 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+01-May-2019 08:40:42.002 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+01-May-2019 08:40:42.027 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2634 ms
+01-May-2019 08:40:49.119 INFO [http-nio-8080-exec-10] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/LuckySevensJSPServlet]
+01-May-2019 08:40:49.194 INFO [http-nio-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/LuckySevensJSPServlet.xml
+01-May-2019 08:40:49.521 INFO [http-nio-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/LuckySevensJSPServlet.xml has finished in 327 ms
+01-May-2019 08:40:49.758 INFO [http-nio-8080-exec-1] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/LuckySevensJSPServlet]] after start() had already been called. The second call will be ignored.
+01-May-2019 09:11:09.551 INFO [http-nio-8080-exec-18] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/TipCalcJSPServlet.xml
+01-May-2019 09:11:09.847 INFO [http-nio-8080-exec-18] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/TipCalcJSPServlet.xml has finished in 296 ms
+01-May-2019 09:11:09.920 INFO [http-nio-8080-exec-12] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TipCalcJSPServlet]] after start() had already been called. The second call will be ignored.
