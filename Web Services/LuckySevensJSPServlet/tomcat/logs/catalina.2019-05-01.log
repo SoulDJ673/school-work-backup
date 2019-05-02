@@ -46,3 +46,11 @@
 01-May-2019 09:11:09.551 INFO [http-nio-8080-exec-18] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/TipCalcJSPServlet.xml
 01-May-2019 09:11:09.847 INFO [http-nio-8080-exec-18] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/LuckySevensJSPServlet/tomcat/conf/Catalina/localhost/TipCalcJSPServlet.xml has finished in 296 ms
 01-May-2019 09:11:09.920 INFO [http-nio-8080-exec-12] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TipCalcJSPServlet]] after start() had already been called. The second call will be ignored.
+01-May-2019 09:12:33.941 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+01-May-2019 09:12:33.942 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+01-May-2019 09:12:33.996 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+01-May-2019 09:12:34.047 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+01-May-2019 09:12:34.125 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+01-May-2019 09:12:34.131 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+01-May-2019 09:12:34.134 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+01-May-2019 09:12:34.135 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

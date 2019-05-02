@@ -56,3 +56,9 @@
 0:0:0:0:0:0:0:1 - - [01/May/2019:09:11:10 -0400] "GET /TipCalcJSPServlet/ HTTP/1.1" 200 814
 0:0:0:0:0:0:0:1 - - [01/May/2019:09:11:21 -0400] "POST /TipCalcJSPServlet/TipCalcServlet HTTP/1.1" 200 486
 0:0:0:0:0:0:0:1 - - [01/May/2019:09:11:29 -0400] "GET /TipCalcJSPServlet/index.jsp HTTP/1.1" 200 814
+127.0.0.1 - netbeans [01/May/2019:09:12:33 -0400] "GET /manager/text/ HTTP/1.1" 200 36
+127.0.0.1 - - [01/May/2019:09:12:33 -0400] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - - [01/May/2019:09:12:33 -0400] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - netbeans [01/May/2019:09:12:33 -0400] "GET /manager/text/ HTTP/1.1" 200 36
+127.0.0.1 - - [01/May/2019:09:12:33 -0400] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - netbeans [01/May/2019:09:12:33 -0400] "GET /manager/text/ HTTP/1.1" 200 36
