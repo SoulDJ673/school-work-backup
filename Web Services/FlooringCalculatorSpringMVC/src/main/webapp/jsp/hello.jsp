@@ -8,15 +8,17 @@
         <title>Hello Controller Page</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/souldj673-flooringCalc.css" 
+              rel="stylesheet">
     </head>
     <body>
         <div class="container">
             <h1>Spring MVC Application from Archetype</h1>
-            <hr/>
+            <br/>
             <div class="navbar">
-                 <ul class="nav nav-tabs">
-                 <li role="presentation"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-                <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/hello/sayhi">Hello Controller</a></li>
+                <ul class="nav nav-tabs">
+                    <li role="presentation"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+                    <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/hello/sayhi">Hello Controller</a></li>
                 </ul>    
             </div>
             <h2>${message}</h2>
