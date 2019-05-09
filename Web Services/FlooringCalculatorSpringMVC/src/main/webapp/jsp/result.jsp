@@ -38,13 +38,18 @@
                 </ul>    
             </div>
             <h2>Flooring Calculations Results:</h2>
-
+            <div>
+                <br>
+                <p><strong>Your total comes out to be: $${result}</strong></p>
+                <p>Labor Costs: $${laborCost}</p>
+                <p>Labor Time (Minutes): ${workTime} minutes</p>
+                <p>Material Costs: $${materialCost}</p>
+            </div>
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js">
         </script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js">
         </script>
-
     </body>
 </html>

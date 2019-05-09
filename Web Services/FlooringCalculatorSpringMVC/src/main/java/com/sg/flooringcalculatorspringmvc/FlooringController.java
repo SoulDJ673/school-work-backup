@@ -51,11 +51,11 @@ public class FlooringController {
 
         double laborCost = (workChargeRounded * laborRate);
         double materialCost = (length * width * price);
-        double resultCost = materialCost + laborCost;
+        double result = materialCost + laborCost;
 
         // Set all the results in the model Map so they
         // are available to result.jsp
-        model.put("resultCost", resultCost);
+        model.put("result", result);
         model.put("workTime", workTimeMinutes);
         model.put("laborCost", laborCost);
         model.put("materialCost", materialCost);
