@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Spring MVC Application from Archetype</h1>
+            <h1>Flooring Calculator</h1>
             <br/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
