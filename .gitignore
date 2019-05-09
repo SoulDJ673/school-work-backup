@@ -20,3 +20,10 @@
 /Web Services/HelloMVC/target/
 /Web Services/FactorizorSpringMVC/target/
 /Web Services/FlooringCalculatorSpringMVC/target/
+/Web Services/BasicTomcatJSP/FactorizerJSPServlet/target/
+/Web Services/BasicTomcatJSP/FlooringCalculatorJSPServlet/target/
+/Web Services/BasicTomcatJSP/InterestCalcJSPServlet/target/
+/Web Services/BasicTomcatJSP/LuckySevensJSPServlet/target/
+/Web Services/BasicTomcatJSP/TipCalcJSPServlet/target/
+/Web Services/SpringMVC/FactorizorSpringMVC/target/
+/Web Services/SpringMVC/LuckySevensSpringMVC/target/

@@ -1,0 +1,43 @@
+body, html {
+    background-color: #111;
+    color: #efefef;
+    margin: 2.5%
+}
+
+a, a:hover {
+    color: #efefef;
+    text-decoration: none
+}
+
+hr {
+    border-color: #efefef;
+    margin-bottom: 4%
+}
+
+.active, .nav, .nav-tabs {
+    background-color: #111;
+    color: #efefef
+}
+
+.nav-tabs:hover, .nav:hover, a:hover, li:hover, ul:hover {
+    border-bottom-color: #efefef;
+    color: #111
+}
+
+.container, div {
+    background-color: #111
+}
+
+.btn, .btn-default, button, input[type=number], input[type=submit], input[type=text] {
+    background-color: #111;
+    border-radius: 7px;
+    border-color: #444;
+    padding: 5px;
+    margin: 5px;
+    color: #efefef
+}
+
+.btn-default:hover, .btn:hover, button:hover, input[type=submit]:hover {
+    background-color: #444;
+    color: #efefef
+}

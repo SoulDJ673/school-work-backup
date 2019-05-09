@@ -388,3 +388,111 @@
 09-May-2019 10:09:59.448 INFO [http-nio-8080-exec-89] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Thu May 09 10:09:59 EDT 2019]; parent: Root WebApplicationContext
 09-May-2019 10:09:59.471 INFO [http-nio-8080-exec-89] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Thu May 09 10:09:59 EDT 2019]; parent: Root WebApplicationContext
 09-May-2019 10:09:59.567 INFO [http-nio-8080-exec-89] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'spring-dispatcher': initialization completed in 228 ms
+09-May-2019 10:24:50.184 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/FactorizorSpringMVC]
+09-May-2019 10:24:50.186 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Thu May 09 09:52:09 EDT 2019]; parent: Root WebApplicationContext
+09-May-2019 10:24:50.189 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Thu May 09 09:52:03 EDT 2019]; root of context hierarchy
+09-May-2019 10:24:50.696 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/FlooringCalculatorSpringMVC]
+09-May-2019 10:24:50.698 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Thu May 09 10:09:59 EDT 2019]; parent: Root WebApplicationContext
+09-May-2019 10:24:50.700 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Thu May 09 10:09:31 EDT 2019]; root of context hierarchy
+09-May-2019 10:24:50.705 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FactorizorSpringMVC.xml
+09-May-2019 10:24:50.707 SEVERE [localhost-startStop-2] org.apache.catalina.core.ContainerBase.addChildInternal ContainerBase.addChild: start: 
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FactorizorSpringMVC]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:752)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@4982ffbc]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4842)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4974)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 10 more
+Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/souldj673/Documents/school-work-backup/Web Services/FactorizorSpringMVC/target/spring-mvc-webapp] is not valid
+	at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:732)
+	at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:690)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 more
+
+09-May-2019 10:24:50.708 SEVERE [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FactorizorSpringMVC.xml
+ java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FactorizorSpringMVC]]
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:756)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+09-May-2019 10:24:50.708 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FactorizorSpringMVC.xml has finished in 3 ms
+09-May-2019 10:24:50.708 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FlooringCalculatorSpringMVC.xml
+09-May-2019 10:24:50.710 SEVERE [localhost-startStop-2] org.apache.catalina.core.ContainerBase.addChildInternal ContainerBase.addChild: start: 
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FlooringCalculatorSpringMVC]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:752)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@373413b4]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4842)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4974)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 10 more
+Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/souldj673/Documents/school-work-backup/Web Services/FlooringCalculatorSpringMVC/target/spring-mvc-webapp] is not valid
+	at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:732)
+	at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:690)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 more
+
+09-May-2019 10:24:50.711 SEVERE [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FlooringCalculatorSpringMVC.xml
+ java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FlooringCalculatorSpringMVC]]
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:756)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+09-May-2019 10:24:50.711 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FlooringCalculatorSpringMVC.xml has finished in 3 ms
+09-May-2019 10:34:30.445 INFO [http-nio-8080-exec-115] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/LuckySevensSpringMVC.xml
+09-May-2019 10:34:31.097 INFO [http-nio-8080-exec-115] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+09-May-2019 10:34:31.161 INFO [http-nio-8080-exec-115] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Thu May 09 10:34:31 EDT 2019]; root of context hierarchy
+09-May-2019 10:34:31.209 INFO [http-nio-8080-exec-115] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/spring-dispatcher-servlet.xml]
+09-May-2019 10:34:31.380 INFO [http-nio-8080-exec-115] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from class path resource [spring-persistence.xml]
+09-May-2019 10:34:31.484 INFO [http-nio-8080-exec-115] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init> JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09-May-2019 10:34:31.699 INFO [http-nio-8080-exec-115] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/hello/sayhi],methods=[GET]}" onto public java.lang.String com.sg.luckysevensspringmvc.HelloController.sayHi(java.util.Map<java.lang.String, java.lang.Object>)
+09-May-2019 10:34:31.743 INFO [http-nio-8080-exec-115] org.hibernate.validator.internal.util.Version.<clinit> HV000001: Hibernate Validator 5.2.2.Final
+09-May-2019 10:34:32.302 INFO [http-nio-8080-exec-115] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Thu May 09 10:34:31 EDT 2019]; root of context hierarchy
+09-May-2019 10:34:32.354 INFO [http-nio-8080-exec-115] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Thu May 09 10:34:31 EDT 2019]; root of context hierarchy
+09-May-2019 10:34:32.452 INFO [http-nio-8080-exec-115] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 1354 ms
+09-May-2019 10:34:32.455 INFO [http-nio-8080-exec-115] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/LuckySevensSpringMVC.xml has finished in 2,009 ms
+09-May-2019 10:34:32.508 INFO [http-nio-8080-exec-109] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/LuckySevensSpringMVC]] after start() had already been called. The second call will be ignored.
+09-May-2019 10:34:44.441 INFO [http-nio-8080-exec-113] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'spring-dispatcher': initialization started
+09-May-2019 10:34:44.445 INFO [http-nio-8080-exec-113] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Thu May 09 10:34:44 EDT 2019]; parent: Root WebApplicationContext
+09-May-2019 10:34:44.446 INFO [http-nio-8080-exec-113] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/spring-dispatcher-servlet.xml]
+09-May-2019 10:34:44.472 INFO [http-nio-8080-exec-113] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init> JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+09-May-2019 10:34:44.506 INFO [http-nio-8080-exec-113] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/hello/sayhi],methods=[GET]}" onto public java.lang.String com.sg.luckysevensspringmvc.HelloController.sayHi(java.util.Map<java.lang.String, java.lang.Object>)
+09-May-2019 10:34:44.556 INFO [http-nio-8080-exec-113] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Thu May 09 10:34:44 EDT 2019]; parent: Root WebApplicationContext
+09-May-2019 10:34:44.577 INFO [http-nio-8080-exec-113] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Thu May 09 10:34:44 EDT 2019]; parent: Root WebApplicationContext
+09-May-2019 10:34:44.663 INFO [http-nio-8080-exec-113] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'spring-dispatcher': initialization completed in 222 ms
+09-May-2019 10:34:44.681 WARNING [http-nio-8080-exec-113] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/LuckySevensSpringMVC/LuckySevensServlet] in DispatcherServlet with name 'spring-dispatcher'
