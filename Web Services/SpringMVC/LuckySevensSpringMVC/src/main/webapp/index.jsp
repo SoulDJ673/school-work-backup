@@ -8,7 +8,7 @@
         <title>Lucky Sevens</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="${pageContext.request.contextPath}/css/souldj673-luckySevens.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/souldj673-LuckySevens.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">
@@ -30,10 +30,10 @@
                 <li>If the sum of the 2 dice is equal to 7, you win $4; otherwise, you lose $1</li>
             </ul>
             <br>
-            <form method="post" action="LuckySevensServlet">
+            <form method="POST" action="luckySevens">
                 <label for="dollarInput">Money to bet: $</label>
-                <input class="text-grey back-purple" type="number" name="dollarInput" placeholder="Amount in Dollars" required/>
-                <input class="back-purple" type="submit" value="Play!"/>
+                <input type="number" name="dollarInput" placeholder="Amount in Dollars" required/>
+                <input type="submit" value="Play!"/>
             </form>
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
