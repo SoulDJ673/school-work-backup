@@ -6,8 +6,8 @@
 package com.sg.tipcalculatorspringmvc;
 
 import java.math.BigDecimal;
+import static java.math.RoundingMode.HALF_UP;
 import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,15 +30,25 @@ public class TipCalcController {
         //Validate Input & Conversion
         //Bill
         billInvalid = billInvalid.trim().replace("$", "");
-        BigDecimal bill = new BigDecimal(billInvalid);
-        if (bill.compareTo(BigDecimal.ZERO) < 0) {
-            return "negativeMoney";
+        BigDecimal bill;
+        try {
+            bill = new BigDecimal(billInvalid);
+            if (bill.compareTo(BigDecimal.ZERO) < 0) {
+                return "invalidMoney";
+            }
+        } catch (NumberFormatException e) {
+            return "invalidMoney";
         }
         //Percent
         percentageInvalid = percentageInvalid.trim().replace("%", "");
-        double percentage = Double.parseDouble(percentageInvalid);
-        if (percentage < 0) {
-            return "negativePercent";
+        double percentage;
+        try {
+            percentage = Double.parseDouble(percentageInvalid);
+            if (percentage < 0) {
+                return "invalidPercentage";
+            }
+        } catch (NumberFormatException e) {
+            return "invalidPercentage";
         }
 
         //Multiply
@@ -47,8 +57,8 @@ public class TipCalcController {
         //Package and sendoff
         model.put("amount", bill.setScale(2).toString());
         model.put("percentage", percentage);
-        model.put("tip", tip.setScale(2).toString());
-        model.put("totalBill", bill.add(tip).setScale(2).toString());
+        model.put("tip", tip.setScale(2, HALF_UP).toString());
+        model.put("totalBill", bill.add(tip).setScale(2, HALF_UP).toString());
 
         return "result";
     }
