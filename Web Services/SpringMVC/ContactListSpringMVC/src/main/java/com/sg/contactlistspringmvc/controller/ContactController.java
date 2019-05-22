@@ -56,4 +56,15 @@ public class ContactController {
         return "redirect:displayContactsPage";
     }
 
+    @RequestMapping(value = "/displayContactDetails", method = RequestMethod.GET)
+    public String displayContactDetails(HttpServletRequest request, Model model) {
+        //Grab and Parse ID
+        String contactIdParameter = request.getParameter("contactId");
+        int contactId = Integer.parseInt(contactIdParameter);
+        Contact contact = dao.getContactById(contactId);
+        
+        //Add Contact to list
+        model.addAttribute("contact", contact);
+        return "contactDetails";
+    }
 }
