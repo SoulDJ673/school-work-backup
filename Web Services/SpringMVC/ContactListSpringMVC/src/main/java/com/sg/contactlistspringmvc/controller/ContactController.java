@@ -62,9 +62,16 @@ public class ContactController {
         String contactIdParameter = request.getParameter("contactId");
         int contactId = Integer.parseInt(contactIdParameter);
         Contact contact = dao.getContactById(contactId);
-        
+
         //Add Contact to list
         model.addAttribute("contact", contact);
         return "contactDetails";
+    }
+
+    @RequestMapping(value = "/deleteContact", method = RequestMethod.GET)
+    public String deleteContact(HttpServletRequest request) {
+        long contactId = Long.parseLong(request.getParameter("contactId"));
+        dao.removeContact(contactId);
+        return "redirect:displayContactsPage";
     }
 }

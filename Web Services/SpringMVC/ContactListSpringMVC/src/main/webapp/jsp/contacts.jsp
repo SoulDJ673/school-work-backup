@@ -69,7 +69,9 @@
                                     Edit
                                 </td>
                                 <td>
-                                    Delete
+                                    <a href="deleteContact?contactId=${currentContact.contactId}">
+                                        Delete
+                                    </a>
                                 </td>
                             </tr>
                         </c:forEach>
