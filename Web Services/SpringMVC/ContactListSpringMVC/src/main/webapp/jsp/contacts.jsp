@@ -66,12 +66,10 @@
                                     <c:out value="${currentContact.company}"/>
                                 </td>
                                 <td>
-                                    Edit
+                                    <a href="displayContactDetails?contactId=${currentContact.contactId}">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="deleteContact?contactId=${currentContact.contactId}">
-                                        Delete
-                                    </a>
+                                    <a href="deleteContact?contactId=${currentContact.contactId}">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -74,4 +74,12 @@ public class ContactController {
         dao.removeContact(contactId);
         return "redirect:displayContactsPage";
     }
+
+    @RequestMapping(value = "/displayEditContactForm", method = RequestMethod.GET)
+    public String displayEditContactForm(HttpServletRequest request, Model model) {
+        long contactId = Long.parseLong(request.getParameter("contactId"));
+        Contact contact = dao.getContactById(contactId);
+        model.addAttribute("contact", contact);
+        return "editContactForm";
+    }
 }
