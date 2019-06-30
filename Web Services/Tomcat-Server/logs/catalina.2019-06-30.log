@@ -1,0 +1,264 @@
+30-Jun-2019 18:19:05.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.11
+30-Jun-2019 18:19:05.566 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jan 10 2017 21:02:52 UTC
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.11.0
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.1.14-121.current
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib64/openjdk-8/jre
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_192-solus-b26
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server
+30-Jun-2019 18:19:05.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/logging.properties
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dhttp.nonProxyHosts=localhost|127.0.0.1|souldj673-aspire-xc-605
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/temp
+30-Jun-2019 18:19:05.568 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+30-Jun-2019 18:19:05.675 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+30-Jun-2019 18:19:05.694 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+30-Jun-2019 18:19:05.696 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+30-Jun-2019 18:19:05.711 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+30-Jun-2019 18:19:05.712 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 648 ms
+30-Jun-2019 18:19:05.740 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+30-Jun-2019 18:19:05.741 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.11
+30-Jun-2019 18:19:05.763 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FlooringCalculatorSpringMVC.xml
+30-Jun-2019 18:19:05.833 SEVERE [localhost-startStop-1] org.apache.catalina.core.ContainerBase.addChildInternal ContainerBase.addChild: start: 
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FlooringCalculatorSpringMVC]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:752)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@21827e8d]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4842)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4974)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 10 more
+Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/souldj673/Documents/school-work-backup/Web Services/FlooringCalculatorSpringMVC/target/spring-mvc-webapp] is not valid
+	at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:732)
+	at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:690)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 more
+
+30-Jun-2019 18:19:05.834 SEVERE [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FlooringCalculatorSpringMVC.xml
+ java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FlooringCalculatorSpringMVC]]
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:756)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+30-Jun-2019 18:19:05.836 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FlooringCalculatorSpringMVC.xml has finished in 72 ms
+30-Jun-2019 18:19:05.836 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FactorizorSpringMVC.xml
+30-Jun-2019 18:19:05.840 SEVERE [localhost-startStop-1] org.apache.catalina.core.ContainerBase.addChildInternal ContainerBase.addChild: start: 
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FactorizorSpringMVC]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:752)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@47840674]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4842)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4974)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 10 more
+Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/souldj673/Documents/school-work-backup/Web Services/FactorizorSpringMVC/target/spring-mvc-webapp] is not valid
+	at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:732)
+	at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:690)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 more
+
+30-Jun-2019 18:19:05.843 SEVERE [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FactorizorSpringMVC.xml
+ java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/FactorizorSpringMVC]]
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:756)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+30-Jun-2019 18:19:05.844 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/FactorizorSpringMVC.xml has finished in 8 ms
+30-Jun-2019 18:19:05.845 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/LuckySevensSpringMVC.xml
+30-Jun-2019 18:19:05.849 SEVERE [localhost-startStop-1] org.apache.catalina.core.ContainerBase.addChildInternal ContainerBase.addChild: start: 
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/LuckySevensSpringMVC]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:752)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@74d16abf]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4842)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4974)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 10 more
+Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/souldj673/Documents/school-work-backup/Web Services/SpringMVC/LuckySevensSpringMVC/target/spring-mvc-webapp] is not valid
+	at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:732)
+	at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:690)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 more
+
+30-Jun-2019 18:19:05.849 SEVERE [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/LuckySevensSpringMVC.xml
+ java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/LuckySevensSpringMVC]]
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:756)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+30-Jun-2019 18:19:05.849 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/LuckySevensSpringMVC.xml has finished in 4 ms
+30-Jun-2019 18:19:05.850 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/TipCalculatorSpringMVC.xml
+30-Jun-2019 18:19:05.854 SEVERE [localhost-startStop-1] org.apache.catalina.core.ContainerBase.addChildInternal ContainerBase.addChild: start: 
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TipCalculatorSpringMVC]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:752)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@26f14038]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4842)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4974)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 10 more
+Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/souldj673/Documents/school-work-backup/Web Services/SpringMVC/TipCalculatorSpringMVC/target/spring-mvc-webapp] is not valid
+	at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:732)
+	at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:690)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 more
+
+30-Jun-2019 18:19:05.855 SEVERE [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/TipCalculatorSpringMVC.xml
+ java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/TipCalculatorSpringMVC]]
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:756)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:728)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:596)
+	at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1805)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+30-Jun-2019 18:19:05.856 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/TipCalculatorSpringMVC.xml has finished in 6 ms
+30-Jun-2019 18:19:05.857 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/manager
+30-Jun-2019 18:19:06.363 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Jun-2019 18:19:06.393 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/manager has finished in 536 ms
+30-Jun-2019 18:19:06.393 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/docs
+30-Jun-2019 18:19:06.447 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Jun-2019 18:19:06.448 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/docs has finished in 55 ms
+30-Jun-2019 18:19:06.448 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/host-manager
+30-Jun-2019 18:19:06.497 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Jun-2019 18:19:06.499 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/host-manager has finished in 51 ms
+30-Jun-2019 18:19:06.499 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/examples
+30-Jun-2019 18:19:06.715 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Jun-2019 18:19:06.729 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/examples has finished in 230 ms
+30-Jun-2019 18:19:06.729 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/ROOT
+30-Jun-2019 18:19:06.763 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Jun-2019 18:19:06.764 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/webapps/ROOT has finished in 35 ms
+30-Jun-2019 18:19:06.769 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+30-Jun-2019 18:19:06.776 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+30-Jun-2019 18:19:06.781 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1068 ms
+30-Jun-2019 18:19:13.129 INFO [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/ContactListSpringMVC.xml
+30-Jun-2019 18:19:13.760 INFO [http-nio-8080-exec-4] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Jun-2019 18:19:13.793 INFO [http-nio-8080-exec-4] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+30-Jun-2019 18:19:13.867 INFO [http-nio-8080-exec-4] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Sun Jun 30 18:19:13 EDT 2019]; root of context hierarchy
+30-Jun-2019 18:19:13.907 INFO [http-nio-8080-exec-4] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/spring-dispatcher-servlet.xml]
+30-Jun-2019 18:19:14.198 INFO [http-nio-8080-exec-4] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from class path resource [spring-persistence.xml]
+30-Jun-2019 18:19:14.314 INFO [http-nio-8080-exec-4] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init> JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+30-Jun-2019 18:19:14.546 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displayContactsPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.ContactController.displayContactsPage()
+30-Jun-2019 18:19:14.550 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/hello/sayhi],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.HelloController.sayHi(java.util.Map<java.lang.String, java.lang.Object>)
+30-Jun-2019 18:19:14.552 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displaySearchPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.SearchController.displaySearchPage()
+30-Jun-2019 18:19:14.600 INFO [http-nio-8080-exec-4] org.hibernate.validator.internal.util.Version.<clinit> HV000001: Hibernate Validator 5.2.2.Final
+30-Jun-2019 18:19:14.939 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sun Jun 30 18:19:13 EDT 2019]; root of context hierarchy
+30-Jun-2019 18:19:14.989 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sun Jun 30 18:19:13 EDT 2019]; root of context hierarchy
+30-Jun-2019 18:19:15.096 INFO [http-nio-8080-exec-4] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 1303 ms
+30-Jun-2019 18:19:15.099 INFO [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/ContactListSpringMVC.xml has finished in 1,970 ms
+30-Jun-2019 18:19:15.107 INFO [http-nio-8080-exec-7] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/ContactListSpringMVC]] after start() had already been called. The second call will be ignored.
+30-Jun-2019 18:19:18.559 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'spring-dispatcher': initialization started
+30-Jun-2019 18:19:18.562 INFO [http-nio-8080-exec-4] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Sun Jun 30 18:19:18 EDT 2019]; parent: Root WebApplicationContext
+30-Jun-2019 18:19:18.562 INFO [http-nio-8080-exec-4] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/spring-dispatcher-servlet.xml]
+30-Jun-2019 18:19:18.607 INFO [http-nio-8080-exec-4] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init> JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+30-Jun-2019 18:19:18.636 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displayContactsPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.ContactController.displayContactsPage()
+30-Jun-2019 18:19:18.637 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/hello/sayhi],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.HelloController.sayHi(java.util.Map<java.lang.String, java.lang.Object>)
+30-Jun-2019 18:19:18.637 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displaySearchPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.SearchController.displaySearchPage()
+30-Jun-2019 18:19:18.681 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Sun Jun 30 18:19:18 EDT 2019]; parent: Root WebApplicationContext
+30-Jun-2019 18:19:18.697 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Sun Jun 30 18:19:18 EDT 2019]; parent: Root WebApplicationContext
+30-Jun-2019 18:19:18.771 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'spring-dispatcher': initialization completed in 211 ms
+30-Jun-2019 18:19:18.784 WARNING [http-nio-8080-exec-4] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/ContactListSpringMVC/displayContacts] in DispatcherServlet with name 'spring-dispatcher'
+30-Jun-2019 18:20:35.335 WARNING [http-nio-8080-exec-5] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/ContactListSpringMVC/displayContacts] in DispatcherServlet with name 'spring-dispatcher'
+30-Jun-2019 18:20:36.455 WARNING [http-nio-8080-exec-7] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/ContactListSpringMVC/displayContacts] in DispatcherServlet with name 'spring-dispatcher'
+30-Jun-2019 18:20:41.383 WARNING [http-nio-8080-exec-8] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/ContactListSpringMVC/displayContacts] in DispatcherServlet with name 'spring-dispatcher'
+30-Jun-2019 18:20:53.035 INFO [http-nio-8080-exec-3] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Sun Jun 30 18:19:18 EDT 2019]; parent: Root WebApplicationContext
+30-Jun-2019 18:20:53.062 INFO [http-nio-8080-exec-3] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Sun Jun 30 18:19:13 EDT 2019]; root of context hierarchy
+30-Jun-2019 18:20:53.581 INFO [http-nio-8080-exec-3] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/ContactListSpringMVC]
+30-Jun-2019 18:20:53.599 INFO [http-nio-8080-exec-5] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/ContactListSpringMVC.xml
+30-Jun-2019 18:20:54.296 INFO [http-nio-8080-exec-5] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Jun-2019 18:20:54.318 INFO [http-nio-8080-exec-5] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+30-Jun-2019 18:20:54.360 INFO [http-nio-8080-exec-5] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Sun Jun 30 18:20:54 EDT 2019]; root of context hierarchy
+30-Jun-2019 18:20:54.398 INFO [http-nio-8080-exec-5] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/spring-dispatcher-servlet.xml]
+30-Jun-2019 18:20:54.540 INFO [http-nio-8080-exec-5] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from class path resource [spring-persistence.xml]
+30-Jun-2019 18:20:54.645 INFO [http-nio-8080-exec-5] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init> JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+30-Jun-2019 18:20:54.837 INFO [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displayContactsPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.ContactController.displayContactsPage()
+30-Jun-2019 18:20:54.840 INFO [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/hello/sayhi],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.HelloController.sayHi(java.util.Map<java.lang.String, java.lang.Object>)
+30-Jun-2019 18:20:54.841 INFO [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displaySearchPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.SearchController.displaySearchPage()
+30-Jun-2019 18:20:54.882 INFO [http-nio-8080-exec-5] org.hibernate.validator.internal.util.Version.<clinit> HV000001: Hibernate Validator 5.2.2.Final
+30-Jun-2019 18:20:55.174 INFO [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sun Jun 30 18:20:54 EDT 2019]; root of context hierarchy
+30-Jun-2019 18:20:55.211 INFO [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sun Jun 30 18:20:54 EDT 2019]; root of context hierarchy
+30-Jun-2019 18:20:55.305 INFO [http-nio-8080-exec-5] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 987 ms
+30-Jun-2019 18:20:55.308 INFO [http-nio-8080-exec-5] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor /home/souldj673/Documents/school-work-backup/Web Services/Tomcat-Server/conf/Catalina/localhost/ContactListSpringMVC.xml has finished in 1,708 ms
+30-Jun-2019 18:20:55.313 INFO [http-nio-8080-exec-9] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/ContactListSpringMVC]] after start() had already been called. The second call will be ignored.
+30-Jun-2019 18:20:57.359 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'spring-dispatcher': initialization started
+30-Jun-2019 18:20:57.361 INFO [http-nio-8080-exec-4] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Sun Jun 30 18:20:57 EDT 2019]; parent: Root WebApplicationContext
+30-Jun-2019 18:20:57.362 INFO [http-nio-8080-exec-4] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/spring-dispatcher-servlet.xml]
+30-Jun-2019 18:20:57.393 INFO [http-nio-8080-exec-4] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init> JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+30-Jun-2019 18:20:57.428 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displayContactsPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.ContactController.displayContactsPage()
+30-Jun-2019 18:20:57.431 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/hello/sayhi],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.HelloController.sayHi(java.util.Map<java.lang.String, java.lang.Object>)
+30-Jun-2019 18:20:57.432 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/displaySearchPage],methods=[GET]}" onto public java.lang.String com.tsg.contactlistspringmvc.controller.SearchController.displaySearchPage()
+30-Jun-2019 18:20:57.474 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Sun Jun 30 18:20:57 EDT 2019]; parent: Root WebApplicationContext
+30-Jun-2019 18:20:57.490 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'spring-dispatcher-servlet': startup date [Sun Jun 30 18:20:57 EDT 2019]; parent: Root WebApplicationContext
+30-Jun-2019 18:20:57.566 INFO [http-nio-8080-exec-4] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'spring-dispatcher': initialization completed in 207 ms
