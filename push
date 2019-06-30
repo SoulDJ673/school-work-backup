@@ -8,6 +8,8 @@ echo ">>> These are done simulataneously..."
 ( echo "Github Next..." && git push -qqq github-backup master && echo "Github is Done!" ) &
 ( echo "Home Gitea Last..." && git push -qqq home master && echo "Home Backup is Done!" ))
 
+wait
+
 echo ""
 echo "=== Pushes Complete ==="
 echo ""
